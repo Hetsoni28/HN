@@ -39,9 +39,9 @@ export default async function WorkPage() {
             </div>
             <div className="mx-auto max-w-5xl">
               <BeforeAfterSlider 
-                beforeImage="/og-image.png"
-                afterImage="/hero-mockup.png"
-                beforeLabel="Legacy Design"
+                beforeImage="/images/slider-before.jpg"
+                afterImage="/images/slider-after.jpg"
+                beforeLabel="Legacy Interface"
                 afterLabel="HN Studio Redesign"
               />
             </div>
