@@ -1,0 +1,56 @@
+import type { NextConfig } from 'next';
+
+const nextConfig: NextConfig = {
+  // ── Images ──────────────────────────────────────────────────────────────
+  images: {
+    formats: ['image/avif', 'image/webp'],
+    remotePatterns: [
+      { protocol: 'https', hostname: 'cdn.sanity.io' },
+      { protocol: 'https', hostname: '**.sanity.io' },
+    ],
+    deviceSizes: [390, 640, 750, 828, 1080, 1200, 1920],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256],
+    minimumCacheTTL: 60 * 60 * 24 * 30, // 30 days
+  },
+
+  // ── Compression ──────────────────────────────────────────────────────────
+  compress: true,
+
+  // ── PoweredByHeader ──────────────────────────────────────────────────────
+  poweredByHeader: false,
+
+  // ── Strict mode ──────────────────────────────────────────────────────────
+  reactStrictMode: true,
+
+  // ── Security & cache headers ─────────────────────────────────────────────
+  async headers() {
+    return [
+      {
+        // Fonts & images in public/
+        source: '/fonts/:path*',
+        headers: [
+          { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' },
+        ],
+      },
+      {
+        // Default security headers on all pages
+        source: '/(.*)',
+        headers: [
+          { key: 'X-DNS-Prefetch-Control', value: 'on' },
+          { key: 'X-Content-Type-Options', value: 'nosniff' },
+          { key: 'X-Frame-Options', value: 'DENY' },
+          { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
+          { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=()' },
+        ],
+      },
+    ];
+  },
+
+  // ── Experimental ─────────────────────────────────────────────────────────
+  experimental: {
+    // Optimise package imports — tree-shake large icon/animation libs
+    optimizePackageImports: ['framer-motion', 'lucide-react'],
+  },
+};
+
+export default nextConfig;

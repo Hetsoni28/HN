@@ -1,0 +1,30 @@
+import { defineField, defineType } from 'sanity';
+
+export default defineType({
+  name: 'project',
+  title: 'Project',
+  type: 'document',
+  fields: [
+    defineField({ name: 'title',            title: 'Title',                type: 'string',   validation: (r) => r.required() }),
+    defineField({ name: 'slug',             title: 'Slug',                 type: 'slug',     options: { source: 'title' }, validation: (r) => r.required() }),
+    defineField({ name: 'shortDescription', title: 'Short description',    type: 'text',     rows: 3 }),
+    defineField({ name: 'category',         title: 'Category',             type: 'string' }),
+    defineField({ name: 'industry',         title: 'Industry',             type: 'string' }),
+    defineField({ name: 'timeline',         title: 'Timeline',             type: 'string' }),
+    defineField({ name: 'role',             title: 'Our Role',             type: 'string' }),
+    defineField({ name: 'liveUrl',          title: 'Live URL',             type: 'url' }),
+    defineField({ name: 'featured',         title: 'Featured',             type: 'boolean',  initialValue: false }),
+    defineField({ name: 'heroImage',        title: 'Hero image',           type: 'image',    options: { hotspot: true } }),
+    defineField({ name: 'gallery',          title: 'Gallery',              type: 'array',    of: [{ type: 'image', options: { hotspot: true } }] }),
+    defineField({ name: 'challenge',        title: 'Challenge',            type: 'array',    of: [{ type: 'block' }] }),
+    defineField({ name: 'approach',         title: 'Approach',             type: 'array',    of: [{ type: 'block' }] }),
+    defineField({ name: 'solution',         title: 'Solution',             type: 'array',    of: [{ type: 'block' }] }),
+    defineField({ name: 'features',         title: 'Features',             type: 'array',    of: [{ type: 'string' }] }),
+    defineField({ name: 'technology',       title: 'Technology',           type: 'array',    of: [{ type: 'string' }] }),
+    defineField({ name: 'architecture',     title: 'Architecture',         type: 'array',    of: [{ type: 'block' }] }),
+    defineField({ name: 'results',          title: 'Results / outcomes',   type: 'array',    of: [{ type: 'block' }] }),
+    defineField({ name: 'body',             title: 'Case study content',   type: 'array',    of: [{ type: 'block' }, { type: 'image', options: { hotspot: true } }] }),
+    defineField({ name: 'seoTitle',         title: 'SEO title',            type: 'string' }),
+    defineField({ name: 'seoDescription',   title: 'SEO description',      type: 'text',     rows: 3 }),
+  ],
+});
