@@ -45,6 +45,8 @@ export function CostEstimator() {
   const [selectedFeatures, setSelectedFeatures] = useState<Set<string>>(new Set(['design', 'auth']));
   const [selectedTimeline, setSelectedTimeline] = useState<string>('flexible');
 
+  const [targetBudget, setTargetBudget] = useState<string>('');
+
   // Calculate totals
   const totals = useMemo(() => {
     const base = PROJECT_BASES.find(b => b.id === selectedBase);
@@ -79,10 +81,17 @@ export function CostEstimator() {
 Project Type: ${totals.base?.name}
 Features: ${totals.activeFeatures.map(f => f.name).join(', ') || 'None'}
 Timeline: ${totals.timeline?.name}
+Target Budget: ${targetBudget ? formatINR(Number(targetBudget)) : 'Not specified'}
 
-Estimated Budget Range: ${formatINR(totals.min)} - ${formatINR(totals.max)}
+Estimated Cost: ${formatINR(totals.min)} - ${formatINR(totals.max)}
 
 I'd like to discuss the next steps!`;
+
+  // Budget Validation Logic
+  const numericTarget = parseInt(targetBudget || '0', 10);
+  const isUnderAbsoluteMinimum = numericTarget > 0 && numericTarget < 40000;
+  const isUnderEstimatedMinimum = numericTarget > 0 && numericTarget >= 40000 && numericTarget < totals.min;
+  const isBudgetAligned = numericTarget >= totals.min;
 
   return (
     <div className="grid gap-10 lg:grid-cols-[1fr_380px] lg:gap-12">
@@ -115,7 +124,6 @@ I'd like to discuss the next steps!`;
                     </div>
                   </div>
                   <span className="mt-2 text-xs text-slate-500">{base.desc}</span>
-                  <span className="mt-3 block text-sm font-semibold text-slate-700">From {formatINR(base.min)}</span>
                 </button>
               );
             })}
@@ -151,7 +159,6 @@ I'd like to discuss the next steps!`;
                   <div>
                     <span className={`block font-bold text-sm ${isSelected ? 'text-[#0051FF]' : 'text-slate-900'}`}>{feature.name}</span>
                     <span className="mt-1 block text-xs text-slate-500">{feature.desc}</span>
-                    <span className="mt-2 block text-xs font-semibold text-slate-600">+{formatINR(feature.min)} - {formatINR(feature.max)}</span>
                   </div>
                 </button>
               );
@@ -203,6 +210,23 @@ I'd like to discuss the next steps!`;
 
           <div className="my-6 border-t border-dashed border-[#E2E5F1]" />
 
+          {/* Target Budget Input */}
+          <div className="mb-6">
+            <label className="mb-2 block text-xs font-bold uppercase tracking-widest text-slate-400">
+              Your Target Budget (Optional)
+            </label>
+            <div className="relative">
+              <span className="absolute left-4 top-1/2 -translate-y-1/2 font-semibold text-slate-400">₹</span>
+              <input 
+                type="number"
+                placeholder="e.g. 150000"
+                value={targetBudget}
+                onChange={(e) => setTargetBudget(e.target.value)}
+                className="w-full rounded-xl border border-[#E2E5F1] bg-slate-50 py-3 pl-8 pr-4 text-sm font-semibold text-slate-900 outline-none transition focus:border-[#0051FF] focus:bg-white focus:ring-2 focus:ring-[#0051FF]/20"
+              />
+            </div>
+          </div>
+
           {/* Receipt Lines */}
           <div className="space-y-4 text-sm">
             <div className="flex justify-between gap-4">
@@ -230,8 +254,8 @@ I'd like to discuss the next steps!`;
           <div className="my-6 border-t border-dashed border-[#E2E5F1]" />
 
           {/* Total */}
-          <div className="mb-8">
-            <span className="text-xs font-bold uppercase tracking-widest text-slate-400">Total Range (INR)</span>
+          <div className="mb-6">
+            <span className="text-xs font-bold uppercase tracking-widest text-slate-400">Calculated Range (INR)</span>
             <motion.div 
               key={`${totals.min}-${totals.max}`}
               initial={{ opacity: 0, y: 10 }}
@@ -240,6 +264,25 @@ I'd like to discuss the next steps!`;
             >
               {formatINR(totals.min)} <span className="text-xl text-slate-400 font-medium mx-1">to</span> {formatINR(totals.max)}
             </motion.div>
+          </div>
+
+          {/* Dynamic Budget Alerts */}
+          <div className="mb-8">
+            {isUnderAbsoluteMinimum && (
+              <div className="rounded-lg bg-red-50 p-3 text-xs font-medium leading-5 text-red-600 border border-red-100">
+                🔴 <strong>Notice:</strong> HN Studio&apos;s minimum engagement starts at ₹40,000 for standard websites. We may not be able to accommodate this budget.
+              </div>
+            )}
+            {isUnderEstimatedMinimum && (
+              <div className="rounded-lg bg-amber-50 p-3 text-xs font-medium leading-5 text-amber-700 border border-amber-100">
+                ⚠️ <strong>Budget Mismatch:</strong> Your requirements exceed your target budget. Consider removing some advanced features or increasing your budget.
+              </div>
+            )}
+            {isBudgetAligned && (
+              <div className="rounded-lg bg-green-50 p-3 text-xs font-medium leading-5 text-green-700 border border-green-100">
+                ✅ <strong>Great news:</strong> Your target budget aligns perfectly with these requirements!
+              </div>
+            )}
           </div>
 
           {/* CTAs */}
