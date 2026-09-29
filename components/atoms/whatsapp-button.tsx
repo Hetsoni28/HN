@@ -1,5 +1,6 @@
-import React from 'react';
-import { Button } from './button';
+'use client';
+
+import React, { useEffect, useState } from 'react';
 
 interface WhatsAppButtonProps {
   message?: string;
@@ -14,9 +15,22 @@ export function WhatsAppButton({
   className = "",
   fullWidth = false
 }: WhatsAppButtonProps) {
+  const [currentUrl, setCurrentUrl] = useState('');
+
+  useEffect(() => {
+    // Only runs on the client to get the exact page URL the user is on
+    setCurrentUrl(window.location.href);
+  }, []);
+
   // Use the secondary number the user explicitly asked to add (+91 7990743263)
   const phoneNumber = "917990743263"; 
-  const encodedMessage = encodeURIComponent(message);
+  
+  // Create a truly dynamic message by appending the URL
+  const dynamicMessage = currentUrl 
+    ? `${message}\n\n(Sent from: ${currentUrl})` 
+    : message;
+    
+  const encodedMessage = encodeURIComponent(dynamicMessage);
   const waUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
 
   return (
