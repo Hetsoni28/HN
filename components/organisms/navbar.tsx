@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Logo } from '@/components/atoms/logo';
 import { Button } from '@/components/atoms/button';
+import { AvailabilityBadge } from '@/components/atoms/availability-badge';
 
 /* ─────────────────────────── Data ─────────────────────────── */
 
@@ -250,14 +251,7 @@ export function Navbar() {
 
         {/* ── Desktop right actions ── */}
         <div className="hidden items-center gap-3 lg:flex">
-          {/* Availability pill */}
-          <span className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3.5 py-1.5 text-[11px] font-bold uppercase tracking-widest text-slate-700 shadow-sm">
-            <span className="relative flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-60" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
-            </span>
-            Available
-          </span>
+          <AvailabilityBadge />
 
           <Button href="/contact" variant="primary" className="text-sm px-5 py-2.5">
             Start a Project →
