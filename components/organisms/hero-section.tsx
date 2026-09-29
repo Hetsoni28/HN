@@ -80,13 +80,11 @@ export function HeroSection() {
               <span aria-hidden="true"> →</span>
             </Button>
             <Button 
-              href="https://calendly.com/hn-studio/30min" 
-              target="_blank" 
-              rel="noopener noreferrer" 
+              href="/work" 
               variant="secondary" 
               className="rounded-full px-7 py-3.5 text-sm sm:px-8 sm:py-4 sm:text-base font-bold"
             >
-              Book 1:1 Strategy Call
+              View Our Work
             </Button>
           </motion.div>
 

@@ -79,35 +79,6 @@ export default function ContactPage() {
             <FadeIn delay={0.1}>
               <div className="space-y-5 lg:sticky lg:top-28">
 
-                {/* Calendly Booking */}
-                <div className="rounded-2xl border border-[#0051FF] bg-[#0051FF]/5 p-7 shadow-sm">
-                  <div className="flex items-center gap-3">
-                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#0051FF] text-white shadow-md shadow-[#0051FF]/20">
-                      <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" />
-                      </svg>
-                    </div>
-                    <div>
-                      <h3 className="text-base font-bold text-slate-900">Book 1:1 Strategy Call</h3>
-                      <p className="text-xs font-bold uppercase tracking-wider text-[#0051FF]">Direct Consultation</p>
-                    </div>
-                  </div>
-                  <p className="mt-4 text-sm leading-relaxed text-slate-600">
-                    Skip the back-and-forth emails. Map out your product&apos;s architecture, timeline, and execution plan with us directly.
-                  </p>
-                  
-                  <a 
-                    href="https://calendly.com/hn-studio/30min" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="mt-6 flex w-full items-center justify-center gap-2 rounded-xl bg-[#0051FF] px-6 py-3.5 text-sm font-bold text-white transition-all hover:bg-[#003ED9] hover:shadow-lg hover:shadow-[#0051FF]/20 active:scale-[0.98]"
-                  >
-                    Select a Time
-                    <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                    </svg>
-                  </a>
-                </div>
 
                 {/* Contact details */}
                 <div className="rounded-2xl border border-[#E2E5F1] bg-[#EEF0FF] p-7">
