@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import { getProjects } from '@/lib/content';
 import { FadeIn } from '@/components/atoms/fade-in';
 import { TransformationSection } from '@/components/organisms/transformation-section';
-import { PortfolioPDFButton } from '@/components/molecules/portfolio-pdf-button';
 import { WorkFilter } from './work-filter';
 
 export const metadata: Metadata = {
@@ -24,9 +23,6 @@ export default async function WorkPage() {
             <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-slate-500">
               A collection of our recent work across web applications, SaaS platforms, AI integrations, and high-performance websites.
             </p>
-            <div className="mt-10 flex justify-center">
-              <PortfolioPDFButton projects={projects} />
-            </div>
           </FadeIn>
         </div>
       </section>

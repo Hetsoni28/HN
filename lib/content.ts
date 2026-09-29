@@ -734,7 +734,7 @@ export const FALLBACK_TESTIMONIALS: Testimonial[] = [
     role: 'Founder & CEO',
     company: 'Stackwise Technologies',
     quote:
-      'HN Studio transformed our legacy dashboard into a modern SaaS product in just eight weeks. The code quality and attention to performance blew our engineering team away. We went from 4-second load times down to under 800 ms — our retention jumped noticeably the very next month.',
+      'HN transformed our legacy dashboard into a modern SaaS product in just eight weeks. The code quality and attention to performance blew our engineering team away. We went from 4-second load times down to under 800 ms — our retention jumped noticeably the very next month.',
     avatar: '/images/testimonials/arjun.jpg',
   },
   {
@@ -752,7 +752,7 @@ export const FALLBACK_TESTIMONIALS: Testimonial[] = [
     role: 'Co-founder',
     company: 'Orbito Health',
     quote:
-      'Working with HN Studio felt like having an in-house team that genuinely cared about our product. They rebuilt our patient portal from scratch using Next.js and Supabase, cutting our infrastructure costs by 40 %. The new interface has received overwhelmingly positive feedback from our doctors and patients alike.',
+      'Working with HN felt like having an in-house team that genuinely cared about our product. They rebuilt our patient portal from scratch using Next.js and Supabase, cutting our infrastructure costs by 40 %. The new interface has received overwhelmingly positive feedback from our doctors and patients alike.',
     avatar: '/images/testimonials/rahul.jpg',
   },
   {

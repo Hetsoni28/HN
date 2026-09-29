@@ -9,7 +9,7 @@ export function OrganizationJsonLd() {
     '@type': 'Organization',
     '@id': `${SITE_URL}/#organization`,
     name: 'HN Digital Product Studio',
-    alternateName: 'HN Studio',
+    alternateName: 'HN',
     url: SITE_URL,
     logo: {
       '@type': 'ImageObject',
@@ -26,7 +26,7 @@ export function OrganizationJsonLd() {
     contactPoint: {
       '@type': 'ContactPoint',
       contactType: 'customer service',
-      email: 'het@hn.studio',
+      email: 'contact.hnsolutions@gmail.com',
     },
     sameAs: [
       'https://github.com/Hetsoni28',
@@ -49,7 +49,7 @@ export function WebSiteJsonLd() {
     '@type': 'WebSite',
     '@id': `${SITE_URL}/#website`,
     url: SITE_URL,
-    name: 'HN Studio',
+    name: 'HN',
     publisher: { '@id': `${SITE_URL}/#organization` },
     potentialAction: {
       '@type': 'SearchAction',

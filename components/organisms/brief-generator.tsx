@@ -282,7 +282,7 @@ export function BriefGenerator() {
                 <div className="pt-4 border-t border-slate-200">
                   <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400">Quality Guarantee</h4>
                   <p className="mt-2 text-sm leading-relaxed text-slate-600">
-                    Built by senior engineers at HN Studio ensuring scalable code, flawless UX, and extreme performance.
+                    Built by senior engineers at HN ensuring scalable code, flawless UX, and extreme performance.
                   </p>
                 </div>
               </div>

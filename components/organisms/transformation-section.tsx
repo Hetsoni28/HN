@@ -17,7 +17,7 @@ export function TransformationSection() {
               beforeImage="/images/slider-before.jpg"
               afterImage="/images/slider-after.jpg"
               beforeLabel="Legacy Interface"
-              afterLabel="HN Studio Redesign"
+              afterLabel="HN Redesign"
             />
           </div>
         </FadeIn>
