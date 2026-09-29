@@ -274,7 +274,14 @@ export function Footer() {
 
           <span className="hidden md:block">
             Crafted with care by{' '}
-            <span className="font-semibold text-white/50">HN</span>
+            <a
+              href="https://github.com/Hetsoni28"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-semibold text-white/50 transition hover:text-white"
+            >
+              Het Soni
+            </a>
           </span>
         </div>
       </div>
