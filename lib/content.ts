@@ -181,7 +181,7 @@ export const FALLBACK_SERVICES: Service[] = [
     technology: ['Next.js', 'Sanity', 'Razorpay', 'Stripe', 'PostgreSQL', 'TypeScript'], order: 7,
   },
   {
-    _id: '8', icon: '�—',
+    _id: '8', icon: '🔗',
     title: 'APIs & Integrations', slug: { current: 'apis-integrations' },
     tagline: 'Reliable APIs and third-party integrations that just work.',
     shortDescription: 'REST and GraphQL APIs, webhooks, and third-party connectors.',
