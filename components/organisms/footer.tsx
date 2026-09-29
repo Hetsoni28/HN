@@ -14,6 +14,7 @@ const NAV = [
       { href: '/work',     label: 'Portfolio' },
       { href: '/insights', label: 'Insights' },
       { href: '/contact',  label: 'Contact' },
+      { href: '/referral', label: 'Refer & Earn ₹5,000' },
     ],
   },
   {
