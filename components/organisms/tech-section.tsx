@@ -57,7 +57,6 @@ export function TechSection() {
               <div className="flex flex-col gap-4 px-6 py-5 sm:flex-row sm:items-center sm:gap-10">
                 {/* Category */}
                 <div className="flex w-36 shrink-0 items-center gap-2.5">
-                  <span className={`h-2 w-2 rounded-full ${dot}`} />
                   <span className={`text-xs font-bold uppercase tracking-widest ${color}`}>
                     {cat}
                   </span>
