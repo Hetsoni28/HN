@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/atoms/button';
 import { AvailabilityBadge } from '@/components/atoms/availability-badge';
+import { AnimatedCounter } from '@/components/molecules/animated-counter';
 
 const container = {
   hidden: { opacity: 0 },
@@ -94,12 +95,14 @@ export function HeroSection() {
             className="mt-12 grid grid-cols-3 gap-4 border-t border-slate-200 pt-8 sm:gap-8 sm:mt-14"
           >
             {[
-              { value: '15+',  label: 'Projects Shipped' },
-              { value: '100%', label: 'On-Time Delivery' },
-              { value: '2x',   label: 'Faster to Market' },
+              { value: 15, suffix: '+', label: 'Projects Shipped' },
+              { value: 100, suffix: '%', label: 'On-Time Delivery' },
+              { value: 2, suffix: 'x', label: 'Faster to Market' },
             ].map((s) => (
               <div key={s.label}>
-                <div className="text-2xl font-bold text-[#0051FF] sm:text-3xl">{s.value}</div>
+                <div className="text-2xl font-bold text-[#0051FF] sm:text-3xl">
+                  <AnimatedCounter value={s.value} suffix={s.suffix} duration={1.5} />
+                </div>
                 <div className="mt-0.5 text-[10px] leading-snug text-slate-500 sm:text-xs">{s.label}</div>
               </div>
             ))}
