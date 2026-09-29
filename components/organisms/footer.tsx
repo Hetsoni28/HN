@@ -8,6 +8,7 @@ const NAV = [
     links: [
       { href: '/about',    label: 'About Us' },
       { href: '/process',  label: 'Our Process' },
+      { href: '/estimate', label: 'Estimator' },
       { href: '/work',     label: 'Portfolio' },
       { href: '/insights', label: 'Insights' },
       { href: '/contact',  label: 'Contact' },

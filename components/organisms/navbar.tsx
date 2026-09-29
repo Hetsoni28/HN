@@ -10,6 +10,7 @@ const NAV_LINKS: [string, string][] = [
   ['Services', '/services'],
   ['Work',     '/work'],
   ['Process',  '/process'],
+  ['Estimator','/estimate'],
   ['About',    '/about'],
   ['Insights', '/insights'],
 ];
