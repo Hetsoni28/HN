@@ -168,9 +168,7 @@ export function Navbar() {
       <div className="container flex h-[68px] items-center justify-between gap-6">
 
         {/* Logo */}
-        <Link href="/" aria-label="HN — Home" className="shrink-0">
-          <Logo />
-        </Link>
+        <Logo />
 
         {/* ── Desktop nav ── */}
         <nav aria-label="Primary navigation" className="hidden items-center gap-1 lg:flex">
