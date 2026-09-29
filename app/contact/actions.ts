@@ -68,24 +68,41 @@ export async function submitInquiry(
 
   const data = parsed.data;
 
-  /* 2. Send email via Resend */
+  /* 3. Process File Attachment */
+  const rawFile = formData.get('file') as File | null;
+  let fileBuffer: Buffer | null = null;
+  let fileName = '';
+
+  if (rawFile && rawFile.size > 0) {
+    if (rawFile.size > 5 * 1024 * 1024) {
+      return { status: 'error', message: 'Attachment must be under 5MB.' };
+    }
+    const arrayBuffer = await rawFile.arrayBuffer();
+    fileBuffer = Buffer.from(arrayBuffer);
+    fileName = rawFile.name;
+  }
+
+  /* 4. Send email via Resend */
   const apiKey = process.env.RESEND_API_KEY;
   const toEmail = process.env.CONTACT_EMAIL ?? 'contact.hnsolutions@gmail.com';
 
   if (!apiKey) {
     /* Dev mode — log to console and succeed */
-    console.log('[Contact Form — DEV] New inquiry:', data);
+    console.log('[Contact Form — DEV] New inquiry:', data, fileBuffer ? `[Attached: ${fileName}]` : '');
     return { status: 'success' };
   }
 
   try {
     const resend = new Resend(apiKey);
 
+    const attachments = fileBuffer ? [{ filename: fileName, content: fileBuffer }] : undefined;
+
     await resend.emails.send({
       from:    'HN Contact Form <onboarding@resend.dev>',
       to:      [toEmail],
       replyTo: data.email,
       subject: `New Inquiry — ${data.projectType} from ${data.name}`,
+      attachments,
       html: `
         <div style="font-family:sans-serif;max-width:600px;margin:0 auto">
           <h2 style="color:#0051FF">New Project Inquiry</h2>
@@ -101,6 +118,7 @@ export async function submitInquiry(
           <p><strong>Type:</strong> ${data.projectType}</p>
           <p><strong>Budget:</strong> ${data.budget}</p>
           <p><strong>Timeline:</strong> ${data.timeline}</p>
+          <p><strong>Attachment:</strong> ${fileBuffer ? fileName : 'None'}</p>
 
           <h3>Description</h3>
           <p style="white-space:pre-wrap">${data.description}</p>

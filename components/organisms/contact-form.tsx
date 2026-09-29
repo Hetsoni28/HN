@@ -156,6 +156,44 @@ export function ContactForm() {
               />
             </Field>
 
+            <Field label="Attachment (Optional)">
+              <div className="relative group">
+                <input
+                  type="file"
+                  name="file"
+                  accept=".pdf,.doc,.docx,.txt,.png,.jpg,.jpeg"
+                  className="peer absolute inset-0 h-full w-full cursor-pointer opacity-0"
+                  onChange={(e) => {
+                    const file = e.target.files?.[0];
+                    if (file) {
+                      if (file.size > 5 * 1024 * 1024) {
+                        alert('Attachment must be under 5MB.');
+                        e.target.value = '';
+                        e.target.nextElementSibling!.querySelector('span')!.textContent = 'Upload project brief, RFP, or wireframes (Max 5MB)';
+                        e.target.nextElementSibling!.querySelector('span')!.classList.remove('text-[#0051FF]');
+                      } else {
+                        e.target.nextElementSibling!.querySelector('span')!.textContent = '📎 ' + file.name;
+                        e.target.nextElementSibling!.querySelector('span')!.classList.add('text-[#0051FF]');
+                      }
+                    } else {
+                        e.target.nextElementSibling!.querySelector('span')!.textContent = 'Upload project brief, RFP, or wireframes (Max 5MB)';
+                        e.target.nextElementSibling!.querySelector('span')!.classList.remove('text-[#0051FF]');
+                    }
+                  }}
+                />
+                <div className="flex w-full items-center gap-3 rounded-xl border border-dashed border-[#E2E5F1] bg-slate-50 px-4 py-4 text-sm transition group-hover:border-[#0051FF]/50 peer-focus:ring-2 peer-focus:ring-[#0051FF]/20">
+                  <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-white shadow-sm border border-[#E2E5F1] text-slate-500">
+                    <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13" />
+                    </svg>
+                  </div>
+                  <div className="flex-1 truncate text-slate-500">
+                    <span className="block font-medium transition-colors">Upload project brief, RFP, or wireframes (Max 5MB)</span>
+                  </div>
+                </div>
+              </div>
+            </Field>
+
             <div className="grid gap-4 sm:grid-cols-2">
               <Field label="Budget Range" required error={state.errors?.budget}>
                 <select name="budget" defaultValue="" className={`${inputCls(state.errors?.budget)} cursor-pointer`} required>
