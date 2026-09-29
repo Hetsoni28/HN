@@ -1,5 +1,6 @@
 import { FadeIn } from '@/components/atoms/fade-in';
 import { Button } from '@/components/atoms/button';
+import { WhatsAppButton } from '@/components/atoms/whatsapp-button';
 
 export function FinalCta() {
   return (
@@ -27,16 +28,14 @@ export function FinalCta() {
               <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
                 <Button
                   href="/contact"
-                  className="w-full bg-white px-10 py-5 text-base font-bold text-[#0051FF] hover:bg-blue-50 sm:w-auto"
+                  className="w-full bg-white px-8 py-5 text-base font-bold text-[#0051FF] hover:bg-blue-50 sm:w-auto"
                 >
                   Start a Project →
                 </Button>
-                <Button
-                  href="/work"
-                  className="w-full border border-white/30 bg-transparent px-10 py-5 text-base text-white hover:border-white/60 hover:bg-white/10 sm:w-auto"
-                >
-                  See our work first
-                </Button>
+                <WhatsAppButton 
+                  label="Message Us"
+                  className="w-full sm:w-auto px-8"
+                />
               </div>
             </div>
           </div>

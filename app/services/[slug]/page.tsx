@@ -6,6 +6,7 @@ import { Button } from '@/components/atoms/button';
 import { Eyebrow } from '@/components/atoms/eyebrow';
 import { ServiceIcon } from '@/components/atoms/service-icon';
 import { Breadcrumb } from '@/components/molecules/breadcrumb';
+import { WhatsAppButton } from '@/components/atoms/whatsapp-button';
 
 /* ── ISR — rebuild every 24 hours ── */
 export const revalidate = 86400;
@@ -88,10 +89,14 @@ export default async function ServiceDetailPage({
                       </div>
                     ))}
                   </div>
-                  <div className="mt-6">
+                  <div className="mt-6 space-y-3">
                     <Button href="/contact" variant="primary" fullWidth>
                       Start this project →
                     </Button>
+                    <WhatsAppButton 
+                      message={`Hi HN Studio, I'm interested in your ${service.title} services.`} 
+                      fullWidth 
+                    />
                   </div>
                 </div>
               </FadeIn>

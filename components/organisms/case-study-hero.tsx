@@ -74,7 +74,11 @@ export function CaseStudyHero({ project }: { project: Project }) {
   );
 }
 
+import { WhatsAppButton } from '@/components/atoms/whatsapp-button';
+
 export function CaseStudyOverview({ project }: { project: Project }) {
+  const waMessage = `Hi HN Studio, I saw the ${project.title} project and I'm interested in building something similar.`;
+
   return (
     <section className="section bg-white">
       <div className="container">
@@ -103,8 +107,9 @@ export function CaseStudyOverview({ project }: { project: Project }) {
                   </div>
                 ))}
               </div>
-              <div className="mt-6">
+              <div className="mt-6 space-y-3">
                 <Button href="/contact" variant="primary" fullWidth>Start a similar project →</Button>
+                <WhatsAppButton message={waMessage} fullWidth />
               </div>
             </div>
           </FadeIn>

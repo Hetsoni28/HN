@@ -3,6 +3,7 @@ import { ContactForm } from '@/components/organisms/contact-form';
 import { FadeIn } from '@/components/atoms/fade-in';
 import { Eyebrow } from '@/components/atoms/eyebrow';
 import { Breadcrumb } from '@/components/molecules/breadcrumb';
+import { WhatsAppButton } from '@/components/atoms/whatsapp-button';
 
 export const metadata: Metadata = {
   title: 'Contact — HN',
@@ -97,6 +98,9 @@ export default function ContactPage() {
                         </div>
                       </div>
                     ))}
+                  </div>
+                  <div className="mt-6 border-t border-[#E2E5F1] pt-6">
+                    <WhatsAppButton fullWidth />
                   </div>
                 </div>
 
