@@ -251,7 +251,6 @@ I'd like to discuss the next steps!`;
               label="Send estimate via WhatsApp" 
               message={inquiryMessage} 
               fullWidth 
-              className="!bg-[#EEF0FF] !text-[#0051FF] hover:!bg-[#E2E5F1] ring-1 ring-inset ring-[#0051FF]/20"
             />
           </div>
         </div>
