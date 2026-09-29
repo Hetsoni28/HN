@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/atoms/button';
+import { AvailabilityBadge } from '@/components/atoms/availability-badge';
 
 const container = {
   hidden: { opacity: 0 },
@@ -41,6 +42,10 @@ export function HeroSection() {
         className="container relative z-10 flex min-h-[100svh] flex-col justify-center py-28 sm:py-32"
       >
         <div className="max-w-lg sm:max-w-xl md:max-w-2xl">
+          
+          <motion.div variants={item} className="mb-6">
+            <AvailabilityBadge />
+          </motion.div>
 
           {/* Headline */}
           <motion.h1
@@ -74,8 +79,14 @@ export function HeroSection() {
               Calculate Project Cost
               <span aria-hidden="true"> →</span>
             </Button>
-            <Button href="/contact" variant="secondary" className="rounded-full px-7 py-3.5 text-sm sm:px-8 sm:py-4 sm:text-base">
-              Start a Project
+            <Button 
+              href="https://calendly.com/hn-studio/30min" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              variant="secondary" 
+              className="rounded-full px-7 py-3.5 text-sm sm:px-8 sm:py-4 sm:text-base font-bold"
+            >
+              Book 1:1 Strategy Call
             </Button>
           </motion.div>
 

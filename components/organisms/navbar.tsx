@@ -5,6 +5,7 @@ import { Logo } from '@/components/atoms/logo';
 import { Button } from '@/components/atoms/button';
 import { NavLink } from '@/components/molecules/nav-link';
 import { VisuallyHidden } from '@/components/atoms/visually-hidden';
+import { AvailabilityBadge } from '@/components/atoms/availability-badge';
 
 const NAV_LINKS: [string, string][] = [
   ['Services', '/services'],
@@ -54,9 +55,10 @@ export function Navbar() {
           ))}
         </nav>
 
-        {/* Desktop CTA */}
-        <div className="hidden md:block">
-          <Button href="/contact" variant="primary" className="text-sm">
+        {/* Desktop CTA & Badge */}
+        <div className="hidden items-center gap-4 md:flex">
+          <AvailabilityBadge />
+          <Button href="/estimate" variant="primary" className="text-sm">
             Start a Project
             <span aria-hidden="true"> →</span>
           </Button>
