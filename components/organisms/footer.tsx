@@ -14,6 +14,7 @@ const NAV = [
       { href: '/work',     label: 'Portfolio' },
       { href: '/insights', label: 'Insights' },
       { href: '/contact',  label: 'Contact' },
+      { href: '/start',    label: 'Getting Started' },
       { href: '/referral', label: 'Refer & Earn ₹5,000' },
     ],
   },
@@ -26,6 +27,7 @@ const NAV = [
       { href: '/services/ai-solutions',       label: 'AI Solutions' },
       { href: '/services/saas-platforms',     label: 'SaaS Platforms' },
       { href: '/services/e-commerce',         label: 'E-Commerce' },
+      { href: '/maintenance',                  label: 'Maintenance Plans' },
     ],
   },
   {
