@@ -181,7 +181,7 @@ export const FALLBACK_SERVICES: Service[] = [
     technology: ['Next.js', 'Sanity', 'Razorpay', 'Stripe', 'PostgreSQL', 'TypeScript'], order: 7,
   },
   {
-    _id: '8', icon: '🔗',
+    _id: '8', icon: '�—',
     title: 'APIs & Integrations', slug: { current: 'apis-integrations' },
     tagline: 'Reliable APIs and third-party integrations that just work.',
     shortDescription: 'REST and GraphQL APIs, webhooks, and third-party connectors.',
@@ -715,3 +715,59 @@ export async function getRelatedPosts(currentId: string, category?: string): Pro
     : FALLBACK_POSTS.filter((p) => p._id !== currentId && p.category === category).slice(0, 3);
 }
 
+
+/* --------------- Testimonials --------------- */
+
+export type Testimonial = {
+  id: string;
+  name: string;
+  role: string;
+  company: string;
+  quote: string;
+  avatar: string;
+};
+
+export const FALLBACK_TESTIMONIALS: Testimonial[] = [
+  {
+    id: '1',
+    name: 'Arjun Mehta',
+    role: 'Founder & CEO',
+    company: 'Stackwise Technologies',
+    quote:
+      'HN Studio transformed our legacy dashboard into a modern SaaS product in just eight weeks. The code quality and attention to performance blew our engineering team away. We went from 4-second load times down to under 800 ms — our retention jumped noticeably the very next month.',
+    avatar: '/images/testimonials/arjun.jpg',
+  },
+  {
+    id: '2',
+    name: 'Priya Sharma',
+    role: 'Head of Product',
+    company: 'Finledge India',
+    quote:
+      'We needed a complex multi-tenant web app built quickly without cutting corners on security or UX. HN delivered a fully tested, beautifully designed platform on time and on budget. Their direct communication style meant zero surprises throughout the entire engagement.',
+    avatar: '/images/testimonials/priya.jpg',
+  },
+  {
+    id: '3',
+    name: 'Rahul Nair',
+    role: 'Co-founder',
+    company: 'Orbito Health',
+    quote:
+      'Working with HN Studio felt like having an in-house team that genuinely cared about our product. They rebuilt our patient portal from scratch using Next.js and Supabase, cutting our infrastructure costs by 40 %. The new interface has received overwhelmingly positive feedback from our doctors and patients alike.',
+    avatar: '/images/testimonials/rahul.jpg',
+  },
+  {
+    id: '4',
+    name: 'Sneha Kulkarni',
+    role: 'Director of Operations',
+    company: 'GrowCart',
+    quote:
+      'HN built our entire e-commerce platform with a custom AI-powered recommendation engine in under three months. The site passes Core Web Vitals with flying colours and ranks significantly better than our previous solution. I would not hesitate to recommend them to any serious founder.',
+    avatar: '/images/testimonials/sneha.jpg',
+  },
+];
+
+export async function getTestimonials(): Promise<Testimonial[]> {
+  // Sanity integration can be wired up here in a future iteration.
+  // For now we always return the curated fallback testimonials.
+  return FALLBACK_TESTIMONIALS;
+}
