@@ -34,14 +34,38 @@ export async function GET() {
 
     const events: GitHubPushEvent[] = await res.json();
 
+    interface GitHubPushPayload {
+      ref?: string;
+      commits?: Array<{ message: string; sha: string }>;
+      size?: number;
+    }
+
     const pushEvents = events
       .filter((e) => e.type === 'PushEvent')
       .slice(0, 6)
-      .map((e) => ({
-        repo: e.repo.name,
-        message: e.payload.commits?.[0]?.message ?? '(no commit message)',
-        date: e.created_at,
-      }));
+      .map((e) => {
+        const payload = e.payload as GitHubPushPayload;
+        const commits = payload.commits ?? [];
+
+        // Find first commit with a real non-empty message
+        const firstRealMsg = commits.find(
+          (c) => c.message && c.message.trim().length > 0
+        )?.message?.split('\n')[0] ?? '';
+
+        // Build a meaningful fallback using branch name + commit count
+        const branch = payload.ref?.replace('refs/heads/', '') ?? 'main';
+        const count = payload.size ?? commits.length;
+        const fallback =
+          count > 0
+            ? `Pushed ${count} commit${count !== 1 ? 's' : ''} to ${branch}`
+            : `Pushed to ${branch}`;
+
+        return {
+          repo: e.repo.name,
+          message: firstRealMsg || fallback,
+          date: e.created_at,
+        };
+      });
 
     return NextResponse.json(pushEvents);
   } catch (err) {
