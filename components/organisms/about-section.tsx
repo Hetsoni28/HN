@@ -28,7 +28,7 @@ export function AboutSection() {
                     <div className="text-[80px] font-bold leading-none text-white">H</div>
                     <div className="text-[80px] font-bold leading-none text-white">N</div>
                     <div className="mt-6 text-base font-medium leading-snug text-blue-200">
-                      Het Soni &amp; Neel Patel<br />Digital Studio
+                      Het Soni &amp; Neel Patel<br />Digital Product Studio
                     </div>
                   </div>
 
