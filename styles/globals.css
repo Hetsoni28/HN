@@ -255,3 +255,18 @@ textarea:focus-visible {
   }
 }
 
+/* ── Print Styles ── */
+@media print {
+  .no-print, nav, footer {
+    display: none !important;
+  }
+  body {
+    background: white;
+    color: black;
+  }
+  .printable-brief {
+    box-shadow: none !important;
+    border: none !important;
+  }
+}
+
