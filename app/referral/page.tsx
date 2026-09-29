@@ -109,23 +109,20 @@ export default function ReferralPage() {
       <section className="bg-white px-4 py-16 sm:py-20">
         <div className="container mx-auto max-w-5xl">
           <FadeIn>
-            <p className="mb-2 text-center text-xs font-bold uppercase tracking-widest text-[#0051FF]">
-              How it works
-            </p>
             <h2 className="mb-12 text-center text-2xl font-bold text-gray-900 sm:text-3xl">
               Three simple steps
             </h2>
           </FadeIn>
 
-          <div className="grid gap-8 sm:grid-cols-3">
+          <div className="grid items-stretch gap-8 sm:grid-cols-3">
             {STEPS.map((step, i) => (
-              <FadeIn key={step.n} delay={i * 0.1}>
-                <div className="relative flex flex-col gap-4 rounded-2xl border border-gray-100 bg-gray-50 p-7 transition hover:border-[#0051FF]/20 hover:bg-[#EEF3FF]/40">
-                  <span className="text-4xl font-extrabold text-[#0051FF]/15 leading-none">
+              <FadeIn key={step.n} delay={i * 0.1} className="flex">
+                <div className="relative flex w-full flex-col gap-4 rounded-2xl border border-gray-100 bg-gray-50 p-7 transition hover:border-[#0051FF]/20 hover:bg-[#EEF3FF]/40">
+                  <span className="text-4xl font-extrabold leading-none text-[#0051FF]/15">
                     {step.n}
                   </span>
                   <h3 className="text-base font-bold text-gray-900">{step.title}</h3>
-                  <p className="text-sm leading-relaxed text-gray-500">{step.body}</p>
+                  <p className="mt-auto text-sm leading-relaxed text-gray-500">{step.body}</p>
                 </div>
               </FadeIn>
             ))}
