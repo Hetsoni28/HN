@@ -130,9 +130,6 @@ export function GithubActivity() {
                   rel="noopener noreferrer"
                   className="flex flex-wrap items-center gap-3 rounded-xl border border-white/5 bg-white/5 px-4 py-3 transition hover:border-[#0051FF]/30 hover:bg-white/[0.07]"
                 >
-                  {/* Green live dot */}
-                  <span className="h-2 w-2 shrink-0 rounded-full bg-green-400" />
-
                   {/* Repo name */}
                   <span
                     className="shrink-0 text-sm font-semibold"
