@@ -7,6 +7,7 @@ interface Commit {
   repo: string;
   message: string;
   date: string;
+  url?: string;
 }
 
 // ─── Relative-time helper (no date-fns) ───────────────────────────────────────
@@ -123,7 +124,12 @@ export function GithubActivity() {
           >
             {commits.map((c, i) => (
               <motion.li key={i} variants={item}>
-                <div className="flex flex-wrap items-center gap-3 rounded-xl border border-white/5 bg-white/5 px-4 py-3 transition hover:border-white/10 hover:bg-white/[0.07]">
+                <a
+                  href={c.url ?? `https://github.com/Hetsoni28/HN/commits/main`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex flex-wrap items-center gap-3 rounded-xl border border-white/5 bg-white/5 px-4 py-3 transition hover:border-[#0051FF]/30 hover:bg-white/[0.07]"
+                >
                   {/* Green live dot */}
                   <span className="h-2 w-2 shrink-0 rounded-full bg-green-400" />
 
@@ -132,13 +138,18 @@ export function GithubActivity() {
                     className="shrink-0 text-sm font-semibold"
                     style={{ color: '#0051FF' }}
                   >
-                    {c.repo.split('/')[1] ?? c.repo}
+                    {c.repo}
                   </span>
+
+                  {/* Git icon */}
+                  <svg className="h-3.5 w-3.5 shrink-0 text-slate-500" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M2.6 10.59L8.38 4.8l1.69 1.7c-.24.85.15 1.78.93 2.23v5.54c-.6.34-1 .99-1 1.73a2 2 0 002 2 2 2 0 002-2c0-.74-.4-1.39-1-1.73V9.41l2.07 2.09c-.07.15-.07.32-.07.5a2 2 0 002 2 2 2 0 002-2 2 2 0 00-2-2c-.2 0-.37.04-.54.1L11.06 7.1c.07-.22.08-.45.04-.68l5.77-5.78 1.4 1.4-5.3 5.3 1.4 1.4 5.31-5.29 1.39 1.39L15.8 10.2l1.4 1.39 5.29-5.3 1.39 1.39-7.07 7.08-1.4-1.4 1.4-1.4-2.79-2.8-1.4 1.4L15 12l-1.4 1.4-7.07-7.07 1.4-1.4L3.99 9.18l-1.4-1.4.01.81z"/>
+                  </svg>
 
                   {/* Commit message */}
                   <span className="flex-1 truncate text-sm text-slate-300">
-                    {c.message.length > 60
-                      ? c.message.slice(0, 60) + '…'
+                    {c.message.length > 70
+                      ? c.message.slice(0, 70) + '…'
                       : c.message}
                   </span>
 
@@ -146,7 +157,7 @@ export function GithubActivity() {
                   <span className="ml-auto shrink-0 text-xs text-slate-500">
                     {timeAgo(c.date)}
                   </span>
-                </div>
+                </a>
               </motion.li>
             ))}
           </motion.ul>
