@@ -74,7 +74,7 @@ export function ReferralForm() {
               name="referrerName"
               type="text"
               autoComplete="name"
-              placeholder="Het Soni"
+              placeholder="Your full name"
               className={inputCls(state.errors?.referrerName)}
             />
             {state.errors?.referrerName && (
@@ -111,7 +111,7 @@ export function ReferralForm() {
               name="referrerPhone"
               type="tel"
               autoComplete="tel"
-              placeholder="+91 98765 43210"
+              placeholder="+91 XXXXX XXXXX"
               className={inputCls(state.errors?.referrerPhone)}
             />
             {state.errors?.referrerPhone && (
@@ -143,7 +143,7 @@ export function ReferralForm() {
               id="friendName"
               name="friendName"
               type="text"
-              placeholder="Neel Patel"
+              placeholder="Friend's full name"
               className={inputCls(state.errors?.friendName)}
             />
             {state.errors?.friendName && (
@@ -178,7 +178,7 @@ export function ReferralForm() {
               id="friendCompany"
               name="friendCompany"
               type="text"
-              placeholder="Acme Pvt Ltd"
+              placeholder="Their company or business name"
               className={inputCls(state.errors?.friendCompany)}
             />
             {state.errors?.friendCompany && (
