@@ -3,6 +3,8 @@ import { spaceGrotesk, plusJakarta } from '@/lib/fonts';
 import '../styles/globals.css';
 import { Navbar } from '@/components/organisms/navbar';
 import { Footer } from '@/components/organisms/footer';
+import { AnnouncementBar } from '@/components/molecules/announcement-bar';
+import { FloatingEstimator } from '@/components/molecules/floating-estimator';
 import { OrganizationJsonLd, WebSiteJsonLd } from '@/components/molecules/structured-data';
 import { SkipLink } from '@/components/atoms/skip-link';
 
@@ -67,9 +69,11 @@ export default function RootLayout({
         <SkipLink />
         <OrganizationJsonLd />
         <WebSiteJsonLd />
+        <AnnouncementBar />
         <Navbar />
         <main id="main-content" aria-label="Main content">{children}</main>
         <Footer />
+        <FloatingEstimator />
       </body>
     </html>
   );

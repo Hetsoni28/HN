@@ -70,12 +70,12 @@ export function HeroSection() {
 
           {/* CTAs */}
           <motion.div variants={item} className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4">
-            <Button href="/contact" variant="primary" className="rounded-full px-7 py-3.5 text-sm sm:px-8 sm:py-4 sm:text-base">
-              Let&apos;s Build Yours
+            <Button href="/estimate" variant="primary" className="rounded-full px-7 py-3.5 text-sm sm:px-8 sm:py-4 sm:text-base">
+              Calculate Project Cost
               <span aria-hidden="true"> →</span>
             </Button>
-            <Button href="/work" variant="secondary" className="rounded-full px-7 py-3.5 text-sm sm:px-8 sm:py-4 sm:text-base">
-              View Our Work
+            <Button href="/contact" variant="secondary" className="rounded-full px-7 py-3.5 text-sm sm:px-8 sm:py-4 sm:text-base">
+              Start a Project
             </Button>
           </motion.div>
 
