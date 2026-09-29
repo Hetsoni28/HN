@@ -95,9 +95,12 @@ export function BriefGenerator() {
       const element = document.getElementById('brief-pdf-content');
       if (!element) return;
       
-      // Dynamically import to avoid Next.js SSR issues
-      const html2canvas = (await import('html2canvas')).default;
-      const { jsPDF } = await import('jspdf');
+      // Dynamically import and safely resolve the default exports
+      const html2canvasModule = await import('html2canvas');
+      const html2canvas = html2canvasModule.default || html2canvasModule;
+      
+      const jsPDFModule = await import('jspdf');
+      const jsPDF = jsPDFModule.default || jsPDFModule.jsPDF;
 
       // Temporarily hide the 'no-print' elements during capture
       const noPrintElements = element.querySelectorAll('.no-print');
@@ -124,9 +127,9 @@ export function BriefGenerator() {
       
       pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
       pdf.save('HN-Studio-Project-Brief.pdf');
-    } catch (error) {
+    } catch (error: any) {
       console.error('Failed to generate PDF', error);
-      alert('Failed to generate PDF. Please try again.');
+      alert('Failed to generate PDF: ' + (error?.message || 'Unknown error. Check console.'));
     }
   };
 
