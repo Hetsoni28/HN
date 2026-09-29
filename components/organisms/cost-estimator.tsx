@@ -11,20 +11,20 @@ import { WhatsAppButton } from '@/components/atoms/whatsapp-button';
 // Currently calibrated for professional agency rates in INR.
 
 const PROJECT_BASES = [
-  { id: 'website', name: 'Website / Landing Page', min: 40000, max: 80000, desc: 'High-converting static or CMS-backed site.' },
-  { id: 'webapp', name: 'Web Application / SaaS', min: 150000, max: 300000, desc: 'Complex logic, databases, and custom workflows.' },
-  { id: 'mobile', name: 'Mobile App (iOS & Android)', min: 200000, max: 400000, desc: 'React Native / Flutter cross-platform app.' },
-  { id: 'ecommerce', name: 'E-Commerce Store', min: 100000, max: 200000, desc: 'Full shopping cart, inventory, and checkout.' },
+  { id: 'website', name: 'Website / Landing Page', min: 80000, max: 150000, desc: 'High-converting static or CMS-backed site.' },
+  { id: 'webapp', name: 'Web Application / SaaS', min: 300000, max: 600000, desc: 'Complex logic, databases, and custom workflows.' },
+  { id: 'mobile', name: 'Mobile App (iOS & Android)', min: 400000, max: 800000, desc: 'React Native / Flutter cross-platform app.' },
+  { id: 'ecommerce', name: 'E-Commerce Store', min: 200000, max: 400000, desc: 'Full shopping cart, inventory, and checkout.' },
 ];
 
 const FEATURES = [
-  { id: 'design', name: 'Custom UI/UX Design', min: 30000, max: 60000, desc: 'Framer/Figma prototyping and branding.' },
-  { id: 'auth', name: 'User Accounts & Profiles', min: 20000, max: 40000, desc: 'Authentication, roles, and profile management.' },
-  { id: 'payments', name: 'Payment Gateway', min: 15000, max: 25000, desc: 'Razorpay, Stripe, or PayPal integration.' },
-  { id: 'admin', name: 'Admin Dashboard / CMS', min: 30000, max: 50000, desc: 'Custom portal to manage your data/users.' },
-  { id: 'ai', name: 'AI Integration', min: 50000, max: 100000, desc: 'OpenAI, Claude, or custom GenAI features.' },
-  { id: 'api', name: '3rd-Party APIs', min: 20000, max: 40000, desc: 'Connecting external services (CRM, ERP, etc).' },
-  { id: 'seo', name: 'Advanced SEO & Analytics', min: 10000, max: 20000, desc: 'Technical SEO, schema, and tracking setup.' },
+  { id: 'design', name: 'Custom UI/UX Design', min: 60000, max: 120000, desc: 'Framer/Figma prototyping and branding.' },
+  { id: 'auth', name: 'User Accounts & Profiles', min: 40000, max: 80000, desc: 'Authentication, roles, and profile management.' },
+  { id: 'payments', name: 'Payment Gateway', min: 30000, max: 50000, desc: 'Razorpay, Stripe, or PayPal integration.' },
+  { id: 'admin', name: 'Admin Dashboard / CMS', min: 60000, max: 100000, desc: 'Custom portal to manage your data/users.' },
+  { id: 'ai', name: 'AI Integration', min: 100000, max: 200000, desc: 'OpenAI, Claude, or custom GenAI features.' },
+  { id: 'api', name: '3rd-Party APIs', min: 40000, max: 80000, desc: 'Connecting external services (CRM, ERP, etc).' },
+  { id: 'seo', name: 'Advanced SEO & Analytics', min: 20000, max: 40000, desc: 'Technical SEO, schema, and tracking setup.' },
 ];
 
 const TIMELINES = [
@@ -89,8 +89,8 @@ I'd like to discuss the next steps!`;
 
   // Budget Validation Logic
   const numericTarget = parseInt(targetBudget || '0', 10);
-  const isUnderAbsoluteMinimum = numericTarget > 0 && numericTarget < 40000;
-  const isUnderEstimatedMinimum = numericTarget > 0 && numericTarget >= 40000 && numericTarget < totals.min;
+  const isUnderAbsoluteMinimum = numericTarget > 0 && numericTarget < 80000;
+  const isUnderEstimatedMinimum = numericTarget > 0 && numericTarget >= 80000 && numericTarget < totals.min;
   const isBudgetAligned = numericTarget >= totals.min;
 
   return (
@@ -270,7 +270,7 @@ I'd like to discuss the next steps!`;
           <div className="mb-8">
             {isUnderAbsoluteMinimum && (
               <div className="rounded-lg bg-red-50 p-3 text-xs font-medium leading-5 text-red-600 border border-red-100">
-                🔴 <strong>Notice:</strong> HN Studio&apos;s minimum engagement starts at ₹40,000 for standard websites. We may not be able to accommodate this budget.
+                🔴 <strong>Notice:</strong> HN Studio&apos;s minimum engagement starts at ₹80,000 for standard websites. We may not be able to accommodate this budget.
               </div>
             )}
             {isUnderEstimatedMinimum && (
