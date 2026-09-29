@@ -90,8 +90,44 @@ export function BriefGenerator() {
     }
   };
 
-  const handlePrint = () => {
-    window.print();
+  const handleDownloadPDF = async () => {
+    try {
+      const element = document.getElementById('brief-pdf-content');
+      if (!element) return;
+      
+      // Dynamically import to avoid Next.js SSR issues
+      const html2canvas = (await import('html2canvas')).default;
+      const { jsPDF } = await import('jspdf');
+
+      // Temporarily hide the 'no-print' elements during capture
+      const noPrintElements = element.querySelectorAll('.no-print');
+      noPrintElements.forEach((el) => {
+        (el as HTMLElement).style.display = 'none';
+      });
+
+      const canvas = await html2canvas(element, { 
+        scale: 2,
+        useCORS: true,
+        backgroundColor: '#ffffff'
+      });
+      
+      // Restore the 'no-print' elements
+      noPrintElements.forEach((el) => {
+        (el as HTMLElement).style.display = '';
+      });
+
+      const imgData = canvas.toDataURL('image/png');
+      
+      const pdf = new jsPDF('p', 'mm', 'a4');
+      const pdfWidth = pdf.internal.pageSize.getWidth();
+      const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
+      
+      pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
+      pdf.save('HN-Studio-Project-Brief.pdf');
+    } catch (error) {
+      console.error('Failed to generate PDF', error);
+      alert('Failed to generate PDF. Please try again.');
+    }
   };
 
   // --- Dynamic Generation Logic ---
@@ -142,7 +178,7 @@ export function BriefGenerator() {
         className="mx-auto max-w-4xl"
       >
         {/* Printable Area */}
-        <div className="printable-brief rounded-3xl border border-slate-200 bg-white p-8 shadow-2xl sm:p-12">
+        <div id="brief-pdf-content" className="printable-brief rounded-3xl border border-slate-200 bg-white p-8 shadow-2xl sm:p-12">
           
           <div className="mb-10 flex items-end justify-between border-b border-slate-200 pb-8">
             <div>
@@ -217,7 +253,7 @@ export function BriefGenerator() {
         {/* Action Bar */}
         <div className="mt-6 flex justify-center gap-4 no-print">
           <button 
-            onClick={handlePrint}
+            onClick={handleDownloadPDF}
             className="flex items-center gap-2 rounded-full border border-slate-200 bg-white px-6 py-3 text-sm font-bold text-slate-700 shadow-sm transition-all hover:bg-slate-50"
           >
             <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
