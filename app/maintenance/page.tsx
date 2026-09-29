@@ -80,12 +80,12 @@ const PLANS: Plan[] = [
 ];
 
 const INCLUDED = [
-  { icon: '🔒', label: 'SSL & Security Monitoring' },
-  { icon: '⚡', label: 'Performance Optimisation' },
-  { icon: '💾', label: 'Regular Backups' },
-  { icon: '📊', label: 'Monthly Reports' },
-  { icon: '🔄', label: 'Dependency Updates' },
-  { icon: '🚨', label: 'Downtime Alerts' },
+  { label: 'SSL & Security Monitoring' },
+  { label: 'Performance Optimisation' },
+  { label: 'Regular Backups' },
+  { label: 'Monthly Reports' },
+  { label: 'Dependency Updates' },
+  { label: 'Downtime Alerts' },
 ];
 
 const STEPS = [
@@ -296,8 +296,10 @@ export default function MaintenancePage() {
             {INCLUDED.map((item, i) => (
               <FadeIn key={item.label} delay={i * 0.06}>
                 <div className="flex items-center gap-4 rounded-2xl border border-[#E2E5F1] bg-white p-6">
-                  <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#EEF0FF] text-2xl">
-                    {item.icon}
+                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#0051FF]/10">
+                    <svg className="h-5 w-5 text-[#0051FF]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                    </svg>
                   </span>
                   <span className="font-semibold text-slate-800">{item.label}</span>
                 </div>
@@ -362,13 +364,13 @@ export default function MaintenancePage() {
       </section>
 
       {/* ── F) Bottom CTA ── */}
-      <section className="section bg-[#0B111E]">
+      <section className="section bg-[#EEF0FF]">
         <div className="container text-center">
           <FadeIn>
-            <h2 className="text-4xl font-bold text-white md:text-5xl">
+            <h2 className="text-4xl font-bold text-[#0B111E] md:text-5xl">
               Not sure which plan?
             </h2>
-            <p className="mx-auto mt-5 max-w-xl text-lg text-white/60">
+            <p className="mx-auto mt-5 max-w-xl text-lg text-slate-500">
               Tell us about your project and we&apos;ll recommend the right fit.
             </p>
             <div className="mt-8">

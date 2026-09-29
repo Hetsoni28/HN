@@ -14,7 +14,6 @@ interface Category {
   id: string;
   number: string;
   title: string;
-  icon: string;
   items: ChecklistItem[];
 }
 
@@ -24,7 +23,6 @@ const CATEGORIES: Category[] = [
     id: 'brand',
     number: '01',
     title: 'Brand & Identity',
-    icon: '🎨',
     items: [
       { id: 'brand-1', label: 'Logo files (SVG or PNG with transparent background)' },
       { id: 'brand-2', label: 'Brand colour codes (HEX or Pantone)' },
@@ -37,7 +35,6 @@ const CATEGORIES: Category[] = [
     id: 'content',
     number: '02',
     title: 'Content & Copy',
-    icon: '✍️',
     items: [
       { id: 'content-1', label: 'Final website copy (About, Services, Team sections)' },
       { id: 'content-2', label: 'Team member photos (minimum 800×800px)' },
@@ -50,7 +47,6 @@ const CATEGORIES: Category[] = [
     id: 'technical',
     number: '03',
     title: 'Technical Access',
-    icon: '🔑',
     items: [
       { id: 'tech-1', label: 'Domain registrar login (GoDaddy, Namecheap, etc.)' },
       { id: 'tech-2', label: 'Existing hosting provider access (if migrating)' },
@@ -63,7 +59,6 @@ const CATEGORIES: Category[] = [
     id: 'business',
     number: '04',
     title: 'Business Details',
-    icon: '🏢',
     items: [
       { id: 'biz-1', label: 'Legal business name and registered address' },
       { id: 'biz-2', label: 'GST number (if applicable)' },
@@ -76,7 +71,6 @@ const CATEGORIES: Category[] = [
     id: 'clarity',
     number: '05',
     title: 'Project Clarity',
-    icon: '🎯',
     items: [
       { id: 'clarity-1', label: 'List of all pages/features required' },
       { id: 'clarity-2', label: 'Reference websites you love (3–5 links)' },
@@ -195,10 +189,7 @@ export function OnboardingChecklist() {
                     {cat.number}
                   </div>
                   <div className="flex-1">
-                    <div className="flex items-center gap-2">
-                      <span className="text-xl" aria-hidden="true">{cat.icon}</span>
-                      <h3 className="text-lg font-bold text-[#0B111E]">{cat.title}</h3>
-                    </div>
+                    <h3 className="text-lg font-bold text-[#0B111E]">{cat.title}</h3>
                     <p className="mt-0.5 text-xs text-slate-500">
                       {catChecked} / {cat.items.length} complete
                     </p>
@@ -325,22 +316,6 @@ export function OnboardingChecklist() {
             </Link>
           </div>
         </section>
-      </FadeIn>
-
-      {/* ── Download / Print ── */}
-      <FadeIn>
-        <div className="mt-10 flex justify-center no-print">
-          <button
-            type="button"
-            onClick={() => window.print()}
-            className="inline-flex items-center gap-2 rounded-xl border border-[#E2E5F1] bg-white px-6 py-3 text-sm font-semibold text-[#0B111E] shadow-sm transition hover:border-[#0051FF]/40 hover:text-[#0051FF]"
-          >
-            <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M6.72 13.829c-.24.03-.48.062-.72.096m.72-.096a42.415 42.415 0 0110.56 0m-10.56 0L6.34 18m10.94-4.171c.24.03.48.062.72.096m-.72-.096L17.66 18m0 0l.229 2.523a1.125 1.125 0 01-1.12 1.227H7.231c-.662 0-1.18-.568-1.12-1.227L6.34 18m11.318 0h1.091A2.25 2.25 0 0021 15.75V9.456c0-1.081-.768-2.015-1.837-2.175a48.055 48.055 0 00-1.913-.247M6.34 18H5.25A2.25 2.25 0 013 15.75V9.456c0-1.081.768-2.015 1.837-2.175a48.056 48.056 0 011.913-.247m10.5 0a48.536 48.536 0 00-10.5 0m10.5 0V3.375c0-.621-.504-1.125-1.125-1.125h-8.25c-.621 0-1.125.504-1.125 1.125v3.659M18 10.5h.008v.008H18V10.5zm-3 0h.008v.008H15V10.5z" />
-            </svg>
-            Download Checklist (Save as PDF)
-          </button>
-        </div>
       </FadeIn>
     </>
   );
