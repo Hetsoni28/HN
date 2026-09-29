@@ -3,7 +3,6 @@ import type { Metadata } from 'next';
 import { getServiceBySlug, getServices } from '@/lib/content';
 import { FadeIn } from '@/components/atoms/fade-in';
 import { Button } from '@/components/atoms/button';
-import { Eyebrow } from '@/components/atoms/eyebrow';
 import { ServiceIcon } from '@/components/atoms/service-icon';
 import { Breadcrumb } from '@/components/molecules/breadcrumb';
 import { WhatsAppButton } from '@/components/atoms/whatsapp-button';
@@ -49,7 +48,6 @@ export default async function ServiceDetailPage({
         <div className="container">
           <FadeIn>
             <Breadcrumb label={service.title} className="mb-6" />
-            <Eyebrow>Service</Eyebrow>
             <div className="mt-5 flex items-center gap-5">
               {service.icon !== undefined && (
                 <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-white text-[#0051FF] shadow-sm">
@@ -73,7 +71,6 @@ export default async function ServiceDetailPage({
           <div className="container">
             <div className="grid gap-12 lg:grid-cols-[2fr_1fr]">
               <FadeIn>
-                <Eyebrow>What it is</Eyebrow>
                 <p className="mt-5 text-xl leading-9 text-slate-700">{service.description}</p>
               </FadeIn>
 
@@ -110,7 +107,6 @@ export default async function ServiceDetailPage({
         <section className="section bg-[#EEF0FF]">
           <div className="container">
             <FadeIn>
-              <Eyebrow>What HN Provides</Eyebrow>
               <h2 className="mt-5 text-3xl font-bold md:text-4xl">Our deliverables for this service.</h2>
             </FadeIn>
 
@@ -135,7 +131,6 @@ export default async function ServiceDetailPage({
         <section className="section">
           <div className="container">
             <FadeIn>
-              <Eyebrow>Features</Eyebrow>
               <h2 className="mt-5 text-3xl font-bold md:text-4xl">What you get.</h2>
             </FadeIn>
 
@@ -161,7 +156,6 @@ export default async function ServiceDetailPage({
         <section className="section bg-[#EEF0FF]">
           <div className="container">
             <FadeIn>
-              <Eyebrow>Technology</Eyebrow>
               <h2 className="mt-5 text-3xl font-bold md:text-4xl">
                 Stack we use for {service.title}.
               </h2>

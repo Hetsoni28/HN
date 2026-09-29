@@ -3,7 +3,6 @@ import type { Metadata } from 'next';
 import { getServices } from '@/lib/content';
 import { FadeIn } from '@/components/atoms/fade-in';
 import { Button } from '@/components/atoms/button';
-import { Eyebrow } from '@/components/atoms/eyebrow';
 import { ServiceIcon } from '@/components/atoms/service-icon';
 
 export const metadata: Metadata = {
@@ -20,7 +19,6 @@ export default async function ServicesPage() {
       <section className="section bg-[#EEF0FF]">
         <div className="container text-center">
           <FadeIn>
-            <Eyebrow>Services</Eyebrow>
             <h1 className="mx-auto mt-5 max-w-3xl text-5xl font-bold leading-tight md:text-6xl">
               Everything you need to go from{' '}
               <span className="gradient-text">idea to launch.</span>

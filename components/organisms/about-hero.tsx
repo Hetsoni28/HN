@@ -1,6 +1,4 @@
 import { FadeIn } from '@/components/atoms/fade-in';
-import { Eyebrow } from '@/components/atoms/eyebrow';
-
 /* ─── Hero ─── */
 export function AboutHero() {
   return (
@@ -8,7 +6,6 @@ export function AboutHero() {
       <div className="container">
         <div className="grid gap-16 lg:grid-cols-2 lg:items-center">
           <FadeIn>
-            <Eyebrow>Our Story</Eyebrow>
             <h1 className="mt-5 text-4xl font-bold leading-[1.05] tracking-tight text-slate-900 sm:text-5xl md:text-6xl">
               Why <span className="gradient-text">HN</span> exists.
             </h1>
@@ -50,7 +47,6 @@ export function AboutIntro() {
       <div className="container">
         <div className="mx-auto max-w-3xl text-center">
           <FadeIn>
-            <Eyebrow>The Name</Eyebrow>
             <h2 className="mt-5 text-4xl font-bold text-slate-900 md:text-5xl">
               HN ={' '}
               <span className="gradient-text">Het</span>
@@ -135,7 +131,6 @@ export function AboutVision() {
       <div className="container">
         <div className="grid gap-12 lg:grid-cols-[1fr_1.5fr] lg:items-center">
           <FadeIn>
-            <Eyebrow>Vision</Eyebrow>
             <h2 className="mt-5 text-4xl font-bold leading-tight text-slate-900 md:text-5xl">
               What HN wants to build.
             </h2>

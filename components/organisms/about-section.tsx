@@ -1,7 +1,5 @@
 import { FadeIn } from '@/components/atoms/fade-in';
 import { Button } from '@/components/atoms/button';
-import { Eyebrow } from '@/components/atoms/eyebrow';
-
 export function AboutSection() {
   return (
     <section className="section">
@@ -53,7 +51,6 @@ export function AboutSection() {
 
           {/* ── Right — copy ── */}
           <FadeIn delay={0.2}>
-            <Eyebrow>About HN</Eyebrow>
 
             <h2 className="mt-5 text-3xl font-bold leading-tight sm:text-4xl md:text-5xl">
               Two engineers who refuse to ship mediocre products.

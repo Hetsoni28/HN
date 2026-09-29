@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import { FadeIn } from '@/components/atoms/fade-in';
-import { Eyebrow } from '@/components/atoms/eyebrow';
 import { Breadcrumb } from '@/components/molecules/breadcrumb';
 import { CostEstimator } from '@/components/organisms/cost-estimator';
 
@@ -16,7 +15,6 @@ export default function EstimatePage() {
         <div className="container">
           <FadeIn>
             <Breadcrumb className="mb-6" />
-            <Eyebrow>Estimator</Eyebrow>
             <h1 className="mt-5 max-w-3xl text-4xl font-bold leading-tight text-slate-900 sm:text-5xl md:text-6xl">
               Get an instant project <span className="gradient-text">estimate.</span>
             </h1>

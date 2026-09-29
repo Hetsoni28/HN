@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import type { Project } from '@/lib/content';
 import { FadeIn } from '@/components/atoms/fade-in';
-import { Eyebrow } from '@/components/atoms/eyebrow';
 import { Button } from '@/components/atoms/button';
 import { Breadcrumb } from '@/components/molecules/breadcrumb';
 
@@ -17,7 +16,6 @@ export function CaseStudyHero({ project }: { project: Project }) {
           <Breadcrumb label={project.title} className="mb-6 text-white/60 [&_a]:text-white/40 [&_a:hover]:text-white [&_svg]:text-white/20 [&_span:last-child>span]:text-white" />
 
           <div className="flex flex-wrap gap-2">
-            <Eyebrow>{project.category ?? 'Digital Product'}</Eyebrow>
             {project.industry && (
               <span className="inline-flex items-center rounded-full border border-white/20 bg-white/10 px-3 py-1 text-[11px] font-bold uppercase tracking-widest text-white/70">
                 {project.industry}
@@ -84,7 +82,6 @@ export function CaseStudyOverview({ project }: { project: Project }) {
       <div className="container">
         <div className="grid gap-16 lg:grid-cols-[2fr_1fr]">
           <FadeIn>
-            <Eyebrow>Overview</Eyebrow>
             <h2 className="mt-5 text-3xl font-bold text-slate-900 md:text-4xl">
               What is {project.title}?
             </h2>

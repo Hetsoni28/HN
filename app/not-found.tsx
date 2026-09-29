@@ -1,6 +1,4 @@
 import Link from 'next/link';
-import { Eyebrow } from '@/components/atoms/eyebrow';
-
 const QUICK_LINKS = [
   { href: '/',          label: 'Home' },
   { href: '/work',      label: 'Our Work' },
@@ -31,7 +29,6 @@ export default function NotFound() {
           </div>
         </div>
 
-        <Eyebrow>Page not found</Eyebrow>
         <h1 className="mt-5 text-3xl font-bold text-slate-900 sm:text-4xl md:text-5xl">
           This page doesn&apos;t exist.
         </h1>

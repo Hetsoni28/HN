@@ -6,8 +6,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import type { BlogPost } from '@/lib/content';
 import { BLOG_CATEGORIES } from '@/lib/content';
 import { FadeIn } from '@/components/atoms/fade-in';
-import { Eyebrow } from '@/components/atoms/eyebrow';
-
 /* ── Helpers ── */
 function formatDate(iso?: string) {
   if (!iso) return '';

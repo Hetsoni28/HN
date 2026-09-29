@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import { getProjects } from '@/lib/content';
 import { FadeIn } from '@/components/atoms/fade-in';
-import { Eyebrow } from '@/components/atoms/eyebrow';
 import { TransformationSection } from '@/components/organisms/transformation-section';
 import { WorkFilter } from './work-filter';
 
@@ -18,7 +17,6 @@ export default async function WorkPage() {
       <section className="section bg-[#EEF0FF]">
         <div className="container text-center">
           <FadeIn>
-            <Eyebrow>Portfolio</Eyebrow>
             <h1 className="mx-auto mt-5 max-w-3xl text-4xl font-bold leading-tight sm:text-5xl md:text-6xl">
               Products we&apos;re <span className="gradient-text">proud of.</span>
             </h1>

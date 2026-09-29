@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import { getPosts } from '@/lib/content';
 import { FadeIn } from '@/components/atoms/fade-in';
-import { Eyebrow } from '@/components/atoms/eyebrow';
 import { Breadcrumb } from '@/components/molecules/breadcrumb';
 import { InsightsGrid } from '@/components/organisms/insights-grid';
 
@@ -20,7 +19,6 @@ export default async function InsightsPage() {
         <div className="container">
           <FadeIn>
             <Breadcrumb className="mb-6" />
-            <Eyebrow>Insights</Eyebrow>
             <div className="mt-5 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
               <h1 className="max-w-2xl text-4xl font-bold leading-tight text-slate-900 sm:text-5xl md:text-6xl">
                 Thinking out{' '}

@@ -1,5 +1,4 @@
 import { FadeIn } from '@/components/atoms/fade-in';
-import { Eyebrow } from '@/components/atoms/eyebrow';
 import { Breadcrumb } from '@/components/molecules/breadcrumb';
 
 interface LegalSection {
@@ -29,7 +28,6 @@ export function LegalPageLayout({
         <div className="container">
           <FadeIn>
             <Breadcrumb className="mb-6" />
-            <Eyebrow>{eyebrow}</Eyebrow>
             <h1 className="mt-5 text-4xl font-bold text-slate-900 md:text-5xl">{title}</h1>
             <p className="mt-4 text-sm text-slate-400">
               Last updated:{' '}

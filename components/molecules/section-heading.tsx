@@ -1,4 +1,3 @@
-import { Eyebrow } from '@/components/atoms/eyebrow';
 import { ReactNode } from 'react';
 
 interface SectionHeadingProps {
@@ -16,7 +15,6 @@ export function SectionHeading({
 }: SectionHeadingProps) {
   return (
     <div className={`mb-12 max-w-3xl ${className}`.trim()}>
-      {eyebrow && <Eyebrow>{eyebrow}</Eyebrow>}
       <h2 className="mt-5 text-3xl font-bold leading-tight sm:text-4xl md:text-5xl">
         {title}
       </h2>

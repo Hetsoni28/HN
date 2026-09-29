@@ -1,6 +1,5 @@
 import type { Project, PortableTextContent } from '@/lib/content';
 import { FadeIn } from '@/components/atoms/fade-in';
-import { Eyebrow } from '@/components/atoms/eyebrow';
 import { PlainTextRenderer, PortableTextRenderer } from '@/components/molecules/portable-text-renderer';
 
 /* Reusable left-label / right-content section */
@@ -27,7 +26,6 @@ export function CaseStudyTextSection({
       <div className="container">
         <div className="grid gap-12 lg:grid-cols-[1fr_2fr]">
           <FadeIn>
-            <Eyebrow>{eyebrow}</Eyebrow>
             <h2 className="mt-5 text-3xl font-bold text-slate-900 md:text-4xl">{title}</h2>
           </FadeIn>
           <FadeIn delay={0.1}>
@@ -48,7 +46,6 @@ export function CaseStudyFeatures({ project }: { project: Project }) {
     <section className="section bg-white">
       <div className="container">
         <FadeIn>
-          <Eyebrow>Features</Eyebrow>
           <h2 className="mt-5 text-3xl font-bold text-slate-900 md:text-4xl">
             What {project.title} does.
           </h2>
@@ -83,7 +80,6 @@ export function CaseStudyScreens({ project }: { project: Project }) {
     <section className="section bg-[#EEF0FF]">
       <div className="container">
         <FadeIn>
-          <Eyebrow>UI Screens</Eyebrow>
           <h2 className="mt-5 text-3xl font-bold text-slate-900 md:text-4xl">Interface preview.</h2>
         </FadeIn>
         <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -115,7 +111,6 @@ export function CaseStudyTechnology({ project }: { project: Project }) {
     <section className="section bg-[#EEF0FF]">
       <div className="container">
         <FadeIn>
-          <Eyebrow>Technology</Eyebrow>
           <h2 className="mt-5 text-3xl font-bold text-slate-900 md:text-4xl">Stack used.</h2>
         </FadeIn>
         <FadeIn delay={0.12}>

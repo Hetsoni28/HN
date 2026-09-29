@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import type { BlogPost } from '@/lib/content';
 import { FadeIn } from '@/components/atoms/fade-in';
-import { Eyebrow } from '@/components/atoms/eyebrow';
 import { PortableTextRenderer, PlainTextRenderer } from '@/components/molecules/portable-text-renderer';
 import { Breadcrumb } from '@/components/molecules/breadcrumb';
 

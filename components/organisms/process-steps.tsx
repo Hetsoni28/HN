@@ -1,6 +1,4 @@
 import { FadeIn } from '@/components/atoms/fade-in';
-import { Eyebrow } from '@/components/atoms/eyebrow';
-
 const STEPS = [
   {
     number: '01',
@@ -197,7 +195,6 @@ export function ProcessHero() {
     <section className="section bg-[#EEF0FF]">
       <div className="container text-center">
         <FadeIn>
-          <Eyebrow>How We Work</Eyebrow>
           <h1 className="mx-auto mt-5 max-w-3xl text-4xl font-bold leading-tight text-slate-900 sm:text-5xl md:text-6xl">
             Your journey from <span className="gradient-text">idea to live product.</span>
           </h1>
@@ -253,7 +250,6 @@ export function ProcessFaq() {
     <section className="section bg-[#EEF0FF]">
       <div className="container">
         <FadeIn>
-          <Eyebrow>Common Questions</Eyebrow>
           <h2 className="mt-5 text-4xl font-bold text-slate-900 md:text-5xl">Process FAQs.</h2>
         </FadeIn>
         <div className="mt-12 grid gap-5 md:grid-cols-2">

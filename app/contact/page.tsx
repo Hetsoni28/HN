@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import { ContactForm } from '@/components/organisms/contact-form';
 import { FadeIn } from '@/components/atoms/fade-in';
-import { Eyebrow } from '@/components/atoms/eyebrow';
 import { Breadcrumb } from '@/components/molecules/breadcrumb';
 import { WhatsAppButton } from '@/components/atoms/whatsapp-button';
 
@@ -52,7 +51,6 @@ export default function ContactPage() {
         <div className="container">
           <FadeIn>
             <Breadcrumb className="mb-6" />
-            <Eyebrow>Start a Project</Eyebrow>
             <h1 className="mt-5 max-w-2xl text-4xl font-bold leading-tight text-slate-900 sm:text-5xl md:text-6xl">
               Let&apos;s build something{' '}
               <span className="gradient-text">great together.</span>

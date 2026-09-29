@@ -1,5 +1,4 @@
 import { FadeIn } from '@/components/atoms/fade-in';
-import { Eyebrow } from '@/components/atoms/eyebrow';
 import type { TeamMember } from '@/lib/content';
 
 const VALUES = [
@@ -56,7 +55,6 @@ export function AboutValues() {
     <section className="section bg-white">
       <div className="container">
         <FadeIn>
-          <Eyebrow>Values</Eyebrow>
           <h2 className="mt-5 text-4xl font-bold text-slate-900 md:text-5xl">
             What we stand for.
           </h2>
@@ -89,7 +87,6 @@ export function AboutTeam({ members }: { members: TeamMember[] }) {
     <section className="section bg-[#EEF0FF]">
       <div className="container">
         <FadeIn>
-          <Eyebrow>Team</Eyebrow>
           <h2 className="mt-5 text-4xl font-bold text-slate-900 md:text-5xl">
             The people building your product.
           </h2>
