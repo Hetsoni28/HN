@@ -96,8 +96,7 @@ const LEGAL = [
 ];
 
 const TRUST_STATS = [
-  { value: '40+', label: 'Projects Shipped' },
-  { value: '5★',  label: 'Client Rating' },
+  { value: '15+', label: 'Projects Shipped' },
   { value: '48h', label: 'Avg Response' },
   { value: '₹0',  label: 'Hidden Fees' },
 ];
@@ -144,7 +143,7 @@ export function Footer() {
 
       {/* ── Trust stats bar ── */}
       <div className="border-b border-white/[0.06]">
-        <div className="container grid grid-cols-2 divide-x divide-white/[0.06] md:grid-cols-4">
+        <div className="container grid grid-cols-3 divide-x divide-white/[0.06]">
           {TRUST_STATS.map((s) => (
             <div key={s.label} className="flex flex-col items-center gap-0.5 py-5">
               <span className="text-2xl font-black text-white">{s.value}</span>
