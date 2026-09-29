@@ -213,13 +213,13 @@ I'd like to discuss the next steps!`;
           {/* Target Budget Input */}
           <div className="mb-6">
             <label className="mb-2 block text-xs font-bold uppercase tracking-widest text-slate-400">
-              Your Target Budget (Optional)
+              Add Amount
             </label>
             <div className="relative">
               <span className="absolute left-4 top-1/2 -translate-y-1/2 font-semibold text-slate-400">₹</span>
               <input 
                 type="number"
-                placeholder="e.g. 150000"
+                placeholder="Enter amount"
                 value={targetBudget}
                 onChange={(e) => setTargetBudget(e.target.value)}
                 className="w-full rounded-xl border border-[#E2E5F1] bg-slate-50 py-3 pl-8 pr-4 text-sm font-semibold text-slate-900 outline-none transition focus:border-[#0051FF] focus:bg-white focus:ring-2 focus:ring-[#0051FF]/20"
