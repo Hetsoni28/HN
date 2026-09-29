@@ -125,6 +125,11 @@ export function ArticleBody({
                 value={post.content!}
                 className="prose prose-slate prose-lg max-w-none prose-headings:font-bold prose-headings:text-slate-900 prose-a:text-[#0051FF] prose-a:no-underline hover:prose-a:underline prose-code:text-[#0051FF] prose-code:bg-[#EEF0FF] prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-blockquote:border-l-[#0051FF] prose-blockquote:not-italic prose-blockquote:text-slate-600"
               />
+            ) : post.body ? (
+              <PlainTextRenderer
+                text={post.body}
+                className="space-y-5 text-base leading-8 text-slate-600"
+              />
             ) : (
               /* Placeholder content for fallback articles */
               <div className="space-y-6 text-base leading-8 text-slate-600">

@@ -546,6 +546,8 @@ export type BlogPost = {
   excerpt?: string;
   coverImage?: SanityImage;
   content?: PortableTextContent;
+  /** Plain-text body for fallback posts (split on \n\n for paragraphs) */
+  body?: string;
   author?: { name: string; role?: string; photo?: SanityImage };
   category?: string;
   tags?: string[];
@@ -560,9 +562,12 @@ export const BLOG_CATEGORIES = [
   'All',
   'AI',
   'Web Development',
+  'Frontend',
   'SaaS',
   'Product Development',
   'Technology',
+  'Case Study',
+  'Business',
   'HN Updates',
 ] as const;
 
@@ -638,6 +643,280 @@ export const FALLBACK_POSTS: BlogPost[] = [
     featured: false,
     publishedAt: '2025-06-01T09:00:00Z',
     author: { name: 'Het Soni', role: 'Full Stack Developer' },
+  },
+
+  /* ─── 4 new posts added Sept 2025 ─── */
+
+  {
+    _id: 'bp7',
+    title: 'Why Your Startup Needs a Web App, Not Just a Website',
+    slug: { current: 'startup-needs-web-app-not-website' },
+    excerpt: 'A website tells people what you do. A web app lets them do it. Here\'s how to figure out which one your startup actually needs — and why getting this wrong costs more than the build itself.',
+    category: 'SaaS',
+    tags: ['SaaS', 'Web App', 'Startup', 'Product'],
+    readTime: 5,
+    featured: false,
+    publishedAt: '2025-09-15T09:00:00Z',
+    author: { name: 'Het Soni', role: 'Full Stack Developer' },
+    body: `The single most expensive mistake we see early-stage startups make is not the wrong tech stack or the wrong design agency — it is building the wrong thing entirely. Specifically: paying for a website when what you actually need is a web application.
+
+The two terms get used interchangeably, but they are fundamentally different products with different purposes, different costs, and different technical requirements. Getting this distinction wrong at the start of your build sets a ceiling on your growth before you have even launched.
+
+**What is a website?**
+
+A website is primarily a read-only, informational product. Visitors arrive, consume content, and leave. Your marketing site, your blog, your portfolio, your landing pages — these are all websites. The interaction is largely one-directional: you publish, they read.
+
+Websites are excellent for building brand credibility, capturing inbound leads, ranking in search engines, and communicating your value proposition. They are fast to build, cheap to host, and easy to update if you use a good CMS. For a pre-product startup, a sharp marketing website is often the right call — it helps you validate demand before committing to a full product build.
+
+**What is a web application?**
+
+A web application is a software product that users interact with. It has state. Users log in, create accounts, submit data, trigger workflows, collaborate with others, and get personalised output. Think of Notion, Figma, your bank's dashboard, or a booking platform. The interaction is deeply two-directional.
+
+Web apps require authentication systems, databases, backend APIs, user session management, role-based permissions, and often real-time features. They are more complex, more expensive, and take longer to build than websites — but they also deliver far more value to users, which is how they justify subscription pricing.
+
+**The signals that tell you which one you need**
+
+You need a web app if any of these are true: users need accounts to access your product, your product generates or stores data on behalf of users, different users see different content based on who they are, your product enables collaboration or workflow between multiple people, you plan to charge on a subscription or usage basis.
+
+You probably just need a website if: you are validating an idea before building anything, your goal is generating leads for a service business, you need to establish credibility with investors or potential customers, or your entire product is informational content.
+
+**The hybrid trap**
+
+Many startups end up in what we call the hybrid trap. They build a polished marketing website with a basic contact form and call it their "platform." Then, as the product evolves, they bolt on authentication, add a dashboard, tack on a payment form — and what starts as a clean website becomes a technical mess. Retrofitting web-app features onto a website architecture is expensive, slow, and frustrating for everyone involved.
+
+The smarter path: decide upfront whether you are building a website or a web app. If you need both — a public marketing site and a private application — architect them as two separate products sharing a design system, not one codebase trying to do everything.
+
+**Cost and timeline reality**
+
+A well-built marketing website for a startup typically takes three to five weeks and costs significantly less than a web app. A solid SaaS MVP — with auth, user dashboard, core feature set, and payment integration — typically takes six to ten weeks. The difference is not just time; it is the entire infrastructure stack, which needs to be designed correctly from day one.
+
+If you are still in the idea-validation phase, start with a website. Talk to customers. Get real signal. Then, when you know what you are building, invest in the application. Skipping the validation step to go straight to a full app build is where most early-stage money gets wasted.
+
+**The right question to ask**
+
+Before you start any build, ask: does my user need to do something, or do they just need to know something? If the answer is "do," you need a web app. If the answer is "know," a website is your friend. Most startup founders know the answer before they finish asking the question.`,
+    seoTitle: 'Web App vs Website: What Does Your Startup Actually Need? | HN Studio',
+    seoDescription: 'Not sure whether to build a website or web app? This guide explains the real difference, the cost implications, and the signals that tell you which one your startup needs.',
+  },
+
+  {
+    _id: 'bp8',
+    title: 'Next.js vs React: What Should You Choose in 2025?',
+    slug: { current: 'nextjs-vs-react-2025' },
+    excerpt: 'Next.js and React are not competitors — one is built on top of the other. But the choice of how you use them matters enormously for performance, SEO, and developer experience in 2025.',
+    category: 'Frontend',
+    tags: ['Next.js', 'React', 'Frontend', 'Web Dev'],
+    readTime: 6,
+    featured: false,
+    publishedAt: '2025-09-08T09:00:00Z',
+    author: { name: 'Neel Patel', role: 'Web Developer' },
+    body: `Every few months someone asks us: "Should we use Next.js or just React?" It is a fair question but it rests on a false premise — Next.js is React. What you are really asking is whether to use React alone (as a client-side SPA) or React with Next.js as a full-stack framework on top of it.
+
+The answer in 2025 is almost always Next.js, but understanding why will help you build better applications regardless of which path you choose.
+
+**React as a standalone SPA**
+
+When you reach for Create React App, Vite, or a bare Vite + React setup, you are building a Single Page Application. The server sends one HTML file with a blank div and a JavaScript bundle. The browser downloads the bundle, executes it, and renders the UI. This approach has been the dominant pattern for internal tools and dashboards for years.
+
+SPAs are great when SEO does not matter (logged-in dashboards, internal admin panels, tools behind auth), when you need maximum client-side interactivity, or when your backend is already a separate API that your team manages independently.
+
+The major weaknesses of SPAs: poor Core Web Vitals (especially LCP) because content only appears after JS executes, no server-side rendering so search crawlers often see empty pages, and no built-in routing, image optimisation, or API layer — you wire all of this yourself.
+
+**What Next.js adds on top of React**
+
+Next.js 15 with the App Router gives you a complete framework on top of React. The key additions that matter in 2025:
+
+Server Components: React components that render on the server and send finished HTML to the browser. Zero JavaScript shipped to the client for server-only UI. This is the biggest paradigm shift in frontend development in the last five years and Next.js is the primary way to use it in production.
+
+Multiple rendering strategies per page: Static generation for content that does not change, server-side rendering for personalised pages, and Partial Prerendering (PPR) — stable in Next.js 15 — which statically generates a shell and streams dynamic content in. You can mix strategies within a single route.
+
+Built-in image optimisation via next/image, automatic code splitting, the Link prefetching system, and Turbopack as the default bundler (dramatically faster local development in 2025).
+
+The App Router file system: pages, layouts, loading states, and error boundaries all co-located. Route groups and parallel routes eliminate entire categories of routing complexity.
+
+**Performance: the real gap**
+
+In 2025, the performance gap between a well-optimised Next.js app and a React SPA is not subtle — it is significant. Google's Core Web Vitals directly affect search rankings, and SPAs consistently score worse on LCP because content is blocked behind JavaScript execution.
+
+For a content-heavy page, a Next.js Server Component renders fully on the server and ships pre-rendered HTML. First Contentful Paint and LCP fire as soon as the HTML arrives. No JavaScript hydration required for the static parts. The difference in real-world Lighthouse scores can be 30–40 points.
+
+For a logged-in dashboard where SEO does not matter, the gap narrows. A well-built Vite SPA and a well-built Next.js app with client components will feel similar in use — though Next.js still wins on routing, streaming, and infrastructure defaults.
+
+**When to use a plain React SPA in 2025**
+
+There are still valid cases for a React SPA without Next.js: you are building a purely internal tool that lives behind auth with zero public-facing pages, your team has an existing API and wants maximum separation between frontend and backend, you need an Electron desktop app (React + Vite is a natural fit), or your deployment target does not support Node.js server execution.
+
+For everything else — public marketing sites, SaaS dashboards that also need public pages, e-commerce storefronts, content platforms — Next.js is the correct choice. The SSR, caching, and image optimisation capabilities alone justify it.
+
+**The App Router learning curve**
+
+Next.js 15 with the App Router is meaningfully more complex than the Pages Router or a plain React SPA. The distinction between Server Components and Client Components trips up almost every developer the first time. "use client" is not a switch that makes a component interactive — it marks the boundary where the client component tree begins.
+
+The mental model shift: think about what needs to be interactive on the client versus what can be rendered once on the server. Fetch data in Server Components, handle user events in Client Components. Keep client components as leaves in the tree, not roots.
+
+**Our recommendation for new projects in 2025**
+
+For any new project at HN, we default to Next.js 15 with the App Router. The Server Component model, PPR, and the built-in infrastructure capabilities pay for the learning curve within the first two weeks of a project.
+
+The only exception: if a client already has a separate backend team running an API and wants a completely decoupled frontend, we will use Vite + React for the dashboard layer and build the public-facing pages in Next.js as a separate app sharing the design system.
+
+React alone is still a fantastic tool. But in 2025, Next.js is simply the more complete, more performant, and more production-ready way to build with React in most scenarios.`,
+    seoTitle: 'Next.js vs React in 2025: Which Should You Choose? | HN Studio',
+    seoDescription: 'A practical technical comparison of Next.js vs plain React in 2025. When to use each, how performance differs, and our recommendation for new projects.',
+  },
+
+  {
+    _id: 'bp9',
+    title: 'How We Cut a Client\'s Page Load Time from 8s to 1.2s',
+    slug: { current: 'how-we-cut-page-load-time' },
+    excerpt: 'A real case study on taking a slow Next.js e-commerce site from an 8-second load to 1.2 seconds — covering the audit process, root causes, and the exact fixes we applied.',
+    category: 'Case Study',
+    tags: ['Performance', 'Next.js', 'Case Study', 'Web Dev'],
+    readTime: 4,
+    featured: false,
+    publishedAt: '2025-09-01T09:00:00Z',
+    author: { name: 'Neel Patel', role: 'Web Developer' },
+    body: `A client came to us with a Next.js e-commerce site that was taking eight seconds to load on a standard mobile connection. Their bounce rate was over 70% and conversion was essentially non-existent on mobile — which accounted for 65% of their traffic. We had four weeks and a clear mandate: make it fast.
+
+Here is exactly what we found and what we fixed.
+
+**The audit: what we looked at first**
+
+We do not start performance work by guessing. We run a structured audit using three sources: Chrome DevTools Performance tab (network throttled to Fast 3G), WebPageTest with a real mobile device in Mumbai (closest to their user base), and Lighthouse in CI to get a reproducible baseline score.
+
+The baseline: LCP of 8.1 seconds, TBT of 4,200ms, CLS of 0.34. Lighthouse performance score: 9 out of 100. The problems were significant and layered.
+
+**Root cause 1: unoptimised images (responsible for ~60% of the problem)**
+
+The site was serving JPEG product images at their original upload resolution — some files were 4MB and up — with no compression, no next-generation formats, and no lazy loading. Every product page was downloading 20–30 of these images on initial load.
+
+The fix: migrated all product images to use next/image with explicit width and height props, and the priority flag on the above-the-fold hero image. Next.js automatically served WebP to browsers that support it and sized images to the viewport. Average product image download dropped from 3.2MB to 180KB per image.
+
+**Root cause 2: a 900KB uncompressed JavaScript bundle**
+
+The previous developer had imported the entire Lodash library when only three utility functions were needed. They had also imported a charting library for a single analytics widget that lived in the admin panel — not even visible to customers.
+
+The fix: replaced Lodash with direct ES module imports, removed the charting library from the customer-facing bundle entirely, and used Next.js dynamic imports for the admin-only components so they were only loaded when the admin panel was accessed.
+
+Bundle size dropped from 900KB to 210KB after gzip.
+
+**Root cause 3: render-blocking third-party scripts**
+
+The site was loading Google Tag Manager, a live chat widget, and a review aggregator widget all synchronously in the document head. These scripts were blocking the main thread for over 2 seconds before the page could render anything.
+
+The fix: moved GTM to load with the afterInteractive strategy via the Next.js Script component. The chat widget was moved to lazyOnload — it loads after the page is fully interactive. The review widget was replaced with a static snapshot of reviews rendered server-side, with the live widget only hydrating on scroll into view using an IntersectionObserver.
+
+**Root cause 4: no caching headers and no ISR**
+
+The site was using getServerSideProps for every page, including product listing pages that changed at most twice a day. Every request was hitting the database, fetching product data, and building the page from scratch — with no cache.
+
+The fix: migrated product listing pages and individual product pages to ISR (Incremental Static Regeneration) with a 60-second revalidation window. The server now generates each page once and serves it from cache for 60 seconds. Under load, this reduced database queries per minute from 800+ to under 20 for catalogue pages.
+
+**Root cause 5: layout shift from fonts and images**
+
+The custom font was loading after initial render, causing visible text reflow (FOIT — Flash of Invisible Text followed by a layout shift). Images had no explicit dimensions specified so the browser did not reserve space for them during layout.
+
+The fix: used next/font with display swap and preloaded the primary font weight. All images got explicit dimensions. CLS dropped from 0.34 to 0.02.
+
+**Results after four weeks**
+
+LCP: 8.1s to 1.2s. TBT: 4,200ms to 180ms. CLS: 0.34 to 0.02. Lighthouse performance score: 9 to 94. Mobile bounce rate dropped from 73% to 41% within the first two weeks post-launch. Conversion rate on mobile increased threefold in the following month.
+
+**The lesson**
+
+Performance problems almost always come from the same five categories: unoptimised images, oversized JavaScript bundles, render-blocking third-party scripts, missing caching, and layout instability. You rarely need exotic solutions. You need a rigorous audit and disciplined execution of well-understood fixes.
+
+If your site is slow, start with images. They are almost always the biggest win.`,
+    seoTitle: 'How We Cut Page Load Time from 8s to 1.2s: A Next.js Case Study | HN Studio',
+    seoDescription: 'A real performance case study: how we took a Next.js e-commerce site from 8 seconds to 1.2 seconds load time. Root causes, exact fixes, and measurable results.',
+  },
+
+  {
+    _id: 'bp10',
+    title: 'The Real Cost of Building a SaaS Product in India',
+    slug: { current: 'real-cost-of-saas-india' },
+    excerpt: 'What does it actually cost to build a SaaS product in India in 2025? Beyond the development quote, this is the full cost breakdown — from infrastructure to compliance to ongoing maintenance.',
+    category: 'Business',
+    tags: ['SaaS', 'Business', 'India', 'Cost', 'Startup'],
+    readTime: 7,
+    featured: false,
+    publishedAt: '2025-08-25T09:00:00Z',
+    author: { name: 'Het Soni', role: 'Full Stack Developer' },
+    body: `The most common question we get from founders before a project starts is not "how long will it take?" It is "what will it actually cost?" And the honest answer is: more than the development quote, but probably less than you fear — if you understand all the components upfront.
+
+Here is a realistic, detailed cost breakdown for building a SaaS product in India in 2025, based on our experience building and launching over a dozen of them.
+
+**The development cost**
+
+For a typical B2B SaaS MVP — multi-tenant architecture, auth, a core feature set, Stripe or Razorpay subscription billing, admin dashboard — you are looking at six to ten weeks of engineering time. At a quality Indian studio or with a competent freelance team, that translates to roughly ₹4–8 lakhs for an MVP.
+
+What affects where you land in that range: the complexity of your core feature, the number of integrations, whether you need a mobile app alongside the web app, and how much design work is required. A stripped-down MVP with one core workflow and basic UI hits the lower end. A fully designed product with complex data models, multiple user roles, and several third-party integrations hits the upper end.
+
+Be wary of quotes significantly below ₹3 lakhs for a SaaS MVP. This is not impossible, but it usually signals either a very limited scope (which is fine if you know that), offshore talent at unpredictable quality, or an architecture that will need to be rebuilt within six months.
+
+**Infrastructure: ongoing, not one-time**
+
+Founders often treat infrastructure as a launch cost, but it is actually your first ongoing operational expense. Here is a realistic monthly infrastructure budget for an early-stage SaaS:
+
+Application hosting (Vercel, Railway, or AWS): ₹2,000–8,000 per month depending on traffic. For a new product with under 500 users, Vercel's Pro plan at around ₹1,700/month handles most Next.js apps comfortably.
+
+Database (Supabase, PlanetScale, or RDS): ₹1,500–6,000 per month. Supabase Pro starts at roughly ₹1,700/month and covers most early-stage products. As data volume grows, plan for this to scale.
+
+Email delivery (Resend, SendGrid, Postmark): ₹0–3,000 per month for transactional email. Most providers have generous free tiers that cover you until you hit several thousand monthly active users.
+
+File storage (AWS S3 or Cloudflare R2): ₹500–2,000 per month for a product that stores user-uploaded files. R2 has no egress fees, making it significantly cheaper than S3 for read-heavy workloads.
+
+Total infrastructure for early stage: roughly ₹6,000–20,000 per month, scaling with users.
+
+**Third-party services**
+
+SaaS products almost always depend on third-party services, each with their own cost structure:
+
+Payment processing: Razorpay charges 2% per transaction on the basic plan. For a product doing ₹5 lakh monthly in GMV, that is ₹10,000/month in payment fees alone. Stripe charges similar rates for international cards.
+
+Authentication: if you use a managed auth provider like Clerk or Auth0, expect ₹0 for the first 10,000 MAU, then ₹4,000–12,000/month at scale. Alternatively, building auth with Supabase Auth is included in your database cost.
+
+Customer support tooling: Intercom, Crisp, or a basic help desk. Budget ₹2,000–8,000/month depending on your volume and the tool.
+
+Analytics: PostHog has a generous free tier. Mixpanel starts to cost at scale. Budget ₹0–6,000/month.
+
+**Legal and compliance**
+
+This is the most underbudgeted category for Indian SaaS founders. If you are collecting user data (and all SaaS products do), you need a proper privacy policy, terms of service, and increasingly, DPDP Act compliance documentation. This is not optional — it is a legal requirement.
+
+A one-time legal consultation and document drafting: ₹15,000–40,000 depending on the firm. GST registration and filing: ₹5,000–10,000/year for an accountant. If you plan to invoice international customers, you will need proper export documentation under LUT (Letter of Undertaking) to avoid paying GST on export revenue.
+
+**Marketing and acquisition**
+
+The build is the beginning, not the end. The majority of SaaS products that fail do not fail because of engineering — they fail because the founders underestimated customer acquisition cost.
+
+Content marketing (blog, SEO) takes three to six months to show results and requires either your time or ₹20,000–60,000/month for a good content team. Paid acquisition via Google or LinkedIn Ads typically requires a minimum budget of ₹30,000–50,000/month to get statistically meaningful data.
+
+Product-led growth strategies — free trials, freemium, viral loops — require thoughtful product design and often extend the initial build timeline by two to three weeks. But they can dramatically reduce paid acquisition spend in the long run.
+
+**The real total for year one**
+
+Let us put this together for a realistic B2B SaaS scenario:
+
+Initial build (MVP): ₹5–7 lakhs. Infrastructure for 12 months: ₹1–2 lakhs. Third-party services for 12 months: ₹1–2 lakhs. Legal and compliance setup: ₹30,000–50,000. Marketing for 12 months (conservative): ₹3–6 lakhs.
+
+Total year-one cost: ₹10–17 lakhs for a lean but real SaaS operation.
+
+This number surprises some founders and reassures others. It is achievable for a bootstrapped founder with the right co-founder setup. It is well within pre-seed funding range. And it is dramatically lower than what the same product would cost to build and launch in the US or UK market.
+
+**What you can cut and what you cannot**
+
+You can cut: premium design polish (ship with a solid design system and iterate), mobile apps (ship web-first, add mobile when demand proves it), advanced analytics (PostHog's free tier is genuinely excellent), and marketing spend until you have confirmed product-market fit.
+
+You cannot cut: a properly architected database schema (retrofitting a bad schema is expensive), authentication and security hardening (a breach at early stage kills trust permanently), payment integration reliability (a broken checkout is a dead product), and basic legal compliance (the DPDP Act has real teeth in 2025).
+
+**The compounding cost of cutting corners**
+
+The final thing to understand about SaaS cost in India is that underspending on architecture creates technical debt that compounds over time. A ₹2 lakh build that saves money upfront but requires a full rebuild in month six costs more in total than a ₹5 lakh build done correctly.
+
+We have taken on rebuilds — and they are always more expensive than greenfield builds because you are working around existing assumptions, migrating live data, and rewriting code while keeping the product running for customers. Build it right the first time. The savings are real.`,
+    seoTitle: 'Real Cost of Building a SaaS in India (2025): Full Breakdown | HN Studio',
+    seoDescription: 'A detailed, realistic cost breakdown for building a SaaS product in India in 2025 — from development to infrastructure, legal, and marketing. No fluff.',
   },
 ];
 
