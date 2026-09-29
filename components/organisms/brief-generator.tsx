@@ -95,10 +95,8 @@ export function BriefGenerator() {
       const element = document.getElementById('brief-pdf-content');
       if (!element) return;
       
-      // Dynamically import and safely resolve the default exports
-      const html2canvasModule = await import('html2canvas');
-      const html2canvas = html2canvasModule.default || html2canvasModule;
-      
+      // Dynamically import html-to-image and jspdf to avoid SSR/modern CSS issues
+      const htmlToImage = await import('html-to-image');
       const jsPDFModule = await import('jspdf');
       const jsPDF = jsPDFModule.default || jsPDFModule.jsPDF;
 
@@ -108,10 +106,10 @@ export function BriefGenerator() {
         (el as HTMLElement).style.display = 'none';
       });
 
-      const canvas = await html2canvas(element, { 
-        scale: 2,
-        useCORS: true,
-        backgroundColor: '#ffffff'
+      // html-to-image uses the browser's native rendering, so it handles oklch/lab colors perfectly
+      const imgData = await htmlToImage.toPng(element, { 
+        backgroundColor: '#ffffff',
+        pixelRatio: 2 // High quality
       });
       
       // Restore the 'no-print' elements
@@ -119,11 +117,11 @@ export function BriefGenerator() {
         (el as HTMLElement).style.display = '';
       });
 
-      const imgData = canvas.toDataURL('image/png');
-      
       const pdf = new jsPDF('p', 'mm', 'a4');
       const pdfWidth = pdf.internal.pageSize.getWidth();
-      const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
+      // Calculate height maintaining aspect ratio
+      const imgProps = pdf.getImageProperties(imgData);
+      const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
       
       pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
       pdf.save('HN-Studio-Project-Brief.pdf');
