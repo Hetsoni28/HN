@@ -169,7 +169,7 @@ export function GithubActivity() {
             href="https://github.com/Hetsoni28"
             target="_blank"
             rel="noopener noreferrer"
-            className="group inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-6 py-2.5 text-sm font-medium text-slate-300 transition hover:border-[#0051FF]/50 hover:text-white"
+            className="group inline-flex items-center gap-2 rounded-full bg-white px-6 py-2.5 text-sm font-bold text-[#0B111E] shadow-sm transition hover:scale-105 hover:bg-slate-50"
           >
             <svg
               className="h-4 w-4 transition group-hover:scale-110"
