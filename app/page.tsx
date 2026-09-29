@@ -4,6 +4,7 @@ import { getFeaturedProjects, getFaqs } from '@/lib/content';
 import { HeroSection }     from '@/components/organisms/hero-section';
 import { WhatWeBuild }     from '@/components/organisms/what-we-build';
 import { FeaturedWork }    from '@/components/organisms/featured-work';
+import { TransformationSection } from '@/components/organisms/transformation-section';
 import { WhyHN }           from '@/components/organisms/why-hn';
 import { ServicesSection } from '@/components/organisms/services-section';
 import { ProcessSection }  from '@/components/organisms/process-section';
@@ -42,6 +43,7 @@ export default async function Home() {
       <Marquee items={marqueeItems} />
       <WhatWeBuild />
       <FeaturedWork projects={projects} />
+      <TransformationSection />
       <WhyHN />
       <ServicesSection />
       <ProcessSection />
