@@ -5,6 +5,7 @@ import { Navbar } from '@/components/organisms/navbar';
 import { Footer } from '@/components/organisms/footer';
 import { AnnouncementBar } from '@/components/molecules/announcement-bar';
 import { FloatingEstimator } from '@/components/molecules/floating-estimator';
+import { CookieBanner } from '@/components/molecules/cookie-banner';
 import { OrganizationJsonLd, WebSiteJsonLd } from '@/components/molecules/structured-data';
 import { SkipLink } from '@/components/atoms/skip-link';
 
@@ -74,6 +75,7 @@ export default function RootLayout({
         <main id="main-content" aria-label="Main content">{children}</main>
         <Footer />
         <FloatingEstimator />
+        <CookieBanner />
       </body>
     </html>
   );
