@@ -52,6 +52,7 @@ const COMPANY_MENU = [
   { label: 'Our Process',    href: '/process',  desc: 'From discovery to delivery' },
   { label: 'Portfolio',      href: '/work',     desc: 'Case studies of our best work' },
   { label: 'Insights / Blog',href: '/insights', desc: 'Articles on web, SaaS & AI' },
+  { label: 'Showreel',       href: '/showreel', desc: '40-second cinematic overview' },
   { label: 'HN vs Others',   href: '/compare',  desc: 'Why choose HN over alternatives' },
 ];
 

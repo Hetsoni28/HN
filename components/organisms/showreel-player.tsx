@@ -206,15 +206,15 @@ export function ShowreelPlayer() {
       >
         
         {/* Media Layers */}
-        <div className={\`absolute inset-0 transition-opacity duration-1000 \${media.before ? 'opacity-100 scale-100' : 'opacity-0 scale-105'}\`}>
+        <div className={`absolute inset-0 transition-opacity duration-1000 ${media.before ? 'opacity-100 scale-100' : 'opacity-0 scale-105'}`}>
           <Image src="/images/showreel/before.jpg" alt="Before" fill className="object-cover" priority />
         </div>
 
-        <div className={\`absolute inset-0 transition-opacity duration-500 \${media.wipeScene ? 'opacity-100' : 'opacity-0'}\`}>
+        <div className={`absolute inset-0 transition-opacity duration-500 ${media.wipeScene ? 'opacity-100' : 'opacity-0'}`}>
           <Image src="/images/showreel/before.jpg" alt="Before" fill className="object-cover" />
           <div 
             className="absolute inset-0 overflow-hidden border-r-4 border-cyan-400 shadow-[20px_0_40px_rgba(34,211,238,0.5)] transition-all duration-100 ease-linear"
-            style={{ width: \`\${media.wipeProgress}%\` }}
+            style={{ width: `${media.wipeProgress}%` }}
           >
             <div className="relative w-full h-full" style={{ width: containerRef.current?.offsetWidth || 1000 }}>
               <Image src="/images/showreel/after.jpg" alt="After" fill className="object-cover" />
@@ -222,81 +222,81 @@ export function ShowreelPlayer() {
           </div>
         </div>
 
-        <div className={\`absolute inset-0 transition-opacity duration-1000 \${media.dev ? 'opacity-100 scale-100' : 'opacity-0 scale-105'}\`}>
+        <div className={`absolute inset-0 transition-opacity duration-1000 ${media.dev ? 'opacity-100 scale-100' : 'opacity-0 scale-105'}`}>
           <Image src="/images/showreel/dev.jpg" alt="Developer" fill className="object-cover" />
         </div>
 
-        <div className={\`absolute inset-0 transition-opacity duration-1000 \${media.mobile ? 'opacity-100 scale-100' : 'opacity-0 scale-105'}\`}>
+        <div className={`absolute inset-0 transition-opacity duration-1000 ${media.mobile ? 'opacity-100 scale-100' : 'opacity-0 scale-105'}`}>
           <Image src="/images/showreel/mobile.jpg" alt="Mobile" fill className="object-cover" />
         </div>
 
         {/* Overlay */}
-        <div className={\`absolute inset-0 bg-white/85 transition-opacity duration-1000 \${media.overlay ? 'opacity-100' : 'opacity-0'}\`} />
+        <div className={`absolute inset-0 bg-white/85 transition-opacity duration-1000 ${media.overlay ? 'opacity-100' : 'opacity-0'}`} />
 
         {/* Scenes */}
-        <div className={\`absolute inset-0 flex flex-col items-center justify-center transition-opacity duration-500 \${s1 > 0 ? 'opacity-100' : 'opacity-0'}\`}>
-          <h2 className={\`text-4xl md:text-6xl font-bold text-slate-900 transition-all duration-1000 \${s1 >= 1 ? 'translate-y-0 blur-0 opacity-100' : 'translate-y-4 blur-md opacity-0'}\`}>
+        <div className={`absolute inset-0 flex flex-col items-center justify-center transition-opacity duration-500 ${s1 > 0 ? 'opacity-100' : 'opacity-0'}`}>
+          <h2 className={`text-4xl md:text-6xl font-bold text-slate-900 transition-all duration-1000 ${s1 >= 1 ? 'translate-y-0 blur-0 opacity-100' : 'translate-y-4 blur-md opacity-0'}`}>
             Every great product
           </h2>
-          <h3 className={\`mt-2 text-2xl md:text-4xl text-slate-500 transition-all duration-1000 \${s1 >= 2 ? 'translate-y-0 blur-0 opacity-100' : 'translate-y-4 blur-md opacity-0'}\`}>
+          <h3 className={`mt-2 text-2xl md:text-4xl text-slate-500 transition-all duration-1000 ${s1 >= 2 ? 'translate-y-0 blur-0 opacity-100' : 'translate-y-4 blur-md opacity-0'}`}>
             starts with a problem.
           </h3>
         </div>
 
-        <div className={\`absolute inset-0 flex flex-col items-center justify-center transition-opacity duration-500 \${s2 > 0 ? 'opacity-100' : 'opacity-0'}\`}>
-          <h2 className={\`text-4xl md:text-7xl font-bold bg-red-500 text-transparent bg-clip-text transition-all duration-1000 \${s2 >= 1 ? 'translate-y-0 blur-0 opacity-100' : 'translate-y-4 blur-md opacity-0'}\`}>
+        <div className={`absolute inset-0 flex flex-col items-center justify-center transition-opacity duration-500 ${s2 > 0 ? 'opacity-100' : 'opacity-0'}`}>
+          <h2 className={`text-4xl md:text-7xl font-bold bg-red-500 text-transparent bg-clip-text transition-all duration-1000 ${s2 >= 1 ? 'translate-y-0 blur-0 opacity-100' : 'translate-y-4 blur-md opacity-0'}`}>
             Cluttered interfaces.
           </h2>
-          <h3 className={\`mt-2 text-2xl md:text-4xl text-slate-900 transition-all duration-1000 \${s2 >= 2 ? 'translate-y-0 blur-0 opacity-100' : 'translate-y-4 blur-md opacity-0'}\`}>
+          <h3 className={`mt-2 text-2xl md:text-4xl text-slate-900 transition-all duration-1000 ${s2 >= 2 ? 'translate-y-0 blur-0 opacity-100' : 'translate-y-4 blur-md opacity-0'}`}>
             Code that doesn't scale.
           </h3>
         </div>
 
-        <div className={\`absolute inset-0 flex flex-col items-center justify-center transition-opacity duration-500 \${s3 > 0 ? 'opacity-100' : 'opacity-0'}\`}>
-          <h2 className={\`text-4xl md:text-6xl font-bold text-slate-900 transition-all duration-1000 \${s3 >= 1 ? 'translate-y-0 blur-0 opacity-100' : 'translate-y-4 blur-md opacity-0'}\`}>
+        <div className={`absolute inset-0 flex flex-col items-center justify-center transition-opacity duration-500 ${s3 > 0 ? 'opacity-100' : 'opacity-0'}`}>
+          <h2 className={`text-4xl md:text-6xl font-bold text-slate-900 transition-all duration-1000 ${s3 >= 1 ? 'translate-y-0 blur-0 opacity-100' : 'translate-y-4 blur-md opacity-0'}`}>
             At <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-400">HN</span>,
           </h2>
-          <h3 className={\`mt-2 text-2xl md:text-4xl text-slate-900 transition-all duration-1000 \${s3 >= 2 ? 'translate-y-0 blur-0 opacity-100' : 'translate-y-4 blur-md opacity-0'}\`}>
+          <h3 className={`mt-2 text-2xl md:text-4xl text-slate-900 transition-all duration-1000 ${s3 >= 2 ? 'translate-y-0 blur-0 opacity-100' : 'translate-y-4 blur-md opacity-0'}`}>
             we fix that.
           </h3>
         </div>
 
-        <div className={\`absolute inset-0 flex flex-col items-center justify-center transition-opacity duration-500 \${s4 > 0 ? 'opacity-100' : 'opacity-0'}\`}>
-          <h2 className={\`text-3xl md:text-6xl font-bold text-slate-900 drop-shadow-[0_4px_20px_rgba(255,255,255,0.9)] transition-all duration-1000 \${s4 >= 1 ? 'translate-y-0 blur-0 opacity-100' : 'translate-y-4 blur-md opacity-0'}\`}>
+        <div className={`absolute inset-0 flex flex-col items-center justify-center transition-opacity duration-500 ${s4 > 0 ? 'opacity-100' : 'opacity-0'}`}>
+          <h2 className={`text-3xl md:text-6xl font-bold text-slate-900 drop-shadow-[0_4px_20px_rgba(255,255,255,0.9)] transition-all duration-1000 ${s4 >= 1 ? 'translate-y-0 blur-0 opacity-100' : 'translate-y-4 blur-md opacity-0'}`}>
             We transform messy ideas
           </h2>
-          <h3 className={\`text-4xl md:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-400 drop-shadow-[0_4px_20px_rgba(255,255,255,0.9)] transition-all duration-1000 \${s4 >= 2 ? 'translate-y-0 blur-0 opacity-100' : 'translate-y-4 blur-md opacity-0'}\`}>
+          <h3 className={`text-4xl md:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-400 drop-shadow-[0_4px_20px_rgba(255,255,255,0.9)] transition-all duration-1000 ${s4 >= 2 ? 'translate-y-0 blur-0 opacity-100' : 'translate-y-4 blur-md opacity-0'}`}>
             into world-class software.
           </h3>
         </div>
 
-        <div className={\`absolute inset-0 flex flex-col items-center justify-center transition-opacity duration-500 \${s5 > 0 ? 'opacity-100' : 'opacity-0'}\`}>
-          <h2 className={\`text-4xl md:text-6xl font-bold text-slate-900 transition-all duration-1000 \${s5 >= 1 ? 'translate-y-0 blur-0 opacity-100' : 'translate-y-4 blur-md opacity-0'}\`}>
+        <div className={`absolute inset-0 flex flex-col items-center justify-center transition-opacity duration-500 ${s5 > 0 ? 'opacity-100' : 'opacity-0'}`}>
+          <h2 className={`text-4xl md:text-6xl font-bold text-slate-900 transition-all duration-1000 ${s5 >= 1 ? 'translate-y-0 blur-0 opacity-100' : 'translate-y-4 blur-md opacity-0'}`}>
             And stunning mobile apps
           </h2>
-          <h3 className={\`mt-2 text-2xl md:text-4xl text-slate-600 transition-all duration-1000 \${s5 >= 2 ? 'translate-y-0 blur-0 opacity-100' : 'translate-y-4 blur-md opacity-0'}\`}>
+          <h3 className={`mt-2 text-2xl md:text-4xl text-slate-600 transition-all duration-1000 ${s5 >= 2 ? 'translate-y-0 blur-0 opacity-100' : 'translate-y-4 blur-md opacity-0'}`}>
             your users will actually love.
           </h3>
         </div>
 
-        <div className={\`absolute inset-0 flex flex-col items-center justify-center transition-opacity duration-500 \${s6 > 0 ? 'opacity-100' : 'opacity-0'}\`}>
-          <div className={\`bg-white/80 backdrop-blur-xl border border-blue-100 p-8 md:p-12 rounded-3xl shadow-[0_20px_60px_rgba(0,81,255,0.1)] transition-all duration-1000 \${s6 >= 1 ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}\`}>
+        <div className={`absolute inset-0 flex flex-col items-center justify-center transition-opacity duration-500 ${s6 > 0 ? 'opacity-100' : 'opacity-0'}`}>
+          <div className={`bg-white/80 backdrop-blur-xl border border-blue-100 p-8 md:p-12 rounded-3xl shadow-[0_20px_60px_rgba(0,81,255,0.1)] transition-all duration-1000 ${s6 >= 1 ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
             <h2 className="text-4xl md:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-400 mb-8">
               How we deliver.
             </h2>
             <div className="flex flex-col gap-5 text-left mx-auto w-fit text-slate-800 font-semibold text-xl md:text-2xl">
               <div className="flex items-center gap-4"><div className="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center text-sm">✓</div> 2-Week Sprints</div>
-              <div className="flex items-center gap-4"><div class="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center text-sm">✓</div> Daily Updates</div>
-              <div className="flex items-center gap-4"><div class="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center text-sm">✓</div> Zero disappearing acts</div>
+              <div className="flex items-center gap-4"><div className="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center text-sm">✓</div> Daily Updates</div>
+              <div className="flex items-center gap-4"><div className="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center text-sm">✓</div> Zero disappearing acts</div>
             </div>
           </div>
         </div>
 
-        <div className={\`absolute inset-0 flex flex-col items-center justify-center transition-opacity duration-500 \${s7 > 0 ? 'opacity-100' : 'opacity-0'}\`}>
-          <h2 className={\`text-3xl md:text-5xl font-medium text-slate-500 transition-all duration-1000 \${s7 >= 1 ? 'translate-y-0 blur-0 opacity-100' : 'translate-y-4 blur-md opacity-0'}\`}>
+        <div className={`absolute inset-0 flex flex-col items-center justify-center transition-opacity duration-500 ${s7 > 0 ? 'opacity-100' : 'opacity-0'}`}>
+          <h2 className={`text-3xl md:text-5xl font-medium text-slate-500 transition-all duration-1000 ${s7 >= 1 ? 'translate-y-0 blur-0 opacity-100' : 'translate-y-4 blur-md opacity-0'}`}>
             Stop waiting. Start building.
           </h2>
-          <div className={\`mt-8 transition-all duration-1000 \${s7 >= 2 ? 'translate-y-0 blur-0 opacity-100' : 'translate-y-4 blur-md opacity-0'}\`}>
+          <div className={`mt-8 transition-all duration-1000 ${s7 >= 2 ? 'translate-y-0 blur-0 opacity-100' : 'translate-y-4 blur-md opacity-0'}`}>
             <Image src="/hn-logo.svg" alt="HN Logo" width={300} height={100} />
           </div>
         </div>
@@ -304,7 +304,7 @@ export function ShowreelPlayer() {
         {/* Progress Bar */}
         <div 
           className="absolute bottom-0 left-0 h-1.5 bg-blue-600 z-50 transition-all duration-100 ease-linear"
-          style={{ width: \`\${progress}%\` }}
+          style={{ width: `${progress}%` }}
         />
       </div>
 
