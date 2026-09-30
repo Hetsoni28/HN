@@ -259,7 +259,8 @@ export default function MaintenancePage() {
                       {isPopular ? (
                         <Link
                           href={`/contact?plan=${plan.id}`}
-                          className="flex w-full items-center justify-center rounded-xl bg-white px-6 py-3.5 text-sm font-bold text-[#0051FF] transition hover:bg-blue-50"
+                          className="flex w-full items-center justify-center rounded-xl bg-white px-6 py-3.5 text-sm font-bold transition hover:bg-blue-50"
+                          style={{ color: '#0051FF' }}
                         >
                           Get Started →
                         </Link>
