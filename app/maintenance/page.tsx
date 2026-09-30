@@ -259,14 +259,14 @@ export default function MaintenancePage() {
                       {isPopular ? (
                         <Link
                           href={`/contact?plan=${plan.id}`}
-                          className="btn w-full justify-center bg-white text-[#0051FF] hover:bg-blue-50"
+                          className="flex w-full items-center justify-center rounded-xl bg-white px-6 py-3.5 text-sm font-bold text-[#0051FF] transition hover:bg-blue-50"
                         >
                           Get Started →
                         </Link>
                       ) : (
                         <Link
                           href={`/contact?plan=${plan.id}`}
-                          className="btn btn-primary w-full justify-center"
+                          className="flex w-full items-center justify-center rounded-xl bg-[#0051FF] px-6 py-3.5 text-sm font-bold text-white transition hover:bg-[#0040CC]"
                         >
                           Get Started →
                         </Link>
