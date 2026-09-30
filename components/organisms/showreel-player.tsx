@@ -318,7 +318,7 @@ export function ShowreelPlayer() {
       
       {/* CTA */}
       <div className="flex justify-center mt-8">
-        <Link href="/contact" className="inline-block bg-slate-900 hover:bg-slate-800 text-white font-semibold py-4 px-10 rounded-full transition-all hover:scale-105">
+        <Link href="/contact" className="inline-block bg-[#0051FF] hover:bg-blue-700 !text-white font-semibold py-4 px-10 rounded-full transition-all hover:scale-105 shadow-xl shadow-blue-500/20">
           Start Your Project With HN →
         </Link>
       </div>
