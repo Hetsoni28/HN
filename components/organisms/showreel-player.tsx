@@ -214,7 +214,7 @@ export function ShowreelPlayer() {
             <Image src="/hn-logo.svg" alt="HN Logo" width={280} height={90} className="opacity-90" />
             <div className="flex items-center gap-4 text-[#0051FF] font-bold tracking-widest uppercase text-sm">
               <div className="flex items-center justify-center w-14 h-14 rounded-full bg-[#0051FF] text-white shadow-xl shadow-blue-500/30 transition-transform group-hover:scale-110">
-                <svg className="w-6 h-6 ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                <svg className="w-6 h-6 translate-x-[2px]" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
               </div>
               Watch Showreel
             </div>
