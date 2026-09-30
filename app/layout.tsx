@@ -8,6 +8,7 @@ import { FloatingEstimator } from '@/components/molecules/floating-estimator';
 import { CookieBanner } from '@/components/molecules/cookie-banner';
 import { OrganizationJsonLd, WebSiteJsonLd } from '@/components/molecules/structured-data';
 import { SkipLink } from '@/components/atoms/skip-link';
+import { WelcomeManager } from '@/components/welcome/WelcomeManager';
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://hn.studio';
 
@@ -67,6 +68,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://cdn.sanity.io" crossOrigin="anonymous" />
       </head>
       <body>
+        <WelcomeManager />
         <SkipLink />
         <OrganizationJsonLd />
         <WebSiteJsonLd />
