@@ -206,15 +206,20 @@ export function ShowreelPlayer() {
       >
         
         {/* Initial Poster State */}
-        <div className={`absolute inset-0 z-20 flex flex-col items-center justify-center bg-slate-50 transition-opacity duration-1000 ${!isPlaying && progress === 0 ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
-          <Image src="/hn-logo.svg" alt="HN Logo" width={240} height={80} className="mb-8 opacity-80" />
-          <button 
-            onClick={play}
-            className="flex items-center justify-center w-20 h-20 rounded-full bg-[#0051FF] text-white hover:bg-blue-700 transition-all hover:scale-110 shadow-xl shadow-blue-500/30 group"
-          >
-            <svg className="w-10 h-10 ml-2 transition-transform group-hover:scale-110" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-          </button>
-        </div>
+        <button 
+          onClick={play}
+          className={`absolute inset-0 w-full h-full z-20 flex flex-col items-center justify-center bg-slate-50 transition-all duration-1000 group ${!isPlaying && progress === 0 ? 'opacity-100 cursor-pointer hover:bg-slate-100' : 'opacity-0 pointer-events-none'}`}
+        >
+          <div className="flex flex-col items-center gap-10 transform transition-transform duration-700 group-hover:scale-105">
+            <Image src="/hn-logo.svg" alt="HN Logo" width={280} height={90} className="opacity-90" />
+            <div className="flex items-center gap-4 text-[#0051FF] font-bold tracking-widest uppercase text-sm">
+              <div className="flex items-center justify-center w-14 h-14 rounded-full bg-[#0051FF] text-white shadow-xl shadow-blue-500/30 transition-transform group-hover:scale-110">
+                <svg className="w-6 h-6 ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+              </div>
+              Watch Showreel
+            </div>
+          </div>
+        </button>
 
         {/* Media Layers */}
         <div className={`absolute inset-0 transition-opacity duration-1000 ${media.before ? 'opacity-100 scale-100' : 'opacity-0 scale-105'}`}>
