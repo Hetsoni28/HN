@@ -5,9 +5,9 @@ import { ReferralForm } from './referral-form';
 
 /* ── Metadata ── */
 export const metadata: Metadata = {
-  title: 'Refer a Friend, Earn ₹5,000 | HN Referral Program',
+  title: 'Refer a Friend, Earn 10% | HN Referral Program',
   description:
-    'Know someone who needs a website or app? Refer them to HN and earn ₹5,000 when they sign a contract. No limits — refer as many as you like.',
+    'Know someone who needs a website or app? Refer them to HN and earn 10% when they sign a contract. No limits — refer as many as you like.',
   keywords: [
     'referral program',
     'earn money',
@@ -31,7 +31,7 @@ const STEPS = [
   {
     n: '03',
     title: 'You get paid',
-    body: 'Once they sign a contract, we transfer ₹5,000 directly to your bank account or UPI.',
+    body: 'Once they sign a contract, we transfer your 10% reward directly to your bank account or UPI.',
   },
 ];
 
@@ -42,7 +42,7 @@ const FAQS = [
   },
   {
     q: 'Is there a limit?',
-    a: 'No limit — refer 10 friends, earn ₹50,000.',
+    a: 'No limit — refer as many friends as you want, and earn 10% on every project.',
   },
   {
     q: "What if my friend doesn't sign?",
@@ -54,12 +54,12 @@ const FAQS = [
   },
   {
     q: 'Can I refer more than one person?',
-    a: 'Absolutely. Each successful referral earns you ₹5,000.',
+    a: 'Absolutely. Each successful referral earns you a 10% commission.',
   },
 ];
 
 const PILLS = [
-  '₹5,000 per referral',
+  '10% per referral',
   'No limit on referrals',
   'Paid on contract signing',
 ];
@@ -79,13 +79,13 @@ export default function ReferralPage() {
               <br />
               Earn{' '}
               <span className="bg-gradient-to-r from-[#0051FF] to-[#4D8AFF] bg-clip-text text-transparent">
-                ₹5,000.
+                10%.
               </span>
             </h1>
 
             <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-gray-600">
               Know someone who needs a great website or app? Send them our way. When they sign a
-              contract with HN, you get ₹5,000. No limits — refer as many friends as you like.
+              contract with HN, you earn 10% of the project value. No limits — refer as many friends as you like.
             </p>
 
             {/* Stat pills */}

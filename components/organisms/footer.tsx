@@ -44,7 +44,7 @@ const NAV = [
       { href: '/estimate', label: 'Cost Estimator' },
       { href: '/brief',    label: 'Brief Generator' },
       { href: '/start',    label: 'Getting Started' },
-      { href: '/referral', label: 'Refer & Earn ₹5,000' },
+      { href: '/referral', label: 'Refer & Earn 10%' },
       { href: '/compare',  label: 'Compare Options' },
     ],
   },
