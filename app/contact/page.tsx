@@ -43,7 +43,14 @@ const CONTACT_DETAILS = [
   },
 ];
 
-export default function ContactPage() {
+type Props = {
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+};
+
+export default async function ContactPage({ searchParams }: Props) {
+  const params = await searchParams;
+  const project = params.project ? String(params.project) : undefined;
+
   return (
     <>
       {/* Hero */}
@@ -70,7 +77,7 @@ export default function ContactPage() {
 
             {/* Form */}
             <FadeIn>
-              <ContactForm />
+              <ContactForm initialProject={project} />
             </FadeIn>
 
             {/* Side info */}

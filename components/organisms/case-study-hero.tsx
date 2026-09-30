@@ -105,7 +105,7 @@ export function CaseStudyOverview({ project }: { project: Project }) {
                 ))}
               </div>
               <div className="mt-6 space-y-3">
-                <Button href="/contact" variant="primary" fullWidth>Start a similar project →</Button>
+                <Button href={`/contact?project=${encodeURIComponent(project.title)}`} variant="primary" fullWidth>Start a similar project →</Button>
                 <WhatsAppButton message={waMessage} fullWidth />
               </div>
             </div>

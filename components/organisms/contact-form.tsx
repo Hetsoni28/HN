@@ -53,9 +53,13 @@ const inputCls = (error?: string) =>
       : 'border-[#E2E5F1] bg-white text-slate-800 placeholder:text-slate-300 focus:border-[#0051FF]'
   }`;
 
-export function ContactForm() {
+export function ContactForm({ initialProject }: { initialProject?: string }) {
   const [state, action, pending] = useActionState(submitInquiry, initialState);
   const formRef = useRef<HTMLFormElement>(null);
+
+  const initialDescription = initialProject
+    ? `I saw the ${initialProject} project and I'm interested in building something similar.\n\n`
+    : '';
 
   if (state.status === 'success') {
     return (
@@ -144,6 +148,7 @@ export function ContactForm() {
             <Field label="Project Description" required error={state.errors?.description}>
               <textarea
                 name="description" rows={5}
+                defaultValue={initialDescription}
                 className={`${inputCls(state.errors?.description)} resize-none`}
                 required
               />
