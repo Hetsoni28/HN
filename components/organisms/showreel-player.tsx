@@ -205,6 +205,17 @@ export function ShowreelPlayer() {
         className="relative w-full aspect-video bg-white rounded-2xl overflow-hidden shadow-2xl border border-slate-200"
       >
         
+        {/* Initial Poster State */}
+        <div className={`absolute inset-0 z-20 flex flex-col items-center justify-center bg-slate-50 transition-opacity duration-1000 ${!isPlaying && progress === 0 ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
+          <Image src="/hn-logo.svg" alt="HN Logo" width={240} height={80} className="mb-8 opacity-80" />
+          <button 
+            onClick={play}
+            className="flex items-center justify-center w-20 h-20 rounded-full bg-[#0051FF] text-white hover:bg-blue-700 transition-all hover:scale-110 shadow-xl shadow-blue-500/30 group"
+          >
+            <svg className="w-10 h-10 ml-2 transition-transform group-hover:scale-110" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </button>
+        </div>
+
         {/* Media Layers */}
         <div className={`absolute inset-0 transition-opacity duration-1000 ${media.before ? 'opacity-100 scale-100' : 'opacity-0 scale-105'}`}>
           <Image src="/images/showreel/before.jpg" alt="Before" fill className="object-cover" priority />
