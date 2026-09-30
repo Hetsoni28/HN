@@ -12,42 +12,57 @@ export default function CookiePolicyPage() {
       eyebrow="Legal"
       title="Cookie Policy"
       lastUpdated="2025-09-01"
-      intro="This Cookie Policy explains how HN Digital Product Studio uses cookies and similar tracking technologies when you visit our website. By continuing to use our website, you consent to our use of cookies as described in this policy."
+      intro="This Cookie Policy explains what cookies are, which cookies our website (hn.studio) uses, and how you can control them. We keep our cookie usage minimal — we do not use advertising or tracking cookies."
       sections={[
         {
           heading: '1. What Are Cookies?',
-          content: 'Cookies are small text files placed on your device when you visit a website. They are widely used to make websites work efficiently, remember your preferences, and provide information to website owners about how their site is being used.',
-        },
-        {
-          heading: '2. Types of Cookies We Use',
           content: [
-            'Essential cookies: Strictly necessary for the website to function. These cannot be disabled and are set in response to actions you take such as filling in forms.',
-            'Analytics cookies: We use basic analytics to understand how visitors interact with our website — pages visited, time on site, and referral sources. This data is anonymised and not linked to any individual.',
-            'Preference cookies: These remember your settings and choices to provide a more personalised experience on return visits.',
+            'Cookies are small text files placed on your device by a website when you visit it. They help the website remember information about your visit, such as your preferences, to make your next visit easier and the site more useful.',
+            'Cookies cannot run programs or deliver viruses to your device. They are uniquely assigned to you and can only be read by the web server that issued them.',
           ],
         },
         {
-          heading: '3. Cookies We Do Not Use',
+          heading: '2. Cookies We Use',
           content: [
-            'We do not use advertising or tracking cookies.',
-            'We do not use cookies to build profiles of individual users for marketing purposes.',
-            'We do not share cookie data with third-party advertisers.',
+            'Strictly Necessary Cookies: These cookies are essential for our website to function correctly. They enable basic features such as page navigation and access to secure areas. Our website cannot function properly without these cookies, and they cannot be switched off.',
+            'Analytics Cookies: We may use anonymised analytics tools (such as Vercel Analytics) to understand how visitors interact with our website — for example, which pages are visited most and how long visitors stay. This data is aggregated and does not identify individual users. No personally identifiable information is collected through analytics cookies.',
+            'We do NOT use: advertising cookies, retargeting cookies, social media tracking cookies, or any cookies that profile you for commercial purposes.',
           ],
         },
         {
-          heading: '4. Third-Party Cookies',
-          content: 'Some pages may include embedded content or tools from third parties (such as Sanity for content management). These third parties may set their own cookies. We recommend reviewing the privacy policies of these services directly.',
+          heading: '3. Third-Party Cookies',
+          content: [
+            'Our website does not embed third-party advertising networks, social media widgets, or external analytics platforms that set their own tracking cookies.',
+            'If we ever add third-party integrations in the future, this policy will be updated accordingly.',
+          ],
         },
         {
-          heading: '5. Managing Cookies',
+          heading: '4. How to Control Cookies',
           content: [
-            'You can control and manage cookies through your browser settings. Most browsers allow you to refuse cookies, delete existing cookies, or be notified when a new cookie is set.',
-            'Please note that disabling certain cookies may affect the functionality of our website.',
+            'You can control and manage cookies through your browser settings. Most browsers allow you to refuse cookies, delete existing cookies, or be notified when a cookie is set.',
+            'To manage cookies in your browser, refer to the help section of your specific browser: Chrome, Firefox, Safari, or Edge.',
+            'Please note that disabling strictly necessary cookies may affect the functionality of our website.',
+          ],
+        },
+        {
+          heading: '5. Cookie Duration',
+          content: [
+            'Session cookies: These are temporary and are deleted when you close your browser.',
+            'Persistent cookies: These remain on your device for a set period (typically up to 12 months) or until you delete them manually.',
+            'Our analytics cookies, if present, are typically session-based or short-lived (under 30 days).',
           ],
         },
         {
           heading: '6. Changes to This Policy',
-          content: 'We may update this Cookie Policy from time to time to reflect changes in technology, legislation, or our data practices. Changes will be posted on this page with an updated revision date.',
+          content: [
+            'We may update this Cookie Policy as our website evolves. The "Last updated" date at the top reflects the most recent revision. We encourage you to review this page periodically.',
+          ],
+        },
+        {
+          heading: '7. Contact Us',
+          content: [
+            'If you have any questions about our use of cookies, please email us at contact.hnsolutions@gmail.com.',
+          ],
         },
       ]}
     />
