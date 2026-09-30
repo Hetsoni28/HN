@@ -63,7 +63,7 @@ export default function TermsPage() {
         {
           heading: '7. Limitation of Liability',
           content: [
-            'HN's liability for any claim arising from a project is limited to the total fees paid by you for that specific project.',
+            'HN\'s liability for any claim arising from a project is limited to the total fees paid by you for that specific project.',
             'We are not liable for any indirect, incidental, or consequential damages, including but not limited to loss of revenue, data loss, or business interruption.',
             'We do not guarantee specific business outcomes (such as sales, traffic, or rankings) as a result of our work.',
           ],
