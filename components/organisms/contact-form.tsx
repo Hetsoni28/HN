@@ -10,14 +10,7 @@ const PROJECT_TYPES = [
   'Custom Software', 'UI/UX Design', 'Other',
 ];
 
-const BUDGETS = [
-  'Under ₹50,000',
-  '₹50,000 – ₹1,50,000',
-  '₹1,50,000 – ₹5,00,000',
-  '₹5,00,000 – ₹15,00,000',
-  '₹15,00,000+',
-  'Not sure yet',
-];
+
 
 const TIMELINES = [
   'As soon as possible',
@@ -194,20 +187,12 @@ export function ContactForm() {
               </div>
             </Field>
 
-            <div className="grid gap-4 sm:grid-cols-2">
-              <Field label="Budget Range" required error={state.errors?.budget}>
-                <select name="budget" defaultValue="" className={`${inputCls(state.errors?.budget)} cursor-pointer`} required>
-                  <option value="" disabled>Select a range…</option>
-                  {BUDGETS.map((b) => <option key={b} value={b}>{b}</option>)}
-                </select>
-              </Field>
-              <Field label="Ideal Timeline" required error={state.errors?.timeline}>
+            <Field label="Ideal Timeline" required error={state.errors?.timeline}>
                 <select name="timeline" defaultValue="" className={`${inputCls(state.errors?.timeline)} cursor-pointer`} required>
                   <option value="" disabled>Select a timeline…</option>
                   {TIMELINES.map((t) => <option key={t} value={t}>{t}</option>)}
                 </select>
               </Field>
-            </div>
           </div>
         </div>
 
@@ -237,3 +222,5 @@ export function ContactForm() {
     </form>
   );
 }
+
+

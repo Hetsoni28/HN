@@ -12,7 +12,7 @@ const InquirySchema = z.object({
   company:     z.string().max(100).optional(),
   projectType: z.string().min(1, 'Please select a project type').max(60),
   description: z.string().min(20, 'Please describe your project in at least 20 characters').max(3000),
-  budget:      z.string().min(1, 'Please select a budget range').max(60),
+  
   timeline:    z.string().min(1, 'Please select a timeline').max(60),
   /* Honeypot — must be empty */
   website:     z.string().max(0, 'Bot detected'),
@@ -51,7 +51,7 @@ export async function submitInquiry(
     company:     sanitizeText(String(formData.get('company') ?? '')),
     projectType: sanitizeText(String(formData.get('projectType') ?? '')),
     description: sanitizeText(String(formData.get('description') ?? '')),
-    budget:      sanitizeText(String(formData.get('budget') ?? '')),
+    
     timeline:    sanitizeText(String(formData.get('timeline') ?? '')),
     website:     String(formData.get('website') ?? ''), // honeypot — don't sanitize (check raw)
   };
@@ -116,7 +116,7 @@ export async function submitInquiry(
 
           <h3>Project</h3>
           <p><strong>Type:</strong> ${data.projectType}</p>
-          <p><strong>Budget:</strong> ${data.budget}</p>
+          
           <p><strong>Timeline:</strong> ${data.timeline}</p>
           <p><strong>Attachment:</strong> ${fileBuffer ? fileName : 'None'}</p>
 
