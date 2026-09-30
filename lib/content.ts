@@ -68,6 +68,7 @@ export type TeamMember = {
   github?: string;
   linkedin?: string;
   twitter?: string;
+  instagram?: string;
   displayOrder?: number;
 };
 

@@ -1,9 +1,11 @@
 import { createClient } from 'next-sanity';
 
+const token = process.env.SANITY_API_TOKEN;
+
 /**
  * Primary Sanity client — CDN-cached with ISR revalidation.
  *
- * • useCdn: true   → serve from Sanity's global CDN edge cache
+ * • useCdn: false when a token is present (server-side authenticated fetches)
  * • The `next: { revalidate }` option is passed per-fetch in content.ts
  *   so each query can have its own TTL independent of the client config.
  */
@@ -11,9 +13,10 @@ export const client = createClient({
   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || '',
   dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || 'production',
   apiVersion: process.env.NEXT_PUBLIC_SANITY_API_VERSION || '2026-01-01',
-  useCdn: true,
+  useCdn: !token,        // false when token present (bypasses CDN for auth'd reads)
   perspective: 'published',
-  stega: false, // disable visual editing overlays in production
+  stega: false,          // disable visual editing overlays in production
+  token,                 // undefined in browser/public context — safe to pass
 });
 
 /** Revalidation intervals for ISR */

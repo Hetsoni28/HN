@@ -10,7 +10,7 @@ interface WelcomeScreenProps {
 }
 
 export function WelcomeScreen({ onComplete, isVisible }: WelcomeScreenProps) {
-  const timeoutRef = useRef<ReturnType<typeof setTimeout>>();
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
   const logoControls = useAnimation();
   const tagControls = useAnimation();
 

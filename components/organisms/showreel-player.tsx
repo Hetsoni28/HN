@@ -29,7 +29,7 @@ export function ShowreelPlayer() {
   const [currentSubtitle, setCurrentSubtitle] = useState('Click play to start the cinematic experience...');
   
   const containerRef = useRef<HTMLDivElement>(null);
-  const reqRef = useRef<number>();
+  const reqRef = useRef<number | undefined>(undefined);
   const startTimeRef = useRef<number | null>(null);
   const nextVoiceIndex = useRef(0);
   const synthVoice = useRef<SpeechSynthesisVoice | null>(null);
