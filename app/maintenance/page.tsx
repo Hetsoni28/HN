@@ -6,10 +6,10 @@ import { Button } from '@/components/atoms/button';
 export const metadata: Metadata = {
   title: 'Website Maintenance Plans | HN — Keep Your Product Running Perfectly',
   description:
-    'Monthly website and app maintenance plans from HN. We handle updates, security patches, performance monitoring, and bug fixes so you can focus on your business.',
+    'Bi-monthly website and app maintenance plans from HN. We handle updates, security patches, performance monitoring, and bug fixes so you can focus on your business.',
   keywords: [
     'website maintenance plan',
-    'monthly website support',
+    'bi-monthly website support',
     'web app maintenance India',
   ],
 };
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 const TRUST_PILLS = [
   '99.9% uptime goal',
   '48h response time',
-  'Month-to-month, no lock-in',
+  'Flexible, no lock-in',
 ];
 
 type Plan = {
@@ -38,10 +38,10 @@ const PLANS: Plan[] = [
     price: '₹8,000',
     popular: false,
     features: [
-      'Monthly security updates & patches',
-      'CMS content updates (up to 4/month)',
+      'Security updates & patches (every 2 months)',
+      'CMS content updates (up to 4 updates)',
       'Uptime monitoring (24/7 alerts)',
-      'Monthly performance report',
+      'Performance report (every 2 months)',
       'Email support (72h response)',
     ],
     bestFor: 'Small business websites',
@@ -54,9 +54,9 @@ const PLANS: Plan[] = [
     features: [
       'Everything in Starter, plus:',
       'Priority bug fixes (48h response)',
-      'CMS content updates (up to 12/month)',
-      'Google Analytics insights monthly',
-      'Minor design tweaks (up to 2h/month)',
+      'CMS content updates (up to 12 updates)',
+      'Google Analytics insights report',
+      'Minor design tweaks (up to 2h)',
       'WhatsApp support',
     ],
     bestFor: 'Growing startups and e-commerce',
@@ -68,12 +68,12 @@ const PLANS: Plan[] = [
     popular: false,
     features: [
       'Everything in Growth, plus:',
-      'Dedicated engineer (4h/month)',
-      'Feature additions (up to 4h dev time/month)',
-      'Weekly performance reports',
+      'Dedicated engineer (4h included)',
+      'Feature additions (up to 4h dev time)',
+      'Detailed performance reports',
       'Database backups & optimisation',
       'Phone + WhatsApp support (24h response)',
-      'Quarterly strategy call',
+      'Strategy call included',
     ],
     bestFor: 'SaaS platforms and web apps',
   },
@@ -83,7 +83,7 @@ const INCLUDED = [
   { label: 'SSL & Security Monitoring' },
   { label: 'Performance Optimisation' },
   { label: 'Regular Backups' },
-  { label: 'Monthly Reports' },
+  { label: 'Bi-Monthly Reports' },
   { label: 'Dependency Updates' },
   { label: 'Downtime Alerts' },
 ];
@@ -102,14 +102,14 @@ const STEPS = [
   {
     num: '03',
     title: 'Ongoing care',
-    body: 'Every month, we handle updates, monitor performance, and send you a detailed report.',
+    body: 'Every 2 months, we handle updates, monitor performance, and send you a detailed report.',
   },
 ];
 
 const FAQS = [
   {
     q: 'Can I cancel anytime?',
-    a: "Yes — all plans are month-to-month. Cancel with 30 days' notice, no questions asked.",
+    a: "Yes — all plans are flexible. Cancel with 30 days' notice, no questions asked.",
   },
   {
     q: 'What if I need more work than the plan covers?',
@@ -121,7 +121,7 @@ const FAQS = [
   },
   {
     q: 'How do I pay?',
-    a: 'Monthly invoice via bank transfer or UPI. Auto-pay setup available.',
+    a: 'Invoice every 2 months via bank transfer or UPI. Auto-pay setup available.',
   },
 ];
 
@@ -212,7 +212,7 @@ export default function MaintenancePage() {
                           isPopular ? 'text-white/70' : 'text-slate-400',
                         ].join(' ')}
                       >
-                        / month
+                        / 2 months
                       </span>
                     </div>
 
