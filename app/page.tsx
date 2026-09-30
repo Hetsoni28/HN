@@ -8,6 +8,7 @@ import { TransformationSection } from '@/components/organisms/transformation-sec
 import { WhyHN }           from '@/components/organisms/why-hn';
 import { TestimonialsSection } from '@/components/organisms/testimonials-section';
 import { ServicesSection } from '@/components/organisms/services-section';
+import { OffersStrip }    from '@/components/organisms/offers-strip';
 import { ProcessSection }  from '@/components/organisms/process-section';
 import { TechSection }     from '@/components/organisms/tech-section';
 import { AboutSection }    from '@/components/organisms/about-section';
@@ -49,6 +50,7 @@ export default async function Home() {
       <TransformationSection />
       <WhyHN />
       <TestimonialsSection testimonials={testimonials} />
+      <OffersStrip />
       <ServicesSection />
       <ProcessSection />
       <TechSection />

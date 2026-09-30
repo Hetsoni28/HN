@@ -475,6 +475,16 @@ export const FALLBACK_TEAM: TeamMember[] = [
     github: '#',
     displayOrder: 2,
   },
+  {
+    _id: 'tm3',
+    name: 'Heer Soni',
+    role: 'Marketing & SMM Manager',
+    tagline: 'Growing brands online — one post, one campaign at a time.',
+    bio: 'Handles all things marketing at HN — from social media strategy and content creation to campaigns that build real brand awareness. The voice behind HN\'s online presence.',
+    skills: ['Social Media', 'Content Strategy', 'Brand Building', 'Instagram', 'Canva', 'Growth Marketing'],
+    instagram: '#',
+    displayOrder: 3,
+  },
 ];
 
 export async function getTeamMembers(): Promise<TeamMember[]> {

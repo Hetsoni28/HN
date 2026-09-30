@@ -7,7 +7,7 @@ import { Button } from '@/components/atoms/button';
 
 export const metadata: Metadata = {
   title: 'About — HN',
-  description: 'HN is a two-person digital product studio founded by Het Soni and Neel Patel. We build websites, web apps, SaaS platforms, mobile apps, and AI solutions.',
+  description: 'Meet the HN team — Het Soni (Full Stack Developer), Neel Patel (Web Developer), and Heer Soni (Marketing & SMM Manager). We build websites, web apps, SaaS platforms, and AI solutions.',
 };
 
 export default async function AboutPage() {
