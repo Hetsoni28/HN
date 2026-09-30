@@ -324,14 +324,6 @@ export function ShowreelPlayer() {
         />
       </div>
 
-      {/* Subtitle / Voice tracker */}
-      <div className="bg-slate-50 border-l-4 border-blue-600 p-6 rounded-r-xl">
-        <p className="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-2">Live Voiceover Output</p>
-        <p className="text-xl md:text-2xl font-medium text-slate-800 italic transition-opacity">
-          {currentSubtitle}
-        </p>
-      </div>
-      
       {/* CTA */}
       <div className="flex justify-center mt-8">
         <Link href="/contact" className="inline-block bg-[#0051FF] hover:bg-blue-700 !text-white font-semibold py-4 px-10 rounded-full transition-all hover:scale-105 shadow-xl shadow-blue-500/20">
