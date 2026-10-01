@@ -41,8 +41,8 @@ export default async function ServiceDetailPage({
   const service = await getServiceBySlug(slug);
   if (!service) notFound();
 
-  const isWebsites = slug === 'websites';
   const heroImages: Record<string, string> = {
+    'websites': '/images/websites-hero.png',
     'web-applications': '/service-webapps-hero.png',
     'mobile-applications': '/service-mobileapps-hero.png',
     'ai-solutions': '/service-ai-hero.png',
@@ -54,131 +54,38 @@ export default async function ServiceDetailPage({
 
   return (
     <>
-      {/* ── 1. Hero ── */}
-      {isWebsites ? (
-        <section className="relative w-full bg-gradient-to-b from-[#EBF2FF] via-[#F4F7FF] to-[#F8FAFC] border-b border-slate-200/80 overflow-hidden pt-8 pb-12">
-          {/* Soft Blurred Ambient Glow Orbs */}
-          <div className="pointer-events-none absolute inset-0 z-0">
-            <div
-              className="absolute -left-20 -top-20 h-96 w-96 rounded-full bg-[#38A1FF]/20 blur-3xl"
-              style={{ transform: 'translate3d(0,0,0)' }}
-            />
-            <div
-              className="absolute right-0 top-0 h-[500px] w-[500px] rounded-full bg-[#00D2FF]/15 blur-3xl"
-              style={{ transform: 'translate3d(0,0,0)' }}
-            />
-            <div
-              className="absolute left-1/2 top-1/4 h-80 w-80 -translate-x-1/2 rounded-full bg-[#0051FF]/10 blur-3xl"
-              style={{ transform: 'translate3d(0,0,0)' }}
+      {/* 1. Hero */}
+      {heroImage ? (
+        <section className="relative section overflow-hidden min-h-[60vh] flex flex-col justify-center py-20 md:py-32">
+          <div className="absolute inset-0 -z-20">
+            <Image
+              src={heroImage}
+              alt={`${service.title} Background`}
+              fill
+              className="object-cover object-center"
+              priority
             />
           </div>
-
           <div className="container relative z-10">
             <FadeIn>
               <Breadcrumb label={service.title} className="mb-6" />
-
-              <div className="flex flex-col items-start gap-4">
-                <div className="inline-flex items-center gap-2 rounded-full border border-[#0051FF]/25 bg-white/80 px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-[#0051FF] shadow-sm backdrop-blur-md">
-                  <span className="h-2 w-2 rounded-full bg-[#0051FF] animate-pulse" />
-                  Websites & Platforms
-                </div>
-
-                <h1 className="max-w-4xl text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl md:text-5xl lg:text-6xl">
-                  Fast, modern websites built to{' '}
-                  <span className="bg-gradient-to-r from-[#0051FF] via-[#0070F3] to-[#00D2FF] bg-clip-text text-transparent">
-                    convert.
-                  </span>
-                </h1>
-
-                <p className="max-w-2xl text-base font-medium text-slate-600 sm:text-lg md:text-xl leading-relaxed">
-                  A great website is your most powerful sales and trust-building tool. We build marketing sites, corporate portals, and content platforms with Core Web Vitals ≥ 90 and sub-2s load times.
-                </p>
-
-                <div className="mt-3 flex flex-wrap items-center gap-3">
-                  <Button href="/contact" variant="primary" className="shadow-lg shadow-blue-500/30">
-                    Start Your Project →
-                  </Button>
-                  <Button href="/estimate" variant="secondary">
-                    Estimate Cost
-                  </Button>
-                </div>
-              </div>
-            </FadeIn>
-          </div>
-
-          {/* Panoramic Artwork Showcase Frame (Ultra-Sharp 4K Serving) */}
-          <div className="relative w-full max-w-[1920px] mx-auto overflow-hidden px-4 sm:px-6 lg:px-8 mt-10">
-            <FadeIn delay={0.15}>
-              <div className="relative w-full overflow-hidden rounded-3xl border border-white/90 bg-gradient-to-b from-white via-white to-[#F0F4FF] p-2 shadow-[0_20px_60px_-15px_rgba(0,81,255,0.18)] transition-all duration-500 hover:shadow-[0_25px_70px_-15px_rgba(0,81,255,0.25)]">
-                <Image
-                  src="/images/websites-hero.png"
-                  alt="HN Studio Websites & Platforms Hero Artwork"
-                  width={2560}
-                  height={1096}
-                  priority
-                  fetchPriority="high"
-                  unoptimized
-                  style={{ imageRendering: '-webkit-optimize-contrast', transform: 'translate3d(0,0,0)' }}
-                  className="w-full h-auto object-cover block rounded-2xl contrast-[1.03] brightness-[1.01]"
-                />
-              </div>
-            </FadeIn>
-          </div>
-
-          {/* Feature Badges Bar */}
-          <div className="container relative z-10 mt-8">
-            <FadeIn delay={0.2}>
-              <div className="flex flex-wrap justify-center gap-2.5 sm:gap-4">
-                {[
-                  { icon: '🌐', label: 'Custom Design — No Templates' },
-                  { icon: '⚡', label: 'Lighthouse Score 99/100' },
-                  { icon: '✏️', label: 'Sanity CMS Integration' },
-                  { icon: '📈', label: 'SEO Growth +320%' },
-                  { icon: '🚀', label: 'Sub-2s Load Speed' },
-                ].map((item) => (
-                  <div
-                    key={item.label}
-                    className="flex items-center gap-2 rounded-full border border-slate-200/80 bg-white/95 backdrop-blur-md px-4 py-2 text-xs sm:text-sm font-semibold text-slate-700 shadow-sm transition hover:border-[#0051FF]/40 hover:bg-[#EEF0FF] hover:text-[#0051FF] hover:scale-105"
-                  >
-                    <span>{item.icon}</span>
-                    <span>{item.label}</span>
+              <div className="mt-5 flex flex-col items-start gap-5">
+                {service.icon !== undefined && (
+                  <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-white/90 backdrop-blur-sm text-[#0051FF] shadow-sm">
+                    <ServiceIcon slug={service.slug.current} />
                   </div>
-                ))}
+                )}
+                <div className="max-w-3xl">
+                  <h1 className="text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl md:text-6xl lg:text-7xl [text-shadow:0_0_40px_white,0_0_15px_white,0_0_5px_white]">{service.title}</h1>
+                  {service.tagline && (
+                    <p className="mt-6 text-xl font-medium leading-relaxed text-slate-900 [text-shadow:0_0_30px_white,0_0_10px_white,0_0_5px_white] sm:text-2xl">{service.tagline}</p>
+                  )}
+                </div>
               </div>
             </FadeIn>
           </div>
         </section>
-              ) : heroImage ? (
-          <section className="relative section overflow-hidden min-h-[50vh] flex flex-col justify-center py-20 md:py-32">
-            <div className="absolute inset-0 -z-20">
-              <Image
-                src={heroImage}
-                alt={`${service.title} Background`}
-                fill
-                className="object-cover object-center"
-                priority
-              />
-            </div>
-            <div className="container relative z-10">
-              <FadeIn>
-                <Breadcrumb label={service.title} className="mb-6" />
-                <div className="mt-5 flex items-center gap-5">
-                  {service.icon !== undefined && (
-                    <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-white/90 backdrop-blur-sm text-[#0051FF] shadow-sm">
-                      <ServiceIcon slug={service.slug.current} />
-                    </div>
-                  )}
-                  <div className="max-w-2xl">
-                    <h1 className="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl md:text-5xl [text-shadow:0_0_30px_white,0_0_10px_white]">{service.title}</h1>
-                    {service.tagline && (
-                      <p className="mt-4 text-lg font-medium leading-relaxed text-slate-900 [text-shadow:0_0_20px_white,0_0_5px_white] sm:text-xl">{service.tagline}</p>
-                    )}
-                  </div>
-                </div>
-              </FadeIn>
-            </div>
-          </section>
-        ) : (
+      ) : (
         <section className="section bg-[#EEF0FF]">
           <div className="container">
             <FadeIn>
