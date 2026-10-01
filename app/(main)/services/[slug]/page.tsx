@@ -32,7 +32,6 @@ export async function generateMetadata({
   };
 }
 
-/* ── Page ── */
 export default async function ServiceDetailPage({
   params,
 }: {
@@ -42,15 +41,22 @@ export default async function ServiceDetailPage({
   const service = await getServiceBySlug(slug);
   if (!service) notFound();
 
+  const heroImages: Record<string, string> = {
+    'websites': '/service-websites-hero.jpg',
+    'web-applications': '/service-webapps-hero.png',
+    'mobile-applications': '/service-mobileapps-hero.png',
+  };
+  const heroImage = heroImages[service.slug.current];
+
   return (
     <>
       {/* ── 1. Hero ── */}
-      <section className={`relative section overflow-hidden ${service.slug.current === 'websites' ? 'min-h-[50vh] flex flex-col justify-center py-20' : 'bg-[#EEF0FF]'}`}>
-        {service.slug.current === 'websites' && (
+      <section className={`relative section overflow-hidden ${heroImage ? 'min-h-[50vh] flex flex-col justify-center py-20' : 'bg-[#EEF0FF]'}`}>
+        {heroImage && (
           <div className="absolute inset-0 -z-20">
             <Image
-              src="/service-websites-hero.jpg"
-              alt="Websites & Platforms Background"
+              src={heroImage}
+              alt={`${service.title} Background`}
               fill
               className="object-cover object-center"
               priority
