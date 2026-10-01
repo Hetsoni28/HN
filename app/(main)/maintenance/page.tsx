@@ -145,9 +145,9 @@ export default function MaintenancePage() {
         </div>
 
         <div className="container relative z-10 flex justify-center">
-          <FadeIn className="w-full max-w-4xl">
+          <div className="w-full max-w-4xl">
             {/* Glassmorphism Card for Text Readability */}
-            <div className="rounded-3xl border border-white/40 bg-white/70 p-8 shadow-2xl backdrop-blur-xl sm:p-14 text-center">
+            <div className="p-8 sm:p-14 text-center">
               <h1 className="mx-auto max-w-3xl text-4xl font-extrabold leading-tight tracking-tight text-slate-900 sm:text-5xl md:text-6xl">
                 Your Product Deserves
                 <br />
@@ -172,7 +172,7 @@ export default function MaintenancePage() {
                 ))}
               </div>
             </div>
-          </FadeIn>
+          </div>
         </div>
       </section>
 
