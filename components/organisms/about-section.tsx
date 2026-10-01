@@ -54,7 +54,7 @@ export function AboutSection() {
 
             <div className="mt-8 flex flex-wrap gap-3">
               <Button href="/about" variant="primary">
-                Meet the team →
+                Discover our methodology →
               </Button>
               <Button href="/contact" variant="secondary">
                 Work with us
