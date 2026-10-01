@@ -32,6 +32,7 @@ function buildCSP(): string {
     'script-src':      "'self' 'unsafe-inline' 'unsafe-eval'",
     'style-src':       "'self' 'unsafe-inline'",
     'img-src':         "'self' data: blob: https://cdn.sanity.io",
+    'media-src':       "'self' data: blob:",
     'font-src':        "'self' data:",
     'connect-src':     "'self' https://cdn.sanity.io https://*.api.sanity.io https://api.resend.com",
     'frame-src':       "'none'",
@@ -90,6 +91,6 @@ export function proxy(request: NextRequest) {
 
 export const config = {
   matcher: [
-    '/((?!_next/static|_next/image|favicon.ico|icon.svg|apple-icon.svg|.*\\.png|.*\\.jpg|.*\\.svg|.*\\.ico|.*\\.webp|.*\\.avif).*)',
+    '/((?!_next/static|_next/image|favicon.ico|icon.svg|apple-icon.svg|.*\\.png|.*\\.jpg|.*\\.svg|.*\\.ico|.*\\.webp|.*\\.avif|.*\\.mp4).*)',
   ],
 };

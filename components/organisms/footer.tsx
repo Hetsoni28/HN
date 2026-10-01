@@ -330,14 +330,7 @@ export function Footer() {
         {/* ── Bottom bar ── */}
         <div className="border-t border-white/15 bg-black/10">
           <div className="container flex flex-col items-start justify-between gap-4 py-6 text-xs text-[#D0E1FF] sm:flex-row sm:items-center">
-            <div className="flex items-center gap-3">
-              {/* Availability pill */}
-              <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-300/40 bg-emerald-400/20 px-3 py-1 text-[11px] font-bold text-white shadow-sm">
-                <span className="h-2 w-2 rounded-full bg-emerald-300 animate-pulse" />
-                Taking new projects
-              </span>
-              <span>© {year} HN. All rights reserved.</span>
-            </div>
+            <span>© {year} HN. All rights reserved.</span>
 
             <div className="flex flex-wrap gap-5">
               {LEGAL.map(({ href, label }) => (
