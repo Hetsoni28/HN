@@ -6,7 +6,6 @@ import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Logo } from '@/components/atoms/logo';
 import { Button } from '@/components/atoms/button';
-import { AvailabilityBadge } from '@/components/atoms/availability-badge';
 
 /* ─────────────────────────── Data ─────────────────────────── */
 
@@ -233,7 +232,7 @@ export function Navbar() {
 
         {/* ── Desktop right ── */}
         <div className="hidden items-center gap-3 lg:flex">
-          <AvailabilityBadge />
+          
           <Button href="/contact" variant="primary" className="text-sm px-5 py-2.5">
             Start a Project →
           </Button>

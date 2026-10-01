@@ -4,7 +4,6 @@ import { useRef, useEffect } from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/atoms/button';
-import { AvailabilityBadge } from '@/components/atoms/availability-badge';
 import { AnimatedCounter } from '@/components/molecules/animated-counter';
 
 const container = {
@@ -102,9 +101,7 @@ export function HeroSection() {
       >
         <div className="max-w-lg sm:max-w-xl md:max-w-2xl">
           
-          <motion.div variants={item} className="mb-6">
-            <AvailabilityBadge />
-          </motion.div>
+          
 
           {/* Headline */}
           <motion.h1
