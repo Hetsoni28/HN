@@ -33,7 +33,7 @@ function buildCSP(): string {
     'style-src':       "'self' 'unsafe-inline'",
     'img-src':         "'self' data: blob: https://cdn.sanity.io",
     'font-src':        "'self' data:",
-    'connect-src':     "'self' https://cdn.sanity.io https://api.sanity.io https://api.resend.com",
+    'connect-src':     "'self' https://cdn.sanity.io https://*.api.sanity.io https://api.resend.com",
     'frame-src':       "'none'",
     'object-src':      "'none'",
     'base-uri':        "'self'",
