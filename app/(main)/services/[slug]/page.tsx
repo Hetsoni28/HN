@@ -56,29 +56,38 @@ export default async function ServiceDetailPage({
     <>
       {/* 1. Hero */}
       {heroImage ? (
-        <section className="relative section overflow-hidden min-h-[60vh] flex flex-col justify-center py-20 md:py-32">
+        <section className="relative section overflow-hidden min-h-[70vh] flex flex-col justify-center py-20 md:py-32">
+          {/* Background Layer with Left-to-Right Fade */}
           <div className="absolute inset-0 -z-20">
             <Image
               src={heroImage}
               alt={`${service.title} Background`}
               fill
-              className="object-cover object-center"
+              className="object-cover object-right md:object-center"
               priority
             />
+            {/* White gradient mask: Solid white on the left for text, completely transparent on the right for the image */}
+            <div className="absolute inset-0 bg-gradient-to-r from-white via-white/80 to-transparent sm:via-white/70 sm:to-transparent" />
           </div>
+          
           <div className="container relative z-10">
             <FadeIn>
               <Breadcrumb label={service.title} className="mb-6" />
               <div className="mt-5 flex flex-col items-start gap-5">
                 {service.icon !== undefined && (
-                  <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-white/90 backdrop-blur-sm text-[#0051FF] shadow-sm">
+                  <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-white/90 shadow-sm text-[#0051FF] border border-[#0051FF]/10">
                     <ServiceIcon slug={service.slug.current} />
                   </div>
                 )}
-                <div className="max-w-3xl">
-                  <h1 className="text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl md:text-6xl lg:text-7xl [text-shadow:0_0_40px_white,0_0_15px_white,0_0_5px_white]">{service.title}</h1>
+                <div className="max-w-2xl">
+                  {/* Dark text sitting cleanly on the white part of the gradient */}
+                  <h1 className="text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl md:text-6xl lg:text-7xl">
+                    {service.title}
+                  </h1>
                   {service.tagline && (
-                    <p className="mt-6 text-xl font-medium leading-relaxed text-slate-900 [text-shadow:0_0_30px_white,0_0_10px_white,0_0_5px_white] sm:text-2xl">{service.tagline}</p>
+                    <p className="mt-6 text-xl font-medium leading-relaxed text-slate-700 sm:text-2xl">
+                      {service.tagline}
+                    </p>
                   )}
                 </div>
               </div>
