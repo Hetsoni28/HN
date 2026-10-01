@@ -15,7 +15,7 @@ const item = {
   show:   { opacity: 1, y: 0, transition: { duration: 0.6 } },
 };
 
-const TAGS = ['Modern', 'Responsive', 'Scalable', 'Secure'];
+const TAGS = ['Enterprise-Grade', 'Scalable Architecture', 'Secure by Design', 'High Performance'];
 
 export function HeroSection() {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -106,11 +106,11 @@ export function HeroSection() {
           {/* Headline */}
           <motion.h1
             variants={item}
-            className="text-4xl font-bold leading-[1.08] tracking-tight text-[#0B111E] sm:text-5xl md:text-6xl xl:text-[5rem]"
+            className="text-4xl font-black leading-[1.08] tracking-tight text-[#0B111E] sm:text-5xl md:text-6xl xl:text-[5rem]"
           >
-            We Create<br />
-            <span className="gradient-text">Website &amp;</span><br />
-            Web Application
+            Engineering<br />
+            <span className="gradient-text">Enterprise</span><br />
+            Digital Platforms
           </motion.h1>
 
           {/* Attribute tags */}

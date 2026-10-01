@@ -16,14 +16,13 @@ import { AboutSection }    from '@/components/organisms/about-section';
 import { FaqSection }      from '@/components/organisms/faq-section';
 import { FinalCta }        from '@/components/organisms/final-cta';
 import { Marquee }         from '@/components/molecules/marquee';
-import { GithubActivity } from '@/components/organisms/github-activity';
 
 export const metadata: Metadata = {
   title: 'HN Studio — Digital Product Studio',
-  description: 'HN is a two-person digital product studio building websites, web apps, SaaS platforms, mobile apps, and AI solutions for ambitious businesses.',
+  description: 'HN is a premium technology company engineering scalable software, enterprise web platforms, and AI solutions for ambitious businesses globally.',
   openGraph: {
     title: 'HN Studio — Digital Product Studio',
-    description: 'HN is a two-person digital product studio building websites, web apps, SaaS platforms, mobile apps, and AI solutions for ambitious businesses.',
+    description: 'HN is a premium technology company engineering scalable software, enterprise web platforms, and AI solutions for ambitious businesses globally.',
     url: 'https://hn.studio',
     type: 'website',
   },
@@ -58,8 +57,7 @@ export default async function Home() {
       <TechSection />
       <AboutSection />
       <FaqSection faqs={faqs} />
-      <GithubActivity />
-      <FinalCta />
+            <FinalCta />
     </>
   );
 }
