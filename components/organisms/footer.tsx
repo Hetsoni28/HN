@@ -113,7 +113,7 @@ export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="relative overflow-hidden bg-[linear-gradient(135deg,#2A7AF5_0%,#1D6BF0_35%,#1558DB_70%,#1B3FBF_100%)] text-white selection:bg-white selection:text-[#1558DB] [text-shadow:0_1px_1px_rgba(8,35,110,0.22)]">
+    <footer className="relative overflow-hidden bg-[#050505] text-white selection:bg-[#0051FF] selection:text-white">
 
       {/* ── Soft Blurred Ambient Glows ── */}
       <div className="pointer-events-none absolute inset-0 z-0">
