@@ -153,7 +153,7 @@ export default async function ServiceDetailPage({
             <div className="absolute inset-0 -z-20">
               <Image
                 src={heroImage}
-                alt={${service.title} Background}
+                alt={`${service.title} Background`}
                 fill
                 className="object-cover object-center"
                 priority
