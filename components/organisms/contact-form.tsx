@@ -2,7 +2,7 @@
 
 import { useActionState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { submitInquiry, type FormState } from '@/app/contact/actions';
+import { submitInquiry, type FormState } from '@/app/(main)/contact/actions';
 
 const PROJECT_TYPES = [
   'Website', 'Web Application', 'Mobile Application',
