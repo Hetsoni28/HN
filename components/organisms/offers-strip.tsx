@@ -6,9 +6,9 @@ import { motion } from 'framer-motion';
 const OFFERS = [
   {
     tag: 'Earn Money',
-    title: 'Refer a Friend,\nEarn ₹5,000',
+    title: 'Refer a Friend,\nEarn 10%',
     description:
-      'Know someone who needs a website or app? Send them our way — and get ₹5,000 cash when they sign a contract. No cap on referrals.',
+      'Know someone who needs a website or app? Send them our way — and get 10% commission cash when they sign a contract. No cap on referrals.',
     cta: 'Start Referring →',
     href: '/referral',
     gradient: 'from-[#0051FF] to-[#0070F3]',
