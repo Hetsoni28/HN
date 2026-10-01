@@ -131,45 +131,46 @@ const FAQS = [
 export default function MaintenancePage() {
   return (
     <>
-                  {/* A) Hero */}
-      <section className="relative overflow-hidden bg-[#EEF0FF] pt-28 pb-32">
-        {/* Background Image Layer */}
+                        {/* A) Hero */}
+      <section className="relative overflow-hidden bg-[#EEF0FF] py-24 md:py-32">
+        {/* Background Image Layer - Full Opacity */}
         <div className="absolute inset-0 z-0">
           <Image
             src="/maintenance-hero.png"
             alt="Website Maintenance Background"
             fill
             priority
-            className="object-cover object-center opacity-70"
+            className="object-cover object-center"
           />
-          {/* Subtle white radial gradient overlay to make text highly readable in the center */}
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.85)_0%,rgba(238,240,255,0.4)_100%)]" />
         </div>
 
-        <div className="container relative z-10 text-center">
-          <FadeIn>
-            <h1 className="mx-auto max-w-3xl text-5xl font-bold leading-tight tracking-tight text-slate-900 md:text-6xl">
-              Your Product Deserves
-              <br />
-              Expert Aftercare.
-            </h1>
-            <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-slate-700">
-              Most agencies disappear after launch. We don&apos;t. Our maintenance plans keep your
-              website and app fast, secure, and always up-to-date — so you can focus on growing
-              your business.
-            </p>
+        <div className="container relative z-10 flex justify-center">
+          <FadeIn className="w-full max-w-4xl">
+            {/* Glassmorphism Card for Text Readability */}
+            <div className="rounded-3xl border border-white/40 bg-white/70 p-8 shadow-2xl backdrop-blur-xl sm:p-14 text-center">
+              <h1 className="mx-auto max-w-3xl text-4xl font-extrabold leading-tight tracking-tight text-slate-900 sm:text-5xl md:text-6xl">
+                Your Product Deserves
+                <br />
+                <span className="text-[#0051FF]">Expert Aftercare.</span>
+              </h1>
+              <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-slate-700">
+                Most agencies disappear after launch. We don&apos;t. Our maintenance plans keep your
+                website and app fast, secure, and always up-to-date — so you can focus on growing
+                your business.
+              </p>
 
-            {/* Trust pills */}
-            <div className="mt-8 flex flex-wrap justify-center gap-3">
-              {TRUST_PILLS.map((pill) => (
-                <span
-                  key={pill}
-                  className="inline-flex items-center gap-2 rounded-full border border-[#0051FF]/20 bg-white/80 backdrop-blur-md px-5 py-2 text-sm font-semibold text-[#0051FF] shadow-sm"
-                >
-                  <span className="h-1.5 w-1.5 rounded-full bg-[#0051FF]" aria-hidden="true" />
-                  {pill}
-                </span>
-              ))}
+              {/* Trust pills */}
+              <div className="mt-8 flex flex-wrap justify-center gap-3">
+                {TRUST_PILLS.map((pill) => (
+                  <span
+                    key={pill}
+                    className="inline-flex items-center gap-2 rounded-full border border-[#0051FF]/20 bg-white px-5 py-2 text-sm font-semibold text-[#0051FF] shadow-sm transition hover:border-[#0051FF]/50"
+                  >
+                    <span className="h-1.5 w-1.5 rounded-full bg-[#0051FF]" aria-hidden="true" />
+                    {pill}
+                  </span>
+                ))}
+              </div>
             </div>
           </FadeIn>
         </div>
