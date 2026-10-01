@@ -101,7 +101,7 @@ export function AboutTeam({ members }: { members: TeamMember[] }) {
           </p>
         </FadeIn>
 
-        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-2">
           {members.map((m, i) => (
             <FadeIn key={m._id} delay={i * 0.1}>
               <div className="group flex h-full flex-col rounded-3xl border border-[#E2E5F1] bg-white p-8 transition duration-300 hover:border-[#0051FF]/20 hover:shadow-xl hover:shadow-[#0051FF]/8">
