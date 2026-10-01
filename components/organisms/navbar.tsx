@@ -26,7 +26,8 @@ const COMPANY_MENU = [
   { label: 'Portfolio',        href: '/work',     desc: 'Case studies of our best work',    icon: '💼' },
   { label: 'Insights / Blog',  href: '/insights', desc: 'Articles on web, SaaS & AI',      icon: '✍️' },
   { label: 'Showreel',         href: '/showreel', desc: '40-second cinematic overview',     icon: '🎬' },
-  { label: 'HN vs Others',     href: '/compare',  desc: 'Why choose HN over alternatives',  icon: '⚖️' },
+  { label: 'HN vs Others',     href: '/compare',  desc: 'Why choose HN over alternatives', icon: '⚖️' },
+  { label: 'Refer & Earn 10%', href: '/referral', desc: 'Refer a friend, earn 10% commission', icon: '🤝' },
 ];
 
 const TOP_LINKS = [
