@@ -19,21 +19,43 @@ const TAGS = ['Modern', 'Responsive', 'Scalable', 'Secure'];
 
 export function HeroSection() {
   return (
-    <section className="relative min-h-[100svh] overflow-hidden">
+    <section className="relative min-h-[100svh] overflow-hidden bg-[#F4F8FF]">
 
-      {/* ── Full-section background image ── */}
+      {/* ── 1. High-Resolution Artwork Layer (Shifted right to 55% visual zone) ── */}
       <Image
         src="/hero-mockup.png"
         alt=""
         aria-hidden="true"
         fill
         priority
-        className="object-cover object-center"
+        fetchPriority="high"
+        unoptimized
         sizes="100vw"
+        style={{
+          imageRendering: '-webkit-optimize-contrast',
+          filter: 'brightness(1.02) contrast(1.04) saturate(1.04)',
+          transform: 'translate3d(0,0,0)',
+        }}
+        className="object-cover object-[92%_center] md:object-[95%_center] xl:object-right transition-all duration-300"
       />
 
-      {/* Gradient overlay — mobile: near-full cover; desktop: left-heavy */}
-      <div className="absolute inset-0 bg-gradient-to-b from-white/95 via-white/90 to-white/70 sm:bg-gradient-to-r sm:from-white sm:via-white/92 sm:to-white/20" />
+      {/* ── 2. Subtle Premium Ambient Depth Glows (Behind Right Artwork) ── */}
+      <div className="pointer-events-none absolute inset-0 z-0 hidden md:block">
+        {/* Subtle electric blue depth glow behind laptop visual */}
+        <div
+          className="absolute right-[22%] top-1/2 h-[450px] w-[450px] -translate-y-1/2 rounded-full bg-[radial-gradient(circle_at_78%_50%,rgba(0,81,255,0.08)_0%,transparent_70%)] blur-2xl"
+          style={{ transform: 'translate3d(0,-50%,0)' }}
+        />
+        {/* Subtle cyan ambient glow bottom right */}
+        <div
+          className="absolute right-[10%] bottom-[20%] h-[350px] w-[350px] rounded-full bg-[radial-gradient(circle_at_90%_70%,rgba(0,210,255,0.06)_0%,transparent_70%)] blur-2xl"
+          style={{ transform: 'translate3d(0,0,0)' }}
+        />
+      </div>
+
+      {/* ── 3. Exact Left Readability Gradient Overlay ── */}
+      {/* Mobile: Top-to-bottom soft gradient; Desktop: Exact 0% - 66% white-to-transparent mask */}
+      <div className="pointer-events-none absolute inset-0 z-0 bg-[linear-gradient(180deg,#ffffff_0%,rgba(255,255,255,0.98)_35%,rgba(255,255,255,0.90)_55%,rgba(255,255,255,0.30)_78%,transparent_100%)] md:bg-[linear-gradient(90deg,#ffffff_0%,rgba(255,255,255,0.98)_22%,rgba(255,255,255,0.92)_34%,rgba(255,255,255,0.70)_43%,rgba(255,255,255,0.25)_53%,rgba(255,255,255,0)_66%)]" />
 
       {/* ── Content ── */}
       <motion.div

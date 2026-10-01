@@ -7,6 +7,7 @@ interface ButtonProps {
   onClick?: () => void;
   variant?: ButtonVariant;
   className?: string;
+  style?: React.CSSProperties;
   type?: 'button' | 'submit' | 'reset';
   fullWidth?: boolean;
   disabled?: boolean;
@@ -22,6 +23,7 @@ export function Button({
   onClick,
   variant = 'primary',
   className = '',
+  style,
   type = 'button',
   fullWidth = false,
   disabled = false,
@@ -34,8 +36,8 @@ export function Button({
   const variantClass: Record<ButtonVariant, string> = {
     primary:      'btn-primary',
     secondary:    'btn-secondary',
-    white:        'bg-white text-[#0B111E]',
-    'white-blue': 'bg-white text-[#0051FF]',
+    white:        'bg-white !text-[#0B111E] [text-shadow:none]',
+    'white-blue': 'bg-white !text-[#0051FF] [text-shadow:none]',
   };
 
   const classes = [
@@ -53,6 +55,7 @@ export function Button({
       <Link
         href={href}
         className={classes}
+        style={style}
         aria-label={ariaLabel}
         aria-current={ariaCurrent}
       >
@@ -66,6 +69,7 @@ export function Button({
       type={type}
       onClick={onClick}
       className={classes}
+      style={style}
       disabled={disabled}
       aria-label={ariaLabel}
       aria-expanded={ariaExpanded}
