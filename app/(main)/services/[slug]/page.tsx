@@ -148,41 +148,37 @@ export default async function ServiceDetailPage({
             </FadeIn>
           </div>
         </section>
-      ) : heroImage ? (
-        <section className="relative section overflow-hidden min-h-[50vh] flex flex-col justify-center py-20">
-          <div className="absolute inset-0 -z-20">
-            <Image
-              src={heroImage}
-              alt={`${service.title} Background`}
-              fill
-              className="object-cover object-center"
-              priority
-            />
-            {/* Clean gradient overlay */}
-            <div className="absolute inset-0 bg-[#EEF0FF]/40"></div>
-            <div className="absolute inset-0 bg-gradient-to-r from-[#EEF0FF] via-[#EEF0FF]/80 to-[#EEF0FF]/10"></div>
-            <div className="absolute inset-0 bg-gradient-to-b from-[#EEF0FF]/60 via-transparent to-[#EEF0FF]"></div>
-          </div>
-          <div className="container relative z-10">
-            <FadeIn>
-              <Breadcrumb label={service.title} className="mb-6" />
-              <div className="mt-5 flex items-center gap-5">
-                {service.icon !== undefined && (
-                  <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-white/90 backdrop-blur-sm text-[#0051FF] shadow-sm">
-                    <ServiceIcon slug={service.slug.current} />
-                  </div>
-                )}
-                <div className="max-w-2xl">
-                  <h1 className="text-3xl font-bold text-slate-900 drop-shadow-sm sm:text-4xl md:text-5xl">{service.title}</h1>
-                  {service.tagline && (
-                    <p className="mt-3 text-base font-medium text-slate-800 drop-shadow-sm sm:text-lg">{service.tagline}</p>
+              ) : heroImage ? (
+          <section className="relative section overflow-hidden min-h-[50vh] flex flex-col justify-center py-20 md:py-32">
+            <div className="absolute inset-0 -z-20">
+              <Image
+                src={heroImage}
+                alt={${service.title} Background}
+                fill
+                className="object-cover object-center"
+                priority
+              />
+            </div>
+            <div className="container relative z-10">
+              <FadeIn>
+                <Breadcrumb label={service.title} className="mb-6" />
+                <div className="mt-5 flex items-center gap-5">
+                  {service.icon !== undefined && (
+                    <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-white/90 backdrop-blur-sm text-[#0051FF] shadow-sm">
+                      <ServiceIcon slug={service.slug.current} />
+                    </div>
                   )}
+                  <div className="max-w-2xl">
+                    <h1 className="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl md:text-5xl [text-shadow:0_0_30px_white,0_0_10px_white]">{service.title}</h1>
+                    {service.tagline && (
+                      <p className="mt-4 text-lg font-medium leading-relaxed text-slate-900 [text-shadow:0_0_20px_white,0_0_5px_white] sm:text-xl">{service.tagline}</p>
+                    )}
+                  </div>
                 </div>
-              </div>
-            </FadeIn>
-          </div>
-        </section>
-      ) : (
+              </FadeIn>
+            </div>
+          </section>
+        ) : (
         <section className="section bg-[#EEF0FF]">
           <div className="container">
             <FadeIn>
