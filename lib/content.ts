@@ -1,6 +1,12 @@
 import { client } from '@/sanity/lib/client';
 
-const hasSanity = Boolean(process.env.NEXT_PUBLIC_SANITY_PROJECT_ID);
+const rawProjectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID;
+const hasSanity = Boolean(
+  rawProjectId &&
+  rawProjectId !== 'placeholder-project-id' &&
+  rawProjectId !== 'your_project_id_here' &&
+  !rawProjectId.includes('placeholder')
+);
 
 /* ─────────────── Types ─────────────── */
 

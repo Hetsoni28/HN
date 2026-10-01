@@ -5,6 +5,7 @@ import { HeroSection }     from '@/components/organisms/hero-section';
 import { WhatWeBuild }     from '@/components/organisms/what-we-build';
 import { FeaturedWork }    from '@/components/organisms/featured-work';
 import { TransformationSection } from '@/components/organisms/transformation-section';
+import { ROISection } from '@/components/organisms/roi-section';
 import { WhyHN }           from '@/components/organisms/why-hn';
 import { TestimonialsSection } from '@/components/organisms/testimonials-section';
 import { ServicesSection } from '@/components/organisms/services-section';
@@ -48,6 +49,7 @@ export default async function Home() {
       <WhatWeBuild />
       <FeaturedWork projects={projects} />
       <TransformationSection />
+      <ROISection />
       <WhyHN />
       <TestimonialsSection testimonials={testimonials} />
       <OffersStrip />
