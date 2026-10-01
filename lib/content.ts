@@ -483,7 +483,7 @@ export const FALLBACK_TEAM: TeamMember[] = [
     tagline: 'Growing brands online — one post, one campaign at a time.',
     bio: 'Handles all things marketing at HN — from social media strategy and content creation to campaigns that build real brand awareness. The voice behind HN\'s online presence.',
     skills: ['Social Media', 'Content Strategy', 'Brand Building', 'Instagram', 'Canva', 'Growth Marketing'],
-    socials: [{ name: 'Instagram', url: 'https://www.instagram.com/heersoniii28?stkn=cmN6d3AzN3g1YmVr' }],
+    instagram: 'https://www.instagram.com/heersoniii28?stkn=cmN6d3AzN3g1YmVr',
     displayOrder: 3,
   },
   {
