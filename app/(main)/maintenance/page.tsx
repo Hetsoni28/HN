@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import { FadeIn } from '@/components/atoms/fade-in';
 import { Button } from '@/components/atoms/button';
 
@@ -130,16 +131,29 @@ const FAQS = [
 export default function MaintenancePage() {
   return (
     <>
-      {/* ── A) Hero ── */}
-      <section className="section bg-[#EEF0FF]">
-        <div className="container text-center">
+                  {/* A) Hero */}
+      <section className="relative overflow-hidden bg-[#EEF0FF] pt-28 pb-32">
+        {/* Background Image Layer */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/maintenance-hero.png"
+            alt="Website Maintenance Background"
+            fill
+            priority
+            className="object-cover object-center opacity-70"
+          />
+          {/* Subtle white radial gradient overlay to make text highly readable in the center */}
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.85)_0%,rgba(238,240,255,0.4)_100%)]" />
+        </div>
+
+        <div className="container relative z-10 text-center">
           <FadeIn>
-            <h1 className="mx-auto max-w-3xl text-5xl font-bold leading-tight tracking-tight md:text-6xl">
+            <h1 className="mx-auto max-w-3xl text-5xl font-bold leading-tight tracking-tight text-slate-900 md:text-6xl">
               Your Product Deserves
               <br />
               Expert Aftercare.
             </h1>
-            <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-slate-500">
+            <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-slate-700">
               Most agencies disappear after launch. We don&apos;t. Our maintenance plans keep your
               website and app fast, secure, and always up-to-date — so you can focus on growing
               your business.
@@ -150,7 +164,7 @@ export default function MaintenancePage() {
               {TRUST_PILLS.map((pill) => (
                 <span
                   key={pill}
-                  className="inline-flex items-center gap-2 rounded-full border border-[#0051FF]/20 bg-white px-5 py-2 text-sm font-semibold text-[#0051FF]"
+                  className="inline-flex items-center gap-2 rounded-full border border-[#0051FF]/20 bg-white/80 backdrop-blur-md px-5 py-2 text-sm font-semibold text-[#0051FF] shadow-sm"
                 >
                   <span className="h-1.5 w-1.5 rounded-full bg-[#0051FF]" aria-hidden="true" />
                   {pill}
