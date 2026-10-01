@@ -21,7 +21,7 @@ export function ReferralForm() {
             We&apos;ll reach out to{' '}
             <span className="font-semibold text-[#0051FF]">{state.friendName}</span> and keep you
             posted. Your{' '}
-            <span className="font-semibold text-gray-900">₹5,000 reward</span> will be processed
+            <span className="font-semibold text-gray-900">10% commission</span> will be processed
             once they sign a contract.
           </p>
         </div>
