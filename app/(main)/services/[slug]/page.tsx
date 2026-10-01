@@ -56,39 +56,56 @@ export default async function ServiceDetailPage({
     <>
       {/* 1. Hero */}
       {heroImage ? (
-        <section className="relative section overflow-hidden min-h-[70vh] flex flex-col justify-center py-20 md:py-32">
-          {/* Background Layer with Left-to-Right Fade */}
+        <section className="relative overflow-hidden min-h-[65vh] flex flex-col justify-center py-16 md:py-24 bg-white">
+          {/* Background Layer with Right-Shifted Artwork */}
           <div className="absolute inset-0 -z-20">
             <Image
               src={heroImage}
               alt={`${service.title} Background`}
               fill
-              className="object-cover object-right md:object-center"
+              className="object-cover object-[92%_center] md:object-[96%_center] xl:object-right"
               priority
+              style={{
+                imageRendering: '-webkit-optimize-contrast',
+                filter: 'brightness(1.04) contrast(1.03)',
+              }}
             />
-            {/* White gradient mask: Solid white on the left for text, completely transparent on the right for the image */}
-            <div className="absolute inset-0 bg-gradient-to-r from-white via-white/80 to-transparent sm:via-white/70 sm:to-transparent" />
+            {/* Pure white left text zone (0-45%) cleanly fading into transparent on right (78%+) */}
+            <div 
+              aria-hidden="true"
+              className="absolute inset-0 bg-[linear-gradient(180deg,#ffffff_0%,#ffffff_50%,rgba(255,255,255,0.92)_70%,rgba(255,255,255,0.30)_88%,transparent_100%)] md:bg-[linear-gradient(90deg,#ffffff_0%,#ffffff_40%,rgba(255,255,255,0.98)_50%,rgba(255,255,255,0.70)_62%,rgba(255,255,255,0.15)_76%,transparent_88%)]" 
+            />
           </div>
           
           <div className="container relative z-10">
             <FadeIn>
               <Breadcrumb label={service.title} className="mb-6" />
-              <div className="mt-5 flex flex-col items-start gap-5">
+              <div className="mt-4 flex flex-col items-start gap-5">
                 {service.icon !== undefined && (
-                  <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-white/90 shadow-sm text-[#0051FF] border border-[#0051FF]/10">
+                  <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-white shadow-sm text-[#0051FF] border border-blue-100">
                     <ServiceIcon slug={service.slug.current} />
                   </div>
                 )}
                 <div className="max-w-2xl">
-                  {/* Dark text sitting cleanly on the white part of the gradient */}
-                  <h1 className="text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl md:text-6xl lg:text-7xl">
+                  {/* Clean, sharp dark headline with zero background overlap */}
+                  <h1 className="text-4xl font-extrabold tracking-tight text-[#0B111E] sm:text-5xl md:text-6xl lg:text-[4rem] leading-[1.08]">
                     {service.title}
                   </h1>
                   {service.tagline && (
-                    <p className="mt-6 text-xl font-medium leading-relaxed text-slate-700 sm:text-2xl">
+                    <p className="mt-5 max-w-xl text-lg font-normal leading-relaxed text-slate-600 sm:text-xl md:text-2xl">
                       {service.tagline}
                     </p>
                   )}
+
+                  {/* Quick CTAs */}
+                  <div className="mt-8 flex flex-wrap items-center gap-3.5">
+                    <Button href="/contact" variant="primary" className="rounded-full px-7 py-3.5 text-sm font-semibold shadow-lg shadow-blue-500/25">
+                      Start Your Project →
+                    </Button>
+                    <Button href="/estimate" variant="secondary" className="rounded-full px-7 py-3.5 text-sm font-semibold border-slate-200 hover:border-[#0051FF]">
+                      Calculate Cost
+                    </Button>
+                  </div>
                 </div>
               </div>
             </FadeIn>
