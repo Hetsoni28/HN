@@ -107,12 +107,12 @@ export function ROICalculator() {
         </div>
 
         {/* Right Side: Results */}
-        <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#0B111E] to-[#1a2333] p-8 text-white sm:p-10">
-          <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-[#0051FF] opacity-20 blur-3xl" />
+        <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#0051FF] to-[#003ED9] p-8 text-white sm:p-10">
+          <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-white opacity-20 blur-3xl" />
           
           <div className="relative z-10 flex h-full flex-col justify-between">
             <div>
-              <p className="text-sm font-bold uppercase tracking-widest text-[#00D2FF]">The HN Studio Impact</p>
+              <p className="text-sm font-bold uppercase tracking-widest text-blue-200">The HN Impact</p>
               <h4 className="mt-4 text-3xl font-extrabold leading-tight">
                 Stop leaving money <br /> on the table.
               </h4>
@@ -147,10 +147,10 @@ export function ROICalculator() {
             </div>
 
             <div className="mt-10">
-              <Button href="/contact" variant="primary" className="w-full justify-center py-4 text-base">
+              <Button href="/contact" variant="white-blue" className="w-full justify-center py-4 text-base shadow-sm">
                 Claim Your Revenue →
               </Button>
-              <p className="mt-4 text-center text-xs text-slate-400">
+              <p className="mt-4 text-center text-xs text-blue-200">
                 Based on a 35% relative conversion rate increase. Your actual results may vary.
               </p>
             </div>
