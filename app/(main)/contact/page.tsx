@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import { ContactForm } from '@/components/organisms/contact-form';
 import { FadeIn } from '@/components/atoms/fade-in';
 import { Breadcrumb } from '@/components/molecules/breadcrumb';
@@ -54,18 +55,34 @@ export default async function ContactPage({ searchParams }: Props) {
   return (
     <>
       {/* Hero */}
-      <section className="section bg-[#EEF0FF]">
-        <div className="container">
-          <FadeIn>
-            <Breadcrumb className="mb-6" />
-            <h1 className="mt-5 max-w-2xl text-4xl font-bold leading-tight text-slate-900 sm:text-5xl md:text-6xl">
-              Let&apos;s build something{' '}
-              <span className="gradient-text">great together.</span>
-            </h1>
-            <p className="mt-6 max-w-xl text-base leading-7 text-slate-500 sm:text-lg sm:leading-8">
-              Fill in the form and we&apos;ll get back to you within 24–48 hours with a clear plan and honest proposal.
-            </p>
-          </FadeIn>
+      <section className="relative overflow-hidden section bg-white">
+        {/* Full-section background image */}
+        <Image
+          src="/images/contact-hero-blue.jpg"
+          alt=""
+          aria-hidden="true"
+          fill
+          priority
+          className="object-cover object-center lg:object-right"
+          sizes="100vw"
+        />
+
+        {/* Gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-white/95 via-white/80 to-white/40 sm:bg-gradient-to-r sm:from-white sm:via-white/70 sm:to-transparent" />
+
+        <div className="container relative z-10 py-16 sm:py-24">
+          <div className="max-w-2xl">
+            <FadeIn>
+              <Breadcrumb className="mb-6" />
+              <h1 className="mt-5 text-4xl font-bold leading-tight text-slate-900 sm:text-5xl md:text-6xl">
+                Let&apos;s build something{' '}
+                <span className="gradient-text">great together.</span>
+              </h1>
+              <p className="mt-6 text-base leading-7 text-slate-600 sm:text-lg sm:leading-8">
+                Fill in the form and we&apos;ll get back to you within 24–48 hours with a clear plan and honest proposal.
+              </p>
+            </FadeIn>
+          </div>
         </div>
       </section>
 

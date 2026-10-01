@@ -10,7 +10,7 @@ const token = process.env.SANITY_API_TOKEN;
  *   so each query can have its own TTL independent of the client config.
  */
 export const client = createClient({
-  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || '',
+  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || 'dummy123',
   dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || 'production',
   apiVersion: process.env.NEXT_PUBLIC_SANITY_API_VERSION || '2026-01-01',
   useCdn: !token,        // false when token present (bypasses CDN for auth'd reads)
