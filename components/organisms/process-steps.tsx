@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { FadeIn } from '@/components/atoms/fade-in';
 const STEPS = [
   {
@@ -192,13 +193,27 @@ function StepCard({ step, index }: { step: (typeof STEPS)[0]; index: number }) {
 /* ── Exported organisms ── */
 export function ProcessHero() {
   return (
-    <section className="section bg-[#EEF0FF]">
-      <div className="container text-center">
+    <section className="relative section overflow-hidden min-h-[70vh] flex flex-col justify-center py-20">
+      {/* Background Image */}
+      <div className="absolute inset-0 -z-20">
+        <Image
+          src="/process-hero.jpg"
+          alt="Process Background Illustration"
+          fill
+          className="object-cover object-center"
+          priority
+        />
+        {/* Clean gradient overlay: ensures text readability while showing the image */}
+        <div className="absolute inset-0 bg-[#EEF0FF]/60"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-[#EEF0FF]/95 via-transparent to-[#EEF0FF]"></div>
+      </div>
+
+      <div className="container relative z-10 text-center">
         <FadeIn>
-          <h1 className="mx-auto mt-5 max-w-3xl text-4xl font-bold leading-tight text-slate-900 sm:text-5xl md:text-6xl">
+          <h1 className="mx-auto mt-5 max-w-3xl text-4xl font-bold leading-tight text-slate-900 sm:text-5xl md:text-6xl drop-shadow-sm">
             Your journey from <span className="gradient-text">idea to live product.</span>
           </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-base leading-7 text-slate-500 sm:text-lg sm:leading-8">
+          <p className="mx-auto mt-6 max-w-2xl text-base leading-7 text-slate-800 font-medium sm:text-lg sm:leading-8 drop-shadow-sm">
             A transparent, structured process with no black boxes. You always know what&apos;s happening, what&apos;s next, and what we need from you.
           </p>
         </FadeIn>
@@ -209,7 +224,7 @@ export function ProcessHero() {
             {STEPS.map((s) => (
               <span
                 key={s.number}
-                className="rounded-full border border-[#E2E5F1] bg-white px-4 py-2 text-sm font-semibold text-slate-600"
+                className="rounded-full border border-white/60 bg-white/80 backdrop-blur-sm px-4 py-2 text-sm font-semibold text-slate-800 shadow-sm"
               >
                 <span className="mr-2 font-black text-[#0051FF]">{s.number}</span>
                 {s.title}

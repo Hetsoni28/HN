@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import { getServiceBySlug, getServices } from '@/lib/content';
 import { FadeIn } from '@/components/atoms/fade-in';
 import { Button } from '@/components/atoms/button';
@@ -44,20 +45,35 @@ export default async function ServiceDetailPage({
   return (
     <>
       {/* ── 1. Hero ── */}
-      <section className="section bg-[#EEF0FF]">
-        <div className="container">
+      <section className={`relative section overflow-hidden ${service.slug.current === 'websites' ? 'min-h-[50vh] flex flex-col justify-center py-20' : 'bg-[#EEF0FF]'}`}>
+        {service.slug.current === 'websites' && (
+          <div className="absolute inset-0 -z-20">
+            <Image
+              src="/service-websites-hero.jpg"
+              alt="Websites & Platforms Background"
+              fill
+              className="object-cover object-center"
+              priority
+            />
+            {/* Clean gradient overlay: solid on the left behind the text, fading to show the image on the right */}
+            <div className="absolute inset-0 bg-[#EEF0FF]/40"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-[#EEF0FF] via-[#EEF0FF]/80 to-[#EEF0FF]/10"></div>
+            <div className="absolute inset-0 bg-gradient-to-b from-[#EEF0FF]/60 via-transparent to-[#EEF0FF]"></div>
+          </div>
+        )}
+        <div className="container relative z-10">
           <FadeIn>
             <Breadcrumb label={service.title} className="mb-6" />
             <div className="mt-5 flex items-center gap-5">
               {service.icon !== undefined && (
-                <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-white text-[#0051FF] shadow-sm">
+                <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-white/90 backdrop-blur-sm text-[#0051FF] shadow-sm">
                   <ServiceIcon slug={service.slug.current} />
                 </div>
               )}
-              <div>
-                <h1 className="text-3xl font-bold text-slate-900 sm:text-4xl md:text-5xl">{service.title}</h1>
+              <div className="max-w-2xl">
+                <h1 className="text-3xl font-bold text-slate-900 drop-shadow-sm sm:text-4xl md:text-5xl">{service.title}</h1>
                 {service.tagline && (
-                  <p className="mt-2 text-base text-slate-500 sm:text-lg">{service.tagline}</p>
+                  <p className="mt-3 text-base font-medium text-slate-800 drop-shadow-sm sm:text-lg">{service.tagline}</p>
                 )}
               </div>
             </div>
