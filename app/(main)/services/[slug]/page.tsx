@@ -47,6 +47,7 @@ export default async function ServiceDetailPage({
     'mobile-applications': '/service-mobileapps-hero.png',
     'ai-solutions': '/service-ai-hero.png',
     'saas-platforms': '/service-saas-hero.png',
+    'e-commerce': '/service-ecommerce-hero.jpg',
   };
   const heroImage = heroImages[service.slug.current];
 
