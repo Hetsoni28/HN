@@ -4,28 +4,28 @@ import { SectionHeading } from '@/components/molecules/section-heading';
 
 const reasons = [
   {
-    title: 'Business-first engineering',
-    desc: 'Every technical decision is tied to a business outcome.',
+    title: 'Enterprise Architecture',
+    desc: 'We engineer highly scalable, microservices-driven architecture designed to handle enterprise loads seamlessly.',
   },
   {
-    title: 'No templates, ever',
-    desc: 'Built from scratch to fit your product exactly.',
+    title: 'Rigorous Security Standards',
+    desc: 'Security is embedded at every layer, ensuring strict compliance and absolute protection of your data.',
   },
   {
-    title: 'Strict TypeScript throughout',
-    desc: 'Full type-safety from DB schema to UI.',
+    title: 'Data-Driven Engineering',
+    desc: 'Every technical decision is driven by measurable business outcomes, ROI, and core performance metrics.',
   },
   {
-    title: 'Performance by default',
-    desc: 'Core Web Vitals are non-negotiable, not an afterthought.',
+    title: 'Zero Technical Debt',
+    desc: 'We deliver clean, strictly typed, fully documented codebases that your internal teams can inherit effortlessly.',
   },
   {
-    title: 'Direct founder access',
-    desc: 'Work with Het & Neel — no hand-offs to junior teams.',
+    title: 'Dedicated Elite Teams',
+    desc: 'You work directly with senior architects and elite engineers. No junior hand-offs, no communication silos.',
   },
   {
-    title: 'Clean code, always',
-    desc: 'Tested, documented, and maintainable after handover.',
+    title: 'Long-term SLA & Support',
+    desc: 'We do not just ship and leave. We provide ongoing 99.99% uptime guarantees and dedicated maintenance.',
   },
 ];
 

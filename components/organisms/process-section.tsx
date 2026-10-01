@@ -16,9 +16,9 @@ export function ProcessSection() {
       <div className="container">
         <FadeIn>
           <SectionHeading
-            eyebrow="Our Process"
+            eyebrow="Delivery Methodology"
             title="Predictable delivery, zero surprises."
-            description="A transparent six-phase process gives you full visibility at every stage."
+            description="A rigorous, transparent six-phase methodology ensuring on-time delivery and strict quality control at scale."
           />
         </FadeIn>
 
