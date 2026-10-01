@@ -485,7 +485,17 @@ export const FALLBACK_TEAM: TeamMember[] = [
     skills: ['Social Media', 'Content Strategy', 'Brand Building', 'Instagram', 'Canva', 'Growth Marketing'],
     instagram: '#',
     displayOrder: 3,
-  },
+    },
+    {
+      _id: 'tm4',
+      name: 'Vraj Prajapati',
+      role: 'Web Developer',
+      tagline: 'Crafting responsive, high-performance web experiences.',
+      bio: 'Dedicated developer passionate about building seamless user interfaces and robust web applications with modern tech stacks.',
+      skills: ['React', 'Next.js', 'Tailwind CSS', 'TypeScript', 'JavaScript'],
+      github: '#',
+      displayOrder: 4,
+    },
 ];
 
 export async function getTeamMembers(): Promise<TeamMember[]> {
@@ -1061,3 +1071,4 @@ export async function getTestimonials(): Promise<Testimonial[]> {
   // For now we always return the curated fallback testimonials.
   return FALLBACK_TESTIMONIALS;
 }
+
