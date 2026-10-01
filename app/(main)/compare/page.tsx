@@ -294,7 +294,7 @@ export default function ComparePage() {
               {[
                 { stat: '48 h', label: 'Average first-draft turnaround' },
                 { stat: '100%', label: 'Projects delivered on agreed scope' },
-                { stat: '2', label: 'Senior engineers, zero hand-offs' },
+                { stat: '3', label: 'Senior engineers, zero hand-offs' },
               ].map(({ stat, label }) => (
                 <div key={label}>
                   <div className="text-4xl font-bold text-[#0051FF] md:text-5xl">{stat}</div>
@@ -314,7 +314,7 @@ export default function ComparePage() {
               Ready to work with the right team?
             </h2>
             <p className="mx-auto mt-5 max-w-xl text-lg text-white/70">
-              Skip the guesswork. Get a free proposal from HN — two senior engineers who treat your
+              Skip the guesswork. Get a free proposal from HN — three senior engineers who treat your
               project like their own.
             </p>
             <div className="mt-8 flex flex-wrap justify-center gap-4">
