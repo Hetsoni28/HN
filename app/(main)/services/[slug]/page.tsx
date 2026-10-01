@@ -48,6 +48,7 @@ export default async function ServiceDetailPage({
     'ai-solutions': '/service-ai-hero.png',
     'saas-platforms': '/service-saas-hero.png',
     'e-commerce': '/service-ecommerce-hero.jpg',
+    'maintenance-support': '/service-maintenance-hero.png',
   };
   const heroImage = heroImages[service.slug.current];
 
