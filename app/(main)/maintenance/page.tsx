@@ -148,12 +148,12 @@ export default function MaintenancePage() {
           <div className="w-full max-w-4xl">
             {/* Glassmorphism Card for Text Readability */}
             <div className="p-8 sm:p-14 text-center">
-              <h1 className="mx-auto max-w-3xl text-4xl font-extrabold leading-tight tracking-tight text-slate-900 sm:text-5xl md:text-6xl">
+              <h1 className="mx-auto max-w-3xl text-4xl font-extrabold leading-tight tracking-tight text-slate-900 sm:text-5xl md:text-6xl [text-shadow:0_0_30px_white,0_0_10px_white]">
                 Your Product Deserves
                 <br />
                 <span className="text-[#0051FF]">Expert Aftercare.</span>
               </h1>
-              <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-slate-700">
+              <p className="mx-auto mt-6 max-w-2xl text-lg font-medium leading-relaxed text-slate-900 [text-shadow:0_0_20px_white,0_0_5px_white]">
                 Most agencies disappear after launch. We don&apos;t. Our maintenance plans keep your
                 website and app fast, secure, and always up-to-date — so you can focus on growing
                 your business.
