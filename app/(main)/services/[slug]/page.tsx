@@ -111,6 +111,7 @@ export default async function ServiceDetailPage({
             </FadeIn>
           </div>
         </section>
+
       ) : (
         <section className="section bg-[#EEF0FF]">
           <div className="container">

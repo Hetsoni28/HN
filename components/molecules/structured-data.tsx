@@ -30,7 +30,7 @@ export function OrganizationJsonLd() {
     },
     sameAs: [
       'https://github.com/Hetsoni28',
-      'https://linkedin.com/in/hetsoni',
+      'https://www.linkedin.com/in/hn-in-b66003440',
       'https://twitter.com/hetsoni',
     ],
   };

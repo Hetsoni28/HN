@@ -64,7 +64,7 @@ const SOCIAL_ITEMS = [
   },
   {
     label: 'LinkedIn',
-    href: 'https://linkedin.com/in/hetsoni',
+    href: 'https://www.linkedin.com/in/hn-in-b66003440',
     hoverBg: 'hover:bg-[#0A66C2] focus:bg-[#0A66C2]',
     hoverGlow: 'hover:shadow-[0_12px_28px_rgba(10,102,194,0.6)] focus:shadow-[0_12px_28px_rgba(10,102,194,0.6)]',
     icon: (

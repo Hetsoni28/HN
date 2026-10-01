@@ -1,40 +1,40 @@
+import Image from 'next/image';
 import { FadeIn } from '@/components/atoms/fade-in';
+
 /* ─── Hero ─── */
 export function AboutHero() {
   return (
-    <section className="section bg-[#EEF0FF]">
-      <div className="container">
-        <div className="grid gap-16 lg:grid-cols-2 lg:items-center">
-          <FadeIn>
-            <h1 className="mt-5 text-4xl font-bold leading-[1.05] tracking-tight text-slate-900 sm:text-5xl md:text-6xl">
-              Why <span className="gradient-text">HN</span> exists.
-            </h1>
-            <p className="mt-6 text-lg leading-8 text-slate-600">
-              Most businesses are told they need to wait months and spend lakhs to get a digital product built. We know that&apos;s not true — because we&apos;ve done it better, faster, and with more care.
+    <section className="bg-[#EEF0FF] py-12 md:py-20">
+      <div className="container px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <FadeIn>
+          <div className="relative w-full rounded-2xl md:rounded-[2rem] overflow-hidden shadow-sm">
+            {/* The image contains the hero text and stats */}
+            <Image
+              src="/images/about-hero-banner.png"
+              alt="Why HN exists. We started HN with a simple belief — great software should be accessible to every business."
+              width={1920}
+              height={600}
+              quality={100}
+              unoptimized
+              className="w-full h-auto object-cover"
+              priority
+            />
+          </div>
+          
+          {/* SEO / Screen reader text */}
+          <div className="sr-only">
+            <h1>Why HN exists.</h1>
+            <p>
+              We started HN with a simple belief — great software should be accessible to every business, not just the ones with enterprise budgets.
             </p>
-            <p className="mt-4 text-lg leading-8 text-slate-600">
-              HN was founded on one belief: <strong className="text-slate-900">great software should be accessible to every business</strong>, not just the ones with enterprise budgets. From a single website to a full SaaS platform — we build it right, on time, every time.
-            </p>
-          </FadeIn>
-
-          {/* Stats panel */}
-          <FadeIn delay={0.15}>
-            <div className="grid grid-cols-2 gap-4">
-              {[
-                { value: '2024', label: 'Founded', sub: 'Est. in India' },
-                { value: '15+',  label: 'Projects', sub: 'Products shipped' },
-                { value: '100%', label: 'On-Time', sub: 'Every single project' },
-                { value: '2',    label: 'Founders', sub: 'Het & Neel' },
-              ].map((s) => (
-                <div key={s.label} className="rounded-2xl border border-[#E2E5F1] bg-white p-6">
-                  <div className="text-4xl font-bold text-[#0051FF]">{s.value}</div>
-                  <div className="mt-1 text-base font-bold text-slate-900">{s.label}</div>
-                  <div className="mt-0.5 text-xs text-slate-400">{s.sub}</div>
-                </div>
-              ))}
-            </div>
-          </FadeIn>
-        </div>
+            <ul>
+              <li>2024 Founded, Est. in India</li>
+              <li>15+ Projects, Products shipped</li>
+              <li>100% On-Time, Every single project</li>
+              <li>2 Founders, Het & Neel</li>
+            </ul>
+          </div>
+        </FadeIn>
       </div>
     </section>
   );
