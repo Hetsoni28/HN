@@ -151,7 +151,6 @@ function DetailRow({
 
 /* ── Single step card ── */
 function StepCard({ step, index }: { step: (typeof STEPS)[0]; index: number }) {
-  const isEven = index % 2 === 1;
   return (
     <FadeIn delay={index * 0.07}>
       <div className="group relative grid gap-0 overflow-hidden rounded-3xl border border-[#E2E5F1] bg-white transition duration-300 hover:border-[#0051FF]/20 hover:shadow-xl hover:shadow-[#0051FF]/8 lg:grid-cols-[280px_1fr]">

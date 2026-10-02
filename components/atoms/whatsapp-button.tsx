@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
 interface WhatsAppButtonProps {
   message?: string;
@@ -15,27 +15,23 @@ export function WhatsAppButton({
   className = "",
   fullWidth = false
 }: WhatsAppButtonProps) {
-  const [currentUrl, setCurrentUrl] = useState('');
-
-  useEffect(() => {
-    // Only runs on the client to get the exact page URL the user is on
-    setCurrentUrl(window.location.href);
-  }, []);
-
   // Use the secondary number the user explicitly asked to add (+91 7990743263)
   const phoneNumber = "917990743263"; 
-  
-  // Create a truly dynamic message by appending the URL
-  const dynamicMessage = currentUrl 
-    ? `${message}\n\n(Sent from: ${currentUrl})` 
-    : message;
-    
-  const encodedMessage = encodeURIComponent(dynamicMessage);
-  const waUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+  const defaultWaUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (typeof window !== 'undefined' && window.location.href) {
+      e.preventDefault();
+      const dynamicMessage = `${message}\n\n(Sent from: ${window.location.href})`;
+      const waUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(dynamicMessage)}`;
+      window.open(waUrl, '_blank', 'noopener,noreferrer');
+    }
+  };
 
   return (
     <a 
-      href={waUrl} 
+      href={defaultWaUrl}
+      onClick={handleClick} 
       target="_blank" 
       rel="noopener noreferrer"
       className={`inline-flex items-center justify-center gap-2 rounded-xl bg-[#25D366] hover:bg-[#20bd5a] text-white px-6 py-3.5 font-semibold transition-all duration-200 active:scale-[0.98] ${fullWidth ? 'w-full' : ''} ${className}`}

@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import type { Project, PortableTextContent } from '@/lib/content';
 import { FadeIn } from '@/components/atoms/fade-in';
 import { PlainTextRenderer, PortableTextRenderer } from '@/components/molecules/portable-text-renderer';
@@ -26,6 +27,11 @@ export function CaseStudyTextSection({
       <div className="container">
         <div className="grid gap-12 lg:grid-cols-[1fr_2fr]">
           <FadeIn>
+            {eyebrow && (
+              <span className="inline-block rounded-full bg-[#0051FF]/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-[#0051FF]">
+                {eyebrow}
+              </span>
+            )}
             <h2 className="mt-5 text-3xl font-bold text-slate-900 md:text-4xl">{title}</h2>
           </FadeIn>
           <FadeIn delay={0.1}>
@@ -135,13 +141,13 @@ export function CaseStudyNext({ next, currentSlug }: { next: Project | null; cur
       <div className="container text-center">
         <FadeIn>
           <div className="text-xs font-bold uppercase tracking-widest text-slate-400">Next Project</div>
-          <a href={`/work/${next.slug.current}`} className="group mt-6 block">
+          <Link href={`/work/${next.slug.current}`} className="group mt-6 block">
             <h2 className="text-4xl font-bold text-slate-900 transition group-hover:text-[#0051FF] md:text-6xl">
               {next.title}
               <span className="ml-3 inline-block translate-x-0 text-[#0051FF] opacity-50 transition group-hover:translate-x-3 group-hover:opacity-100">→</span>
             </h2>
             {next.category && <p className="mt-3 text-slate-500">{next.category}</p>}
-          </a>
+          </Link>
         </FadeIn>
       </div>
     </section>
@@ -162,18 +168,18 @@ export function CaseStudyCta({ project }: { project: Project }) {
             Tell us your idea. We&apos;ll send you a clear plan and proposal within 48 hours — no obligations.
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-4">
-            <a
+            <Link
               href="/contact"
               className="rounded-xl bg-white px-10 py-4 text-base font-bold text-[#0051FF] transition hover:bg-blue-50"
             >
               Get a Free Proposal →
-            </a>
-            <a
+            </Link>
+            <Link
               href="/work"
               className="rounded-xl border border-white/30 bg-transparent px-10 py-4 text-base text-white transition hover:bg-white/10"
             >
               See more work
-            </a>
+            </Link>
           </div>
         </FadeIn>
       </div>

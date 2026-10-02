@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import type { Project } from '@/lib/content';
 import { FadeIn } from '@/components/atoms/fade-in';
 import { Button } from '@/components/atoms/button';

@@ -2,7 +2,6 @@
 
 import { useState, useMemo } from 'react';
 import { motion } from 'framer-motion';
-import { FadeIn } from '@/components/atoms/fade-in';
 import { Button } from '@/components/atoms/button';
 import { WhatsAppButton } from '@/components/atoms/whatsapp-button';
 

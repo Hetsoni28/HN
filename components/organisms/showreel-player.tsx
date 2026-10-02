@@ -26,7 +26,7 @@ const voiceSegments = [
 export function ShowreelPlayer() {
   const [isPlaying, setIsPlaying] = useState(false);
   const [progress, setProgress] = useState(0);
-  const [currentSubtitle, setCurrentSubtitle] = useState('Click play to start the cinematic experience...');
+  const [containerWidth, setContainerWidth] = useState(1000);
   
   const containerRef = useRef<HTMLDivElement>(null);
   const reqRef = useRef<number | undefined>(undefined);
@@ -60,8 +60,17 @@ export function ShowreelPlayer() {
     };
     loadVoices();
     window.speechSynthesis.onvoiceschanged = loadVoices;
+
+    const updateWidth = () => {
+      if (containerRef.current) {
+        setContainerWidth(containerRef.current.offsetWidth);
+      }
+    };
+    updateWidth();
+    window.addEventListener('resize', updateWidth);
     
     return () => {
+      window.removeEventListener('resize', updateWidth);
       if (reqRef.current) cancelAnimationFrame(reqRef.current);
       window.speechSynthesis.cancel();
     };
@@ -73,7 +82,6 @@ export function ShowreelPlayer() {
     setMedia({ before: false, dev: false, mobile: false, overlay: false, wipeScene: false, wipeProgress: 0 });
     window.speechSynthesis.cancel();
     nextVoiceIndex.current = 0;
-    setCurrentSubtitle('Playing...');
   };
 
   const play = () => {
@@ -105,7 +113,6 @@ export function ShowreelPlayer() {
       utterance.rate = 1.05;
       utterance.pitch = 0.9;
       window.speechSynthesis.speak(utterance);
-      setCurrentSubtitle(`"${seg.text}"`);
       nextVoiceIndex.current++;
     }
 
@@ -232,7 +239,7 @@ export function ShowreelPlayer() {
             className="absolute inset-0 overflow-hidden border-r-4 border-cyan-400 shadow-[20px_0_40px_rgba(34,211,238,0.5)] transition-all duration-100 ease-linear"
             style={{ width: `${media.wipeProgress}%` }}
           >
-            <div className="relative w-full h-full" style={{ width: containerRef.current?.offsetWidth || 1000 }}>
+            <div className="relative w-full h-full" style={{ width: containerWidth }}>
               <Image src="/images/showreel/after.jpg" alt="After" fill className="object-cover" />
             </div>
           </div>
@@ -264,7 +271,7 @@ export function ShowreelPlayer() {
             Cluttered interfaces.
           </h2>
           <h3 className={`mt-2 text-2xl md:text-4xl text-slate-900 transition-all duration-1000 ${s2 >= 2 ? 'translate-y-0 blur-0 opacity-100' : 'translate-y-4 blur-md opacity-0'}`}>
-            Code that doesn't scale.
+            Code that doesn&apos;t scale.
           </h3>
         </div>
 

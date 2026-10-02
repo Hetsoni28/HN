@@ -16,17 +16,15 @@ interface CounterProps {
 export function Counter({ value, className = '' }: CounterProps) {
   const ref = useRef<HTMLSpanElement>(null);
   const isInView = useInView(ref, { once: true });
-  const [displayed, setDisplayed] = useState('0');
+  const isNumeric = /^\d+/.test(value);
+  const [displayed, setDisplayed] = useState(() => (isNumeric ? '0' : value));
 
   useEffect(() => {
     if (!isInView) return;
 
     // Parse numeric part and suffix (e.g. "15+" → 15, "+")
     const match = value.match(/^(\d+)(.*)$/);
-    if (!match) {
-      setDisplayed(value);
-      return;
-    }
+    if (!match) return;
 
     const target = parseInt(match[1], 10);
     const suffix = match[2];

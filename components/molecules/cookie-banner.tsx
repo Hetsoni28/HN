@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export function CookieBanner() {
@@ -44,7 +45,7 @@ export function CookieBanner() {
             <h3 className="text-base font-bold">We respect your privacy</h3>
           </div>
           <p className="mt-4 text-sm leading-relaxed text-slate-300">
-            We use cookies to improve your experience and analyze site traffic. We don&apos;t sell your data. Read our <a href="/privacy-policy" className="text-[#00D2FF] hover:underline">Privacy Policy</a>.
+            We use cookies to improve your experience and analyze site traffic. We don&apos;t sell your data. Read our <Link href="/privacy-policy" className="text-[#00D2FF] hover:underline">Privacy Policy</Link>.
           </p>
           <div className="mt-6 flex items-center gap-3">
             <button

@@ -1,5 +1,6 @@
 'use server';
 
+import { headers } from 'next/headers';
 import { z } from 'zod';
 import { Resend } from 'resend';
 import { sanitizeText } from '@/lib/security';
@@ -42,6 +43,14 @@ export async function submitInquiry(
   _prev: FormState,
   formData: FormData,
 ): Promise<FormState> {
+  const headerList = await headers();
+  const ip = headerList.get('x-forwarded-for')?.split(',')[0].trim() || 'unknown';
+  if (isRateLimited(ip)) {
+    return {
+      status: 'error',
+      message: 'Too many requests. Please wait a minute before submitting again.',
+    };
+  }
 
   /* 1. Sanitize all text inputs BEFORE validation */
   const raw = {

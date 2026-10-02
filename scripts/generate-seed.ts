@@ -13,7 +13,7 @@ import {
 
 const seedFile = path.join(process.cwd(), 'seed.ndjson');
 
-const docs: any[] = [];
+const docs: Record<string, unknown>[] = [];
 
 // 1. Services
 FALLBACK_SERVICES.forEach((service, index) => {

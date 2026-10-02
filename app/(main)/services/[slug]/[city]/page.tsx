@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import { CITIES, SERVICES_LIST, getCityName, getServiceName } from '@/lib/locations';
@@ -105,11 +106,11 @@ export default async function ServiceCityPage({
           <FadeIn>
             {/* Breadcrumb */}
             <nav aria-label="Breadcrumb" className="mb-6 flex items-center gap-2 text-sm text-slate-500">
-              <a href="/" className="hover:text-[#0051FF]">Home</a>
+              <Link href="/" className="hover:text-[#0051FF]">Home</Link>
               <span>/</span>
-              <a href="/services" className="hover:text-[#0051FF]">Services</a>
+              <Link href="/services" className="hover:text-[#0051FF]">Services</Link>
               <span>/</span>
-              <a href={`/services/${slug}`} className="hover:text-[#0051FF]">{serviceName}</a>
+              <Link href={`/services/${slug}`} className="hover:text-[#0051FF]">{serviceName}</Link>
               <span>/</span>
               <span className="font-medium text-slate-800">{cityName}</span>
             </nav>

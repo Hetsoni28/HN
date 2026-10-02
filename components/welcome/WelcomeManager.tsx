@@ -1,34 +1,51 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useSyncExternalStore } from 'react';
 import { WelcomeScreen } from './WelcomeScreen';
 
+function subscribe() {
+  return () => {};
+}
+
+function getSnapshot() {
+  try {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const hasPlayed = sessionStorage.getItem('hn-welcome-played');
+    return !hasPlayed && !prefersReducedMotion;
+  } catch {
+    return false;
+  }
+}
+
+function getServerSnapshot() {
+  return false;
+}
+
 export function WelcomeManager() {
-  const [showWelcome, setShowWelcome] = useState(false);
-  const [isMounted, setIsMounted] = useState(false);
+  const shouldPlay = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
+  const [dismissed, setDismissed] = useState(false);
+
+  const showWelcome = shouldPlay && !dismissed;
 
   useEffect(() => {
-    setIsMounted(true);
-    // Check if the user prefers reduced motion
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    
-    // Check if we've already played the animation this session
-    const hasPlayed = sessionStorage.getItem('hn-welcome-played');
-
-    if (!hasPlayed && !prefersReducedMotion) {
-      setShowWelcome(true);
-      // Fallback safeguard to ensure body scrolling is restored if something goes wrong
+    if (showWelcome) {
       document.body.style.overflow = 'hidden';
+      return () => {
+        document.body.style.overflow = '';
+      };
     }
-  }, []);
+  }, [showWelcome]);
 
   const handleComplete = () => {
-    setShowWelcome(false);
-    sessionStorage.setItem('hn-welcome-played', 'true');
-    document.body.style.overflow = '';
+    setDismissed(true);
+    try {
+      sessionStorage.setItem('hn-welcome-played', 'true');
+    } catch {
+      // Storage access blocked or restricted
+    }
   };
 
-  if (!isMounted) return null;
+  if (!showWelcome) return null;
 
   return <WelcomeScreen isVisible={showWelcome} onComplete={handleComplete} />;
 }

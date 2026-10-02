@@ -7,8 +7,6 @@ import { Button } from '@/components/atoms/button';
 import { Logo } from '@/components/atoms/logo';
 
 // --- Types & Data ---
-type QuestionId = 'type' | 'goal' | 'audience' | 'features' | 'timeline';
-
 interface AnswerState {
   type: string;
   goal: string;
@@ -127,9 +125,10 @@ export function BriefGenerator() {
       
       pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
       pdf.save('HN-Studio-Project-Brief.pdf');
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error('Failed to generate PDF', error);
-      alert('Failed to generate PDF: ' + (error?.message || 'Unknown error. Check console.'));
+      const msg = error instanceof Error ? error.message : 'Unknown error. Check console.';
+      alert('Failed to generate PDF: ' + msg);
     }
   };
 

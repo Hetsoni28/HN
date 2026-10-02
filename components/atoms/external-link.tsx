@@ -1,4 +1,3 @@
-import Link from 'next/link';
 
 /**
  * ExternalLink — safe anchor for links leaving hn.studio.

@@ -15,6 +15,11 @@ export function SectionHeading({
 }: SectionHeadingProps) {
   return (
     <div className={`mb-12 max-w-3xl ${className}`.trim()}>
+      {eyebrow && (
+        <span className="inline-block rounded-full bg-[#0051FF]/10 px-3.5 py-1 text-xs font-semibold uppercase tracking-wider text-[#0051FF]">
+          {eyebrow}
+        </span>
+      )}
       <h2 className="mt-5 text-3xl font-bold leading-tight sm:text-4xl md:text-5xl">
         {title}
       </h2>

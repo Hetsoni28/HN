@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { FadeIn } from '@/components/atoms/fade-in';
 import { Breadcrumb } from '@/components/molecules/breadcrumb';
 
@@ -28,6 +29,11 @@ export function LegalPageLayout({
         <div className="container">
           <FadeIn>
             <Breadcrumb className="mb-6" />
+            {eyebrow && (
+              <span className="inline-block rounded-full bg-[#0051FF]/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-[#0051FF]">
+                {eyebrow}
+              </span>
+            )}
             <h1 className="mt-5 text-4xl font-bold text-slate-900 md:text-5xl">{title}</h1>
             <p className="mt-4 text-sm text-slate-400">
               Last updated:{' '}
@@ -80,9 +86,9 @@ export function LegalPageLayout({
                     contact.hnsolutions@gmail.com
                   </a>{' '}
                   or reach out via our{' '}
-                  <a href="/contact" className="font-semibold text-[#0051FF] hover:underline">
+                  <Link href="/contact" className="font-semibold text-[#0051FF] hover:underline">
                     contact form
-                  </a>
+                  </Link>
                   .
                 </p>
               </div>

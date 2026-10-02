@@ -17,7 +17,7 @@ export default function ShowreelPage() {
               Our Vision in <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-400">40 Seconds</span>.
             </h1>
             <p className="text-xl text-slate-500">
-              Experience the HN difference. We don't just write code—we engineer growth. 
+              Experience the HN difference. We don&apos;t just write code—we engineer growth. 
               Turn up your volume and hit play.
             </p>
           </div>

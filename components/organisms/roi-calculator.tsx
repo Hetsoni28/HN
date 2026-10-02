@@ -3,7 +3,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/atoms/button';
-import { FadeIn } from '@/components/atoms/fade-in';
 
 export function ROICalculator() {
   const [visitors, setVisitors] = useState<number>(5000);
