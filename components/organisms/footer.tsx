@@ -248,38 +248,20 @@ export function Footer() {
                 </div>
               </div>
 
-              {/* ── Social Icons (48x48 Tiles with Rich Hover Effects & Tooltips) ── */}
+              {/* ── Social Icons ── */}
               <div className="mt-8 flex items-center gap-3">
                 {SOCIAL_ITEMS.map((s) => (
-                  <div key={s.label} className="group relative">
-                    {/* Tooltip */}
-                    <div className="pointer-events-none absolute -top-9 left-1/2 -translate-x-1/2 opacity-0 transition-all duration-200 group-hover:opacity-100 group-focus-within:opacity-100 group-hover:-translate-y-1">
-                      <div className="relative rounded-md bg-slate-900 px-2.5 py-1 text-[11px] font-bold text-white shadow-md whitespace-nowrap">
-                        {s.label}
-                        <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 border-4 border-transparent border-t-slate-900" />
-                      </div>
-                    </div>
-
-                    {/* Social Tile (48x48, radius 16px, glass fill, border white 25%) */}
-                    <a
-                      href={s.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={s.label}
-                      className={`relative flex h-12 w-12 items-center justify-center overflow-hidden rounded-2xl border border-slate-200 bg-slate-100 text-slate-900 group-hover:text-white hover:text-white shadow-sm transition-all duration-300 motion-reduce:transition-none hover:-translate-y-1.5 hover:scale-[1.05] hover:border-slate-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-2 focus-visible:ring-offset-white focus:-translate-y-1.5 focus:scale-[1.05] focus:border-slate-300 active:scale-95 ${s.hoverBg} ${s.hoverGlow}`}
-                    >
-                      {/* Halo ring effect */}
-                      <span className="pointer-events-none absolute inset-0 rounded-2xl border border-slate-300 opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-hover:animate-ping motion-reduce:hidden" />
-
-                      {/* Shine sweep effect */}
-                      <span className="pointer-events-none absolute inset-0 -translate-x-full rounded-2xl bg-gradient-to-r from-transparent via-white/50 to-transparent transition-transform duration-700 group-hover:translate-x-full motion-reduce:hidden" />
-
-                      {/* Icon (22px white, tilts -6deg & scales 110% on hover) */}
-                      <span className="relative z-10 transition-transform duration-300 group-hover:-rotate-6 group-hover:scale-110 motion-reduce:transition-none">
-                        {s.icon}
-                      </span>
-                    </a>
-                  </div>
+                  <a
+                    key={s.label}
+                    href={s.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={s.label}
+                    title={s.label}
+                    className={`flex h-11 w-11 items-center justify-center rounded-xl border border-slate-200 bg-slate-100 text-slate-700 transition-all duration-200 hover:text-white hover:-translate-y-0.5 hover:scale-105 hover:border-transparent active:scale-95 ${s.hoverBg}`}
+                  >
+                    {s.icon}
+                  </a>
                 ))}
               </div>
             </div>
