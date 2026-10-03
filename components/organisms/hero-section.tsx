@@ -33,13 +33,22 @@ export function HeroSection() {
   }, []);
 
   return (
-    <section className="relative min-h-[100svh] overflow-hidden bg-white flex items-center">
+    <section className="relative min-h-[100svh] overflow-hidden flex items-center">
 
-      {/* ── Subtle ambient glow — top left ── */}
-      <div className="pointer-events-none absolute -left-64 -top-32 h-[600px] w-[600px] rounded-full bg-[#0051FF]/6 blur-3xl" />
+      {/* ── Full hero background image ── */}
+      <Image
+        src="/hero-bg.jpg"
+        alt=""
+        fill
+        priority
+        fetchPriority="high"
+        sizes="100vw"
+        className="object-cover object-center"
+        aria-hidden="true"
+      />
 
-      {/* ── Subtle ambient glow — bottom right ── */}
-      <div className="pointer-events-none absolute -bottom-32 right-0 h-[400px] w-[400px] rounded-full bg-[#00D2FF]/5 blur-3xl" />
+      {/* ── Overlay so text stays readable ── */}
+      <div className="absolute inset-0 bg-white/60" />
 
       <div className="container relative z-10 py-28 sm:py-32">
         <div className="grid grid-cols-1 lg:grid-cols-[55fr_45fr] gap-12 lg:gap-16 items-center">
