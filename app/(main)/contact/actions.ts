@@ -113,26 +113,54 @@ export async function submitInquiry(
       subject: `New Inquiry — ${data.projectType} from ${data.name}`,
       attachments,
       html: `
-        <div style="font-family:sans-serif;max-width:600px;margin:0 auto">
-          <h2 style="color:#0051FF">New Project Inquiry</h2>
-          <hr style="border-color:#E2E5F1"/>
-
-          <h3>Contact</h3>
-          <p><strong>Name:</strong> ${data.name}</p>
-          <p><strong>Email:</strong> <a href="mailto:${data.email}">${data.email}</a></p>
-          ${data.phone   ? `<p><strong>Phone:</strong> ${data.phone}</p>` : ''}
-          ${data.company ? `<p><strong>Company:</strong> ${data.company}</p>` : ''}
-
-          <h3>Project</h3>
-          <p><strong>Type:</strong> ${data.projectType}</p>
-          
-          <p><strong>Timeline:</strong> ${data.timeline}</p>
-          <p><strong>Attachment:</strong> ${fileBuffer ? fileName : 'None'}</p>
-
-          <h3>Description</h3>
-          <p style="white-space:pre-wrap">${data.description}</p>
-          <hr style="border-color:#E2E5F1"/>
-          <p style="color:#94a3b8;font-size:12px">Sent via hn.studio contact form</p>
+        <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;max-width:600px;margin:0 auto;background-color:#ffffff;border:1px solid #e2e8f0;border-radius:12px;overflow:hidden">
+          <div style="background-color:#0B111E;padding:32px;text-align:center">
+            <h1 style="color:#ffffff;margin:0;font-size:24px;font-weight:700;letter-spacing:-0.5px">HN Studio</h1>
+            <p style="color:#94a3b8;margin:8px 0 0 0;font-size:14px;text-transform:uppercase;letter-spacing:1px">New Project Inquiry</p>
+          </div>
+          <div style="padding:40px 32px">
+            <p style="font-size:16px;color:#334155;line-height:24px;margin:0 0 24px 0">
+              You have received a new project inquiry from <strong>${data.name}</strong>.
+            </p>
+            <div style="background-color:#f8fafc;border-radius:8px;padding:24px;margin-bottom:32px">
+              <h3 style="margin:0 0 16px 0;font-size:14px;text-transform:uppercase;letter-spacing:1px;color:#64748b">Client Details</h3>
+              <div style="margin-bottom:12px">
+                <span style="color:#64748b;font-size:14px;display:inline-block;width:80px">Name</span>
+                <span style="color:#0f172a;font-weight:500;font-size:15px">${data.name}</span>
+              </div>
+              <div style="margin-bottom:12px">
+                <span style="color:#64748b;font-size:14px;display:inline-block;width:80px">Email</span>
+                <a href="mailto:${data.email}" style="color:#0051FF;text-decoration:none;font-weight:500;font-size:15px">${data.email}</a>
+              </div>
+              ${data.phone ? `<div style="margin-bottom:12px"><span style="color:#64748b;font-size:14px;display:inline-block;width:80px">Phone</span><span style="color:#0f172a;font-weight:500;font-size:15px">${data.phone}</span></div>` : ''}
+              ${data.company ? `<div style="margin-bottom:0"><span style="color:#64748b;font-size:14px;display:inline-block;width:80px">Company</span><span style="color:#0f172a;font-weight:500;font-size:15px">${data.company}</span></div>` : ''}
+            </div>
+            <div style="background-color:#f8fafc;border-radius:8px;padding:24px;margin-bottom:32px">
+              <h3 style="margin:0 0 16px 0;font-size:14px;text-transform:uppercase;letter-spacing:1px;color:#64748b">Project Scope</h3>
+              <div style="margin-bottom:12px">
+                <span style="color:#64748b;font-size:14px;display:inline-block;width:80px">Type</span>
+                <span style="color:#0f172a;font-weight:500;font-size:15px">${data.projectType}</span>
+              </div>
+              <div style="margin-bottom:12px">
+                <span style="color:#64748b;font-size:14px;display:inline-block;width:80px">Timeline</span>
+                <span style="color:#0f172a;font-weight:500;font-size:15px">${data.timeline}</span>
+              </div>
+              <div style="margin-bottom:0">
+                <span style="color:#64748b;font-size:14px;display:inline-block;width:80px">File</span>
+                <span style="color:#0f172a;font-weight:500;font-size:15px">${fileBuffer ? fileName : 'No attachment'}</span>
+              </div>
+            </div>
+            <h3 style="margin:0 0 12px 0;font-size:14px;text-transform:uppercase;letter-spacing:1px;color:#64748b">Message</h3>
+            <div style="background-color:#f8fafc;border-radius:8px;padding:24px">
+              <p style="margin:0;font-size:15px;color:#334155;line-height:24px;white-space:pre-wrap">${data.description}</p>
+            </div>
+            <div style="margin-top:40px;text-align:center">
+              <a href="mailto:${data.email}" style="display:inline-block;background-color:#0051FF;color:#ffffff;text-decoration:none;padding:14px 28px;border-radius:8px;font-weight:600;font-size:15px">Reply to ${data.name.split(' ')[0]}</a>
+            </div>
+          </div>
+          <div style="background-color:#f1f5f9;padding:24px 32px;text-align:center">
+            <p style="margin:0;color:#64748b;font-size:13px">This email was securely sent from your HN Studio contact form.</p>
+          </div>
         </div>
       `,
     });
@@ -143,14 +171,23 @@ export async function submitInquiry(
       to:      [data.email],
       subject: `We received your inquiry, ${data.name.split(' ')[0]}!`,
       html: `
-        <div style="font-family:sans-serif;max-width:600px;margin:0 auto">
-          <h2 style="color:#0051FF">Thanks for reaching out!</h2>
-          <p>Hi ${data.name.split(' ')[0]},</p>
-          <p>We've received your inquiry about a <strong>${data.projectType}</strong> project and will get back to you within <strong>24–48 hours</strong>.</p>
-          <p>In the meantime, feel free to check out our work at <a href="https://hn.studio/work">hn.studio/work</a>.</p>
-          <p>— Het & Neel</p>
-          <hr style="border-color:#E2E5F1"/>
-          <p style="color:#94a3b8;font-size:12px">HN · Digital Product Studio</p>
+        <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;max-width:600px;margin:0 auto;background-color:#ffffff;border:1px solid #e2e8f0;border-radius:12px;overflow:hidden">
+          <div style="background-color:#0B111E;padding:32px;text-align:center">
+            <h1 style="color:#ffffff;margin:0;font-size:24px;font-weight:700;letter-spacing:-0.5px">HN Studio</h1>
+          </div>
+          <div style="padding:40px 32px">
+            <h2 style="margin:0 0 20px 0;font-size:20px;color:#0f172a">Thanks for reaching out!</h2>
+            <p style="font-size:16px;color:#334155;line-height:24px;margin:0 0 16px 0">Hi ${data.name.split(' ')[0]},</p>
+            <p style="font-size:16px;color:#334155;line-height:24px;margin:0 0 24px 0">We've successfully received your inquiry about a <strong>${data.projectType}</strong> project. Our engineering team is reviewing your requirements and will get back to you within <strong>24–48 hours</strong> with a clear plan.</p>
+            <p style="font-size:16px;color:#334155;line-height:24px;margin:0 0 32px 0">In the meantime, feel free to explore our recent case studies to see the kind of enterprise-grade software we build.</p>
+            <div style="text-align:center">
+              <a href="https://hn.studio/work" style="display:inline-block;background-color:#0051FF;color:#ffffff;text-decoration:none;padding:14px 28px;border-radius:8px;font-weight:600;font-size:15px">View Our Work</a>
+            </div>
+            <div style="margin-top:40px;border-top:1px solid #e2e8f0;padding-top:24px">
+              <p style="font-size:16px;color:#334155;margin:0 0 4px 0">Best regards,</p>
+              <p style="font-size:16px;font-weight:600;color:#0f172a;margin:0">The HN Team</p>
+            </div>
+          </div>
         </div>
       `,
     });
