@@ -4,22 +4,21 @@ import { FadeIn } from '@/components/atoms/fade-in';
 /* ─── Hero ─── */
 export function AboutHero() {
   return (
-    <section className="bg-[#EEF0FF] py-12 md:py-20">
-      <div className="container px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-        <FadeIn>
-          <div className="relative w-full rounded-2xl md:rounded-[2rem] overflow-hidden shadow-sm">
-            {/* The image contains the hero text and stats */}
-            <Image
-              src="/images/about-hero-banner.png"
-              alt="Why HN exists. We started HN with a simple belief — great software should be accessible to every business."
-              width={1920}
-              height={600}
-              quality={100}
-              unoptimized
-              className="w-full h-auto object-cover"
-              priority
-            />
-          </div>
+    <section className="bg-[#EEF0FF]">
+      <FadeIn>
+        <div className="relative w-full overflow-hidden">
+          {/* The image contains the hero text and stats */}
+          <Image
+            src="/images/about-hero-banner.png"
+            alt="Why HN exists. We started HN with a simple belief — great software should be accessible to every business."
+            width={1920}
+            height={600}
+            quality={100}
+            unoptimized
+            className="w-full h-auto object-cover"
+            priority
+          />
+        </div>
           
           {/* SEO / Screen reader text */}
           <div className="sr-only">
@@ -35,7 +34,6 @@ export function AboutHero() {
             </ul>
           </div>
         </FadeIn>
-      </div>
     </section>
   );
 }
