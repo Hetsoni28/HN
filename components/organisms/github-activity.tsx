@@ -102,9 +102,6 @@ export function GithubActivity() {
               Built in public
             </h2>
           </div>
-          <p className="max-w-xs text-sm text-slate-400">
-            Live commit feed pulled straight from GitHub — no manual updates needed.
-          </p>
         </div>
 
         {/* Feed */}
