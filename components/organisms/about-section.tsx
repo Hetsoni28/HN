@@ -1,65 +1,76 @@
 import { FadeIn } from '@/components/atoms/fade-in';
-import { Button } from '@/components/atoms/button';
+import Link from 'next/link';
+
+const pillars = ['Product Design', 'Engineering', 'AI'];
+
+const stats = [
+  { value: '50+', label: 'Projects' },
+  { value: '3+', label: 'Years' },
+  { value: '100%', label: 'Satisfaction' },
+];
+
 export function AboutSection() {
   return (
-    <section className="section">
+    <section className="section bg-white">
       <div className="container">
-        <div className="grid items-start gap-12 lg:grid-cols-[5fr_7fr] lg:gap-20">
+        <div className="grid grid-cols-1 gap-16 lg:grid-cols-2 lg:gap-24 items-center">
 
-          {/* ── Left — visual card ── */}
+          {/* ── Left — large typography ── */}
           <FadeIn>
-            <div className="relative pb-6 pr-6">
-              {/* Main blue card */}
-              <div className="flex aspect-[9/10] sm:aspect-square w-full overflow-hidden rounded-[2rem] bg-gradient-to-br from-[#0051FF] via-[#0070F3] to-[#0B111E]">
-                <div className="flex h-full w-full flex-col justify-between p-8 sm:p-12">
-                  {/* Top label */}
-                  <div className="text-[10px] font-bold uppercase tracking-widest text-blue-200">
-                    Est. 2024 — India
-                  </div>
+            <p className="mb-6 text-xs font-bold uppercase tracking-[0.25em] text-[#0051FF]">
+              About HN
+            </p>
 
-                  {/* Monogram */}
-                  <div className="mt-auto">
-                    <div className="text-[100px] font-black leading-[0.8] text-white">H</div>
-                    <div className="text-[100px] font-black leading-[0.8] text-white">N</div>
-                    <div className="mt-8 text-sm font-medium leading-relaxed text-blue-200">
-                      Enterprise Software<br />Technology Partner
-                    </div>
-                  </div>
-                </div>
-              </div>
+            <h2 className="text-5xl font-black uppercase leading-[1.0] tracking-tight text-[#0B111E] sm:text-6xl xl:text-7xl">
+              Small team.<br />
+              <span className="gradient-text">Big product</span><br />
+              thinking.
+            </h2>
 
-              {/* Floating badge */}
-              <div className="absolute bottom-0 right-0 rounded-2xl bg-white px-5 py-4 shadow-2xl shadow-slate-200/50">
-                <div className="text-sm font-bold text-slate-900">Global Reach</div>
-                <div className="mt-0.5 text-xs text-slate-500">Deployed Worldwide</div>
-              </div>
+            {/* Pillars */}
+            <div className="mt-10 flex flex-wrap gap-3">
+              {pillars.map((p) => (
+                <span
+                  key={p}
+                  className="rounded-full border border-[#0051FF]/20 bg-[#0051FF]/5 px-4 py-2 text-xs font-bold uppercase tracking-widest text-[#0051FF]"
+                >
+                  {p}
+                </span>
+              ))}
             </div>
           </FadeIn>
 
-          {/* ── Right — copy ── */}
-          <FadeIn delay={0.2}>
+          {/* ── Right — copy + stats ── */}
+          <FadeIn delay={0.15}>
+            <p className="text-lg leading-8 text-slate-500 sm:text-xl sm:leading-9">
+              HN is a digital product studio focused on turning ambitious ideas into useful,
+              scalable technology. We work with startups, businesses, and founders who care
+              about building things that actually work.
+            </p>
 
-            <h2 className="text-3xl font-bold leading-tight sm:text-4xl md:text-5xl">
-              Elite engineering for the modern enterprise.
-            </h2>
+            <p className="mt-5 text-base leading-7 text-slate-400">
+              Every product we ship is designed with intention, engineered for performance,
+              and built to evolve. We do not hand off and disappear — we stay in it with you.
+            </p>
 
-            <div className="mt-6 space-y-4 text-lg leading-8 text-slate-600">
-              <p>
-                HN is a premium technology company founded by Het Soni and Neel Patel. We partner with ambitious organizations worldwide to architect, deploy, and scale enterprise software, cloud infrastructure, and advanced AI systems.
-              </p>
-              <p>
-                We combine rigorous engineering standards, strict security protocols, and enterprise-level SLAs to deliver digital solutions that drive measurable business transformation. No technical debt. No compromises.
-              </p>
+            {/* Stats row */}
+            <div className="mt-10 grid grid-cols-3 gap-6 border-t border-slate-100 pt-10">
+              {stats.map(({ value, label }) => (
+                <div key={label}>
+                  <div className="text-3xl font-black text-[#0B111E] sm:text-4xl">{value}</div>
+                  <div className="mt-1 text-xs font-semibold uppercase tracking-widest text-slate-400">
+                    {label}
+                  </div>
+                </div>
+              ))}
             </div>
 
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Button href="/about" variant="primary">
-                Discover our methodology →
-              </Button>
-              <Button href="/contact" variant="secondary">
-                Work with us
-              </Button>
-            </div>
+            <Link
+              href="/about"
+              className="mt-8 inline-flex items-center gap-2 text-sm font-bold text-[#0051FF] transition-all hover:gap-3"
+            >
+              Meet the team →
+            </Link>
           </FadeIn>
 
         </div>

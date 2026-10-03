@@ -1,38 +1,30 @@
 import type { Metadata } from 'next';
 import { getFeaturedProjects, getFaqs, getTestimonials } from '@/lib/content';
 
-import { HeroSection }     from '@/components/organisms/hero-section';
-import { WhatWeBuild }     from '@/components/organisms/what-we-build';
-import { FeaturedWork }    from '@/components/organisms/featured-work';
-import { TransformationSection } from '@/components/organisms/transformation-section';
-import { ROISection } from '@/components/organisms/roi-section';
-import { WhyHN }           from '@/components/organisms/why-hn';
+import { HeroSection }        from '@/components/organisms/hero-section';
+import { TrustBar }           from '@/components/organisms/trust-bar';
+import { WhatWeBuild }        from '@/components/organisms/what-we-build';
+import { FeaturedWork }       from '@/components/organisms/featured-work';
+import { WhyHN }              from '@/components/organisms/why-hn';
+import { ServicesSection }    from '@/components/organisms/services-section';
+import { ProcessSection }     from '@/components/organisms/process-section';
+import { TechSection }        from '@/components/organisms/tech-section';
+import { AboutSection }       from '@/components/organisms/about-section';
 import { TestimonialsSection } from '@/components/organisms/testimonials-section';
-import { ServicesSection } from '@/components/organisms/services-section';
-import { OffersStrip }    from '@/components/organisms/offers-strip';
-import { ProcessSection }  from '@/components/organisms/process-section';
-import { TechSection }     from '@/components/organisms/tech-section';
-import { AboutSection }    from '@/components/organisms/about-section';
-import { FaqSection }      from '@/components/organisms/faq-section';
-import { FinalCta }        from '@/components/organisms/final-cta';
-import { Marquee }         from '@/components/molecules/marquee';
+import { FaqSection }         from '@/components/organisms/faq-section';
+import { FinalCta }           from '@/components/organisms/final-cta';
+import { GithubActivity }     from '@/components/organisms/github-activity';
 
 export const metadata: Metadata = {
-  title: 'HN Studio — Digital Product Studio',
-  description: 'HN is a premium technology company engineering scalable software, enterprise web platforms, and AI solutions for ambitious businesses globally.',
+  title: 'HN \u2014 Building Digital Products From Ideas to Scale',
+  description: 'HN is a digital product studio. We design and develop modern websites, applications, AI solutions, SaaS platforms, and custom software for businesses and ambitious ideas.',
   openGraph: {
-    title: 'HN Studio — Digital Product Studio',
-    description: 'HN is a premium technology company engineering scalable software, enterprise web platforms, and AI solutions for ambitious businesses globally.',
+    title: 'HN \u2014 Building Digital Products From Ideas to Scale',
+    description: 'HN is a digital product studio. We design and develop modern websites, applications, AI solutions, SaaS platforms, and custom software for businesses and ambitious ideas.',
     url: 'https://hn.studio',
     type: 'website',
   },
 };
-
-const marqueeItems = [
-  'React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Node.js',
-  'FastAPI', 'PostgreSQL', 'Supabase', 'Sanity CMS', 'AI & LLMs',
-  'Docker', 'AWS', 'Vercel', 'Stripe', 'React Native',
-];
 
 export default async function Home() {
   const [projects, faqs, testimonials] = await Promise.all([
@@ -44,20 +36,18 @@ export default async function Home() {
   return (
     <>
       <HeroSection />
-      <Marquee items={marqueeItems} />
+      <TrustBar />
       <WhatWeBuild />
       <FeaturedWork projects={projects} />
-      <TransformationSection />
-      <ROISection />
       <WhyHN />
-      <TestimonialsSection testimonials={testimonials} />
-      <OffersStrip />
       <ServicesSection />
       <ProcessSection />
       <TechSection />
       <AboutSection />
+      <TestimonialsSection testimonials={testimonials} />
       <FaqSection faqs={faqs} />
-            <FinalCta />
+      <GithubActivity />
+      <FinalCta />
     </>
   );
 }
