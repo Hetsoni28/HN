@@ -1,13 +1,8 @@
 import { FadeIn } from '@/components/atoms/fade-in';
 import Link from 'next/link';
 
-const pillars = ['Product Design', 'Engineering', 'AI'];
+const pillars = ['Product Design', 'Engineering', 'AI & Automation'];
 
-const stats = [
-  { value: '50+', label: 'Projects' },
-  { value: '3+', label: 'Years' },
-  { value: '100%', label: 'Satisfaction' },
-];
 
 export function AboutSection() {
   return (
@@ -22,9 +17,9 @@ export function AboutSection() {
             </p>
 
             <h2 className="text-5xl font-black uppercase leading-[1.0] tracking-tight text-[#0B111E] sm:text-6xl xl:text-7xl">
-              Small team.<br />
-              <span className="gradient-text">Big product</span><br />
-              thinking.
+              Premium<br />
+              <span className="text-[#0051FF]">Engineering.</span><br />
+              Real Results.
             </h2>
 
             {/* Pillars */}
@@ -42,34 +37,24 @@ export function AboutSection() {
 
           {/* ── Right — copy + stats ── */}
           <FadeIn delay={0.15}>
-            <p className="text-lg leading-8 text-slate-500 sm:text-xl sm:leading-9">
-              HN is a digital product studio focused on turning ambitious ideas into useful,
-              scalable technology. We work with startups, businesses, and founders who care
-              about building things that actually work.
+            <p className="text-lg leading-8 text-slate-600 sm:text-xl sm:leading-9">
+              HN is a premium technology company that designs and engineers digital
+              products for ambitious businesses. We partner with startups, scale-ups,
+              and enterprises who demand software that performs at the highest level.
             </p>
 
             <p className="mt-5 text-base leading-7 text-slate-400">
-              Every product we ship is designed with intention, engineered for performance,
-              and built to evolve. We do not hand off and disappear — we stay in it with you.
+              Every solution we deliver is architected for scale, built for longevity,
+              and crafted to drive measurable business results. We don&apos;t just ship —
+              we own outcomes alongside our clients.
             </p>
 
-            {/* Stats row */}
-            <div className="mt-10 grid grid-cols-3 gap-6 border-t border-slate-100 pt-10">
-              {stats.map(({ value, label }) => (
-                <div key={label}>
-                  <div className="text-3xl font-black text-[#0B111E] sm:text-4xl">{value}</div>
-                  <div className="mt-1 text-xs font-semibold uppercase tracking-widest text-slate-400">
-                    {label}
-                  </div>
-                </div>
-              ))}
-            </div>
 
             <Link
               href="/about"
               className="mt-8 inline-flex items-center gap-2 text-sm font-bold text-[#0051FF] transition-all hover:gap-3"
             >
-              Meet the team →
+              Learn about us →
             </Link>
           </FadeIn>
 
