@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import { FadeIn } from '@/components/atoms/fade-in';
-import { Logo } from '@/components/atoms/logo';
 
 export function FinalCta() {
   return (
@@ -13,10 +12,6 @@ export function FinalCta() {
       <div className="container relative z-10 py-40 text-center">
         <FadeIn>
 
-          {/* HN Logo */}
-          <div className="mb-12 flex justify-center">
-            <Logo />
-          </div>
 
           {/* Eyebrow */}
           <p className="mb-6 text-xs font-bold uppercase tracking-[0.3em] text-white/70">
