@@ -56,9 +56,9 @@ export default async function ServiceDetailPage({
     <>
       {/* 1. Hero */}
       {heroImage ? (
-        <section className="relative overflow-hidden min-h-[65vh] flex flex-col justify-center py-16 md:py-24 bg-white">
+        <section className="relative overflow-hidden min-h-[65vh] flex flex-col justify-center py-16 md:py-24">
           {/* Background Layer with Right-Shifted Artwork */}
-          <div className="absolute inset-0 -z-20">
+          <div className="absolute inset-0">
             <Image
               src={heroImage}
               alt={`${service.title} Background`}
