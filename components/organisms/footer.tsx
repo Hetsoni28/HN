@@ -258,7 +258,7 @@ export function Footer() {
                     rel="noopener noreferrer"
                     aria-label={s.label}
                     title={s.label}
-                    className={`flex h-11 w-11 items-center justify-center rounded-xl border border-slate-200 bg-slate-100 text-slate-700 transition-all duration-200 hover:text-white hover:-translate-y-0.5 hover:scale-105 hover:border-transparent active:scale-95 ${s.hoverBg}`}
+                    className={`flex h-11 w-11 items-center justify-center rounded-xl border border-slate-200 bg-slate-100 text-slate-700 transition-all duration-200 hover:text-white hover:[&_svg]:fill-white hover:-translate-y-0.5 hover:scale-105 hover:border-transparent active:scale-95 ${s.hoverBg}`}
                   >
                     {s.icon}
                   </a>
