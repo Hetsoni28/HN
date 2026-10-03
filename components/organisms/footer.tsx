@@ -266,7 +266,7 @@ export function Footer() {
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label={s.label}
-                      className={`relative flex h-12 w-12 items-center justify-center overflow-hidden rounded-2xl border border-slate-200 bg-slate-100 text-slate-900 group-hover:text-white shadow-sm transition-all duration-300 motion-reduce:transition-none hover:-translate-y-1.5 hover:scale-[1.05] hover:border-slate-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-2 focus-visible:ring-offset-white focus:-translate-y-1.5 focus:scale-[1.05] focus:border-slate-300 active:scale-95 ${s.hoverBg} ${s.hoverGlow}`}
+                      className={`relative flex h-12 w-12 items-center justify-center overflow-hidden rounded-2xl border border-slate-200 bg-slate-100 text-slate-900 group-hover:text-white hover:text-white shadow-sm transition-all duration-300 motion-reduce:transition-none hover:-translate-y-1.5 hover:scale-[1.05] hover:border-slate-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-2 focus-visible:ring-offset-white focus:-translate-y-1.5 focus:scale-[1.05] focus:border-slate-300 active:scale-95 ${s.hoverBg} ${s.hoverGlow}`}
                     >
                       {/* Halo ring effect */}
                       <span className="pointer-events-none absolute inset-0 rounded-2xl border border-slate-300 opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-hover:animate-ping motion-reduce:hidden" />
