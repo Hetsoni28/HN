@@ -25,19 +25,21 @@ export function CaseStudyTextSection({
   return (
     <section className={`section ${bg === 'surface' ? 'bg-[#EEF0FF]' : 'bg-white'}`}>
       <div className="container">
-        <div className="grid gap-12 lg:grid-cols-[1fr_2fr]">
-          <FadeIn>
+        <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
+          <FadeIn className="lg:col-span-4 lg:pr-8">
             {eyebrow && (
-              <span className="inline-block rounded-full bg-[#0051FF]/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-[#0051FF]">
+              <span className="mb-4 inline-block rounded-full bg-[#0051FF]/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-[#0051FF]">
                 {eyebrow}
               </span>
             )}
-            <h2 className="mt-5 text-3xl font-bold text-slate-900 md:text-4xl">{title}</h2>
+            <h2 className="text-3xl font-bold leading-tight text-slate-900 md:text-4xl">{title}</h2>
           </FadeIn>
-          <FadeIn delay={0.1}>
-            {highlight
-              ? <div className="rounded-2xl border-l-4 border-[#0051FF] bg-[#EEF0FF] p-6">{content}</div>
-              : content}
+          <FadeIn delay={0.1} className="lg:col-span-8">
+            <div className="max-w-3xl">
+              {highlight
+                ? <div className="rounded-2xl border-l-4 border-[#0051FF] bg-[#0051FF]/5 p-6 md:p-8">{content}</div>
+                : content}
+            </div>
           </FadeIn>
         </div>
       </div>
