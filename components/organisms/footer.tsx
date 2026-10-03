@@ -113,7 +113,7 @@ export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="relative overflow-hidden bg-[#050505] text-white selection:bg-[#0051FF] selection:text-white">
+    <footer className="relative overflow-hidden bg-white text-slate-900 selection:bg-[#0051FF] selection:text-slate-900">
 
       {/* ── Soft Blurred Ambient Glows ── */}
       <div className="pointer-events-none absolute inset-0 z-0">
@@ -137,38 +137,38 @@ export function Footer() {
       <div className="relative z-10">
 
         {/* ── Pre-footer CTA strip ── */}
-        <div className="border-b border-white/15">
+        <div className="border-b border-slate-200">
           <div className="container flex flex-col items-start justify-between gap-6 py-12 md:flex-row md:items-center">
             <div>
-              <span className="inline-flex rounded-full bg-white/15 px-3 py-1 text-xs font-bold uppercase tracking-widest text-white backdrop-blur-sm border border-white/20">
+              <span className="inline-flex rounded-full bg-blue-50 px-3 py-1 text-xs font-bold uppercase tracking-widest text-[#0051FF]">
                 READY TO BUILD?
               </span>
-              <h2 className="mt-3 text-3xl font-extrabold text-white sm:text-4xl tracking-tight">
+              <h2 className="mt-3 text-3xl font-extrabold text-slate-900 sm:text-4xl tracking-tight">
                 Start your project{' '}
-                <span className="bg-gradient-to-r from-white to-[#A5F3FC] bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-[#0051FF] to-[#00D2FF] bg-clip-text text-transparent">
                   today.
                 </span>
               </h2>
-              <p className="mt-2 text-sm font-medium text-[#F2F7FF]">
+              <p className="mt-2 text-sm font-medium text-slate-500">
                 From idea to launch in as little as 4 weeks.
               </p>
             </div>
             <div className="flex flex-wrap gap-3">
               <Link
                 href="/contact"
-                className="inline-flex shrink-0 items-center gap-2 rounded-xl bg-white px-7 py-3.5 text-sm font-bold !text-[#0A4FD0] [text-shadow:none] shadow-lg shadow-blue-950/20 transition-all duration-300 hover:bg-blue-50 hover:scale-105 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#1D6BF0] motion-reduce:transition-none motion-reduce:transform-none"
-                style={{ color: '#0A4FD0' }}
+                className="inline-flex shrink-0 items-center gap-2 rounded-xl bg-[#0051FF] px-7 py-3.5 text-sm font-bold text-slate-900 [text-shadow:none] shadow-lg shadow-blue-500/20 transition-all duration-300 hover:bg-blue-600 hover:scale-105 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#1D6BF0] motion-reduce:transition-none motion-reduce:transform-none"
+                
               >
-                <span className="!text-[#0A4FD0] [text-shadow:none]" style={{ color: '#0A4FD0' }}>
+                <span className="text-slate-900 [text-shadow:none]" >
                   Get a Free Proposal
                 </span>
-                <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="#0A4FD0" strokeWidth={2.5} aria-hidden="true" style={{ stroke: '#0A4FD0' }}>
+                <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5} aria-hidden="true" >
                   <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
                 </svg>
               </Link>
               <Link
                 href="/estimate"
-                className="inline-flex shrink-0 items-center gap-2 rounded-xl border border-white/30 bg-white/10 backdrop-blur-md px-7 py-3.5 text-sm font-semibold text-white transition-all duration-300 hover:bg-white/20 hover:border-white/50 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#1D6BF0] motion-reduce:transition-none motion-reduce:transform-none"
+                className="inline-flex shrink-0 items-center gap-2 rounded-xl border border-slate-200 bg-white backdrop-blur-md px-7 py-3.5 text-sm font-semibold text-slate-900 transition-all duration-300 hover:bg-slate-50 hover:border-slate-300 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#1D6BF0] motion-reduce:transition-none motion-reduce:transform-none"
               >
                 Estimate Cost
               </Link>
@@ -177,14 +177,14 @@ export function Footer() {
         </div>
 
         {/* ── Trust stats bar ── */}
-        <div className="border-b border-white/15 bg-white/[0.04] backdrop-blur-sm">
+        <div className="border-b border-slate-200 bg-white backdrop-blur-sm">
           <div className="container grid grid-cols-3 divide-x divide-white/15">
             {TRUST_STATS.map((s) => (
               <div key={s.label} className="group flex flex-col items-center gap-1 py-6 text-center cursor-default">
-                <span className="text-3xl font-black text-white tracking-tight sm:text-4xl transition-colors duration-300 group-hover:text-[#A5F3FC]">
+                <span className="text-3xl font-black text-slate-900 tracking-tight sm:text-4xl transition-colors duration-300 group-hover:text-[#A5F3FC]">
                   {s.value}
                 </span>
-                <span className="text-[10px] font-bold uppercase tracking-widest text-[#E3EEFF] transition-colors duration-300 group-hover:text-white sm:text-xs">
+                <span className="text-[10px] font-bold uppercase tracking-widest text-[#E3EEFF] transition-colors duration-300 group-hover:text-slate-900 sm:text-xs">
                   {s.label}
                 </span>
               </div>
@@ -201,7 +201,7 @@ export function Footer() {
               <div className="group/brand inline-block">
                 <Logo />
               </div>
-              <p className="mt-5 max-w-xs text-sm leading-relaxed text-[#F2F7FF]">
+              <p className="mt-5 max-w-xs text-sm leading-relaxed text-slate-500">
                 A senior-engineer-led digital product studio. We build websites, web apps, SaaS platforms, mobile apps, and AI solutions for ambitious founders and businesses.
               </p>
 
@@ -209,9 +209,9 @@ export function Footer() {
               <div className="mt-7 space-y-3.5">
                 <a
                   href="mailto:contact.hnsolutions@gmail.com"
-                  className="group flex items-center gap-3 text-sm font-medium text-[#F2F7FF] transition-colors duration-300 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#1D6BF0] rounded-lg p-0.5"
+                  className="group flex items-center gap-3 text-sm font-medium text-slate-500 transition-colors duration-300 hover:text-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#1D6BF0] rounded-lg p-0.5"
                 >
-                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-white/10 text-white border border-white/20 transition-all duration-300 group-hover:bg-white/25 group-hover:border-white/40 group-hover:scale-105 motion-reduce:transform-none">
+                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-slate-100 text-slate-900 border border-slate-200 transition-all duration-300 group-hover:bg-slate-200 group-hover:border-slate-300 group-hover:scale-105 motion-reduce:transform-none">
                     <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
                     </svg>
@@ -226,9 +226,9 @@ export function Footer() {
                   href="https://wa.me/917990743263"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group flex items-center gap-3 text-sm font-medium text-[#F2F7FF] transition-colors duration-300 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#1D6BF0] rounded-lg p-0.5"
+                  className="group flex items-center gap-3 text-sm font-medium text-slate-500 transition-colors duration-300 hover:text-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#1D6BF0] rounded-lg p-0.5"
                 >
-                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-white/10 text-white border border-white/20 transition-all duration-300 group-hover:bg-white/25 group-hover:border-white/40 group-hover:scale-105 motion-reduce:transform-none">
+                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-slate-100 text-slate-900 border border-slate-200 transition-all duration-300 group-hover:bg-slate-200 group-hover:border-slate-300 group-hover:scale-105 motion-reduce:transform-none">
                     <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
                     </svg>
@@ -241,9 +241,9 @@ export function Footer() {
 
                 <a
                   href="tel:+917202031164"
-                  className="group flex items-center gap-3 text-sm font-medium text-[#F2F7FF] transition-colors duration-300 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#1D6BF0] rounded-lg p-0.5"
+                  className="group flex items-center gap-3 text-sm font-medium text-slate-500 transition-colors duration-300 hover:text-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#1D6BF0] rounded-lg p-0.5"
                 >
-                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-white/10 text-white border border-white/20 transition-all duration-300 group-hover:bg-white/25 group-hover:border-white/40 group-hover:scale-105 motion-reduce:transform-none">
+                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-slate-100 text-slate-900 border border-slate-200 transition-all duration-300 group-hover:bg-slate-200 group-hover:border-slate-300 group-hover:scale-105 motion-reduce:transform-none">
                     <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
                     </svg>
@@ -255,7 +255,7 @@ export function Footer() {
                 </a>
 
                 <div className="flex items-center gap-3 text-sm text-[#E3EEFF]">
-                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-white/10 text-white border border-white/20">
+                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-slate-100 text-slate-900 border border-slate-200">
                     <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
                       <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
@@ -273,7 +273,7 @@ export function Footer() {
                     <div className="pointer-events-none absolute -top-9 left-1/2 -translate-x-1/2 opacity-0 transition-all duration-200 group-hover:opacity-100 group-focus-within:opacity-100 group-hover:-translate-y-1">
                       <div className="relative rounded-md bg-white px-2.5 py-1 text-[11px] font-bold text-[#0A4FD0] shadow-md whitespace-nowrap">
                         {s.label}
-                        <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 border-4 border-transparent border-t-white" />
+                        <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 border-4 border-transparent border-t-slate-900" />
                       </div>
                     </div>
 
@@ -283,7 +283,7 @@ export function Footer() {
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label={s.label}
-                      className={`relative flex h-12 w-12 items-center justify-center overflow-hidden rounded-2xl border border-white/25 bg-white/10 text-white shadow-sm transition-all duration-300 motion-reduce:transition-none hover:-translate-y-1.5 hover:scale-[1.05] hover:border-white/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#1D6BF0] focus:-translate-y-1.5 focus:scale-[1.05] focus:border-white/80 active:scale-95 ${s.hoverBg} ${s.hoverGlow}`}
+                      className={`relative flex h-12 w-12 items-center justify-center overflow-hidden rounded-2xl border border-white/25 bg-slate-100 text-slate-900 shadow-sm transition-all duration-300 motion-reduce:transition-none hover:-translate-y-1.5 hover:scale-[1.05] hover:border-white/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#1D6BF0] focus:-translate-y-1.5 focus:scale-[1.05] focus:border-white/80 active:scale-95 ${s.hoverBg} ${s.hoverGlow}`}
                     >
                       {/* Halo ring effect */}
                       <span className="pointer-events-none absolute inset-0 rounded-2xl border border-white/50 opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-hover:animate-ping motion-reduce:hidden" />
@@ -304,7 +304,7 @@ export function Footer() {
             {/* Nav columns */}
             {NAV.map((col) => (
               <div key={col.heading} className="group/col">
-                <h3 className="mb-2 text-xs font-bold uppercase tracking-widest text-white transition-all duration-300 group-hover/col:tracking-[0.24em]">
+                <h3 className="mb-2 text-xs font-bold uppercase tracking-widest text-slate-900 transition-all duration-300 group-hover/col:tracking-[0.24em]">
                   {col.heading}
                 </h3>
                 <div className="mb-5 h-[2px] w-6 bg-[#A5F3FC] rounded-full transition-all duration-300 group-hover/col:w-10" />
@@ -313,7 +313,7 @@ export function Footer() {
                     <Link
                       key={href}
                       href={href}
-                      className="group relative inline-flex items-center text-sm font-medium text-[#F2F7FF] transition-all duration-300 hover:translate-x-1 hover:text-white group-hover/list:opacity-70 hover:!opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#1D6BF0] rounded motion-reduce:transition-none motion-reduce:transform-none"
+                      className="group relative inline-flex items-center text-sm font-medium text-slate-500 transition-all duration-300 hover:translate-x-1 hover:text-slate-900 group-hover/list:opacity-70 hover:!opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#1D6BF0] rounded motion-reduce:transition-none motion-reduce:transform-none"
                     >
                       <span className="relative py-0.5">
                         {label}
@@ -328,7 +328,7 @@ export function Footer() {
         </div>
 
         {/* ── Bottom bar ── */}
-        <div className="border-t border-white/15 bg-black/10">
+        <div className="border-t border-slate-200 bg-slate-50">
           <div className="container flex flex-col items-start justify-between gap-4 py-6 text-xs text-[#D0E1FF] sm:flex-row sm:items-center">
             <span>© {year} HN. All rights reserved.</span>
 
@@ -337,7 +337,7 @@ export function Footer() {
                 <Link
                   key={href}
                   href={href}
-                  className="group relative text-[#D0E1FF] transition-colors duration-300 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#1D6BF0] rounded"
+                  className="group relative text-[#D0E1FF] transition-colors duration-300 hover:text-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#1D6BF0] rounded"
                 >
                   <span className="relative py-0.5">
                     {label}
@@ -349,7 +349,7 @@ export function Footer() {
 
             <span className="hidden md:block font-medium text-[#D0E1FF]">
               Crafted with care by{' '}
-              <span className="font-bold text-white transition-colors duration-300 hover:text-[#A5F3FC]">
+              <span className="font-bold text-slate-900 transition-colors duration-300 hover:text-[#A5F3FC]">
                 HN
               </span>
             </span>
