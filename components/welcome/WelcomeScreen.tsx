@@ -143,7 +143,7 @@ export function WelcomeScreen({ onComplete, isVisible }: WelcomeScreenProps) {
                   fontFamily: 'var(--font-space-grotesk)',
                 }}
               >
-                Digital Product Studio
+                Tech Company
               </p>
             </motion.div>
           </div>

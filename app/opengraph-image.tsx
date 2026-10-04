@@ -63,7 +63,7 @@ export default function OgImage() {
               letterSpacing: '0.05em',
             }}
           >
-            HN Studio
+            HN Tech
           </span>
         </div>
 
@@ -112,7 +112,7 @@ export default function OgImage() {
           }}
         >
           <span style={{ fontSize: '18px', color: 'rgba(255,255,255,0.5)', fontWeight: 600 }}>
-            hn.studio
+            hntech.in
           </span>
           <div
             style={{

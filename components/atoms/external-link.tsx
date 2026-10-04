@@ -1,6 +1,6 @@
 
 /**
- * ExternalLink — safe anchor for links leaving hn.studio.
+ * ExternalLink — safe anchor for links leaving hntech.in.
  * Automatically adds rel="noopener noreferrer" to prevent:
  *  • noopener — stops opened page from accessing window.opener (tabnapping)
  *  • noreferrer — prevents Referer header leaking the origin URL

@@ -85,7 +85,7 @@ export const FALLBACK_SERVICES: Service[] = [
     whatWeProvide: ['Full custom design — no templates', 'CMS integration (Sanity, headless WordPress)', 'SEO-optimised architecture out of the box', 'Core Web Vitals score ≥ 90', 'Analytics & conversion tracking setup'],
     features: [
       { title: 'Responsive Design', description: 'Pixel-perfect on every device from mobile to 4K.' },
-      { title: 'CMS Powered', description: 'Edit content without touching code using Sanity Studio.' },
+      { title: 'CMS Powered', description: 'Edit content without touching code using Sanity CMS.' },
       { title: 'SEO Ready', description: 'Semantic HTML, metadata, and structured data built in.' },
       { title: 'Performance First', description: 'Sub-2 second load targets with Lighthouse scores ≥ 90.' },
     ],
@@ -653,11 +653,11 @@ export const FALLBACK_POSTS: BlogPost[] = [
   },
   {
     _id: 'bp6',
-    title: 'HN is Now a Studio: What Changed, What Didn\'t, and What\'s Next',
-    slug: { current: 'hn-becomes-studio' },
-    excerpt: 'We started as two engineers freelancing nights and weekends. Today we\'re a studio with a clear process, a growing portfolio, and an even clearer vision for what we want to build.',
+    title: 'HN is Now a Tech Company: What Changed, What Didn\'t, and What\'s Next',
+    slug: { current: 'hn-becomes-tech' },
+    excerpt: 'We started as two engineers freelancing nights and weekends. Today we\'re a technology company with a clear process, a growing portfolio, and an even clearer vision for what we want to build.',
     category: 'HN Updates',
-    tags: ['HN', 'Studio', 'Update'],
+    tags: ['HN', 'Tech', 'Update'],
     readTime: 4,
     featured: false,
     publishedAt: '2025-06-01T09:00:00Z',
@@ -714,7 +714,7 @@ If you are still in the idea-validation phase, start with a website. Talk to cus
 **The right question to ask**
 
 Before you start any build, ask: does my user need to do something, or do they just need to know something? If the answer is "do," you need a web app. If the answer is "know," a website is your friend. Most startup founders know the answer before they finish asking the question.`,
-    seoTitle: 'Web App vs Website: What Does Your Startup Actually Need? | HN Studio',
+    seoTitle: 'Web App vs Website: What Does Your Startup Actually Need? | HN Tech',
     seoDescription: 'Not sure whether to build a website or web app? This guide explains the real difference, the cost implications, and the signals that tell you which one your startup needs.',
   },
 
@@ -780,7 +780,7 @@ For any new project at HN, we default to Next.js 15 with the App Router. The Ser
 The only exception: if a client already has a separate backend team running an API and wants a completely decoupled frontend, we will use Vite + React for the dashboard layer and build the public-facing pages in Next.js as a separate app sharing the design system.
 
 React alone is still a fantastic tool. But in 2025, Next.js is simply the more complete, more performant, and more production-ready way to build with React in most scenarios.`,
-    seoTitle: 'Next.js vs React in 2025: Which Should You Choose? | HN Studio',
+    seoTitle: 'Next.js vs React in 2025: Which Should You Choose? | HN Tech',
     seoDescription: 'A practical technical comparison of Next.js vs plain React in 2025. When to use each, how performance differs, and our recommendation for new projects.',
   },
 
@@ -846,7 +846,7 @@ LCP: 8.1s to 1.2s. TBT: 4,200ms to 180ms. CLS: 0.34 to 0.02. Lighthouse performa
 Performance problems almost always come from the same five categories: unoptimised images, oversized JavaScript bundles, render-blocking third-party scripts, missing caching, and layout instability. You rarely need exotic solutions. You need a rigorous audit and disciplined execution of well-understood fixes.
 
 If your site is slow, start with images. They are almost always the biggest win.`,
-    seoTitle: 'How We Cut Page Load Time from 8s to 1.2s: A Next.js Case Study | HN Studio',
+    seoTitle: 'How We Cut Page Load Time from 8s to 1.2s: A Next.js Case Study | HN Tech',
     seoDescription: 'A real performance case study: how we took a Next.js e-commerce site from 8 seconds to 1.2 seconds load time. Root causes, exact fixes, and measurable results.',
   },
 
@@ -867,7 +867,7 @@ Here is a realistic, detailed cost breakdown for building a SaaS product in Indi
 
 **The development cost**
 
-For a typical B2B SaaS MVP — multi-tenant architecture, auth, a core feature set, Stripe or Razorpay subscription billing, admin dashboard — you are looking at six to ten weeks of engineering time. At a quality Indian studio or with a competent freelance team, that translates to roughly ₹4–8 lakhs for an MVP.
+For a typical B2B SaaS MVP — multi-tenant architecture, auth, a core feature set, Stripe or Razorpay subscription billing, admin dashboard — you are looking at six to ten weeks of engineering time. At a quality Indian tech company or with a competent freelance team, that translates to roughly ₹4–8 lakhs for an MVP.
 
 What affects where you land in that range: the complexity of your core feature, the number of integrations, whether you need a mobile app alongside the web app, and how much design work is required. A stripped-down MVP with one core workflow and basic UI hits the lower end. A fully designed product with complex data models, multiple user roles, and several third-party integrations hits the upper end.
 
@@ -934,7 +934,7 @@ You cannot cut: a properly architected database schema (retrofitting a bad schem
 The final thing to understand about SaaS cost in India is that underspending on architecture creates technical debt that compounds over time. A ₹2 lakh build that saves money upfront but requires a full rebuild in month six costs more in total than a ₹5 lakh build done correctly.
 
 We have taken on rebuilds — and they are always more expensive than greenfield builds because you are working around existing assumptions, migrating live data, and rewriting code while keeping the product running for customers. Build it right the first time. The savings are real.`,
-    seoTitle: 'Real Cost of Building a SaaS in India (2025): Full Breakdown | HN Studio',
+    seoTitle: 'Real Cost of Building a SaaS in India (2025): Full Breakdown | HN Tech',
     seoDescription: 'A detailed, realistic cost breakdown for building a SaaS product in India in 2025 — from development to infrastructure, legal, and marketing. No fluff.',
   },
 ];

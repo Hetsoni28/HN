@@ -297,7 +297,7 @@ export function Navbar() {
             >
               {/* ── Gradient header ── */}
               <div className="bg-gradient-to-br from-[#0051FF] to-[#003ED9] px-6 py-6">
-                <p className="text-[11px] font-bold uppercase tracking-widest text-blue-200">HN Studio</p>
+                <p className="text-[11px] font-bold uppercase tracking-widest text-blue-200">HN Tech</p>
                 <h2 className="mt-1 text-xl font-extrabold leading-tight text-white">
                   What can we<br />build for you?
                 </h2>
@@ -309,7 +309,7 @@ export function Navbar() {
                     Start a Project →
                   </Link>
                   <a
-                    href="https://wa.me/917990743263?text=Hi%20HN%20Studio!"
+                    href="https://wa.me/917990743263?text=Hi%20HN%20Tech!"
                     target="_blank" rel="noopener noreferrer"
                     onClick={() => setMobileOpen(false)}
                     className="flex items-center justify-center gap-2 rounded-xl bg-[#25D366] px-4 py-3 text-sm font-bold text-white transition hover:bg-[#1ebe5d]"

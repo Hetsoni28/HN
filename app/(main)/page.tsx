@@ -17,11 +17,11 @@ import { GithubActivity }     from '@/components/organisms/github-activity';
 
 export const metadata: Metadata = {
   title: 'HN \u2014 Building Digital Products From Ideas to Scale',
-  description: 'HN is a digital product studio. We design and develop modern websites, applications, AI solutions, SaaS platforms, and custom software for businesses and ambitious ideas.',
+  description: 'HN is a premium technology company. We design and develop modern websites, applications, AI solutions, SaaS platforms, and custom software for businesses and ambitious ideas.',
   openGraph: {
     title: 'HN \u2014 Building Digital Products From Ideas to Scale',
-    description: 'HN is a digital product studio. We design and develop modern websites, applications, AI solutions, SaaS platforms, and custom software for businesses and ambitious ideas.',
-    url: 'https://hn.studio',
+    description: 'HN is a premium technology company. We design and develop modern websites, applications, AI solutions, SaaS platforms, and custom software for businesses and ambitious ideas.',
+    url: 'https://hntech.in',
     type: 'website',
   },
 };

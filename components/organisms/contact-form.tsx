@@ -47,7 +47,7 @@ function Field({
 }
 
 const inputCls = (error?: string) =>
-  `w-full rounded-xl border px-4 py-3 text-sm outline-none transition focus:ring-2 focus:ring-[#0051FF]/20 ${
+  `w-full rounded-xl border px-4 py-3 text-base outline-none transition focus:ring-2 focus:ring-[#0051FF]/20 ${
     error
       ? 'border-red-400 bg-red-50 focus:border-red-400'
       : 'border-[#E2E5F1] bg-white text-slate-800 placeholder:text-slate-300 focus:border-[#0051FF]'
@@ -88,7 +88,7 @@ export function ContactForm({ initialProject }: { initialProject?: string }) {
   }
 
   return (
-    <form ref={formRef} action={action} noValidate>
+    <form ref={formRef} action={action} noValidate encType="multipart/form-data">
       {/* Honeypot — visually hidden from humans, visible to bots */}
       <div aria-hidden="true" className="absolute -left-[9999px] opacity-0">
         <label htmlFor="website">Leave this empty</label>

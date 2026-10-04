@@ -5,20 +5,33 @@ import Link from 'next/link';
 
 /**
  * Atom — Logo
- * HN monogram — transparent background PNG embedded in SVG.
- * Natural dimensions: 830 × 735. Rendered at h-12 (48px tall).
+ * HN icon mark + premium wordmark.
  */
 export function Logo() {
   return (
-    <Link href="/" aria-label="HN home">
+    <Link href="/" aria-label="HN home" className="flex items-center gap-3 group">
+      {/* Icon mark */}
       <Image
         src="/hn-logo.svg"
         alt="HN"
         width={830}
         height={735}
-        className="h-12 w-auto object-contain"
+        className="h-11 w-auto object-contain"
         priority
       />
+
+      {/* Thin divider */}
+      <span className="h-9 w-px bg-slate-200" aria-hidden="true" />
+
+      {/* Wordmark */}
+      <div className="flex flex-col justify-center gap-[4px]">
+        <span className="text-[16px] font-black leading-none tracking-[-0.02em] text-[#0B111E] group-hover:text-[#0051FF] transition-colors">
+          HN
+        </span>
+        <span className="text-[10px] font-bold uppercase leading-none tracking-[0.22em] text-slate-400">
+          Tech
+        </span>
+      </div>
     </Link>
   );
 }

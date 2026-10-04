@@ -75,7 +75,7 @@ export function CostEstimator() {
   };
 
   // Generate a detailed string for the inquiry message
-  const inquiryMessage = `Hi HN Studio! I used your Project Estimator. Here are my requirements:
+  const inquiryMessage = `Hi HN Tech! I used your Project Estimator. Here are my requirements:
 
 Project Type: ${totals.base?.name}
 Features: ${totals.activeFeatures.map(f => f.name).join(', ') || 'None'}
@@ -269,7 +269,7 @@ I'd like to discuss the next steps!`;
           <div className="mb-8">
             {isUnderAbsoluteMinimum && (
               <div className="rounded-lg bg-red-50 p-3 text-xs font-medium leading-5 text-red-600 border border-red-100">
-                🔴 <strong>Notice:</strong> HN Studio&apos;s minimum engagement starts at ₹25,000 for standard websites. We may not be able to accommodate this budget.
+                🔴 <strong>Notice:</strong> HN Tech&apos;s minimum engagement starts at ₹25,000 for standard websites. We may not be able to accommodate this budget.
               </div>
             )}
             {isUnderEstimatedMinimum && (

@@ -74,7 +74,12 @@ export function CaseStudyHero({ project }: { project: Project }) {
 import { WhatsAppButton } from '@/components/atoms/whatsapp-button';
 
 export function CaseStudyOverview({ project }: { project: Project }) {
-  const waMessage = `Hi HN Studio, I saw the ${project.title} project and I'm interested in building something similar.`;
+  const waMessage = [
+    `Hi HN Tech! I just viewed your "${project.title}" case study.`,
+    project.category ? `It's a ${project.category} project` : '',
+    project.industry ? `in the ${project.industry} industry` : '',
+    `and I'm interested in building something similar. Can we discuss my requirements?`,
+  ].filter(Boolean).join(' ');
 
   return (
     <section className="section bg-white">

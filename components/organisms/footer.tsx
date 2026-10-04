@@ -185,7 +185,7 @@ export function Footer() {
                 <Logo />
               </div>
               <p className="mt-5 max-w-xs text-sm leading-relaxed text-slate-500">
-                A senior-engineer-led digital product studio. We build websites, web apps, SaaS platforms, mobile apps, and AI solutions for ambitious founders and businesses.
+                A senior-engineer-led technology company. We build websites, web apps, SaaS platforms, mobile apps, and AI solutions for ambitious founders and businesses.
               </p>
 
               {/* Contact */}

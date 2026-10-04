@@ -52,7 +52,7 @@ export function AboutIntro() {
               <span className="gradient-text">Neel</span>
             </h2>
             <p className="mt-6 text-lg leading-8 text-slate-500">
-              We&apos;re a two-person digital product studio from India. No bloated teams, no account managers, no hand-offs. When you work with HN, you work directly with the engineers building your product.
+              We&apos;re a technology company from India. No bloated teams, no account managers, no hand-offs. When you work with HN, you work directly with the engineers building your product.
             </p>
             <p className="mt-4 text-lg leading-8 text-slate-500">
               Between us we cover the full stack — frontend, backend, mobile, AI, cloud, and design. We&apos;ve shipped everything from car rental management systems to AI-powered healthcare assistants, and we bring that same depth of craft to every project we take on.
@@ -136,7 +136,7 @@ export function AboutVision() {
           <FadeIn delay={0.1}>
             <div className="space-y-6">
               <p className="text-lg leading-8 text-slate-600">
-                We want to be the studio that ambitious founders and growing businesses trust for their most important digital bets — the product that defines their company.
+                We want to be the tech company that ambitious founders and growing businesses trust for their most important digital bets — the product that defines their company.
               </p>
               <p className="text-lg leading-8 text-slate-600">
                 Our vision is a world where exceptional digital products aren&apos;t the privilege of the well-funded few. Where a founder in Ahmedabad can ship a world-class SaaS product. Where a local business can have a website as fast and as beautiful as a Fortune 500 company.

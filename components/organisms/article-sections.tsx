@@ -64,7 +64,7 @@ export function ArticleHero({ post }: { post: BlogPost }) {
               </div>
               <div>
                 <div className="text-sm font-bold text-slate-900">{post.author?.name ?? 'HN'}</div>
-                <div className="text-xs text-slate-400">{post.author?.role ?? 'HN Studio'}</div>
+                <div className="text-xs text-slate-400">{post.author?.role ?? 'HN Tech'}</div>
               </div>
             </div>
             <div className="h-6 w-px bg-[#E2E5F1]" />
@@ -139,7 +139,7 @@ export function ArticleBody({
                 <div className="rounded-2xl border-l-4 border-[#0051FF] bg-[#EEF0FF] p-6">
                   <p className="text-sm font-semibold text-[#0051FF]">Full article coming soon</p>
                   <p className="mt-1 text-sm text-slate-600">
-                    This insight is being written. Add the full content via Sanity Studio → Insights → {post.title}.
+                    This insight is being written. Add the full content via Sanity CMS → Insights → {post.title}.
                   </p>
                 </div>
                 <p>
@@ -167,9 +167,9 @@ export function ArticleBody({
                 </div>
                 <div>
                   <div className="text-sm font-bold text-slate-900">{post.author.name}</div>
-                  <div className="text-xs text-[#0051FF]">{post.author.role ?? 'HN Studio'}</div>
+                  <div className="text-xs text-[#0051FF]">{post.author.role ?? 'HN Tech'}</div>
                   <p className="mt-2 text-sm text-slate-500">
-                    Building digital products at HN — websites, web apps, SaaS, and AI solutions. Co-founder of HN Studio.
+                    Building digital products at HN — websites, web apps, SaaS, and AI solutions. Co-founder of HN Tech.
                   </p>
                 </div>
               </div>
@@ -195,8 +195,8 @@ export function ArticleBody({
               <div className="text-xs font-bold uppercase tracking-widest text-slate-400">Share this article</div>
               <div className="mt-4 flex gap-2">
                 {[
-                  { label: 'Twitter', href: `https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent(`https://hn.studio/insights/${post.slug.current}`)}` },
-                  { label: 'LinkedIn', href: `https://linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(`https://hn.studio/insights/${post.slug.current}`)}&title=${encodeURIComponent(post.title)}` },
+                  { label: 'Twitter', href: `https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent(`https://hntech.in/insights/${post.slug.current}`)}` },
+                  { label: 'LinkedIn', href: `https://linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(`https://hntech.in/insights/${post.slug.current}`)}&title=${encodeURIComponent(post.title)}` },
                 ].map((s) => (
                   <a
                     key={s.label}

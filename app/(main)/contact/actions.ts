@@ -86,16 +86,18 @@ export async function submitInquiry(
 
   /* 3. Process File Attachment */
   const rawFile = formData.get('file') as File | null;
-  let fileBuffer: Buffer | null = null;
+  let fileBase64: string | null = null;
   let fileName = '';
+  let fileType = 'application/octet-stream';
 
   if (rawFile && rawFile.size > 0) {
     if (rawFile.size > 5 * 1024 * 1024) {
       return { status: 'error', message: 'Attachment must be under 5MB.' };
     }
     const arrayBuffer = await rawFile.arrayBuffer();
-    fileBuffer = Buffer.from(arrayBuffer);
+    fileBase64 = Buffer.from(arrayBuffer).toString('base64');
     fileName = rawFile.name;
+    fileType = rawFile.type || 'application/octet-stream';
   }
 
   /* 4. Send email via Resend */
@@ -105,31 +107,34 @@ export async function submitInquiry(
   if (!apiKey) {
     if (process.env.NODE_ENV === 'development') {
       /* Dev mode — log to console and succeed for local development testing */
-      console.log('[Contact Form — DEV MODE] Inbound inquiry:', data, fileBuffer ? `[Attached: ${fileName}]` : '');
+      console.log('[Contact Form — DEV MODE] Inbound inquiry:', data, fileBase64 ? `[Attached: ${fileName}]` : '');
       return { status: 'success' };
     }
     console.error('[Contact Form — PRODUCTION ERROR] RESEND_API_KEY is not configured.');
     return {
       status: 'error',
-      message: 'Email service is temporarily unavailable. Please contact us directly at contact@hn.studio or via WhatsApp.',
+      message: 'Email service is temporarily unavailable. Please contact us directly at het@hntech.in or via WhatsApp.',
     };
   }
 
   try {
     const resend = new Resend(apiKey);
 
-    const attachments = fileBuffer ? [{ filename: fileName, content: fileBuffer }] : undefined;
+    /* Resend requires base64 string + contentType for reliable attachment delivery */
+    const attachments = fileBase64
+      ? [{ filename: fileName, content: fileBase64, contentType: fileType }]
+      : undefined;
 
     const { error: sendError } = await resend.emails.send({
       from:    'HN Contact Form <onboarding@resend.dev>',
       to:      [toEmail],
       replyTo: data.email,
-      subject: `New Inquiry — ${data.projectType} from ${data.name}`,
+      subject: `New Inquiry — ${data.projectType} from ${data.name}${fileBase64 ? ' 📎' : ''}`,
       attachments,
       html: `
         <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;max-width:600px;margin:0 auto;background-color:#ffffff;border:1px solid #e2e8f0;border-radius:12px;overflow:hidden">
           <div style="background-color:#0B111E;padding:32px;text-align:center">
-            <h1 style="color:#ffffff;margin:0;font-size:24px;font-weight:700;letter-spacing:-0.5px">HN Studio</h1>
+            <h1 style="color:#ffffff;margin:0;font-size:24px;font-weight:700;letter-spacing:-0.5px">HN Tech</h1>
             <p style="color:#94a3b8;margin:8px 0 0 0;font-size:14px;text-transform:uppercase;letter-spacing:1px">New Project Inquiry</p>
           </div>
           <div style="padding:40px 32px">
@@ -160,8 +165,8 @@ export async function submitInquiry(
                 <span style="color:#0f172a;font-weight:500;font-size:15px">${data.timeline}</span>
               </div>
               <div style="margin-bottom:0">
-                <span style="color:#64748b;font-size:14px;display:inline-block;width:80px">File</span>
-                <span style="color:#0f172a;font-weight:500;font-size:15px">${fileBuffer ? fileName : 'No attachment'}</span>
+                <span style="color:#64748b;font-size:14px;display:inline-block;width:80px">Attachment</span>
+                <span style="color:#0f172a;font-weight:500;font-size:15px">${fileBase64 ? `📎 ${fileName}` : 'None'}</span>
               </div>
             </div>
             <h3 style="margin:0 0 12px 0;font-size:14px;text-transform:uppercase;letter-spacing:1px;color:#64748b">Message</h3>
@@ -173,7 +178,7 @@ export async function submitInquiry(
             </div>
           </div>
           <div style="background-color:#f1f5f9;padding:24px 32px;text-align:center">
-            <p style="margin:0;color:#64748b;font-size:13px">This email was securely sent from your HN Studio contact form.</p>
+            <p style="margin:0;color:#64748b;font-size:13px">This email was securely sent from your HN Tech contact form.</p>
           </div>
         </div>
       `,
@@ -183,44 +188,16 @@ export async function submitInquiry(
       console.error('[Contact Form — Resend Delivery Error]:', sendError.message);
       return {
         status: 'error',
-        message: 'Delivery error. Please email us directly at contact@hn.studio or message us on WhatsApp.',
+        message: 'Delivery error. Please email us directly at het@hntech.in or message us on WhatsApp.',
       };
     }
-
-    /* Auto-reply to client (Requires verified domain in Resend)
-    await resend.emails.send({
-      from:    'HN <onboarding@resend.dev>',
-      to:      [data.email],
-      subject: `We received your inquiry, ${data.name.split(' ')[0]}!`,
-      html: `
-        <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;max-width:600px;margin:0 auto;background-color:#ffffff;border:1px solid #e2e8f0;border-radius:12px;overflow:hidden">
-          <div style="background-color:#0B111E;padding:32px;text-align:center">
-            <h1 style="color:#ffffff;margin:0;font-size:24px;font-weight:700;letter-spacing:-0.5px">HN Studio</h1>
-          </div>
-          <div style="padding:40px 32px">
-            <h2 style="margin:0 0 20px 0;font-size:20px;color:#0f172a">Thanks for reaching out!</h2>
-            <p style="font-size:16px;color:#334155;line-height:24px;margin:0 0 16px 0">Hi ${data.name.split(' ')[0]},</p>
-            <p style="font-size:16px;color:#334155;line-height:24px;margin:0 0 24px 0">We've successfully received your inquiry about a <strong>${data.projectType}</strong> project. Our engineering team is reviewing your requirements and will get back to you within <strong>24–48 hours</strong> with a clear plan.</p>
-            <p style="font-size:16px;color:#334155;line-height:24px;margin:0 0 32px 0">In the meantime, feel free to explore our recent case studies to see the kind of enterprise-grade software we build.</p>
-            <div style="text-align:center">
-              <a href="https://hn.studio/work" style="display:inline-block;background-color:#0051FF;color:#ffffff;text-decoration:none;padding:14px 28px;border-radius:8px;font-weight:600;font-size:15px">View Our Work</a>
-            </div>
-            <div style="margin-top:40px;border-top:1px solid #e2e8f0;padding-top:24px">
-              <p style="font-size:16px;color:#334155;margin:0 0 4px 0">Best regards,</p>
-              <p style="font-size:16px;font-weight:600;color:#0f172a;margin:0">The HN Team</p>
-            </div>
-          </div>
-        </div>
-      `,
-    });
-    */
 
     return { status: 'success' };
   } catch (err) {
     console.error('[Contact Form] Unexpected delivery failure:', err);
     return {
       status: 'error',
-      message: 'Something went wrong sending your inquiry. Please email us directly at contact@hn.studio or reach out via WhatsApp.',
+      message: 'Something went wrong sending your inquiry. Please email us directly at het@hntech.in or reach out via WhatsApp.',
     };
   }
 }

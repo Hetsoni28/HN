@@ -2,7 +2,7 @@ import type { MetadataRoute } from 'next';
 import { getProjects, getPosts, getServices } from '@/lib/content';
 import { CITIES, SERVICES_LIST } from '@/lib/locations';
 
-const BASE = process.env.NEXT_PUBLIC_SITE_URL || 'https://hn.studio';
+const BASE = process.env.NEXT_PUBLIC_SITE_URL || 'https://hntech.in';
 
 const STATIC_ROUTES: MetadataRoute.Sitemap = [
   { url: BASE,                    lastModified: new Date(), changeFrequency: 'weekly',  priority: 1.0 },

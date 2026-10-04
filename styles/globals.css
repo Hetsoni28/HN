@@ -86,6 +86,26 @@ textarea:focus-visible {
   border-radius: 8px;
 }
 
+/* ── iOS Safari auto-zoom prevention ──
+   Safari zooms in when a focused input has font-size < 16px.
+   This rule enforces 16px on all form controls on touch devices.
+   It does NOT disable user pinch-zoom (that requires viewport user-scalable=no).
+*/
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  input,
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="number"],
+  input[type="password"],
+  input[type="search"],
+  input[type="url"],
+  select,
+  textarea {
+    font-size: 16px !important;
+  }
+}
+
 /* ── Layout ── */
 .container {
   width: min(1180px, calc(100% - 40px));

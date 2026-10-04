@@ -60,7 +60,7 @@ export function HeroSection() {
               variants={item}
               className="mb-6 text-xs font-bold uppercase tracking-[0.3em] text-[#0051FF]"
             >
-              Digital Product Studio
+              Tech Company
             </motion.p>
 
             {/* Headline */}
