@@ -26,7 +26,7 @@ export function OrganizationJsonLd() {
     contactPoint: {
       '@type': 'ContactPoint',
       contactType: 'customer service',
-      email: 'contact.hnsolutions@gmail.com',
+      email: 'contact@hn.studio',
     },
     sameAs: [
       'https://github.com/Hetsoni28',

@@ -352,7 +352,7 @@ export function Navbar() {
                   <span className="h-2 w-2 animate-pulse rounded-full bg-green-500" />
                   <p className="text-xs font-semibold text-slate-600">Available for new projects</p>
                 </div>
-                <p className="mt-0.5 text-xs text-slate-400">contact.hnsolutions@gmail.com</p>
+                <p className="mt-0.5 text-xs text-slate-400">contact@hn.studio</p>
               </div>
             </motion.div>
           </>

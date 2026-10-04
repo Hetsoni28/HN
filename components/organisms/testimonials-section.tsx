@@ -43,7 +43,7 @@ function QuoteIcon() {
 
 /* ── Avatar with initials fallback ─────────────────────────────────────── */
 
-function Avatar({ src, name }: { src: string; name: string }) {
+function Avatar({ src, name }: { src?: string; name: string }) {
   const [errored, setErrored] = useState(false);
 
   const initials = name
@@ -53,7 +53,7 @@ function Avatar({ src, name }: { src: string; name: string }) {
     .join('')
     .toUpperCase();
 
-  if (errored) {
+  if (errored || !src || src.trim() === '') {
     return (
       <div
         aria-hidden="true"

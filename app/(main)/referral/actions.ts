@@ -1,5 +1,6 @@
 'use server';
 
+import { headers } from 'next/headers';
 import { z } from 'zod';
 import { Resend } from 'resend';
 import { sanitizeText } from '@/lib/security';
@@ -26,11 +27,37 @@ export type FormState = {
   errors?: Partial<Record<keyof ReferralFormData, string>>;
 };
 
+/* ─── Rate limit (simple in-memory, resets on cold start) ─── */
+const rateMap = new Map<string, { count: number; resetAt: number }>();
+function isRateLimited(ip: string): boolean {
+  const now = Date.now();
+  const entry = rateMap.get(ip) ?? { count: 0, resetAt: now + 60_000 };
+  if (now > entry.resetAt) { rateMap.set(ip, { count: 1, resetAt: now + 60_000 }); return false; }
+  if (entry.count >= 3) return true;
+  rateMap.set(ip, { ...entry, count: entry.count + 1 });
+  return false;
+}
+
 /* ─── Server Action ─── */
 export async function submitReferral(
   _prev: FormState,
   formData: FormData,
 ): Promise<FormState> {
+  let ip = 'unknown';
+  try {
+    const headerList = await headers();
+    ip = headerList.get('x-forwarded-for')?.split(',')[0].trim() || 'unknown';
+  } catch {
+    // Graceful fallback when executed outside active request scope (e.g. unit testing)
+    ip = '127.0.0.1';
+  }
+
+  if (isRateLimited(ip)) {
+    return {
+      status: 'error',
+      message: 'Too many requests. Please wait a minute before submitting again.',
+    };
+  }
 
   /* 1. Sanitize all text inputs BEFORE validation */
   const raw = {
@@ -56,18 +83,27 @@ export async function submitReferral(
 
   const data = parsed.data;
 
-  /* 3. Send email via Resend (wrapped in try/catch — never block user on email failure) */
+  /* 3. Send email via Resend */
   const apiKey = process.env.RESEND_API_KEY;
+  const toEmail = process.env.CONTACT_EMAIL ?? 'contact@hn.studio';
+
   if (!apiKey) {
-    console.warn('[Referral Form — DEV] RESEND_API_KEY not set. Skipping email.');
-    return { status: 'success', friendName: data.friendName };
+    if (process.env.NODE_ENV === 'development') {
+      console.log('[Referral Form — DEV MODE] Inbound referral:', data);
+      return { status: 'success', friendName: data.friendName };
+    }
+    console.error('[Referral Form — PRODUCTION ERROR] RESEND_API_KEY is not configured.');
+    return {
+      status: 'error',
+      message: 'Referral submission service is temporarily unavailable. Please email us directly at contact@hn.studio.',
+    };
   }
-  const resend = new Resend(apiKey);
 
   try {
-    await resend.emails.send({
+    const resend = new Resend(apiKey);
+    const { error: sendError } = await resend.emails.send({
       from:    'HN Referral Program <onboarding@resend.dev>',
-      to:      ['contact.hnsolutions@gmail.com'],
+      to:      [toEmail],
       replyTo: data.referrerEmail,
       subject: `🤝 New Referral — ${data.referrerName} referred ${data.friendName}`,
       html: `
@@ -145,15 +181,26 @@ export async function submitReferral(
           </div>
 
           <div style="padding:16px 32px;background:#F8F9FF;border-radius:0 0 12px 12px;border:1px solid #E2E5F1;border-top:none">
-            <p style="margin:0;font-size:11px;color:#94a3b8">Sent via HN Referral Program · contact.hnsolutions@gmail.com</p>
+            <p style="margin:0;font-size:11px;color:#94a3b8">Sent via HN Referral Program · contact@hn.studio</p>
           </div>
         </div>
       `,
     });
-  } catch (err) {
-    /* Email failed — still return success so user isn't blocked */
-    console.error('[Referral Form] Resend error:', err);
-  }
 
-  return { status: 'success', friendName: data.friendName };
+    if (sendError) {
+      console.error('[Referral Form — Resend API Error]:', sendError.message);
+      return {
+        status: 'error',
+        message: 'Delivery error submitting referral. Please email us directly at contact@hn.studio.',
+      };
+    }
+
+    return { status: 'success', friendName: data.friendName };
+  } catch (err) {
+    console.error('[Referral Form] Unexpected delivery failure:', err);
+    return {
+      status: 'error',
+      message: 'Something went wrong submitting your referral. Please contact us directly at contact@hn.studio.',
+    };
+  }
 }

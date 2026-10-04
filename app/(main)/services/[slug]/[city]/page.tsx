@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
-import { CITIES, SERVICES_LIST, getCityName, getServiceName } from '@/lib/locations';
+import { CITIES, SERVICES_LIST, getCityName, getServiceName, getCanonicalServiceSlug } from '@/lib/locations';
 import { FadeIn } from '@/components/atoms/fade-in';
 import { Button } from '@/components/atoms/button';
 
@@ -97,6 +97,7 @@ export default async function ServiceCityPage({
 
   const serviceName = serviceData.name;
   const cityName    = cityData.name;
+  const canonicalSlug = getCanonicalServiceSlug(slug);
 
   return (
     <>
@@ -110,7 +111,7 @@ export default async function ServiceCityPage({
               <span>/</span>
               <Link href="/services" className="hover:text-[#0051FF]">Services</Link>
               <span>/</span>
-              <Link href={`/services/${slug}`} className="hover:text-[#0051FF]">{serviceName}</Link>
+              <Link href={`/services/${canonicalSlug}`} className="hover:text-[#0051FF]">{serviceName}</Link>
               <span>/</span>
               <span className="font-medium text-slate-800">{cityName}</span>
             </nav>
@@ -135,7 +136,7 @@ export default async function ServiceCityPage({
               <Button href="/contact" variant="primary">
                 Get a Free Proposal →
               </Button>
-              <Button href={`/services/${slug}`} variant="secondary">
+              <Button href={`/services/${canonicalSlug}`} variant="secondary">
                 View {serviceName} details
               </Button>
             </div>
@@ -214,13 +215,13 @@ export default async function ServiceCityPage({
               </p>
               <div className="flex flex-wrap gap-2">
                 {CITIES.filter((c) => c.slug !== city).map((c) => (
-                  <a
+                  <Link
                     key={c.slug}
                     href={`/services/${slug}/${c.slug}`}
                     className="rounded-lg border border-[#E2E5F1] px-4 py-1.5 text-sm font-medium text-slate-600 transition-colors hover:border-[#0051FF] hover:text-[#0051FF]"
                   >
                     {c.name}
-                  </a>
+                  </Link>
                 ))}
               </div>
             </div>

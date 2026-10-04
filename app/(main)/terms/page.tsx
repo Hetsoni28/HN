@@ -18,7 +18,7 @@ export default function TermsPage() {
           heading: '1. About HN',
           content: [
             'HN Digital Product Studio is a freelance digital product studio based in India, founded by Het Soni and Neel Patel. We provide web development, web app development, SaaS development, mobile app development, AI integration, and digital product design services.',
-            'For any queries, contact us at contact.hnsolutions@gmail.com or via WhatsApp at +91 7990 743263.',
+            'For any queries, contact us at contact@hn.studio or via WhatsApp at +91 7990 743263.',
           ],
         },
         {

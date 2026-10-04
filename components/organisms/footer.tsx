@@ -208,7 +208,7 @@ export function Footer() {
               {/* Contact */}
               <div className="mt-7 space-y-3.5">
                 <a
-                  href="mailto:contact.hnsolutions@gmail.com"
+                  href="mailto:contact@hn.studio"
                   className="group flex items-center gap-3 text-sm font-medium text-[#F2F7FF] transition-colors duration-300 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#1D6BF0] rounded-lg p-0.5"
                 >
                   <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-white/10 text-white border border-white/20 transition-all duration-300 group-hover:bg-white/25 group-hover:border-white/40 group-hover:scale-105 motion-reduce:transform-none">
@@ -217,7 +217,7 @@ export function Footer() {
                     </svg>
                   </span>
                   <span className="relative overflow-hidden py-0.5">
-                    contact.hnsolutions@gmail.com
+                    contact@hn.studio
                     <span className="absolute bottom-0 left-0 h-[1.5px] w-full origin-left scale-x-0 bg-gradient-to-r from-[#A5F3FC] to-white transition-transform duration-300 ease-out group-hover:scale-x-100 motion-reduce:transition-none" />
                   </span>
                 </a>

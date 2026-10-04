@@ -37,3 +37,15 @@ export function getCityName(slug: string): string {
 export function getServiceName(slug: string): string {
   return SERVICES_LIST.find((s) => s.slug === slug)?.name ?? slug;
 }
+
+export const SERVICE_CANONICAL_MAP: Record<string, string> = {
+  'web-development': 'websites',
+  'web-app-development': 'web-applications',
+  'saas-development': 'saas-platforms',
+  'mobile-app-development': 'mobile-applications',
+  'ai-development': 'ai-solutions',
+};
+
+export function getCanonicalServiceSlug(slug: string): string {
+  return SERVICE_CANONICAL_MAP[slug] ?? slug;
+}

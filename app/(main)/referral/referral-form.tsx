@@ -48,7 +48,7 @@ export function ReferralForm() {
     <form action={formAction} noValidate className="space-y-8">
 
       {/* ── Global error message ── */}
-      {state.status === 'error' && state.message && !state.errors && (
+      {state.status === 'error' && state.message && (
         <div className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-600">
           {state.message}
         </div>

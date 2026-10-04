@@ -46,6 +46,17 @@ const nextConfig: NextConfig = {
     ];
   },
 
+  // ── Canonical service redirects ──────────────────────────────────────────
+  async redirects() {
+    return [
+      { source: '/services/web-development', destination: '/services/websites', permanent: true },
+      { source: '/services/web-app-development', destination: '/services/web-applications', permanent: true },
+      { source: '/services/saas-development', destination: '/services/saas-platforms', permanent: true },
+      { source: '/services/mobile-app-development', destination: '/services/mobile-applications', permanent: true },
+      { source: '/services/ai-development', destination: '/services/ai-solutions', permanent: true },
+    ];
+  },
+
   // ── Experimental ─────────────────────────────────────────────────────────
   experimental: {
     // Optimise package imports — tree-shake large icon/animation libs

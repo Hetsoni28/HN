@@ -19,7 +19,7 @@ export default function PrivacyPolicyPage() {
           content: [
             'Contact form submissions: When you fill out our contact form, we collect your name, email address, phone number (optional), and the message you send. This is used solely to respond to your inquiry.',
             'Referral form submissions: If you submit a referral, we collect your name, email, phone (optional), and the details of the person you are referring. This information is used to process the referral and pay your reward if eligible.',
-            'Email communications: When you email us directly at contact.hnsolutions@gmail.com, we retain your email address and the content of your messages for the purpose of responding to you.',
+            'Email communications: When you email us directly at contact@hn.studio, we retain your email address and the content of your messages for the purpose of responding to you.',
             'Analytics: Our website may use anonymised analytics tools to understand general visitor behaviour (such as pages visited and time on site). We do not collect personally identifiable information through analytics.',
             'We do not collect payment information directly. Any payments are processed through third-party providers (such as UPI apps or bank transfers) and are subject to their own privacy policies.',
           ],
@@ -47,7 +47,7 @@ export default function PrivacyPolicyPage() {
           content: [
             'We retain contact form and enquiry data for up to 2 years, after which it is deleted unless an ongoing client relationship exists.',
             'Project-related communications and contracts are retained for up to 7 years for legal and accounting purposes.',
-            'You may request deletion of your data at any time by emailing us at contact.hnsolutions@gmail.com.',
+            'You may request deletion of your data at any time by emailing us at contact@hn.studio.',
           ],
         },
         {
@@ -60,7 +60,7 @@ export default function PrivacyPolicyPage() {
           heading: '6. Your Rights',
           content: [
             'You have the right to access the personal data we hold about you, request corrections, or ask us to delete it.',
-            'To exercise any of these rights, please contact us at contact.hnsolutions@gmail.com. We will respond within 30 days.',
+            'To exercise any of these rights, please contact us at contact@hn.studio. We will respond within 30 days.',
           ],
         },
         {
@@ -78,7 +78,7 @@ export default function PrivacyPolicyPage() {
         {
           heading: '9. Contact',
           content: [
-            'If you have any questions or concerns about this Privacy Policy, please contact us at contact.hnsolutions@gmail.com or use the contact form on our website.',
+            'If you have any questions or concerns about this Privacy Policy, please contact us at contact@hn.studio or use the contact form on our website.',
           ],
         },
       ]}

@@ -290,7 +290,7 @@ export function BriefGenerator() {
             {/* Footer / CTA inside PDF */}
             <div className="mt-12 rounded-2xl bg-[#0051FF] p-8 text-center text-white">
               <h4 className="text-lg font-bold">Ready to build this architecture?</h4>
-              <p className="mt-2 text-sm text-white/80">Contact us at contact.hnsolutions@gmail.com to get an exact technical quote.</p>
+              <p className="mt-2 text-sm text-white/80">Contact us at contact@hn.studio to get an exact technical quote.</p>
               <div className="mt-5 no-print">
                 <Button href="/contact" variant="secondary" className="border-transparent bg-white text-[#0051FF] hover:bg-slate-50">
                   Discuss This Project

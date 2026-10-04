@@ -43,8 +43,15 @@ export async function submitInquiry(
   _prev: FormState,
   formData: FormData,
 ): Promise<FormState> {
-  const headerList = await headers();
-  const ip = headerList.get('x-forwarded-for')?.split(',')[0].trim() || 'unknown';
+  let ip = 'unknown';
+  try {
+    const headerList = await headers();
+    ip = headerList.get('x-forwarded-for')?.split(',')[0].trim() || 'unknown';
+  } catch {
+    // Graceful fallback when executed outside active request scope (e.g. unit testing)
+    ip = '127.0.0.1';
+  }
+
   if (isRateLimited(ip)) {
     return {
       status: 'error',
@@ -93,12 +100,19 @@ export async function submitInquiry(
 
   /* 4. Send email via Resend */
   const apiKey = process.env.RESEND_API_KEY;
-  const toEmail = process.env.CONTACT_EMAIL ?? 'contact.hnsolutions@gmail.com';
+  const toEmail = process.env.CONTACT_EMAIL ?? 'contact@hn.studio';
 
   if (!apiKey) {
-    /* Dev mode — log to console and succeed */
-    console.log('[Contact Form — DEV] New inquiry:', data, fileBuffer ? `[Attached: ${fileName}]` : '');
-    return { status: 'success' };
+    if (process.env.NODE_ENV === 'development') {
+      /* Dev mode — log to console and succeed for local development testing */
+      console.log('[Contact Form — DEV MODE] Inbound inquiry:', data, fileBuffer ? `[Attached: ${fileName}]` : '');
+      return { status: 'success' };
+    }
+    console.error('[Contact Form — PRODUCTION ERROR] RESEND_API_KEY is not configured.');
+    return {
+      status: 'error',
+      message: 'Email service is temporarily unavailable. Please contact us directly at contact@hn.studio or via WhatsApp.',
+    };
   }
 
   try {
@@ -106,7 +120,7 @@ export async function submitInquiry(
 
     const attachments = fileBuffer ? [{ filename: fileName, content: fileBuffer }] : undefined;
 
-    await resend.emails.send({
+    const { error: sendError } = await resend.emails.send({
       from:    'HN Contact Form <onboarding@resend.dev>',
       to:      [toEmail],
       replyTo: data.email,
@@ -137,28 +151,20 @@ export async function submitInquiry(
       `,
     });
 
-    /* Auto-reply to client (Requires verified domain in Resend)
-    await resend.emails.send({
-      from:    'HN <onboarding@resend.dev>',
-      to:      [data.email],
-      subject: `We received your inquiry, ${data.name.split(' ')[0]}!`,
-      html: `
-        <div style="font-family:sans-serif;max-width:600px;margin:0 auto">
-          <h2 style="color:#0051FF">Thanks for reaching out!</h2>
-          <p>Hi ${data.name.split(' ')[0]},</p>
-          <p>We've received your inquiry about a <strong>${data.projectType}</strong> project and will get back to you within <strong>24–48 hours</strong>.</p>
-          <p>In the meantime, feel free to check out our work at <a href="https://hn.studio/work">hn.studio/work</a>.</p>
-          <p>— Het & Neel</p>
-          <hr style="border-color:#E2E5F1"/>
-          <p style="color:#94a3b8;font-size:12px">HN · Digital Product Studio</p>
-        </div>
-      `,
-    });
-    */
+    if (sendError) {
+      console.error('[Contact Form — Resend Delivery Error]:', sendError.message);
+      return {
+        status: 'error',
+        message: 'Delivery error. Please email us directly at contact@hn.studio or message us on WhatsApp.',
+      };
+    }
 
     return { status: 'success' };
   } catch (err) {
-    console.error('[Contact Form] Resend error:', err);
-    return { status: 'error', message: 'Something went wrong. Please email us directly at het@hn.studio.' };
+    console.error('[Contact Form] Unexpected delivery failure:', err);
+    return {
+      status: 'error',
+      message: 'Something went wrong sending your inquiry. Please email us directly at contact@hn.studio or reach out via WhatsApp.',
+    };
   }
 }
