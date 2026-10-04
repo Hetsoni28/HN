@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { spaceGrotesk, plusJakarta } from '@/lib/fonts';
 import '../styles/globals.css';
 import { OrganizationJsonLd, WebSiteJsonLd } from '@/components/molecules/structured-data';
@@ -10,29 +10,40 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://hntech.in';
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: 'HN — Digital Products From Ideas to Scale',
-    template: '%s — HN',
+    default: 'HN Tech — Digital Products From Ideas to Scale',
+    template: '%s — HN Tech',
   },
-  description: 'HN is a two-person digital product studio. We design and build websites, web apps, SaaS platforms, mobile apps, and AI solutions for ambitious businesses.',
-  keywords: ['HN', 'digital product studio', 'web development', 'web applications', 'AI solutions', 'SaaS development', 'mobile app development', 'Next.js agency', 'software development India', 'Het Soni', 'Neel Patel'],
+  description: 'HN Tech is a premium technology company. We design and build websites, web apps, SaaS platforms, mobile apps, and AI solutions for ambitious businesses.',
+  keywords: ['HN Tech', 'technology company', 'web development', 'web applications', 'AI solutions', 'SaaS development', 'mobile app development', 'Next.js agency', 'software development India', 'Het Soni', 'Neel Patel'],
   authors: [{ name: 'Het Soni' }, { name: 'Neel Patel' }],
-  creator: 'HN',
-  publisher: 'HN',
+  creator: 'HN Tech',
+  publisher: 'HN Tech',
   alternates: { canonical: SITE_URL },
   openGraph: {
-    type: 'website', locale: 'en_IN', url: SITE_URL, siteName: 'HN',
-    title: 'HN — Digital Products From Ideas to Scale',
-    description: 'A two-person digital product studio building websites, web apps, SaaS, mobile apps, and AI solutions.',
-    images: [{ url: '/opengraph-image.png', width: 1200, height: 630, alt: 'HN' }],
+    type: 'website', locale: 'en_IN', url: SITE_URL, siteName: 'HN Tech',
+    title: 'HN Tech — Digital Products From Ideas to Scale',
+    description: 'A premium technology company building websites, web apps, SaaS, mobile apps, and AI solutions.',
+    images: [{ url: '/opengraph-image.png', width: 1200, height: 630, alt: 'HN Tech' }],
   },
   twitter: {
     card: 'summary_large_image', site: '@hetsoni', creator: '@hetsoni',
-    title: 'HN — Digital Products From Ideas to Scale',
-    description: 'A two-person digital product studio building websites, web apps, SaaS, mobile apps, and AI solutions.',
+    title: 'HN Tech — Digital Products From Ideas to Scale',
+    description: 'A premium technology company building websites, web apps, SaaS, mobile apps, and AI solutions.',
     images: ['/opengraph-image.png'],
   },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large' } },
   verification: { google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION },
+};
+
+/* Prevent iOS Safari auto-zoom on inputs (triggered when font-size < 16px).
+   interactive-widget keeps the viewport stable when the keyboard opens. */
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,          // allow user pinch-zoom (accessibility)
+  userScalable: true,
+  viewportFit: 'cover',
+  interactiveWidget: 'resizes-visual',
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
