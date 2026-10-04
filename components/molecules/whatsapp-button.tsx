@@ -1,16 +1,93 @@
 'use client';
 
 import { motion, AnimatePresence } from 'framer-motion';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 
 const WHATSAPP_NUMBER = '917990743263'; // +91 7990 743263
-const WHATSAPP_MESSAGE = encodeURIComponent(
-  "Hi HN Tech! I'm interested in discussing a project. Can we connect?"
-);
-const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${WHATSAPP_MESSAGE}`;
+
+/* ─── Generate contextual message based on current page ─── */
+function getDynamicMessage(pathname: string): string {
+  // /work/[slug] — case study page
+  if (pathname.startsWith('/work/')) {
+    const slug = pathname.replace('/work/', '').replace(/\/$/, '');
+    const projectName = slug
+      .split('-')
+      .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+      .join(' ');
+    return `Hi HN Tech! I just viewed the "${projectName}" case study on your website and I'm interested in building something similar. Can we discuss?`;
+  }
+
+  // /services/[slug]/[city] — city location page
+  if (pathname.match(/^\/services\/[^/]+\/[^/]+/)) {
+    const parts = pathname.split('/').filter(Boolean);
+    const service = parts[1]?.split('-').map((w) => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+    const city = parts[2]?.charAt(0).toUpperCase() + parts[2]?.slice(1);
+    return `Hi HN Tech! I'm looking for ${service} services in ${city}. Can we discuss my project requirements?`;
+  }
+
+  // /services/[slug] — service page
+  if (pathname.startsWith('/services/')) {
+    const slug = pathname.replace('/services/', '').replace(/\/$/, '');
+    const service = slug.split('-').map((w) => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+    return `Hi HN Tech! I'm interested in your ${service} service. Can we discuss my project?`;
+  }
+
+  // /contact — contact page
+  if (pathname.startsWith('/contact')) {
+    return `Hi HN Tech! I just filled out your contact form and wanted to follow up directly on WhatsApp. Can we connect?`;
+  }
+
+  // /compare — compare page
+  if (pathname.startsWith('/compare')) {
+    return `Hi HN Tech! I was comparing options on your website and I'd like to learn more about working with you. Can we chat?`;
+  }
+
+  // /maintenance — maintenance plans page
+  if (pathname.startsWith('/maintenance')) {
+    return `Hi HN Tech! I'm interested in one of your website maintenance plans. Can we discuss which plan suits me best?`;
+  }
+
+  // /referral — referral page
+  if (pathname.startsWith('/referral')) {
+    return `Hi HN Tech! I'd like to refer someone to your team and learn more about the referral program.`;
+  }
+
+  // /start — onboarding page
+  if (pathname.startsWith('/start')) {
+    return `Hi HN Tech! I'm getting started with a new project and going through your onboarding checklist. Can we connect?`;
+  }
+
+  // /insights/[slug] — blog post
+  if (pathname.startsWith('/insights/')) {
+    return `Hi HN Tech! I read one of your blog posts and I'm interested in discussing a project. Can we connect?`;
+  }
+
+  // /about — about page
+  if (pathname.startsWith('/about')) {
+    return `Hi HN Tech! I just read about your team and I'd love to discuss a potential project together.`;
+  }
+
+  // /work — portfolio page
+  if (pathname.startsWith('/work')) {
+    return `Hi HN Tech! I just viewed your portfolio and I'm impressed. I'd love to discuss a project with you.`;
+  }
+
+  // Default — homepage or any other page
+  return `Hi HN Tech! I'm interested in discussing a project. Can we connect?`;
+}
 
 export function WhatsAppButton() {
   const [hovered, setHovered] = useState(false);
+  const pathname = usePathname();
+  const [waUrl, setWaUrl] = useState('');
+
+  useEffect(() => {
+    const message = getDynamicMessage(pathname);
+    setWaUrl(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`);
+  }, [pathname]);
+
+  if (!waUrl) return null;
 
   return (
     <div className="fixed bottom-8 right-8 z-[90] flex items-center gap-3">
@@ -31,7 +108,7 @@ export function WhatsAppButton() {
 
       {/* WhatsApp Button */}
       <motion.a
-        href={WHATSAPP_URL}
+        href={waUrl}
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Chat with HN Tech on WhatsApp"
