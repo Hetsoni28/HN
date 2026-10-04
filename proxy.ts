@@ -26,7 +26,7 @@ function edgeRateLimit(ip: string, limit = 10, windowMs = 60_000): boolean {
 }
 
 /* ── CSP directives ── */
-function buildCSP(): string {
+function buildCSP(isDev: boolean): string {
   const directives: Record<string, string> = {
     'default-src':     "'self'",
     'script-src':      "'self' 'unsafe-inline' 'unsafe-eval'",
@@ -34,14 +34,20 @@ function buildCSP(): string {
     'img-src':         "'self' data: blob: https://cdn.sanity.io",
     'media-src':       "'self' data: blob:",
     'font-src':        "'self' data:",
-    'connect-src':     "'self' https://cdn.sanity.io https://*.api.sanity.io https://api.resend.com",
+    'connect-src':     isDev
+      ? "'self' ws: wss: http: https: https://cdn.sanity.io https://*.api.sanity.io https://api.resend.com"
+      : "'self' https://cdn.sanity.io https://*.api.sanity.io https://api.resend.com",
     'frame-src':       "'none'",
     'object-src':      "'none'",
     'base-uri':        "'self'",
     'form-action':     "'self'",
     'frame-ancestors': "'none'",
-    'upgrade-insecure-requests': '',
   };
+
+  // Only upgrade insecure requests on production HTTPS deployments
+  if (!isDev) {
+    directives['upgrade-insecure-requests'] = '';
+  }
 
   return Object.entries(directives)
     .map(([k, v]) => (v ? `${k} ${v}` : k))
@@ -50,6 +56,13 @@ function buildCSP(): string {
 
 export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
+  const hostname = request.nextUrl.hostname;
+  const isDev =
+    process.env.NODE_ENV !== 'production' ||
+    hostname === 'localhost' ||
+    hostname === '127.0.0.1' ||
+    hostname.endsWith('.local');
+
   const ip = request.headers.get('x-forwarded-for')?.split(',')[0]?.trim()
     ?? request.headers.get('x-real-ip')
     ?? '127.0.0.1';
@@ -59,7 +72,9 @@ export function proxy(request: NextRequest) {
   const isApiRoute = pathname.startsWith('/api/');
 
   if (isServerAction || isApiRoute) {
-    const limited = edgeRateLimit(ip, 5, 60_000);
+    // Relax edge rate limit in local development to accommodate rapid testing & Turbopack Fast Refresh
+    const limit = isDev ? 120 : 5;
+    const limited = edgeRateLimit(ip, limit, 60_000);
     if (limited) {
       return new NextResponse(
         JSON.stringify({ error: 'Too many requests. Please wait a moment.' }),
@@ -78,8 +93,11 @@ export function proxy(request: NextRequest) {
   const response = NextResponse.next();
   const headers = response.headers;
 
-  headers.set('Content-Security-Policy', buildCSP());
-  headers.set('Strict-Transport-Security', 'max-age=63072000; includeSubDomains; preload');
+  headers.set('Content-Security-Policy', buildCSP(isDev));
+  // Strict-Transport-Security MUST NOT be sent over HTTP (RFC 6797 Section 7.2)
+  if (!isDev) {
+    headers.set('Strict-Transport-Security', 'max-age=63072000; includeSubDomains; preload');
+  }
   headers.set('X-Content-Type-Options', 'nosniff');
   headers.set('X-Frame-Options', 'DENY');
   headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');

@@ -46,14 +46,20 @@ const nextConfig: NextConfig = {
     ];
   },
 
-  // ── Canonical service redirects ──────────────────────────────────────────
+  // ── Canonical service & case-study redirects ─────────────────────────────
   async redirects() {
     return [
+      // Legacy service slugs -> canonical service routes
       { source: '/services/web-development', destination: '/services/websites', permanent: true },
       { source: '/services/web-app-development', destination: '/services/web-applications', permanent: true },
       { source: '/services/saas-development', destination: '/services/saas-platforms', permanent: true },
       { source: '/services/mobile-app-development', destination: '/services/mobile-applications', permanent: true },
       { source: '/services/ai-development', destination: '/services/ai-solutions', permanent: true },
+
+      // Legacy case-study slugs -> canonical case-study routes
+      { source: '/work/urbanfit-app', destination: '/work/fittrack-pro', permanent: true },
+      { source: '/work/nexusecom', destination: '/work/nexus-ecommerce', permanent: true },
+      { source: '/work/fintech-vault', destination: '/work/financeflow', permanent: true },
     ];
   },
 

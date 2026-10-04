@@ -1,4 +1,4 @@
-import { notFound } from 'next/navigation';
+import { notFound, permanentRedirect } from 'next/navigation';
 import type { Metadata } from 'next';
 import { getProjectBySlug, getProjects, FALLBACK_PROJECTS } from '@/lib/content';
 import { CaseStudyHero, CaseStudyOverview } from '@/components/organisms/case-study-hero';
@@ -10,6 +10,12 @@ import {
   CaseStudyNext,
   CaseStudyCta,
 } from '@/components/organisms/case-study-sections';
+
+const LEGACY_SLUG_MAP: Record<string, string> = {
+  'urbanfit-app': 'fittrack-pro',
+  'nexusecom': 'nexus-ecommerce',
+  'fintech-vault': 'financeflow',
+};
 
 /* ── ISR — rebuild every 1 hour at most ── */
 export const revalidate = 3600;
@@ -27,6 +33,9 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
+  if (LEGACY_SLUG_MAP[slug]) {
+    permanentRedirect(`/work/${LEGACY_SLUG_MAP[slug]}`);
+  }
   const p = await getProjectBySlug(slug);
   if (!p) return { title: 'Project not found' };
   return {
@@ -43,6 +52,9 @@ export default async function CaseStudyPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
+  if (LEGACY_SLUG_MAP[slug]) {
+    permanentRedirect(`/work/${LEGACY_SLUG_MAP[slug]}`);
+  }
   const project = await getProjectBySlug(slug);
   if (!project) notFound();
 

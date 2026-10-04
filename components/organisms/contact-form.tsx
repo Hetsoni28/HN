@@ -75,7 +75,7 @@ export function ContactForm({ initialProject }: { initialProject?: string }) {
         </div>
         <h2 className="mt-6 text-2xl font-bold text-slate-900">We got your message!</h2>
         <p className="mt-3 max-w-sm text-slate-500">
-          Expect a reply from Het or Neel within 24–48 hours. We&apos;ve also sent a confirmation to your email.
+          Expect a reply from Het, Neel, or Vraj within 24–48 hours. We&apos;ve also sent a confirmation to your email.
         </p>
         <button
           onClick={() => window.location.reload()}

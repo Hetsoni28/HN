@@ -21,6 +21,7 @@ export function OrganizationJsonLd() {
     founders: [
       { '@type': 'Person', name: 'Het Soni', jobTitle: 'Full Stack Developer' },
       { '@type': 'Person', name: 'Neel Patel', jobTitle: 'Web Developer' },
+      { '@type': 'Person', name: 'Vraj Prajapati', jobTitle: 'Full Stack Developer' },
     ],
     address: { '@type': 'PostalAddress', addressCountry: 'IN' },
     contactPoint: {

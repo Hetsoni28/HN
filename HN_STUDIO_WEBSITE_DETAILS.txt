@@ -1,0 +1,722 @@
+================================================================================
+           HN DIGITAL STUDIO — MASTER WEBSITE & ARCHITECTURE MANUAL
+================================================================================
+Generated: October 2026
+Brand: HN Digital Studio (HN Studio)
+Primary Website: hn.studio
+Repository: https://github.com/Hetsoni28/HN.git
+Version: 1.0.0
+Operating System Target: Cross-Platform (Windows / Linux / macOS / Vercel Edge)
+Tech Stack: Next.js 16 (App Router + Turbopack), React 19, Tailwind CSS v4, Framer Motion 12, Sanity CMS v6, TypeScript 5.7
+
+
+================================================================================
+TABLE OF CONTENTS
+================================================================================
+1. EXECUTIVE OVERVIEW & BRAND IDENTITY
+2. TECHNOLOGY STACK & ARCHITECTURAL HIGHLIGHTS
+3. COMPLETE & CURRENT FOLDER STRUCTURE (TREE MAP)
+4. DETAILED PAGE-BY-PAGE BREAKDOWN (ALL 101+ ROUTES)
+   - 4.1 Core Marketing Pages
+   - 4.2 Interactive Lead Generation & Conversion Tools
+   - 4.3 Service Landing Pages (Core + Programmatic SEO Local Pages)
+   - 4.4 Portfolio & Case Studies
+   - 4.5 Insights & Technical Articles
+   - 4.6 Client Operations & Legal Pages
+   - 4.7 Studio CMS, APIs & System Endpoints
+5. ATOMIC COMPONENT SYSTEM & REGISTRY
+6. CMS DATA SCHEMAS & HYBRID FALLBACK ARCHITECTURE
+7. PERFORMANCE, ACCESSIBILITY & SEO ARCHITECTURE
+8. SECURITY, RATE LIMITING & FORM PIPELINES
+9. ENVIRONMENT CONFIGURATION & NPM SCRIPTS
+
+
+================================================================================
+1. EXECUTIVE OVERVIEW & BRAND IDENTITY
+================================================================================
+HN Digital Studio is an enterprise-grade web engineering, product design, and
+software development studio catering to high-growth startups, scale-ups, and
+enterprises worldwide (India, US, UK, Canada, Australia, UAE).
+
+• Tagline: "We build websites, web apps, and digital experiences that convert."
+• Primary Value Proposition:
+  - Enterprise engineering discipline with elite boutique speed.
+  - 100% production-ready TypeScript, Zero-Hydration bugs, Next.js 16 App Router.
+  - Sub-second page loads (99+ Lighthouse performance across mobile and desktop).
+  - Transparent sprint pricing with guaranteed milestone delivery.
+  - Zero lock-in with clean headless CMS (Sanity) and automated CI/CD.
+
+• Brand Identity & Visual Language:
+  - Signature Color Palette:
+    * Electric Indigo / Royal Blue (#0051FF): Primary brand accent & call to actions.
+    * Cyber Cyan (#00D2FF): Neon highlights, glows, and interactive gradients.
+    * Deep Navy / Charcoal (#070B19, #0F172A): High-contrast dark backgrounds.
+    * Crisp White & Slate (#FFFFFF, #F8FAFC, #EEF0FF): Airy background cards & typography.
+  - Typography: Inter / Roboto / Outfit sans-serif typeface hierarchy via next/font.
+  - Styling Aesthetic: Glassmorphism, subtle 3D bevels, micro-interactions, responsive
+    card grids, and refined micro-animations using Framer Motion 12.
+
+• Official Contact & Channels:
+  - Phone / WhatsApp: +91 7990743263 (Instant WhatsApp chat trigger across site)
+  - Primary Contact Email: het@hn.studio / contact@hn.studio
+  - Physical Studio Base: Ahmedabad, Gujarat, India (serving global clientele)
+
+
+================================================================================
+2. TECHNOLOGY STACK & ARCHITECTURAL HIGHLIGHTS
+================================================================================
+• Framework & Runtime:
+  - Next.js 16.3.6 with Turbopack bundler for instantaneous HMR & build execution.
+  - React 19.2.0:
+    * Server Components by default for zero client JS bundle overhead.
+    * Strict adherence to React 19 effects rules (no synchronous setState in effects).
+    * `useSyncExternalStore` for SSR-safe client storage (sessionStorage/localStorage).
+  - Node.js 22 LTS environment.
+
+• Styling & Design System:
+  - Tailwind CSS v4 via `@tailwindcss/postcss`.
+  - CSS variables for theme tokens, borders, and glassmorphic backdrops.
+  - Custom scrollbar styling, responsive typography clamp calculations.
+
+• Animations & Interactivity:
+  - Framer Motion 12 (`framer-motion`):
+    * Viewport-triggered scroll reveals (`FadeIn`, `motion.div`).
+    * Smooth interactive sliders (Before/After comparison).
+    * Dynamic animated counters and interactive ROI calculators.
+
+• Content Management (Sanity Studio v6):
+  - Embedded Studio route at `/studio` for visual in-browser content management.
+  - `@sanity/client`, `@sanity/image-url`, `next-sanity`.
+  - Dual-mode data fetching: If Sanity credentials are not present, the entire website
+    seamlessly renders rich, typed static fallback content from `lib/content.ts`
+    with zero downtime, zero blank states, and zero console errors.
+
+• Utilities & Media Generation:
+  - PDF Export: `jspdf` for generating downloadable client project briefs & estimates.
+  - Image Capture: `html-to-image` for capturing client quotes and shareable graphics.
+  - Video Automation: `fluent-ffmpeg` and `puppeteer` available for asset processing.
+  - Transactional Emails: `resend` SDK integrated in Server Actions.
+  - Form & Schema Validation: `zod` schema parsing for all user submissions.
+
+
+================================================================================
+3. COMPLETE & CURRENT FOLDER STRUCTURE (TREE MAP)
+================================================================================
+
+HN-main/
+├── .env.example                         # Environment variable template
+├── .gitattributes                       # Git line ending normalization
+├── .gitignore                           # Git ignore rules (.next, node_modules, env)
+├── AGENTS.md                            # Next.js agent coding rules & conventions
+├── CLAUDE.md                            # Assistant instructions & repository rules
+├── DEVELOPMENT_NOTES.md                 # Developer architectural scratchpad
+├── HN_FILE_LIST.txt                     # Legacy file index
+├── HN_STUDIO_WEBSITE_DETAILS.txt        # THIS FILE — Master comprehensive manual
+├── README.md                            # Studio overview & quickstart instructions
+├── SANITY_SETUP.md                      # Sanity CMS deployment & schema guides
+├── SECURITY.md                          # Vulnerability reporting & security policy
+├── eslint.config.mjs                    # ESLint 9 configuration with Next.js core-web-vitals
+├── next-env.d.ts                        # Next.js TypeScript declarations
+├── next.config.ts                       # Next.js configuration (Turbopack, package imports)
+├── package.json                         # Project dependencies and script definitions
+├── package-lock.json                    # Lockfile for reproducible builds
+├── postcss.config.mjs                   # PostCSS configuration for Tailwind v4
+├── proxy.ts                             # Next.js custom edge/proxy middleware
+├── tsconfig.json                        # Strict TypeScript compiler options & path aliases
+├── tsconfig.tsbuildinfo                 # Incremental TypeScript compilation cache
+│
+├── app/                                 # Next.js App Router root
+│   ├── apple-icon.svg                   # Optimized 180x180 SVG Apple touch icon (HN logo)
+│   ├── icon.svg                         # Optimized 64x64 SVG favicon (HN logo)
+│   ├── layout.tsx                       # Root HTML shell with font configuration & metadata
+│   ├── manifest.ts                      # Progressive Web App (PWA) manifest generator
+│   ├── opengraph-image.tsx              # Edge runtime default OpenGraph social image
+│   ├── robots.ts                        # Automated search engine robots.txt generator
+│   ├── sitemap.ts                       # Dynamic multi-route XML sitemap generator
+│   │
+│   ├── api/                             # API Backend Endpoints
+│   │   └── github/
+│   │       └── route.ts                 # GitHub API proxy for live commit/repo metrics
+│   │
+│   ├── studio/                          # Sanity CMS Studio Route
+│   │   └── [[...tool]]/
+│   │       ├── layout.tsx               # Studio isolated layout
+│   │       └── page.tsx                 # Embedded Sanity Studio single-page application
+│   │
+│   └── (main)/                          # Main Website Route Group (Shared Layout)
+│       ├── layout.tsx                   # Main layout: Navbar, Skip-Link, #main-content, Footer, Cookie Banner
+│       ├── not-found.tsx                # Custom 404 error page with navigation rescue
+│       ├── error.tsx                    # Error boundary with user-friendly retry button
+│       ├── page.tsx                     # HOMEPAGE (Landing Page with 14 modular sections)
+│       │
+│       ├── about/
+│       │   └── page.tsx                 # Studio story, team, mission, values & certifications
+│       │
+│       ├── brief/
+│       │   └── page.tsx                 # Interactive 6-step Project Brief Generator & PDF exporter
+│       │
+│       ├── compare/
+│       │   └── page.tsx                 # Studio vs Agency vs Freelancer deep comparison matrix
+│       │
+│       ├── contact/
+│       │   ├── actions.ts               # Server Action: Contact form submission, rate limiting, validation
+│       │   └── page.tsx                 # Contact form, direct booking, office details, FAQ
+│       │
+│       ├── cookie-policy/
+│       │   └── page.tsx                 # Cookie usage & consent details
+│       │
+│       ├── estimate/
+│       │   └── page.tsx                 # Interactive project cost & timeline calculator with PDF export
+│       │
+│       ├── insights/
+│       │   ├── page.tsx                 # Blog & engineering insights hub with category filters
+│       │   └── [slug]/
+│       │       ├── opengraph-image.tsx  # Dynamic OG image generator for blog articles
+│       │       └── page.tsx             # Full blog post reader with markdown/PortableText
+│       │
+│       ├── maintenance/
+│       │   └── page.tsx                 # Ongoing support, maintenance SLAs, DevOps packages
+│       │
+│       ├── privacy-policy/
+│       │   └── page.tsx                 # Comprehensive GDPR & privacy compliance statement
+│       │
+│       ├── process/
+│       │   └── page.tsx                 # In-depth 6-phase engineering workflow walkthrough
+│       │
+│       ├── referral/
+│       │   ├── actions.ts               # Server Action: Referral program application handler
+│       │   ├── page.tsx                 # 10% commission partner program details & earnings calculator
+│       │   └── referral-form.tsx        # Client referral registration form
+│       │
+│       ├── services/
+│       │   ├── page.tsx                 # All services directory & capability overview
+│       │   ├── [slug]/
+│       │   │   └── page.tsx             # Deep-dive individual service page (6 core services)
+│       │   │   └── [city]/
+│       │   │       └── page.tsx         # Programmatic SEO landing page (50 city combinations)
+│       │
+│       ├── showreel/
+│       │   └── page.tsx                 # 40-second video showreel showcase & metrics
+│       │
+│       ├── start/
+│       │   ├── page.tsx                 # Client onboarding & project kickoff hub
+│       │   └── onboarding-checklist.tsx # Interactive client onboarding checklist
+│       │
+│       ├── terms/
+│       │   └── page.tsx                 # Terms of service, payment milestones, IP ownership
+│       │
+│       └── work/
+│           ├── page.tsx                 # Portfolio index with category tabs
+│           ├── work-filter.tsx          # Client-side animated filtering component
+│           └── [slug]/
+│               ├── opengraph-image.tsx  # Dynamic OG image generator for case studies
+│               └── page.tsx             # Detailed case study (Challenge, Architecture, Results)
+│
+├── components/                          # React Component Library (Atomic Architecture)
+│   ├── footer.tsx                       # Shorthand footer export
+│   ├── navbar.tsx                       # Shorthand navbar export
+│   ├── project-card.tsx                 # Shorthand project card export
+│   ├── section-heading.tsx              # Shorthand section heading export
+│   │
+│   ├── atoms/                           # Smallest primitive UI components
+│   │   ├── availability-badge.tsx       # Live status badge ("Q2 Availability: 2 Slots Open")
+│   │   ├── button.tsx                   # Enterprise button with primary, secondary, outline & sizes
+│   │   ├── counter.tsx                  # Number counting animation primitive
+│   │   ├── external-link.tsx            # Safe target="_blank" anchor with rel="noopener noreferrer"
+│   │   ├── fade-in.tsx                  # Framer Motion scroll-reveal animation wrapper
+│   │   ├── image.tsx                    # Next/Image wrapper with smooth blur-up transitions
+│   │   ├── logo.tsx                     # HN Studio SVG / PNG vector logo component
+│   │   ├── service-icon.tsx             # Dynamic icon renderer for service offerings
+│   │   ├── skip-link.tsx                # Accessibility skip-link jumping directly to #main-content
+│   │   ├── tag.tsx                      # Pill tag for technologies, categories, and status
+│   │   ├── visually-hidden.tsx          # Screen-reader only utility component
+│   │   └── whatsapp-button.tsx          # Direct WhatsApp click-to-chat with pre-filled message
+│   │
+│   ├── molecules/                       # Combinations of atoms forming functional blocks
+│   │   ├── accordion.tsx                # Animated collapsible accordion (FAQ, details)
+│   │   ├── animated-counter.tsx         # Viewport-triggered animated metric stats
+│   │   ├── announcement-bar.tsx         # Top banner for announcements, discounts, updates
+│   │   ├── before-after-slider.tsx      # Interactive drag slider comparing legacy vs HN designs
+│   │   ├── breadcrumb.tsx               # Semantic breadcrumb navigation with JSON-LD support
+│   │   ├── cookie-banner.tsx            # GDPR-compliant floating cookie consent bar
+│   │   ├── error-states.tsx             # Visual UI error fallback with retry actions
+│   │   ├── floating-estimator.tsx       # Floating quick-quote widget for immediate estimates
+│   │   ├── marquee.tsx                  # Continuous horizontal ticker for logos and tech stacks
+│   │   ├── nav-link.tsx                 # Active-route aware navigation link
+│   │   ├── portable-text-renderer.tsx   # Custom rich-text renderer for Sanity CMS block content
+│   │   ├── process-step.tsx             # Single step card in workflow visualizers
+│   │   ├── project-card.tsx             # Portfolio card with hover zooms, tags, and metrics
+│   │   ├── section-heading.tsx          # Standardized section title with eyebrow badge & subtitle
+│   │   ├── service-card.tsx             # Service offering card with feature checklist
+│   │   ├── structured-data.tsx          # JSON-LD Schema.org injector (Organization, LocalBusiness)
+│   │   └── whatsapp-button.tsx          # Molecule wrapper for WhatsApp triggers
+│   │
+│   ├── organisms/                       # Complex page sections combining molecules & atoms
+│   │   ├── about-hero.tsx               # Hero header for /about page
+│   │   ├── about-section.tsx            # Studio overview & founder statement on homepage
+│   │   ├── about-values.tsx             # Core engineering pillars and studio ethics
+│   │   ├── article-sections.tsx         # Blog article body, reading progress, author bio
+│   │   ├── brief-generator.tsx          # Interactive multi-step form generating client briefs
+│   │   ├── case-study-hero.tsx          # Immersive header for individual case studies
+│   │   ├── case-study-sections.tsx      # Case study Challenge, Architecture, Metrics, and Gallery
+│   │   ├── contact-form.tsx             # Full contact form with budget selector & validation
+│   │   ├── cost-estimator.tsx           # Full-featured pricing & timeline interactive calculator
+│   │   ├── faq-section.tsx              # Categorized accordion FAQ section
+│   │   ├── featured-work.tsx            # Curated showcase of top projects on homepage
+│   │   ├── final-cta.tsx                # High-conversion closing banner on all major pages
+│   │   ├── footer.tsx                   # Enterprise footer with sitemap, legal, newsletter, social links
+│   │   ├── github-activity.tsx          # Real-time GitHub commit count & activity visualizer
+│   │   ├── hero-section.tsx             # Homepage hero with CTA buttons, badges, video preview
+│   │   ├── insights-grid.tsx            # Filterable grid of tech articles and tutorials
+│   │   ├── legal-page.tsx               # Standardized legal document layout (Privacy, Terms, Cookies)
+│   │   ├── navbar.tsx                   # Sticky responsive header with desktop dropdowns & mobile drawer
+│   │   ├── offers-strip.tsx             # Promotional highlight strip (Referrals, Free Audits)
+│   │   ├── process-section.tsx          # Homepage summary of the 6-phase engineering workflow
+│   │   ├── process-steps.tsx            # Full-page step-by-step breakdown on /process
+│   │   ├── roi-calculator.tsx           # Conversion & revenue growth estimation tool
+│   │   ├── roi-section.tsx              # Homepage ROI estimation section
+│   │   ├── services-section.tsx         # Homepage grid of 6 core service capabilities
+│   │   ├── showreel-player.tsx          # Custom HTML5 video player with fullscreen & controls
+│   │   ├── solution-finder.tsx          # Interactive questionnaire guiding users to the right service
+│   │   ├── tech-section.tsx             # Categorized technology stack matrix with indicator dots
+│   │   ├── testimonials-section.tsx     # Client testimonials with verified project badges
+│   │   ├── transformation-section.tsx   # Before/After redesign visual showcase
+│   │   └── what-we-build.tsx            # Interactive tabs showcasing Websites, Web Apps, SaaS, Mobile
+│   │
+│   └── welcome/                         # First-time visitor onboarding animation
+│       ├── WelcomeManager.tsx           # Session-aware controller (useSyncExternalStore)
+│       └── WelcomeScreen.tsx            # Cinematic introductory overlay animation
+│
+├── lib/                                 # Business Logic, Utilities, Content & Security
+│   ├── content.ts                       # Massive fallback data repository (Services, Projects, Posts, FAQs)
+│   ├── fonts.ts                         # Next/Font definition loader
+│   ├── locations.ts                     # 10 Indian cities & 5 services for programmatic SEO
+│   └── security.ts                      # In-memory sliding-window IP rate limiter
+│
+├── public/                              # Static public assets (images, logos, videos)
+│   ├── hero-artwork.jpg                 # Hero visual background artwork
+│   ├── hero-mockup.jpg                  # Project mockup visual
+│   ├── hero-mockup.png                  # High-res device mockup
+│   ├── hn-logo.png                      # Raster logo asset
+│   ├── hn-logo.svg                      # Vector logo asset
+│   ├── maintenance-hero.png             # Maintenance page illustration
+│   ├── og-image.png                     # Standard OpenGraph social share card
+│   ├── process-hero.jpg                 # Process page header visual
+│   ├── service-ai-hero.png              # AI development service illustration
+│   ├── service-ecommerce-hero.jpg       # E-Commerce service illustration
+│   ├── service-maintenance-hero.png     # Maintenance service illustration
+│   ├── service-mobileapps-hero.png      # Mobile apps service illustration
+│   ├── service-saas-hero.png            # SaaS development service illustration
+│   ├── service-webapps-hero.png         # Web apps service illustration
+│   ├── service-websites-hero.jpg        # Websites service illustration
+│   ├── work-hero.jpg                    # Portfolio header illustration
+│   ├── images/                          # Subdivided image directories
+│   │   ├── about-hero-banner.png        # About page hero graphic
+│   │   ├── contact-hero-blue.jpg        # Contact page banner
+│   │   ├── contact-hero.png             # Alternative contact hero
+│   │   ├── estimator-hero.png           # Estimator hero graphic
+│   │   ├── home-hero.png                # Homepage hero device mockup
+│   │   ├── insights-hero-new.jpg        # Insights hero visual
+│   │   ├── insights-hero-new.png        # Insights hero visual PNG
+│   │   ├── insights-hero.jpg            # Insights hero visual alternative
+│   │   ├── slider-after.jpg             # High-conversion redesign mockup (After)
+│   │   ├── slider-before.jpg            # Cluttered legacy website mockup (Before)
+│   │   ├── websites-hero.png            # Websites landing page visual
+│   │   ├── showreel/                    # Video thumbnail frames
+│   │   │   ├── after.jpg
+│   │   │   ├── before.jpg
+│   │   │   ├── dev.jpg
+│   │   │   └── mobile.jpg
+│   │   └── testimonials/                # Client headshots
+│   │       ├── priya.jpg
+│   │       └── sneha.jpg
+│   └── video/                           # Media files
+│       └── Digital_studio_product_video_loop_20261002013835.mp4 # Studio showreel loop
+│
+├── sanity/                              # Sanity CMS v6 Studio Configuration & Schemas
+│   ├── env.ts                           # Sanity environment validation
+│   ├── lib/
+│   │   ├── client.ts                    # Sanity live query client
+│   │   └── image.ts                     # Sanity image URL builder helper
+│   └── schemaTypes/                     # Content schema definitions
+│       ├── blogPost.ts                  # Schema for technical articles & news
+│       ├── faq.ts                       # Schema for categorized frequently asked questions
+│       ├── index.ts                     # Master schema registry
+│       ├── project.ts                   # Schema for case studies & portfolio items
+│       ├── service.ts                   # Schema for service offerings & deliverables
+│       ├── siteSettings.ts              # Schema for global phone, email, addresses, banners
+│       ├── teamMember.ts                # Schema for team biographies & roles
+│       └── testimonial.ts               # Schema for client quotes, ratings, and avatars
+│
+├── sanity.cli.ts                        # Sanity command-line configuration
+├── sanity.config.ts                     # Sanity Studio dashboard configuration
+├── scripts/
+│   └── generate-seed.ts                 # Database / CMS seeding script for demo data
+└── styles/
+    └── globals.css                      # Tailwind v4 theme layer, typography & base CSS
+
+
+================================================================================
+4. DETAILED PAGE-BY-PAGE BREAKDOWN (ALL 101+ ROUTES)
+================================================================================
+
+--------------------------------------------------------------------------------
+4.1 CORE MARKETING PAGES
+--------------------------------------------------------------------------------
+
+1. Homepage (`/`)
+   • File: `app/(main)/page.tsx`
+   • Type: Static (SSG) with client hydration
+   • Description: The primary conversion engine of the studio.
+   • Sections & Features:
+     - Welcome Overlay (`WelcomeManager.tsx`): Runs an interactive first-visit animation.
+     - Hero Section (`hero-section.tsx`): High-impact headline ("We Engineer High-Performing
+       Web Platforms"), social proof metrics, primary CTA ("Start a Project"), and WhatsApp direct chat.
+     - Offers Strip (`offers-strip.tsx`): Highlights 10% referral rewards and complimentary technical audits.
+     - Transformation Section (`transformation-section.tsx`): Interactive before/after drag slider
+       contrasting slow, generic templates against custom HN Studio high-converting code.
+     - Services Showcase (`services-section.tsx`): 6-card interactive grid highlighting capabilities.
+     - What We Build (`what-we-build.tsx`): Tabbed selector demonstrating Websites, Web Apps, SaaS, and Mobile.
+     - Featured Work (`featured-work.tsx`): Filterable showcase of top commercial projects.
+     - 6-Phase Process Summary (`process-section.tsx`): Discovery to Scale overview.
+     - Technology Section (`tech-section.tsx`): Multi-category stack breakdown with dot status indicators.
+     - ROI Calculator (`roi-section.tsx`): Live slider estimating revenue boosts from faster load times.
+     - Testimonials (`testimonials-section.tsx`): Social proof quotes from founders and product leads.
+     - FAQ Accordion (`faq-section.tsx`): Instant answers to common pricing, timeline, and delivery questions.
+     - Solution Finder (`solution-finder.tsx`): Dynamic 3-step diagnostic tool suggesting optimal services.
+     - Final CTA (`final-cta.tsx`): High-contrast closing banner prompting consultation calls.
+
+2. About Us (`/about`)
+   • File: `app/(main)/about/page.tsx`
+   • Type: Static (SSG)
+   • Description: Studio origin, mission, engineering culture, and founder philosophy.
+   • Sections & Features:
+     - About Hero (`about-hero.tsx`): Studio mission and enterprise track record.
+     - About Values (`about-values.tsx`): 6 core tenets (Speed, Clean Architecture, Direct Communication,
+       Measurable ROI, Complete IP Ownership, Long-Term Reliability).
+     - Timeline & Milestones: The journey from independent engineering to an international digital studio.
+     - Certifications & Quality Guarantees: 99+ Lighthouse guarantee, strict TypeScript linting.
+
+3. Process & Methodology (`/process`)
+   • File: `app/(main)/process/page.tsx`
+   • Type: Static (SSG)
+   • Description: Complete, transparent walkthrough of the studio's delivery methodology.
+   • Sections & Features:
+     - Phase 1: Deep Discovery & Strategic Roadmapping (requirements, user flows, tech stack selection).
+     - Phase 2: System Architecture & Database Design (schema modeling, API contracts, security blueprints).
+     - Phase 3: High-Fidelity UI/UX & Interactive Prototyping (Figma design systems, responsive layouts).
+     - Phase 4: Agile Sprint Development (Next.js 16, TypeScript, clean modular atomic components).
+     - Phase 5: Automated QA, Security Auditing & Performance Tuning (Lighthouse 99+, WCAG accessibility).
+     - Phase 6: Production Launch, Zero-Downtime Migration & Scaling Support.
+
+4. Agency Comparison (`/compare`)
+   • File: `app/(main)/compare/page.tsx`
+   • Type: Static (SSG)
+   • Description: Unfiltered, honest comparison table contrasting HN Studio against typical alternatives:
+     - Column 1: HN Digital Studio (Dedicated senior engineers, custom code, fixed-price sprints, 99+ speed).
+     - Column 2: Traditional Digital Agencies (Heavy overhead, junior handoffs, inflated retainers, 4-6 month delays).
+     - Column 3: Freelance Marketplaces (Inconsistent code quality, communication drop-offs, zero maintenance guarantees).
+   • Interactive checklist showing exact deliverables included with every HN Studio contract.
+
+5. Video Showreel (`/showreel`)
+   • File: `app/(main)/showreel/page.tsx`
+   • Type: Static (SSG)
+   • Description: High-energy 40-second video showcase of studio product work and interface designs.
+   • Features:
+     - Custom Showreel Player (`showreel-player.tsx`): React 19 safe responsive video player.
+     - Playback controls: Play/Pause, Mute, Fullscreen, and elapsed time progress indicator.
+     - Performance stats: Average 350ms initial load, 4.2x conversion rate increase across delivered client apps.
+
+
+--------------------------------------------------------------------------------
+4.2 INTERACTIVE LEAD GENERATION & CONVERSION TOOLS
+--------------------------------------------------------------------------------
+
+6. Cost Estimator (`/estimate`)
+   • File: `app/(main)/estimate/page.tsx`
+   • Type: Static (SSG) with dynamic client calculation
+   • Description: Interactive project budgeting tool providing instant, transparent price ranges in INR/USD.
+   • Features:
+     - Project Type Selection: Website, Web Application, Mobile App, E-Commerce Store.
+     - Add-On Feature Checklist: Auth, Payment Gateways, Custom Admin CMS, AI Integration, 3rd-Party APIs, SEO.
+     - Timeline Urgency Slider: Standard (4-6 weeks), Fast-Track (2-3 weeks), Urgent Sprint (1-2 weeks).
+     - Dynamic Price Meter: Updates live with minimum and maximum estimated investments.
+     - PDF Export (`jspdf`): Downloads a professional client-ready project estimate sheet.
+     - WhatsApp Export: Formats the entire selected scope into a pre-filled WhatsApp message.
+
+7. Project Brief Generator (`/brief`)
+   • File: `app/(main)/brief/page.tsx`
+   • Type: Static (SSG) with multi-step interactive state
+   • Description: 6-step guided wizard allowing prospective clients to scope their project in under 3 minutes.
+   • Steps:
+     - 1. Project Objective (New MVP, Complete Redesign, Scaling / Performance Fix).
+     - 2. Target Audience & Business Model (B2B SaaS, D2C E-commerce, Marketplace, Enterprise Tool).
+     - 3. Required Technical Features (Databases, User Roles, AI APIs, Real-time Chat).
+     - 4. Design & Brand Assets (Have complete Figma designs, Need brand identity from scratch).
+     - 5. Target Launch Date & Budget Band.
+     - 6. Contact Info & Instant PDF Brief Generation.
+
+8. Client Referral Program (`/referral`)
+   • File: `app/(main)/referral/page.tsx`
+   • Type: Static (SSG) with dynamic Server Action
+   • Description: Partner program offering a 10% cash commission for every successfully signed client referral.
+   • Features:
+     - Interactive Commission Calculator: Adjust project budget slider to see instant earnings (e.g. ₹15,000 on a ₹1.5L project).
+     - Step-by-step partner guide (Submit lead -> Contract signed -> Immediate commission payout).
+     - Server Action (`referral/actions.ts`): Zod-validated registration form saving partner details.
+
+9. Client Onboarding Portal (`/start`)
+   • File: `app/(main)/start/page.tsx`
+   • Type: Static (SSG) with interactive client state
+   • Description: Dedicated kickoff dashboard for new clients after signing a contract.
+   • Features:
+     - Interactive Onboarding Checklist (`onboarding-checklist.tsx`): 5 key kickoff milestones
+       (Brand assets submission, Slack channel invitation, GitHub repository access, Figma workspace sharing, Kickoff call).
+     - Direct calendar booking links and project manager WhatsApp emergency channels.
+
+
+--------------------------------------------------------------------------------
+4.3 SERVICE LANDING PAGES (CORE + PROGRAMMATIC SEO)
+--------------------------------------------------------------------------------
+
+10. Services Directory (`/services`)
+    • File: `app/(main)/services/page.tsx`
+    • Type: Static (SSG)
+    • Description: Comprehensive index of all 6 core service offerings with deliverables and tech stacks.
+
+11. Core Service Landing Pages (`/services/[slug]`)
+    • File: `app/(main)/services/[slug]/page.tsx`
+    • Type: Static (SSG via `generateStaticParams`)
+    • 6 Pre-rendered Service Slugs:
+      - `/services/websites`: High-converting marketing websites, portfolio sites, and CMS-backed portals.
+      - `/services/web-applications`: Complex SaaS dashboards, client portals, and internal workflows.
+      - `/services/mobile-applications`: Cross-platform React Native / Flutter apps for iOS & Android.
+      - `/services/saas-development`: Cloud-native multi-tenant SaaS architecture, Stripe billing, role RBAC.
+      - `/services/ecommerce`: Headless Shopify / custom Next.js e-commerce storefronts with sub-second checkout.
+      - `/services/maintenance-support`: 24/7 uptime monitoring, security patching, and on-demand engineering retainers.
+    • Page Layout: Custom hero graphic, value proposition, deliverables checklist, tech stack pills,
+      relevant case study highlights, and direct booking CTA.
+
+12. Programmatic SEO Local City Landing Pages (`/services/[slug]/[city]`)
+    • File: `app/(main)/services/[slug]/[city]/page.tsx`
+    • Type: Static (SSG via `generateStaticParams`)
+    • Total Routes: 50 statically pre-rendered landing pages!
+    • Generated from 5 Services × 10 Tech Hub Cities:
+      - Cities: Ahmedabad, Surat, Vadodara, Rajkot, Gandhinagar, Mumbai, Pune, Bangalore, Delhi, Hyderabad.
+      - Services: Web Development, Web App Development, SaaS Development, Mobile App Development, AI Development.
+    • Features:
+      - Fully customized SEO metadata, title tags, and localized Schema.org JSON-LD.
+      - Localized copy referencing the city's tech ecosystem and startup founders.
+      - Breadcrumbs with Next.js `<Link>` navigation (`/` -> `/services` -> `/services/[slug]`).
+      - Direct localized WhatsApp triggers: "Hi HN Studio, I'm looking for web development in Ahmedabad..."
+
+
+--------------------------------------------------------------------------------
+4.4 PORTFOLIO & CASE STUDIES
+--------------------------------------------------------------------------------
+
+13. Portfolio Directory (`/work`)
+    • File: `app/(main)/work/page.tsx`
+    • Type: Static (SSG)
+    • Features:
+      - Filterable category tabs (`work-filter.tsx`): All, SaaS, Mobile Apps, Web Apps, E-Commerce.
+      - Grid of interactive project cards with hover previews, industry tags, and key impact metrics.
+
+14. Individual Case Studies (`/work/[slug]`)
+    • File: `app/(main)/work/[slug]/page.tsx`
+    • Type: Static (SSG via `generateStaticParams`)
+    • Dynamic OG Image: `app/(main)/work/[slug]/opengraph-image.tsx`
+    • Featured Case Studies:
+      - `/work/data-insight`: AI-powered predictive analytics dashboard for enterprise supply chains.
+      - `/work/smartdrive-x`: Connected vehicle fleet management IoT platform with live GPS telemetry.
+      - `/work/medimind-ai`: Healthcare diagnostic assistant with HIPAA-compliant EHR integrations.
+      - `/work/urbanfit-app`: D2C fitness community and booking app with 50,000+ active users.
+      - `/work/nexusecom`: Ultra-fast headless Next.js e-commerce platform with 2.8x checkout conversion.
+      - `/work/fintech-vault`: Institutional crypto custody interface with multi-sig authorization flows.
+    • Page Layout:
+      - Hero (`case-study-hero.tsx`): Industry badge, title, project brief, timeline, team role, live link.
+      - Overview & Fact Card: Category, stack size, direct project enquiry CTA.
+      - Challenge & Approach: Architectural deep-dive into client pain points.
+      - Technical Stack: Complete list of libraries, frameworks, and cloud providers utilized.
+      - Measurable Results: Verified metric cards (+180% speed, -45% bounce rate, $2M+ ARR enabled).
+
+
+--------------------------------------------------------------------------------
+4.5 INSIGHTS & TECHNICAL ARTICLES
+--------------------------------------------------------------------------------
+
+15. Insights Hub (`/insights`)
+    • File: `app/(main)/insights/page.tsx`
+    • Type: Static (SSG)
+    • Description: Technical publication featuring in-depth guides on Next.js, React 19, web performance,
+      SaaS architecture, and conversion rate optimization.
+    • Filterable by category: Engineering, Design Systems, Case Studies, Founder Guides.
+
+16. Individual Article Reader (`/insights/[slug]`)
+    • File: `app/(main)/insights/[slug]/page.tsx`
+    • Type: Static (SSG via `generateStaticParams`)
+    • Dynamic OG Image: `app/(main)/insights/[slug]/opengraph-image.tsx`
+    • Features:
+      - Reading time estimation and published date stamps.
+      - Custom PortableText / Markdown renderer with syntax highlighted code blocks and callouts.
+      - Author biography and social profile links.
+      - Related articles carousel and social share triggers.
+
+
+--------------------------------------------------------------------------------
+4.6 CLIENT OPERATIONS & LEGAL PAGES
+--------------------------------------------------------------------------------
+
+17. Contact & Project Proposal (`/contact`)
+    • File: `app/(main)/contact/page.tsx`
+    • Server Action: `app/(main)/contact/actions.ts`
+    • Type: Dynamic (Server-rendered on demand)
+    • Features:
+      - Comprehensive proposal submission form: Name, Email, Phone, Company, Budget band, Timeline, Message.
+      - Server-side Zod validation and IP rate limiting (5 submissions per 15 minutes).
+      - Office address, direct phone line (+91 7990743263), and direct email links.
+      - FAQ section covering initial consultations, NDAs, and payment structures.
+
+18. Maintenance & SLA Packages (`/maintenance`)
+    • File: `app/(main)/maintenance/page.tsx`
+    • Type: Static (SSG)
+    • Description: Ongoing engineering support packages:
+      - Starter Care: Security patches, uptime monitoring, monthly backups.
+      - Growth Retainer: Dedicated engineering hours, feature additions, performance tuning.
+      - Enterprise SLA: 1-hour emergency response, 24/7 DevOps monitoring, dedicated Slack channel.
+
+19. Legal & Compliance Pages
+    • `/terms`: Terms of Service, contract scope, payment schedules, and complete IP handover terms.
+    • `/privacy-policy`: Comprehensive GDPR-compliant privacy statement detailing data processing.
+    • `/cookie-policy`: Detailed explanation of essential, analytics, and preference cookies.
+
+
+--------------------------------------------------------------------------------
+4.7 STUDIO CMS, APIS & SYSTEM ENDPOINTS
+--------------------------------------------------------------------------------
+
+20. Sanity Studio CMS (`/studio/[[...tool]]`)
+    • File: `app/studio/[[...tool]]/page.tsx`
+    • Type: Dynamic (SPA client application)
+    • Description: Full embedded Sanity Studio v6 dashboard for real-time editorial content management.
+
+21. System Endpoints & Metadata
+    • `/api/github`: Serverless API route fetching live GitHub repository statistics.
+    • `/sitemap.xml`: Auto-generated XML sitemap containing all 101+ live routes with priority tags.
+    • `/robots.txt`: Search engine crawling rules (allowing public pages, disallowing `/studio`).
+    • `/manifest.webmanifest`: PWA manifest configuring mobile home screen installation.
+    • `/icon.svg` & `/apple-icon.svg`: Vector-optimized SVG favicons featuring the HN 3D glass monogram.
+
+
+================================================================================
+5. ATOMIC COMPONENT SYSTEM & REGISTRY
+================================================================================
+
+• Atoms (Primitive Elements):
+  - `button.tsx`: Variant styling (primary indigo, secondary slate, outline, ghost), sizes, fullWidth option.
+  - `counter.tsx`: Framer-motion driven number stepper for stats.
+  - `whatsapp-button.tsx`: One-click WhatsApp communication button with dynamic URL context.
+  - `skip-link.tsx`: Accessible skip link targeting `#main-content` for keyboard/screen-reader users.
+  - `external-link.tsx`: Safe anchor enforcing `rel="noopener noreferrer"` and `target="_blank"`.
+  - `availability-badge.tsx`: Live agency availability pill with glowing status dot.
+  - `fade-in.tsx`: Scroll-triggered opacity and translateY transition container.
+  - `service-icon.tsx`: Lucide icon selector matching service categories.
+  - `tag.tsx`: Badge pill for tags, tech stacks, and categories.
+
+• Molecules (Composite Blocks):
+  - `before-after-slider.tsx`: Interactive draggable image comparison widget.
+  - `cookie-banner.tsx`: Fixed floating banner with Accept/Decline cookie consent.
+  - `breadcrumb.tsx`: Breadcrumb trail with microdata Schema.org hierarchy.
+  - `section-heading.tsx`: Section title block with eyebrow badge, H2 heading, and description.
+  - `project-card.tsx`: Portfolio card with hover image scale, tech badges, and view link.
+  - `service-card.tsx`: Service card detailing capabilities, deliverables, and starting pricing.
+  - `accordion.tsx`: Accessible animated collapsible accordion.
+  - `marquee.tsx`: Infinite scrolling marquee ticker for client logos and partner badges.
+  - `structured-data.tsx`: Schema.org JSON-LD script injector for Organization and LocalBusiness.
+
+• Organisms (Page Sections):
+  - `navbar.tsx`: Fixed top navigation header with glassmorphism, dropdowns, and mobile menu.
+  - `footer.tsx`: Multi-column site footer with navigation links, contact info, and legal links.
+  - `hero-section.tsx`: Homepage hero section with headline, CTA buttons, and video mockup.
+  - `transformation-section.tsx`: Before & After redesign comparison section.
+  - `tech-section.tsx`: Categorized technology rows with status indicator dots.
+  - `roi-calculator.tsx`: Interactive ROI slider estimating revenue boosts.
+  - `cost-estimator.tsx`: Full-featured interactive project pricing calculator.
+  - `brief-generator.tsx`: 6-step project scoping wizard with PDF generation.
+  - `showreel-player.tsx`: Custom HTML5 responsive video player with controls.
+  - `contact-form.tsx`: Full contact form with Zod validation and rate limiting.
+
+
+================================================================================
+6. CMS DATA SCHEMAS & HYBRID FALLBACK ARCHITECTURE
+================================================================================
+The project implements a resilient Dual-Layer Hybrid Data Architecture:
+
+1. Live Sanity CMS Layer (`sanity/schemaTypes/`):
+   - `service.ts`: Defines title, slug, icon, shortDescription, whatWeProvide, features, tech stack.
+   - `project.ts`: Defines title, slug, category, industry, challenge, approach, solution, metrics.
+   - `blogPost.ts`: Defines title, slug, publishedAt, author, excerpt, mainImage, body content.
+   - `testimonial.ts`: Defines client name, role, company, quote, rating, project badge.
+   - `faq.ts`: Defines question, answer, category, orderIndex.
+   - `siteSettings.ts`: Defines primary phone, email, address, announcement banner text.
+
+2. Zero-Downtime Fallback Layer (`lib/content.ts`):
+   - If Sanity environment variables (`NEXT_PUBLIC_SANITY_PROJECT_ID`) are absent, invalid, or
+     if Sanity API encounters network latency, the application automatically falls back to 
+     typed static records in `lib/content.ts`.
+   - Ensures the website never crashes, never shows empty pages, and builds completely offline.
+
+
+================================================================================
+7. PERFORMANCE, ACCESSIBILITY & SEO ARCHITECTURE
+================================================================================
+• Lighthouse Scores: Target 99+ on Performance, Accessibility, Best Practices, and SEO.
+• Core Web Vitals:
+  - LCP (Largest Contentful Paint) < 1.0s: Hero assets preloaded, server-rendered HTML.
+  - FID / INP (Interaction to Next Paint) < 50ms: Minimized JavaScript execution on initial load.
+  - CLS (Cumulative Layout Shift) = 0: All image and video containers have fixed aspect ratios.
+• Accessibility (a11y):
+  - Skip to main content link (`#main-content`) with keyboard focus ring.
+  - High-contrast color ratios compliant with WCAG 2.1 AA standards.
+  - Screen-reader hints (`aria-hidden`, `sr-only`, descriptive image alt tags).
+• SEO Enhancements:
+  - Canonical URLs on every route.
+  - Automated dynamic OpenGraph card generation for home, case studies, and blog posts.
+  - Schema.org JSON-LD microdata for Organization, LocalBusiness, and BreadcrumbList.
+
+
+================================================================================
+8. SECURITY, RATE LIMITING & FORM PIPELINES
+================================================================================
+• Rate Limiting (`lib/security.ts`):
+  - Sliding-window in-memory IP rate limiter protecting Server Actions (`/contact`, `/referral`).
+  - Limits excessive requests (e.g. max 5 requests per 15-minute window per IP).
+• Data Validation:
+  - All form submissions are parsed and sanitized using strict Zod schemas on the server side.
+• External Link Protection:
+  - Standardized `ExternalLink` atom automatically injects `rel="noopener noreferrer"`.
+• Content Security:
+  - CSP and security headers pre-configured in Next.js configuration and proxy middleware.
+
+
+================================================================================
+9. ENVIRONMENT CONFIGURATION & NPM SCRIPTS
+================================================================================
+
+• Environment Variables (`.env.local` / `.env.example`):
+  - `NEXT_PUBLIC_SANITY_PROJECT_ID`: Sanity project identifier (optional, has fallback).
+  - `NEXT_PUBLIC_SANITY_DATASET`: Sanity dataset name (e.g. "production").
+  - `NEXT_PUBLIC_SANITY_API_VERSION`: API date string (e.g. "2024-01-01").
+  - `RESEND_API_KEY`: API key for automated transactional emails.
+  - `CONTACT_NOTIFICATION_EMAIL`: Studio inbox destination for contact submissions.
+  - `NEXT_PUBLIC_SITE_URL`: Primary domain ("https://hn.studio").
+
+• NPM Scripts:
+  - `npm run dev`: Starts Next.js development server with Turbopack on port 3009.
+  - `npm run build`: Executes full production compile and generates 101/101 static routes.
+  - `npm run start`: Starts production HTTP server on port 3009.
+  - `npm run lint`: Executes ESLint 9 check across the entire project (0 errors, 0 warnings).
+
+================================================================================
+                         END OF ARCHITECTURE MANUAL
+================================================================================

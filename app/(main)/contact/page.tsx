@@ -151,16 +151,17 @@ export default async function ContactPage({ searchParams }: Props) {
                 <div className="rounded-2xl border border-[#E2E5F1] bg-white p-7">
                   <div className="flex items-center gap-3">
                     <div className="flex -space-x-2">
-                      <div className="flex h-9 w-9 items-center justify-center rounded-full border-2 border-white bg-gradient-to-br from-[#0051FF] to-[#0070F3] text-xs font-bold text-white">HS</div>
-                      <div className="flex h-9 w-9 items-center justify-center rounded-full border-2 border-white bg-gradient-to-br from-[#0070F3] to-[#00D2FF] text-xs font-bold text-white">NP</div>
+                      <div className="flex h-9 w-9 items-center justify-center rounded-full border-2 border-white bg-gradient-to-br from-[#0051FF] to-[#0070F3] text-xs font-bold text-white shadow-sm">HS</div>
+                      <div className="flex h-9 w-9 items-center justify-center rounded-full border-2 border-white bg-gradient-to-br from-[#0070F3] to-[#00D2FF] text-xs font-bold text-white shadow-sm">NP</div>
+                      <div className="flex h-9 w-9 items-center justify-center rounded-full border-2 border-white bg-gradient-to-br from-[#00D2FF] to-[#0051FF] text-xs font-bold text-white shadow-sm">VP</div>
                     </div>
                     <div>
-                      <div className="text-sm font-bold text-slate-900">Het & Neel</div>
+                      <div className="text-sm font-bold text-slate-900">Het, Neel &amp; Vraj</div>
                       <div className="text-xs text-slate-400">Reply personally to every inquiry</div>
                     </div>
                   </div>
                   <p className="mt-4 text-sm italic leading-6 text-slate-500">
-                    &ldquo;We read every message ourselves. No bots, no sales team — just two engineers who want to help you build something great.&rdquo;
+                    &ldquo;We read every message ourselves. No bots, no sales team — just three engineers who want to help you build something great.&rdquo;
                   </p>
                 </div>
 

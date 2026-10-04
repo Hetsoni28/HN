@@ -87,6 +87,7 @@ export function AboutTeam({ members }: { members: TeamMember[] }) {
     'bg-gradient-to-br from-[#0051FF] to-[#0070F3]',
     'bg-gradient-to-br from-[#0070F3] to-[#00D2FF]',
     'bg-gradient-to-br from-[#f43f5e] to-[#fb7185]',
+    'bg-gradient-to-br from-[#00D2FF] to-[#0051FF]',
   ];
 
   return (
