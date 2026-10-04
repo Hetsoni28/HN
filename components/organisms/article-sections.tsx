@@ -64,7 +64,7 @@ export function ArticleHero({ post }: { post: BlogPost }) {
               </div>
               <div>
                 <div className="text-sm font-bold text-slate-900">{post.author?.name ?? 'HN'}</div>
-                <div className="text-xs text-slate-400">{post.author?.role ?? 'HN Studio'}</div>
+                <div className="text-xs text-slate-400">{post.author?.role ?? 'HN Tech'}</div>
               </div>
             </div>
             <div className="h-6 w-px bg-[#E2E5F1]" />
@@ -167,9 +167,9 @@ export function ArticleBody({
                 </div>
                 <div>
                   <div className="text-sm font-bold text-slate-900">{post.author.name}</div>
-                  <div className="text-xs text-[#0051FF]">{post.author.role ?? 'HN Studio'}</div>
+                  <div className="text-xs text-[#0051FF]">{post.author.role ?? 'HN Tech'}</div>
                   <p className="mt-2 text-sm text-slate-500">
-                    Building digital products at HN — websites, web apps, SaaS, and AI solutions. Co-founder of HN Studio.
+                    Building digital products at HN — websites, web apps, SaaS, and AI solutions. Co-founder of HN Tech.
                   </p>
                 </div>
               </div>
