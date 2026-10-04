@@ -79,16 +79,18 @@ export async function submitInquiry(
 
   /* 3. Process File Attachment */
   const rawFile = formData.get('file') as File | null;
-  let fileBuffer: Buffer | null = null;
+  let fileBase64: string | null = null;
   let fileName = '';
+  let fileType = 'application/octet-stream';
 
   if (rawFile && rawFile.size > 0) {
     if (rawFile.size > 5 * 1024 * 1024) {
       return { status: 'error', message: 'Attachment must be under 5MB.' };
     }
     const arrayBuffer = await rawFile.arrayBuffer();
-    fileBuffer = Buffer.from(arrayBuffer);
+    fileBase64 = Buffer.from(arrayBuffer).toString('base64');
     fileName = rawFile.name;
+    fileType = rawFile.type || 'application/octet-stream';
   }
 
   /* 4. Send email via Resend */
@@ -96,26 +98,28 @@ export async function submitInquiry(
   const toEmail = process.env.CONTACT_EMAIL ?? 'contact.hnsolutions@gmail.com';
 
   if (!apiKey) {
-    /* Dev mode — log to console and succeed */
-    console.log('[Contact Form — DEV] New inquiry:', data, fileBuffer ? `[Attached: ${fileName}]` : '');
+    console.log('[Contact Form — DEV] New inquiry:', data, fileBase64 ? `[Attached: ${fileName}]` : '');
     return { status: 'success' };
   }
 
   try {
     const resend = new Resend(apiKey);
 
-    const attachments = fileBuffer ? [{ filename: fileName, content: fileBuffer }] : undefined;
+    /* Resend requires base64 string + contentType for reliable attachment delivery */
+    const attachments = fileBase64
+      ? [{ filename: fileName, content: fileBase64, contentType: fileType }]
+      : undefined;
 
     await resend.emails.send({
       from:    'HN Contact Form <onboarding@resend.dev>',
       to:      [toEmail],
       replyTo: data.email,
-      subject: `New Inquiry — ${data.projectType} from ${data.name}`,
+      subject: `New Inquiry — ${data.projectType} from ${data.name}${fileBase64 ? ' 📎' : ''}`,
       attachments,
       html: `
         <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;max-width:600px;margin:0 auto;background-color:#ffffff;border:1px solid #e2e8f0;border-radius:12px;overflow:hidden">
           <div style="background-color:#0B111E;padding:32px;text-align:center">
-            <h1 style="color:#ffffff;margin:0;font-size:24px;font-weight:700;letter-spacing:-0.5px">HN Studio</h1>
+            <h1 style="color:#ffffff;margin:0;font-size:24px;font-weight:700;letter-spacing:-0.5px">HN Tech</h1>
             <p style="color:#94a3b8;margin:8px 0 0 0;font-size:14px;text-transform:uppercase;letter-spacing:1px">New Project Inquiry</p>
           </div>
           <div style="padding:40px 32px">
@@ -146,8 +150,8 @@ export async function submitInquiry(
                 <span style="color:#0f172a;font-weight:500;font-size:15px">${data.timeline}</span>
               </div>
               <div style="margin-bottom:0">
-                <span style="color:#64748b;font-size:14px;display:inline-block;width:80px">File</span>
-                <span style="color:#0f172a;font-weight:500;font-size:15px">${fileBuffer ? fileName : 'No attachment'}</span>
+                <span style="color:#64748b;font-size:14px;display:inline-block;width:80px">Attachment</span>
+                <span style="color:#0f172a;font-weight:500;font-size:15px">${fileBase64 ? `📎 ${fileName}` : 'None'}</span>
               </div>
             </div>
             <h3 style="margin:0 0 12px 0;font-size:14px;text-transform:uppercase;letter-spacing:1px;color:#64748b">Message</h3>
@@ -159,7 +163,7 @@ export async function submitInquiry(
             </div>
           </div>
           <div style="background-color:#f1f5f9;padding:24px 32px;text-align:center">
-            <p style="margin:0;color:#64748b;font-size:13px">This email was securely sent from your HN Studio contact form.</p>
+            <p style="margin:0;color:#64748b;font-size:13px">This email was securely sent from your HN Tech contact form.</p>
           </div>
         </div>
       `,

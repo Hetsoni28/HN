@@ -88,7 +88,7 @@ export function ContactForm({ initialProject }: { initialProject?: string }) {
   }
 
   return (
-    <form ref={formRef} action={action} noValidate>
+    <form ref={formRef} action={action} noValidate encType="multipart/form-data">
       {/* Honeypot — visually hidden from humans, visible to bots */}
       <div aria-hidden="true" className="absolute -left-[9999px] opacity-0">
         <label htmlFor="website">Leave this empty</label>
