@@ -2,7 +2,6 @@
 
 import { useRef, useEffect } from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
 import { motion, type Variants } from 'framer-motion';
 import { Button } from '@/components/atoms/button';
 
