@@ -76,7 +76,7 @@ export default async function OgImage({
                 color: 'white',
               }}
             >
-              HN Studio
+              HN Tech
             </div>
           </div>
 

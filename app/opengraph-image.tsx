@@ -63,7 +63,7 @@ export default function OgImage() {
               letterSpacing: '0.05em',
             }}
           >
-            HN Studio
+            HN Tech
           </span>
         </div>
 
