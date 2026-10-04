@@ -113,62 +113,45 @@ export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="relative overflow-hidden bg-[#050505] text-white selection:bg-[#0051FF] selection:text-white">
+    <footer className="relative overflow-hidden bg-white text-slate-900 selection:bg-[#0051FF] selection:text-slate-900">
 
-      {/* ── Soft Blurred Ambient Glows ── */}
-      <div className="pointer-events-none absolute inset-0 z-0">
-        {/* Soft white glow top-left */}
-        <div
-          className="absolute -left-20 -top-20 h-96 w-96 rounded-full bg-white/20 blur-3xl"
-          style={{ transform: 'translate3d(0,0,0)' }}
-        />
-        {/* Cyan glow right */}
-        <div
-          className="absolute right-0 top-1/3 h-[450px] w-[450px] rounded-full bg-[#A5F3FC]/25 blur-3xl"
-          style={{ transform: 'translate3d(0,0,0)' }}
-        />
-        {/* Deep blue glow bottom-left */}
-        <div
-          className="absolute -bottom-20 left-10 h-[400px] w-[400px] rounded-full bg-[#1B3FBF]/60 blur-3xl"
-          style={{ transform: 'translate3d(0,0,0)' }}
-        />
-      </div>
+      
 
       <div className="relative z-10">
 
         {/* ── Pre-footer CTA strip ── */}
-        <div className="border-b border-white/15">
+        <div className="border-b border-slate-200">
           <div className="container flex flex-col items-start justify-between gap-6 py-12 md:flex-row md:items-center">
             <div>
-              <span className="inline-flex rounded-full bg-white/15 px-3 py-1 text-xs font-bold uppercase tracking-widest text-white backdrop-blur-sm border border-white/20">
+              <span className="inline-flex rounded-full bg-blue-50 px-3 py-1 text-xs font-bold uppercase tracking-widest text-[#0051FF]">
                 READY TO BUILD?
               </span>
-              <h2 className="mt-3 text-3xl font-extrabold text-white sm:text-4xl tracking-tight">
+              <h2 className="mt-3 text-3xl font-extrabold text-slate-900 sm:text-4xl tracking-tight">
                 Start your project{' '}
-                <span className="bg-gradient-to-r from-white to-[#A5F3FC] bg-clip-text text-transparent">
+                <span className="text-[#0051FF]">
                   today.
                 </span>
               </h2>
-              <p className="mt-2 text-sm font-medium text-[#F2F7FF]">
+              <p className="mt-2 text-sm font-medium text-slate-500">
                 From idea to launch in as little as 4 weeks.
               </p>
             </div>
             <div className="flex flex-wrap gap-3">
               <Link
                 href="/contact"
-                className="inline-flex shrink-0 items-center gap-2 rounded-xl bg-white px-7 py-3.5 text-sm font-bold !text-[#0A4FD0] [text-shadow:none] shadow-lg shadow-blue-950/20 transition-all duration-300 hover:bg-blue-50 hover:scale-105 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#1D6BF0] motion-reduce:transition-none motion-reduce:transform-none"
-                style={{ color: '#0A4FD0' }}
+                className="inline-flex shrink-0 items-center gap-2 rounded-xl bg-[#0051FF] px-7 py-3.5 text-sm font-bold text-white shadow-lg shadow-blue-500/20 transition-all duration-300 hover:bg-blue-600 hover:scale-105 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-2 focus-visible:ring-offset-white motion-reduce:transition-none motion-reduce:transform-none"
+                
               >
-                <span className="!text-[#0A4FD0] [text-shadow:none]" style={{ color: '#0A4FD0' }}>
+                <span className="text-white" >
                   Get a Free Proposal
                 </span>
-                <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="#0A4FD0" strokeWidth={2.5} aria-hidden="true" style={{ stroke: '#0A4FD0' }}>
+                <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5} aria-hidden="true" >
                   <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
                 </svg>
               </Link>
               <Link
                 href="/estimate"
-                className="inline-flex shrink-0 items-center gap-2 rounded-xl border border-white/30 bg-white/10 backdrop-blur-md px-7 py-3.5 text-sm font-semibold text-white transition-all duration-300 hover:bg-white/20 hover:border-white/50 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#1D6BF0] motion-reduce:transition-none motion-reduce:transform-none"
+                className="inline-flex shrink-0 items-center gap-2 rounded-xl border border-slate-200 bg-white backdrop-blur-md px-7 py-3.5 text-sm font-semibold text-slate-900 transition-all duration-300 hover:bg-slate-50 hover:border-slate-300 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-2 focus-visible:ring-offset-white motion-reduce:transition-none motion-reduce:transform-none"
               >
                 Estimate Cost
               </Link>
@@ -177,14 +160,14 @@ export function Footer() {
         </div>
 
         {/* ── Trust stats bar ── */}
-        <div className="border-b border-white/15 bg-white/[0.04] backdrop-blur-sm">
-          <div className="container grid grid-cols-3 divide-x divide-white/15">
+        <div className="border-b border-slate-200 bg-white backdrop-blur-sm">
+          <div className="container grid grid-cols-3 divide-x divide-slate-200">
             {TRUST_STATS.map((s) => (
               <div key={s.label} className="group flex flex-col items-center gap-1 py-6 text-center cursor-default">
-                <span className="text-3xl font-black text-white tracking-tight sm:text-4xl transition-colors duration-300 group-hover:text-[#A5F3FC]">
+                <span className="text-3xl font-black text-slate-900 tracking-tight sm:text-4xl transition-colors duration-300 group-hover:text-[#0051FF]">
                   {s.value}
                 </span>
-                <span className="text-[10px] font-bold uppercase tracking-widest text-[#E3EEFF] transition-colors duration-300 group-hover:text-white sm:text-xs">
+                <span className="text-[10px] font-bold uppercase tracking-widest text-slate-600 transition-colors duration-300 group-hover:text-slate-900 sm:text-xs">
                   {s.label}
                 </span>
               </div>
@@ -201,7 +184,7 @@ export function Footer() {
               <div className="group/brand inline-block">
                 <Logo />
               </div>
-              <p className="mt-5 max-w-xs text-sm leading-relaxed text-[#F2F7FF]">
+              <p className="mt-5 max-w-xs text-sm leading-relaxed text-slate-500">
                 A senior-engineer-led digital product studio. We build websites, web apps, SaaS platforms, mobile apps, and AI solutions for ambitious founders and businesses.
               </p>
 
@@ -209,16 +192,16 @@ export function Footer() {
               <div className="mt-7 space-y-3.5">
                 <a
                   href="mailto:contact@hn.studio"
-                  className="group flex items-center gap-3 text-sm font-medium text-[#F2F7FF] transition-colors duration-300 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#1D6BF0] rounded-lg p-0.5"
+                  className="group flex items-center gap-3 text-sm font-medium text-slate-500 transition-colors duration-300 hover:text-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-2 focus-visible:ring-offset-white rounded-lg p-0.5"
                 >
-                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-white/10 text-white border border-white/20 transition-all duration-300 group-hover:bg-white/25 group-hover:border-white/40 group-hover:scale-105 motion-reduce:transform-none">
+                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-slate-100 text-slate-900 border border-slate-200 transition-all duration-300 group-hover:bg-slate-200 group-hover:border-slate-300 group-hover:scale-105 motion-reduce:transform-none">
                     <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
                     </svg>
                   </span>
                   <span className="relative overflow-hidden py-0.5">
                     contact@hn.studio
-                    <span className="absolute bottom-0 left-0 h-[1.5px] w-full origin-left scale-x-0 bg-gradient-to-r from-[#A5F3FC] to-white transition-transform duration-300 ease-out group-hover:scale-x-100 motion-reduce:transition-none" />
+                    <span className="absolute bottom-0 left-0 h-[1.5px] w-full origin-left scale-x-0 bg-[#0051FF] transition-transform duration-300 ease-out group-hover:scale-x-100 motion-reduce:transition-none" />
                   </span>
                 </a>
 
@@ -226,36 +209,36 @@ export function Footer() {
                   href="https://wa.me/917990743263"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group flex items-center gap-3 text-sm font-medium text-[#F2F7FF] transition-colors duration-300 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#1D6BF0] rounded-lg p-0.5"
+                  className="group flex items-center gap-3 text-sm font-medium text-slate-500 transition-colors duration-300 hover:text-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-2 focus-visible:ring-offset-white rounded-lg p-0.5"
                 >
-                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-white/10 text-white border border-white/20 transition-all duration-300 group-hover:bg-white/25 group-hover:border-white/40 group-hover:scale-105 motion-reduce:transform-none">
+                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-slate-100 text-slate-900 border border-slate-200 transition-all duration-300 group-hover:bg-slate-200 group-hover:border-slate-300 group-hover:scale-105 motion-reduce:transform-none">
                     <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
                     </svg>
                   </span>
                   <span className="relative overflow-hidden py-0.5">
                     +91 79907 43263
-                    <span className="absolute bottom-0 left-0 h-[1.5px] w-full origin-left scale-x-0 bg-gradient-to-r from-[#A5F3FC] to-white transition-transform duration-300 ease-out group-hover:scale-x-100 motion-reduce:transition-none" />
+                    <span className="absolute bottom-0 left-0 h-[1.5px] w-full origin-left scale-x-0 bg-[#0051FF] transition-transform duration-300 ease-out group-hover:scale-x-100 motion-reduce:transition-none" />
                   </span>
                 </a>
 
                 <a
                   href="tel:+917202031164"
-                  className="group flex items-center gap-3 text-sm font-medium text-[#F2F7FF] transition-colors duration-300 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#1D6BF0] rounded-lg p-0.5"
+                  className="group flex items-center gap-3 text-sm font-medium text-slate-500 transition-colors duration-300 hover:text-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-2 focus-visible:ring-offset-white rounded-lg p-0.5"
                 >
-                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-white/10 text-white border border-white/20 transition-all duration-300 group-hover:bg-white/25 group-hover:border-white/40 group-hover:scale-105 motion-reduce:transform-none">
+                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-slate-100 text-slate-900 border border-slate-200 transition-all duration-300 group-hover:bg-slate-200 group-hover:border-slate-300 group-hover:scale-105 motion-reduce:transform-none">
                     <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
                     </svg>
                   </span>
                   <span className="relative overflow-hidden py-0.5">
                     +91 72020 31164
-                    <span className="absolute bottom-0 left-0 h-[1.5px] w-full origin-left scale-x-0 bg-gradient-to-r from-[#A5F3FC] to-white transition-transform duration-300 ease-out group-hover:scale-x-100 motion-reduce:transition-none" />
+                    <span className="absolute bottom-0 left-0 h-[1.5px] w-full origin-left scale-x-0 bg-[#0051FF] transition-transform duration-300 ease-out group-hover:scale-x-100 motion-reduce:transition-none" />
                   </span>
                 </a>
 
-                <div className="flex items-center gap-3 text-sm text-[#E3EEFF]">
-                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-white/10 text-white border border-white/20">
+                <div className="flex items-center gap-3 text-sm text-slate-600">
+                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-slate-100 text-slate-900 border border-slate-200">
                     <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
                       <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
@@ -265,38 +248,20 @@ export function Footer() {
                 </div>
               </div>
 
-              {/* ── Social Icons (48x48 Tiles with Rich Hover Effects & Tooltips) ── */}
+              {/* ── Social Icons ── */}
               <div className="mt-8 flex items-center gap-3">
                 {SOCIAL_ITEMS.map((s) => (
-                  <div key={s.label} className="group relative">
-                    {/* Tooltip */}
-                    <div className="pointer-events-none absolute -top-9 left-1/2 -translate-x-1/2 opacity-0 transition-all duration-200 group-hover:opacity-100 group-focus-within:opacity-100 group-hover:-translate-y-1">
-                      <div className="relative rounded-md bg-white px-2.5 py-1 text-[11px] font-bold text-[#0A4FD0] shadow-md whitespace-nowrap">
-                        {s.label}
-                        <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 border-4 border-transparent border-t-white" />
-                      </div>
-                    </div>
-
-                    {/* Social Tile (48x48, radius 16px, glass fill, border white 25%) */}
-                    <a
-                      href={s.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={s.label}
-                      className={`relative flex h-12 w-12 items-center justify-center overflow-hidden rounded-2xl border border-white/25 bg-white/10 text-white shadow-sm transition-all duration-300 motion-reduce:transition-none hover:-translate-y-1.5 hover:scale-[1.05] hover:border-white/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#1D6BF0] focus:-translate-y-1.5 focus:scale-[1.05] focus:border-white/80 active:scale-95 ${s.hoverBg} ${s.hoverGlow}`}
-                    >
-                      {/* Halo ring effect */}
-                      <span className="pointer-events-none absolute inset-0 rounded-2xl border border-white/50 opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-hover:animate-ping motion-reduce:hidden" />
-
-                      {/* Shine sweep effect */}
-                      <span className="pointer-events-none absolute inset-0 -translate-x-full rounded-2xl bg-gradient-to-r from-transparent via-white/30 to-transparent transition-transform duration-700 group-hover:translate-x-full motion-reduce:hidden" />
-
-                      {/* Icon (22px white, tilts -6deg & scales 110% on hover) */}
-                      <span className="relative z-10 transition-transform duration-300 group-hover:-rotate-6 group-hover:scale-110 motion-reduce:transition-none">
-                        {s.icon}
-                      </span>
-                    </a>
-                  </div>
+                  <a
+                    key={s.label}
+                    href={s.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={s.label}
+                    title={s.label}
+                    className={`flex h-11 w-11 items-center justify-center rounded-xl border border-slate-200 bg-slate-100 text-slate-700 transition-all duration-200 hover:text-white hover:[&_svg]:fill-white hover:-translate-y-0.5 hover:scale-105 hover:border-transparent active:scale-95 ${s.hoverBg}`}
+                  >
+                    {s.icon}
+                  </a>
                 ))}
               </div>
             </div>
@@ -304,20 +269,20 @@ export function Footer() {
             {/* Nav columns */}
             {NAV.map((col) => (
               <div key={col.heading} className="group/col">
-                <h3 className="mb-2 text-xs font-bold uppercase tracking-widest text-white transition-all duration-300 group-hover/col:tracking-[0.24em]">
+                <h3 className="mb-2 text-xs font-bold uppercase tracking-widest text-slate-900 transition-all duration-300 group-hover/col:tracking-[0.24em]">
                   {col.heading}
                 </h3>
-                <div className="mb-5 h-[2px] w-6 bg-[#A5F3FC] rounded-full transition-all duration-300 group-hover/col:w-10" />
+                <div className="mb-5 h-[2px] w-6 bg-[#0051FF] rounded-full transition-all duration-300 group-hover/col:w-10" />
                 <nav className="group/list flex flex-col gap-3">
                   {col.links.map(({ href, label }) => (
                     <Link
                       key={href}
                       href={href}
-                      className="group relative inline-flex items-center text-sm font-medium text-[#F2F7FF] transition-all duration-300 hover:translate-x-1 hover:text-white group-hover/list:opacity-70 hover:!opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#1D6BF0] rounded motion-reduce:transition-none motion-reduce:transform-none"
+                      className="group relative inline-flex items-center text-sm font-medium text-slate-500 transition-all duration-300 hover:translate-x-1 hover:text-slate-900 group-hover/list:opacity-70 hover:!opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-2 focus-visible:ring-offset-white rounded motion-reduce:transition-none motion-reduce:transform-none"
                     >
                       <span className="relative py-0.5">
                         {label}
-                        <span className="absolute bottom-0 left-0 h-[1.5px] w-full origin-left scale-x-0 bg-gradient-to-r from-[#A5F3FC] to-white transition-transform duration-300 ease-out group-hover:scale-x-100 motion-reduce:transition-none" />
+                        <span className="absolute bottom-0 left-0 h-[1.5px] w-full origin-left scale-x-0 bg-[#0051FF] transition-transform duration-300 ease-out group-hover:scale-x-100 motion-reduce:transition-none" />
                       </span>
                     </Link>
                   ))}
@@ -328,8 +293,8 @@ export function Footer() {
         </div>
 
         {/* ── Bottom bar ── */}
-        <div className="border-t border-white/15 bg-black/10">
-          <div className="container flex flex-col items-start justify-between gap-4 py-6 text-xs text-[#D0E1FF] sm:flex-row sm:items-center">
+        <div className="border-t border-slate-200 bg-slate-50">
+          <div className="container flex flex-col items-start justify-between gap-4 py-6 text-xs text-slate-600 sm:flex-row sm:items-center">
             <span>© {year} HN. All rights reserved.</span>
 
             <div className="flex flex-wrap gap-5">
@@ -337,19 +302,19 @@ export function Footer() {
                 <Link
                   key={href}
                   href={href}
-                  className="group relative text-[#D0E1FF] transition-colors duration-300 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#1D6BF0] rounded"
+                  className="group relative text-slate-600 transition-colors duration-300 hover:text-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-2 focus-visible:ring-offset-white rounded"
                 >
                   <span className="relative py-0.5">
                     {label}
-                    <span className="absolute bottom-0 left-0 h-[1px] w-full origin-center scale-x-0 bg-gradient-to-r from-[#A5F3FC] to-white transition-transform duration-300 ease-out group-hover:scale-x-100 motion-reduce:transition-none" />
+                    <span className="absolute bottom-0 left-0 h-[1px] w-full origin-center scale-x-0 bg-[#0051FF] transition-transform duration-300 ease-out group-hover:scale-x-100 motion-reduce:transition-none" />
                   </span>
                 </Link>
               ))}
             </div>
 
-            <span className="hidden md:block font-medium text-[#D0E1FF]">
+            <span className="hidden md:block font-medium text-slate-600">
               Crafted with care by{' '}
-              <span className="font-bold text-white transition-colors duration-300 hover:text-[#A5F3FC]">
+              <span className="font-bold text-slate-900 transition-colors duration-300 hover:text-[#0051FF]">
                 HN
               </span>
             </span>
