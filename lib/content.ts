@@ -91,7 +91,7 @@ export const FALLBACK_SERVICES: Service[] = [
     whatWeProvide: ['Full custom design — no templates', 'CMS integration (Sanity, headless WordPress)', 'SEO-optimised architecture out of the box', 'Core Web Vitals score ≥ 90', 'Analytics & conversion tracking setup'],
     features: [
       { title: 'Responsive Design', description: 'Pixel-perfect on every device from mobile to 4K.' },
-      { title: 'CMS Powered', description: 'Edit content without touching code using Sanity Studio.' },
+      { title: 'CMS Powered', description: 'Edit content without touching code using Sanity CMS.' },
       { title: 'SEO Ready', description: 'Semantic HTML, metadata, and structured data built in.' },
       { title: 'Performance First', description: 'Sub-2 second load targets with Lighthouse scores ≥ 90.' },
     ],
@@ -660,7 +660,7 @@ export const FALLBACK_POSTS: BlogPost[] = [
   {
     _id: 'bp6',
     title: 'HN is Now a Tech Company: What Changed, What Didn\'t, and What\'s Next',
-    slug: { current: 'hn-becomes-studio' },
+    slug: { current: 'hn-becomes-tech' },
     excerpt: 'We started as two engineers freelancing nights and weekends. Today we\'re a technology company with a clear process, a growing portfolio, and an even clearer vision for what we want to build.',
     category: 'HN Updates',
     tags: ['HN', 'Tech', 'Update'],

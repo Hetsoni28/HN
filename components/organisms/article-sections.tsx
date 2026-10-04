@@ -139,7 +139,7 @@ export function ArticleBody({
                 <div className="rounded-2xl border-l-4 border-[#0051FF] bg-[#EEF0FF] p-6">
                   <p className="text-sm font-semibold text-[#0051FF]">Full article coming soon</p>
                   <p className="mt-1 text-sm text-slate-600">
-                    This insight is being written. Add the full content via Sanity Studio → Insights → {post.title}.
+                    This insight is being written. Add the full content via Sanity CMS → Insights → {post.title}.
                   </p>
                 </div>
                 <p>
