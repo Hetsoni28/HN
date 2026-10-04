@@ -124,7 +124,7 @@ export function BriefGenerator() {
       const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
       
       pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
-      pdf.save('HN-Studio-Project-Brief.pdf');
+      pdf.save('HN-Tech-Project-Brief.pdf');
     } catch (error: unknown) {
       console.error('Failed to generate PDF', error);
       const msg = error instanceof Error ? error.message : 'Unknown error. Check console.';

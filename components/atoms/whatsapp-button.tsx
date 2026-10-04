@@ -10,7 +10,7 @@ interface WhatsAppButtonProps {
 }
 
 export function WhatsAppButton({ 
-  message = "Hi HN Studio! I'm interested in working with you.",
+  message = "Hi HN Tech! I'm interested in working with you.",
   label = "Inquire on WhatsApp",
   className = "",
   fullWidth = false

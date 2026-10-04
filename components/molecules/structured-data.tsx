@@ -8,15 +8,14 @@ export function OrganizationJsonLd() {
     '@context': 'https://schema.org',
     '@type': 'Organization',
     '@id': `${SITE_URL}/#organization`,
-    name: 'HN Digital Product Studio',
+    name: 'HN Tech',
     alternateName: 'HN',
     url: SITE_URL,
     logo: {
       '@type': 'ImageObject',
       url: `${SITE_URL}/opengraph-image.png`,
     },
-    description:
-      'HN is a two-person digital product studio building websites, web apps, SaaS platforms, mobile apps, and AI solutions.',
+    description: 'HN is a technology company building websites, web apps, SaaS platforms, mobile apps, and AI solutions.',
     foundingDate: '2024',
     founders: [
       { '@type': 'Person', name: 'Het Soni', jobTitle: 'Full Stack Developer' },
@@ -91,7 +90,7 @@ export function ArticleJsonLd({
     dateModified: publishedAt,
     author: {
       '@type': 'Person',
-      name: authorName ?? 'HN Studio',
+      name: authorName ?? 'HN Tech',
       url: SITE_URL,
     },
     publisher: { '@id': `${SITE_URL}/#organization` },

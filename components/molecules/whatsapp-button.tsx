@@ -5,7 +5,7 @@ import { useState } from 'react';
 
 const WHATSAPP_NUMBER = '917990743263'; // +91 7990 743263
 const WHATSAPP_MESSAGE = encodeURIComponent(
-  "Hi HN Studio! I'm interested in discussing a project. Can we connect?"
+  "Hi HN Tech! I'm interested in discussing a project. Can we connect?"
 );
 const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${WHATSAPP_MESSAGE}`;
 
@@ -34,7 +34,7 @@ export function WhatsAppButton() {
         href={WHATSAPP_URL}
         target="_blank"
         rel="noopener noreferrer"
-        aria-label="Chat with HN Studio on WhatsApp"
+        aria-label="Chat with HN Tech on WhatsApp"
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
         initial={{ scale: 0, opacity: 0 }}
