@@ -109,7 +109,7 @@ docs.push({
   _id: 'siteSettings',
   title: 'HN Studio',
   description: 'A digital product studio founded by Het Soni and Neel Patel.',
-  contactEmail: 'het@hn.studio',
+  contactEmail: 'het@hntech.in',
   githubUrl: 'https://github.com/Hetsoni28',
 });
 

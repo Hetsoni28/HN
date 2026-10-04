@@ -5,7 +5,7 @@ import { OrganizationJsonLd, WebSiteJsonLd } from '@/components/molecules/struct
 import { SkipLink } from '@/components/atoms/skip-link';
 import { WelcomeManager } from '@/components/welcome/WelcomeManager';
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://hn.studio';
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://hntech.in';
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),

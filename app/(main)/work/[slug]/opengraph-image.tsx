@@ -141,7 +141,7 @@ export default async function OgImage({
           }}
         >
           <span style={{ fontSize: '16px', color: '#94A3B8', fontWeight: 600 }}>
-            hn.studio/work/{slug}
+            hntech.in/work/{slug}
           </span>
           <span style={{ fontSize: '16px', color: '#94A3B8', fontWeight: 600 }}>
             Case Study

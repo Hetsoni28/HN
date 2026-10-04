@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'HN \u2014 Building Digital Products From Ideas to Scale',
     description: 'HN is a premium technology company. We design and develop modern websites, applications, AI solutions, SaaS platforms, and custom software for businesses and ambitious ideas.',
-    url: 'https://hn.studio',
+    url: 'https://hntech.in',
     type: 'website',
   },
 };

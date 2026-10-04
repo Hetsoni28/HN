@@ -181,7 +181,7 @@ export async function submitInquiry(
             <p style="font-size:16px;color:#334155;line-height:24px;margin:0 0 24px 0">We've successfully received your inquiry about a <strong>${data.projectType}</strong> project. Our engineering team is reviewing your requirements and will get back to you within <strong>24–48 hours</strong> with a clear plan.</p>
             <p style="font-size:16px;color:#334155;line-height:24px;margin:0 0 32px 0">In the meantime, feel free to explore our recent case studies to see the kind of enterprise-grade software we build.</p>
             <div style="text-align:center">
-              <a href="https://hn.studio/work" style="display:inline-block;background-color:#0051FF;color:#ffffff;text-decoration:none;padding:14px 28px;border-radius:8px;font-weight:600;font-size:15px">View Our Work</a>
+              <a href="https://hntech.in/work" style="display:inline-block;background-color:#0051FF;color:#ffffff;text-decoration:none;padding:14px 28px;border-radius:8px;font-weight:600;font-size:15px">View Our Work</a>
             </div>
             <div style="margin-top:40px;border-top:1px solid #e2e8f0;padding-top:24px">
               <p style="font-size:16px;color:#334155;margin:0 0 4px 0">Best regards,</p>
@@ -196,6 +196,6 @@ export async function submitInquiry(
     return { status: 'success' };
   } catch (err) {
     console.error('[Contact Form] Resend error:', err);
-    return { status: 'error', message: 'Something went wrong. Please email us directly at het@hn.studio.' };
+    return { status: 'error', message: 'Something went wrong. Please email us directly at het@hntech.in.' };
   }
 }

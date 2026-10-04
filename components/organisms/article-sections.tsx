@@ -195,8 +195,8 @@ export function ArticleBody({
               <div className="text-xs font-bold uppercase tracking-widest text-slate-400">Share this article</div>
               <div className="mt-4 flex gap-2">
                 {[
-                  { label: 'Twitter', href: `https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent(`https://hn.studio/insights/${post.slug.current}`)}` },
-                  { label: 'LinkedIn', href: `https://linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(`https://hn.studio/insights/${post.slug.current}`)}&title=${encodeURIComponent(post.title)}` },
+                  { label: 'Twitter', href: `https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent(`https://hntech.in/insights/${post.slug.current}`)}` },
+                  { label: 'LinkedIn', href: `https://linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(`https://hntech.in/insights/${post.slug.current}`)}&title=${encodeURIComponent(post.title)}` },
                 ].map((s) => (
                   <a
                     key={s.label}

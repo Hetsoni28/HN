@@ -1,6 +1,6 @@
 /* JSON-LD Structured Data components — drop <StructuredData> anywhere in a Server Component */
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://hn.studio';
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://hntech.in';
 
 /* ── Organisation (sitewide) ── */
 export function OrganizationJsonLd() {

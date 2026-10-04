@@ -12,7 +12,7 @@ export default function TermsPage() {
       eyebrow="Legal"
       title="Terms of Service"
       lastUpdated="2025-09-01"
-      intro="These Terms of Service ('Terms') govern your use of the HN Digital Product Studio website at hn.studio and any services we provide. By accessing our website or engaging our services, you agree to be bound by these Terms. Please read them carefully before proceeding."
+      intro="These Terms of Service ('Terms') govern your use of the HN Digital Product Studio website at hntech.in and any services we provide. By accessing our website or engaging our services, you agree to be bound by these Terms. Please read them carefully before proceeding."
       sections={[
         {
           heading: '1. About HN',
@@ -79,7 +79,7 @@ export default function TermsPage() {
         {
           heading: '9. Website Use',
           content: [
-            'The content on our website (hn.studio) is provided for informational purposes only. Prices, timelines, and service descriptions are indicative and subject to change.',
+            'The content on our website (hntech.in) is provided for informational purposes only. Prices, timelines, and service descriptions are indicative and subject to change.',
             'You may not reproduce, distribute, or use our website content without written permission.',
           ],
         },
