@@ -1,7 +1,7 @@
 'use client';
 
 import { motion, AnimatePresence } from 'framer-motion';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { usePathname } from 'next/navigation';
 
 const WHATSAPP_NUMBER = '917990743263'; // +91 7990 743263
@@ -80,14 +80,8 @@ function getDynamicMessage(pathname: string): string {
 export function WhatsAppButton() {
   const [hovered, setHovered] = useState(false);
   const pathname = usePathname();
-  const [waUrl, setWaUrl] = useState('');
-
-  useEffect(() => {
-    const message = getDynamicMessage(pathname);
-    setWaUrl(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`);
-  }, [pathname]);
-
-  if (!waUrl) return null;
+  const message = getDynamicMessage(pathname);
+  const waUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
 
   return (
     <div className="fixed bottom-8 right-8 z-[90] flex items-center gap-3">
