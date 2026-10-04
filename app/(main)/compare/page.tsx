@@ -5,7 +5,7 @@ import { Button } from '@/components/atoms/button';
 export const metadata: Metadata = {
   title: 'HN vs Freelancer vs Big Agency | Which is Right for You?',
   description:
-    'Comparing HN digital product studio against hiring a freelancer or a big agency. See quality, cost, accountability, timelines, and hidden costs side-by-side before you decide.',
+    'Comparing HN Tech against hiring a freelancer or a big agency. See quality, cost, accountability, timelines, and hidden costs side-by-side before you decide.',
   keywords: [
     'hire freelancer vs agency',
     'HN vs freelancer vs agency',
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     'digital agency vs freelancer',
     'when to hire a freelancer',
     'when to hire an agency',
-    'product studio vs agency',
+    'tech company vs agency',
     'best way to build a web app',
     'hire developers India',
   ],
@@ -170,7 +170,7 @@ export default function ComparePage() {
                       <div className="text-xs font-bold uppercase tracking-widest text-white/60">
                         Recommended
                       </div>
-                      <div className="mt-0.5 text-base font-bold text-white">HN Studio</div>
+                      <div className="mt-0.5 text-base font-bold text-white">HN Tech</div>
                     </th>
                     <th className="border-b border-[#E2E5F1] bg-slate-50 px-6 py-4 text-left">
                       <div className="text-xs font-bold uppercase tracking-widest text-slate-400">
