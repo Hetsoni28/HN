@@ -69,7 +69,7 @@ export default async function ServiceDetailPage({
                 imageRendering: '-webkit-optimize-contrast',
                 filter: 'brightness(1.04) contrast(1.03)',
               }}
-            />
+             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
             {/* Pure white left text zone (0-45%) cleanly fading into transparent on right (78%+) */}
             <div 
               aria-hidden="true"

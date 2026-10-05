@@ -141,7 +141,7 @@ export default function MaintenancePage() {
             fill
             priority
             className="object-cover object-center"
-          />
+           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
         </div>
 
         <div className="container relative z-10 flex justify-center">

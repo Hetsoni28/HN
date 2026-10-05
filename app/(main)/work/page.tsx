@@ -24,7 +24,7 @@ export default async function WorkPage() {
             fill
             className="object-cover object-center"
             priority
-          />
+           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
           {/* Clean gradient overlay: no blur, ensures text is readable while keeping the image crisp */}
           <div className="absolute inset-0 bg-[#EEF0FF]/50"></div>
           <div className="absolute inset-0 bg-gradient-to-b from-[#EEF0FF]/90 via-transparent to-[#EEF0FF]"></div>

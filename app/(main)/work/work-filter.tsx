@@ -86,7 +86,7 @@ export function WorkFilter({ initialProjects }: { initialProjects: Project[] }) 
                       alt={p.heroImage.alt || p.title}
                       fill
                       className="object-cover transition duration-500 group-hover:scale-[1.03]"
-                    />
+                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
                   ) : (
                     <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-[#EEF0FF] via-[#E2E5F1] to-[#F5F8FF] transition duration-500 group-hover:scale-[1.03]">
                       <svg className="h-12 w-12 text-[#0051FF]/20" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1}>

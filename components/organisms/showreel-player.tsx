@@ -230,27 +230,27 @@ export function ShowreelPlayer() {
 
         {/* Media Layers */}
         <div className={`absolute inset-0 transition-opacity duration-1000 ${media.before ? 'opacity-100 scale-100' : 'opacity-0 scale-105'}`}>
-          <Image src="/images/showreel/before.jpg" alt="Before" fill className="object-cover" priority />
+          <Image src="/images/showreel/before.jpg" alt="Before" fill className="object-cover" priority  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
         </div>
 
         <div className={`absolute inset-0 transition-opacity duration-500 ${media.wipeScene ? 'opacity-100' : 'opacity-0'}`}>
-          <Image src="/images/showreel/before.jpg" alt="Before" fill className="object-cover" />
+          <Image src="/images/showreel/before.jpg" alt="Before" fill className="object-cover"  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
           <div 
             className="absolute inset-0 overflow-hidden border-r-4 border-cyan-400 shadow-[20px_0_40px_rgba(34,211,238,0.5)] transition-all duration-100 ease-linear"
             style={{ width: `${media.wipeProgress}%` }}
           >
             <div className="relative w-full h-full" style={{ width: containerWidth }}>
-              <Image src="/images/showreel/after.jpg" alt="After" fill className="object-cover" />
+              <Image src="/images/showreel/after.jpg" alt="After" fill className="object-cover"  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
             </div>
           </div>
         </div>
 
         <div className={`absolute inset-0 transition-opacity duration-1000 ${media.dev ? 'opacity-100 scale-100' : 'opacity-0 scale-105'}`}>
-          <Image src="/images/showreel/dev.jpg" alt="Developer" fill className="object-cover" />
+          <Image src="/images/showreel/dev.jpg" alt="Developer" fill className="object-cover"  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
         </div>
 
         <div className={`absolute inset-0 transition-opacity duration-1000 ${media.mobile ? 'opacity-100 scale-100' : 'opacity-0 scale-105'}`}>
-          <Image src="/images/showreel/mobile.jpg" alt="Mobile" fill className="object-cover" />
+          <Image src="/images/showreel/mobile.jpg" alt="Mobile" fill className="object-cover"  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
         </div>
 
         {/* Overlay */}

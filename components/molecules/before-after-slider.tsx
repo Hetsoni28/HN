@@ -55,7 +55,7 @@ export function BeforeAfterSlider({
     >
       {/* After Image (Background) */}
       <div className="relative w-full aspect-[16/9]">
-        <Image src={afterImage} alt={afterLabel} fill className="object-cover" />
+        <Image src={afterImage} alt={afterLabel} fill className="object-cover"  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
         <div className="absolute right-4 top-4 rounded bg-black/60 px-3 py-1.5 text-xs font-bold tracking-widest uppercase text-white backdrop-blur-md">
           {afterLabel}
         </div>
@@ -66,7 +66,7 @@ export function BeforeAfterSlider({
         className="absolute inset-0 aspect-[16/9]"
         style={{ clipPath: `inset(0 ${100 - sliderPosition}% 0 0)` }}
       >
-        <Image src={beforeImage} alt={beforeLabel} fill className="object-cover" />
+        <Image src={beforeImage} alt={beforeLabel} fill className="object-cover"  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
         <div className="absolute left-4 top-4 rounded bg-black/60 px-3 py-1.5 text-xs font-bold tracking-widest uppercase text-white backdrop-blur-md">
           {beforeLabel}
         </div>

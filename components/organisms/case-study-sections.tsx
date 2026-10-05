@@ -97,7 +97,7 @@ export function CaseStudyScreens({ project }: { project: Project }) {
                     alt={img.alt || `Screenshot ${i + 1}`}
                     fill
                     className="object-cover"
-                  />
+                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
                 </div>
               </FadeIn>
             ))}

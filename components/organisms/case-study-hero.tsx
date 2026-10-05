@@ -66,7 +66,7 @@ export function CaseStudyHero({ project }: { project: Project }) {
                 fill
                 className="object-cover"
                 priority
-              />
+               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
             ) : (
               <div className="flex h-full w-full flex-col items-center justify-center gap-3 text-white/40 sm:gap-4">
                 <svg className="h-10 w-10 sm:h-16 sm:w-16" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={0.8} aria-hidden="true">
