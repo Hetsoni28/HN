@@ -85,32 +85,37 @@ export default function ReferralPage() {
           />
         </div>
 
+        {/* Background Image Overlay to improve contrast */}
+        <div className="absolute inset-0 z-0 bg-white/40" />
+
         <div className="container relative z-10 mx-auto max-w-4xl text-center">
           <FadeIn>
-            <h1 className="text-4xl font-extrabold leading-tight tracking-tight text-gray-900 sm:text-5xl md:text-6xl">
-              Refer a Friend.
-              <br />
-              Earn{' '}
-              <span className="bg-gradient-to-r from-[#0051FF] to-[#4D8AFF] bg-clip-text text-transparent">
-                10%.
-              </span>
-            </h1>
-
-            <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-gray-600">
-              Know someone who needs a great website or app? Send them our way. When they sign a
-              contract with HN, you earn 10% of the project value. No limits — refer as many friends as you like.
-            </p>
-
-            {/* Stat pills */}
-            <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-              {PILLS.map((pill) => (
-                <span
-                  key={pill}
-                  className="inline-flex items-center rounded-full border border-[#0051FF]/20 bg-white px-4 py-2 text-sm font-semibold text-[#0051FF] shadow-sm"
-                >
-                  {pill}
+            <div className="rounded-3xl bg-white/70 backdrop-blur-md p-8 shadow-xl ring-1 ring-black/5 sm:p-12">
+              <h1 className="text-4xl font-extrabold leading-tight tracking-tight text-gray-900 sm:text-5xl md:text-6xl">
+                Refer a Friend.
+                <br />
+                Earn{' '}
+                <span className="bg-gradient-to-r from-[#0051FF] to-[#4D8AFF] bg-clip-text text-transparent">
+                  10%.
                 </span>
-              ))}
+              </h1>
+
+              <p className="mx-auto mt-6 max-w-2xl text-lg font-medium leading-relaxed text-gray-800">
+                Know someone who needs a great website or app? Send them our way. When they sign a
+                contract with HN, you earn 10% of the project value. No limits — refer as many friends as you like.
+              </p>
+
+              {/* Stat pills */}
+              <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+                {PILLS.map((pill) => (
+                  <span
+                    key={pill}
+                    className="inline-flex items-center rounded-full border border-[#0051FF]/20 bg-white px-4 py-2 text-sm font-semibold text-[#0051FF] shadow-sm"
+                  >
+                    {pill}
+                  </span>
+                ))}
+              </div>
             </div>
           </FadeIn>
         </div>
