@@ -62,12 +62,13 @@ export function WorkFilter({ initialProjects }: { initialProjects: Project[] }) 
       </div>
 
       {/* Projects Grid */}
-      <motion.div layout className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+      <motion.div layout className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 items-stretch">
         <AnimatePresence mode="popLayout">
           {filtered.map((p) => (
             <motion.div
               key={p._id}
               layout
+              className="h-full"
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
