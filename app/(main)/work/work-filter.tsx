@@ -78,7 +78,7 @@ export function WorkFilter({ initialProjects }: { initialProjects: Project[] }) 
                 className="group flex h-full flex-col overflow-hidden rounded-3xl border border-[#E2E5F1] bg-white transition duration-300 hover:-translate-y-1 hover:border-[#0051FF]/30 hover:shadow-xl hover:shadow-[#0051FF]/10"
               >
                 {/* Thumbnail / Image Area */}
-                <div className="aspect-video relative overflow-hidden bg-[#EEF0FF]">
+                <div className="h-48 relative overflow-hidden bg-[#EEF0FF] rounded-t-3xl">
                   {p.heroImage ? (
                     <Image
                       src={urlFor(p.heroImage).width(600).height(338).url()}

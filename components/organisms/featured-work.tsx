@@ -71,7 +71,7 @@ export function FeaturedWork({ projects }: { projects: WorkProject[] }) {
                   className="group block overflow-hidden rounded-2xl border border-[#E2E5F1] bg-white transition duration-300 hover:-translate-y-1 hover:border-[#0051FF]/30 hover:shadow-xl hover:shadow-[#0051FF]/8"
                 >
                   {/* Thumbnail */}
-                  <div className="aspect-video relative overflow-hidden bg-[#EEF0FF]">
+                  <div className="h-48 relative overflow-hidden bg-[#EEF0FF]">
                     {(p as any).heroImage ? (
                       <Image
                         src={urlFor((p as any).heroImage).width(600).height(338).url()}
