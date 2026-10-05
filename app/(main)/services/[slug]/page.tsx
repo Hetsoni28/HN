@@ -182,8 +182,8 @@ export default async function ServiceDetailPage({
 
             <div className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
               {service.whatWeProvide.map((item, i) => (
-                <FadeIn key={i} delay={i * 0.06}>
-                  <div className="flex items-start gap-4 rounded-xl bg-white p-5 border border-[#E2E5F1]">
+                <FadeIn key={i} delay={i * 0.06} className="h-full">
+                  <div className="flex h-full items-start gap-4 rounded-xl bg-white p-5 border border-[#E2E5F1]">
                     <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#0051FF] text-xs font-bold text-white">
                       ✓
                     </div>

@@ -268,8 +268,8 @@ export function ProcessFaq() {
         </FadeIn>
         <div className="mt-12 grid gap-5 md:grid-cols-2">
           {faqs.map((faq, i) => (
-            <FadeIn key={faq.q} delay={i * 0.07}>
-              <div className="rounded-2xl border border-[#E2E5F1] bg-white p-7">
+            <FadeIn key={faq.q} delay={i * 0.07} className="h-full">
+              <div className="h-full rounded-2xl border border-[#E2E5F1] bg-white p-7">
                 <h3 className="text-base font-bold text-slate-900">{faq.q}</h3>
                 <p className="mt-3 text-sm leading-7 text-slate-500">{faq.a}</p>
               </div>
