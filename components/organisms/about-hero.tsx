@@ -4,7 +4,18 @@ import { FadeIn } from '@/components/atoms/fade-in';
 /* ─── Hero ─── */
 export function AboutHero() {
   return (
-    <section className="section bg-[#EEF0FF] relative overflow-hidden flex flex-col justify-center min-h-[70vh] py-20">
+    <section className="relative overflow-hidden flex flex-col justify-center min-h-[70vh] py-20">
+      {/* Background Image */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src="/about-hero.png"
+          alt="About HN Background"
+          fill
+          quality={100}
+          className="object-cover object-center"
+          priority
+        />
+      </div>
 
       <div className="container relative z-10">
         <FadeIn>
