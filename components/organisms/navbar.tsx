@@ -7,36 +7,36 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Logo } from '@/components/atoms/logo';
 import { Button } from '@/components/atoms/button';
 
-/* ──────────────────────────â”€ Data ──────────────────────────â”€ */
+/* ─────────────────────────── Data ─────────────────────────── */
 
 const SERVICES_MENU = [
-  { label: 'Websites',          href: '/services/websites',            desc: 'Fast, beautiful marketing & business sites',   icon: 'ðŸŒ' },
-  { label: 'Web Applications',  href: '/services/web-applications',    desc: 'Custom dashboards, portals & platforms',        icon: 'âš™ï¸' },
-  { label: 'Mobile Apps',       href: '/services/mobile-applications', desc: 'iOS & Android apps built with React Native',    icon: 'ðŸ“±' },
-  { label: 'AI Solutions',      href: '/services/ai-solutions',        desc: 'AI-powered tools, chatbots & automation',       icon: 'ðŸ¤–' },
-  { label: 'SaaS Platforms',    href: '/services/saas-platforms',      desc: 'Scalable multi-tenant SaaS products',           icon: 'ðŸš€' },
-  { label: 'E-Commerce',        href: '/services/e-commerce',          desc: 'Conversion-optimised online stores',            icon: 'ðŸ›’' },
-  { label: 'Maintenance Plans', href: '/maintenance',                  desc: 'Ongoing support, updates & monitoring',         icon: 'ðŸ”§' },
+  { label: 'Websites',          href: '/services/websites',            desc: 'Fast, beautiful marketing & business sites',   icon: '🌐' },
+  { label: 'Web Applications',  href: '/services/web-applications',    desc: 'Custom dashboards, portals & platforms',        icon: '⚙️' },
+  { label: 'Mobile Apps',       href: '/services/mobile-applications', desc: 'iOS & Android apps built with React Native',    icon: '📱' },
+  { label: 'AI Solutions',      href: '/services/ai-solutions',        desc: 'AI-powered tools, chatbots & automation',       icon: '🤖' },
+  { label: 'SaaS Platforms',    href: '/services/saas-platforms',      desc: 'Scalable multi-tenant SaaS products',           icon: '🚀' },
+  { label: 'E-Commerce',        href: '/services/e-commerce',          desc: 'Conversion-optimised online stores',            icon: '🛒' },
+  { label: 'Maintenance Plans', href: '/maintenance',                  desc: 'Ongoing support, updates & monitoring',         icon: '🔧' },
 ];
 
 const COMPANY_MENU = [
-  { label: 'About Us',         href: '/about',    desc: 'Who we are and how we work',       icon: 'ðŸ‘¥' },
-  { label: 'Our Process',      href: '/process',  desc: 'From discovery to delivery',       icon: 'ðŸ“‹' },
-  { label: 'Portfolio',        href: '/work',     desc: 'Case studies of our best work',    icon: 'ðŸ’¼' },
-  { label: 'Insights / Blog',  href: '/insights', desc: 'Articles on web, SaaS & AI',      icon: 'âœï¸' },
-  { label: 'Showreel',         href: '/showreel', desc: '40-second cinematic overview',     icon: 'ðŸŽ¬' },
-  { label: 'HN vs Others',     href: '/compare',  desc: 'Why choose HN over alternatives', icon: 'âš–ï¸' },
-  { label: 'Refer & Earn 10%', href: '/referral', desc: 'Refer a friend, earn 10% commission', icon: 'ðŸ¤' },
+  { label: 'About Us',         href: '/about',    desc: 'Who we are and how we work',       icon: '👥' },
+  { label: 'Our Process',      href: '/process',  desc: 'From discovery to delivery',       icon: '📋' },
+  { label: 'Portfolio',        href: '/work',     desc: 'Case studies of our best work',    icon: '💼' },
+  { label: 'Insights / Blog',  href: '/insights', desc: 'Articles on web, SaaS & AI',      icon: '✍️' },
+  { label: 'Showreel',         href: '/showreel', desc: '40-second cinematic overview',     icon: '🎬' },
+  { label: 'HN vs Others',     href: '/compare',  desc: 'Why choose HN over alternatives', icon: '⚖️' },
+  { label: 'Refer & Earn 10%', href: '/referral', desc: 'Refer a friend, earn 10% commission', icon: '🤝' },
 ];
 
 const TOP_LINKS = [
-  { label: 'Process',   href: '/process',  icon: 'ðŸ“‹' },
-  { label: 'Estimator', href: '/estimate', icon: 'ðŸ§®' },
-  { label: 'Insights',  href: '/insights', icon: 'âœï¸' },
-  { label: 'Contact',   href: '/contact',  icon: 'âœ‰ï¸' },
+  { label: 'Process',   href: '/process',  icon: '📋' },
+  { label: 'Estimator', href: '/estimate', icon: '🧮' },
+  { label: 'Insights',  href: '/insights', icon: '✍️' },
+  { label: 'Contact',   href: '/contact',  icon: '✉️' },
 ];
 
-/* ──────────────────────────â”€ Types ──────────────────────────â”€ */
+/* ─────────────────────────── Types ─────────────────────────── */
 
 interface DropdownItem { label: string; href: string; desc: string; icon?: string; }
 
