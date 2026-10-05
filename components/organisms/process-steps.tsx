@@ -194,17 +194,15 @@ export function ProcessHero() {
   return (
     <section className="relative section overflow-hidden min-h-[70vh] flex flex-col justify-center py-20">
       {/* Background Image */}
-      <div className="absolute inset-0 -z-20">
+      <div className="absolute inset-0 z-0">
         <Image
-          src="/process-hero.jpg"
+          src="/process-hero.png"
           alt="Process Background Illustration"
           fill
+          quality={100}
           className="object-cover object-center"
           priority
         />
-        {/* Clean gradient overlay: ensures text readability while showing the image */}
-        <div className="absolute inset-0 bg-[#EEF0FF]/60"></div>
-        <div className="absolute inset-0 bg-gradient-to-b from-[#EEF0FF]/95 via-transparent to-[#EEF0FF]"></div>
       </div>
 
       <div className="container relative z-10 text-center">

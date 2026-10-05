@@ -4,36 +4,46 @@ import { FadeIn } from '@/components/atoms/fade-in';
 /* ─── Hero ─── */
 export function AboutHero() {
   return (
-    <section className="bg-[#EEF0FF]">
-      <FadeIn>
-        <div className="relative w-full overflow-hidden">
-          {/* The image contains the hero text and stats */}
-          <Image
-            src="/images/about-hero-banner.png"
-            alt="Why HN exists. We started HN with a simple belief — great software should be accessible to every business."
-            width={1920}
-            height={600}
-            quality={100}
-            unoptimized
-            className="w-full h-auto object-cover"
-            priority
-          />
-        </div>
-          
-          {/* SEO / Screen reader text */}
-          <div className="sr-only">
-            <h1>Why HN exists.</h1>
-            <p>
+    <section className="relative overflow-hidden min-h-[70vh] flex flex-col justify-center py-20">
+      {/* Background Image */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src="/about-hero.png"
+          alt="About HN Background"
+          fill
+          quality={100}
+          className="object-cover object-center"
+          priority
+        />
+      </div>
+
+      <div className="container relative z-10">
+        <FadeIn>
+          <div className="max-w-3xl">
+            <h1 className="text-5xl font-bold tracking-tight text-slate-900 md:text-7xl">
+              Why <span className="text-[#0051FF]">HN</span> exists.
+            </h1>
+            <p className="mt-6 text-lg leading-8 text-slate-600 sm:text-xl md:leading-9">
               We started HN with a simple belief — great software should be accessible to every business, not just the ones with enterprise budgets.
             </p>
-            <ul>
-              <li>2024 Founded, Est. in India</li>
-              <li>15+ Projects, Products shipped</li>
-              <li>100% On-Time, Every single project</li>
-              <li>2 Founders, Het & Neel</li>
-            </ul>
+          </div>
+
+          <div className="mt-16 grid grid-cols-2 gap-4 md:grid-cols-4 md:gap-6">
+            {[
+              { stat: '2024', label: 'Founded', sub: 'Est. in India' },
+              { stat: '15+', label: 'Projects', sub: 'Products shipped' },
+              { stat: '100%', label: 'On-Time', sub: 'Every single project' },
+              { stat: '2', label: 'Founders', sub: 'Het & Neel' },
+            ].map((item) => (
+              <div key={item.label} className="rounded-2xl border border-[#E2E5F1] bg-white p-6 shadow-sm">
+                <div className="text-2xl font-black text-[#0051FF] md:text-3xl">{item.stat}</div>
+                <div className="mt-2 text-sm font-bold text-slate-900">{item.label}</div>
+                <div className="text-xs text-slate-500">{item.sub}</div>
+              </div>
+            ))}
           </div>
         </FadeIn>
+      </div>
     </section>
   );
 }
