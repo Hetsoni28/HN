@@ -1,11 +1,11 @@
-'use server';
+﻿'use server';
 
 import { headers } from 'next/headers';
 import { z } from 'zod';
 import { Resend } from 'resend';
 import { sanitizeText } from '@/lib/security';
 
-/* ─── Schema ─── */
+/* â”€â”€â”€ Schema â”€â”€â”€ */
 const ReferralSchema = z.object({
   referrerName:    z.string().min(2, 'Name must be at least 2 characters').max(100),
   referrerEmail:   z.string().email('Please enter a valid email address').max(254),
@@ -14,7 +14,7 @@ const ReferralSchema = z.object({
   friendEmail:     z.string().email("Please enter your friend's email address").max(254),
   friendCompany:   z.string().max(100).optional(),
   friendNeed:      z.string().min(10, 'Please describe the project in at least 10 characters').max(1000),
-  /* Honeypot — must be empty */
+  /* Honeypot â€” must be empty */
   website:         z.string().max(0, 'Bot detected'),
 });
 
@@ -27,7 +27,7 @@ export type FormState = {
   errors?: Partial<Record<keyof ReferralFormData, string>>;
 };
 
-/* ─── Rate limit (simple in-memory, resets on cold start) ─── */
+/* â”€â”€â”€ Rate limit (simple in-memory, resets on cold start) â”€â”€â”€ */
 const rateMap = new Map<string, { count: number; resetAt: number }>();
 function isRateLimited(ip: string): boolean {
   const now = Date.now();
@@ -38,7 +38,7 @@ function isRateLimited(ip: string): boolean {
   return false;
 }
 
-/* ─── Server Action ─── */
+/* â”€â”€â”€ Server Action â”€â”€â”€ */
 export async function submitReferral(
   _prev: FormState,
   formData: FormData,
@@ -68,7 +68,7 @@ export async function submitReferral(
     friendEmail:   sanitizeText(String(formData.get('friendEmail')   ?? '')),
     friendCompany: sanitizeText(String(formData.get('friendCompany') ?? '')),
     friendNeed:    sanitizeText(String(formData.get('friendNeed')    ?? '')),
-    website:       String(formData.get('website') ?? ''), // honeypot — check raw
+    website:       String(formData.get('website') ?? ''), // honeypot â€” check raw
   };
 
   /* 2. Validate with Zod */
@@ -85,17 +85,17 @@ export async function submitReferral(
 
   /* 3. Send email via Resend */
   const apiKey = process.env.RESEND_API_KEY;
-  const toEmail = process.env.CONTACT_EMAIL ?? 'contact@hn.studio';
+  const toEmail = process.env.CONTACT_EMAIL ?? 'contact.hnsolutions@gmail.com';
 
   if (!apiKey) {
     if (process.env.NODE_ENV === 'development') {
-      console.log('[Referral Form — DEV MODE] Inbound referral:', data);
+      console.log('[Referral Form â€” DEV MODE] Inbound referral:', data);
       return { status: 'success', friendName: data.friendName };
     }
-    console.error('[Referral Form — PRODUCTION ERROR] RESEND_API_KEY is not configured.');
+    console.error('[Referral Form â€” PRODUCTION ERROR] RESEND_API_KEY is not configured.');
     return {
       status: 'error',
-      message: 'Referral submission service is temporarily unavailable. Please email us directly at contact@hn.studio.',
+      message: 'Referral submission service is temporarily unavailable. Please email us directly at contact.hnsolutions@gmail.com.',
     };
   }
 
@@ -105,11 +105,11 @@ export async function submitReferral(
       from:    'HN Referral Program <onboarding@resend.dev>',
       to:      [toEmail],
       replyTo: data.referrerEmail,
-      subject: `🤝 New Referral — ${data.referrerName} referred ${data.friendName}`,
+      subject: `ðŸ¤ New Referral â€” ${data.referrerName} referred ${data.friendName}`,
       html: `
         <div style="font-family:sans-serif;max-width:600px;margin:0 auto;background:#ffffff">
           <div style="background:#0051FF;padding:32px 32px 24px;border-radius:12px 12px 0 0">
-            <h1 style="color:#ffffff;margin:0;font-size:22px;font-weight:700">🤝 New Referral Received</h1>
+            <h1 style="color:#ffffff;margin:0;font-size:22px;font-weight:700">ðŸ¤ New Referral Received</h1>
             <p style="color:rgba(255,255,255,0.8);margin:8px 0 0;font-size:14px">
               Someone just referred a friend to HN!
             </p>
@@ -181,17 +181,17 @@ export async function submitReferral(
           </div>
 
           <div style="padding:16px 32px;background:#F8F9FF;border-radius:0 0 12px 12px;border:1px solid #E2E5F1;border-top:none">
-            <p style="margin:0;font-size:11px;color:#94a3b8">Sent via HN Referral Program · contact@hn.studio</p>
+            <p style="margin:0;font-size:11px;color:#94a3b8">Sent via HN Referral Program Â· contact.hnsolutions@gmail.com</p>
           </div>
         </div>
       `,
     });
 
     if (sendError) {
-      console.error('[Referral Form — Resend API Error]:', sendError.message);
+      console.error('[Referral Form â€” Resend API Error]:', sendError.message);
       return {
         status: 'error',
-        message: 'Delivery error submitting referral. Please email us directly at contact@hn.studio.',
+        message: 'Delivery error submitting referral. Please email us directly at contact.hnsolutions@gmail.com.',
       };
     }
 
@@ -200,7 +200,7 @@ export async function submitReferral(
     console.error('[Referral Form] Unexpected delivery failure:', err);
     return {
       status: 'error',
-      message: 'Something went wrong submitting your referral. Please contact us directly at contact@hn.studio.',
+      message: 'Something went wrong submitting your referral. Please contact us directly at contact.hnsolutions@gmail.com.',
     };
   }
 }

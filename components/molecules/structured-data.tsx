@@ -1,8 +1,8 @@
-/* JSON-LD Structured Data components — drop <StructuredData> anywhere in a Server Component */
+﻿/* JSON-LD Structured Data components â€” drop <StructuredData> anywhere in a Server Component */
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://hntech.in';
 
-/* ── Organisation (sitewide) ── */
+/* â”€â”€ Organisation (sitewide) â”€â”€ */
 export function OrganizationJsonLd() {
   const data = {
     '@context': 'https://schema.org',
@@ -26,7 +26,7 @@ export function OrganizationJsonLd() {
     contactPoint: {
       '@type': 'ContactPoint',
       contactType: 'customer service',
-      email: 'contact@hn.studio',
+      email: 'contact.hnsolutions@gmail.com',
     },
     sameAs: [
       'https://github.com/Hetsoni28',
@@ -42,7 +42,7 @@ export function OrganizationJsonLd() {
   );
 }
 
-/* ── WebSite (home page search box) ── */
+/* â”€â”€ WebSite (home page search box) â”€â”€ */
 export function WebSiteJsonLd() {
   const data = {
     '@context': 'https://schema.org',
@@ -65,7 +65,7 @@ export function WebSiteJsonLd() {
   );
 }
 
-/* ── Article (blog post) ── */
+/* â”€â”€ Article (blog post) â”€â”€ */
 export function ArticleJsonLd({
   title,
   description,
@@ -106,7 +106,7 @@ export function ArticleJsonLd({
   );
 }
 
-/* ── BreadcrumbList ── */
+/* â”€â”€ BreadcrumbList â”€â”€ */
 export function BreadcrumbJsonLd({
   items,
 }: {
@@ -130,7 +130,7 @@ export function BreadcrumbJsonLd({
   );
 }
 
-/* ── Service ── */
+/* â”€â”€ Service â”€â”€ */
 export function ServiceJsonLd({
   name,
   description,

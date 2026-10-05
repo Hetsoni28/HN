@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useState, useEffect, useRef, useCallback } from 'react';
 import Link from 'next/link';
@@ -7,40 +7,40 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Logo } from '@/components/atoms/logo';
 import { Button } from '@/components/atoms/button';
 
-/* ─────────────────────────── Data ─────────────────────────── */
+/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ Data â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 
 const SERVICES_MENU = [
-  { label: 'Websites',          href: '/services/websites',            desc: 'Fast, beautiful marketing & business sites',   icon: '🌐' },
-  { label: 'Web Applications',  href: '/services/web-applications',    desc: 'Custom dashboards, portals & platforms',        icon: '⚙️' },
-  { label: 'Mobile Apps',       href: '/services/mobile-applications', desc: 'iOS & Android apps built with React Native',    icon: '📱' },
-  { label: 'AI Solutions',      href: '/services/ai-solutions',        desc: 'AI-powered tools, chatbots & automation',       icon: '🤖' },
-  { label: 'SaaS Platforms',    href: '/services/saas-platforms',      desc: 'Scalable multi-tenant SaaS products',           icon: '🚀' },
-  { label: 'E-Commerce',        href: '/services/e-commerce',          desc: 'Conversion-optimised online stores',            icon: '🛒' },
-  { label: 'Maintenance Plans', href: '/maintenance',                  desc: 'Ongoing support, updates & monitoring',         icon: '🔧' },
+  { label: 'Websites',          href: '/services/websites',            desc: 'Fast, beautiful marketing & business sites',   icon: 'ðŸŒ' },
+  { label: 'Web Applications',  href: '/services/web-applications',    desc: 'Custom dashboards, portals & platforms',        icon: 'âš™ï¸' },
+  { label: 'Mobile Apps',       href: '/services/mobile-applications', desc: 'iOS & Android apps built with React Native',    icon: 'ðŸ“±' },
+  { label: 'AI Solutions',      href: '/services/ai-solutions',        desc: 'AI-powered tools, chatbots & automation',       icon: 'ðŸ¤–' },
+  { label: 'SaaS Platforms',    href: '/services/saas-platforms',      desc: 'Scalable multi-tenant SaaS products',           icon: 'ðŸš€' },
+  { label: 'E-Commerce',        href: '/services/e-commerce',          desc: 'Conversion-optimised online stores',            icon: 'ðŸ›’' },
+  { label: 'Maintenance Plans', href: '/maintenance',                  desc: 'Ongoing support, updates & monitoring',         icon: 'ðŸ”§' },
 ];
 
 const COMPANY_MENU = [
-  { label: 'About Us',         href: '/about',    desc: 'Who we are and how we work',       icon: '👥' },
-  { label: 'Our Process',      href: '/process',  desc: 'From discovery to delivery',       icon: '📋' },
-  { label: 'Portfolio',        href: '/work',     desc: 'Case studies of our best work',    icon: '💼' },
-  { label: 'Insights / Blog',  href: '/insights', desc: 'Articles on web, SaaS & AI',      icon: '✍️' },
-  { label: 'Showreel',         href: '/showreel', desc: '40-second cinematic overview',     icon: '🎬' },
-  { label: 'HN vs Others',     href: '/compare',  desc: 'Why choose HN over alternatives', icon: '⚖️' },
-  { label: 'Refer & Earn 10%', href: '/referral', desc: 'Refer a friend, earn 10% commission', icon: '🤝' },
+  { label: 'About Us',         href: '/about',    desc: 'Who we are and how we work',       icon: 'ðŸ‘¥' },
+  { label: 'Our Process',      href: '/process',  desc: 'From discovery to delivery',       icon: 'ðŸ“‹' },
+  { label: 'Portfolio',        href: '/work',     desc: 'Case studies of our best work',    icon: 'ðŸ’¼' },
+  { label: 'Insights / Blog',  href: '/insights', desc: 'Articles on web, SaaS & AI',      icon: 'âœï¸' },
+  { label: 'Showreel',         href: '/showreel', desc: '40-second cinematic overview',     icon: 'ðŸŽ¬' },
+  { label: 'HN vs Others',     href: '/compare',  desc: 'Why choose HN over alternatives', icon: 'âš–ï¸' },
+  { label: 'Refer & Earn 10%', href: '/referral', desc: 'Refer a friend, earn 10% commission', icon: 'ðŸ¤' },
 ];
 
 const TOP_LINKS = [
-  { label: 'Process',   href: '/process',  icon: '📋' },
-  { label: 'Estimator', href: '/estimate', icon: '🧮' },
-  { label: 'Insights',  href: '/insights', icon: '✍️' },
-  { label: 'Contact',   href: '/contact',  icon: '✉️' },
+  { label: 'Process',   href: '/process',  icon: 'ðŸ“‹' },
+  { label: 'Estimator', href: '/estimate', icon: 'ðŸ§®' },
+  { label: 'Insights',  href: '/insights', icon: 'âœï¸' },
+  { label: 'Contact',   href: '/contact',  icon: 'âœ‰ï¸' },
 ];
 
-/* ─────────────────────────── Types ─────────────────────────── */
+/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ Types â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 
 interface DropdownItem { label: string; href: string; desc: string; icon?: string; }
 
-/* ─────────────────────────── Sub-components ─────────────────────────── */
+/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ Sub-components â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 
 function ChevronDown({ open }: { open: boolean }) {
   return (
@@ -69,7 +69,7 @@ function MegaDropdown({ items, onClose }: { items: DropdownItem[]; onClose: () =
       <div className="mt-2 flex items-center justify-between rounded-xl bg-[#0051FF] px-4 py-2.5">
         <span className="text-xs font-semibold text-white/80">Not sure what you need?</span>
         <Link href="/estimate" onClick={onClose} className="text-xs font-bold text-white underline-offset-2 hover:underline">
-          Use the estimator →
+          Use the estimator â†’
         </Link>
       </div>
     </div>
@@ -129,7 +129,7 @@ function MobileSection({ title, items, onClose, isActive }: {
   );
 }
 
-/* ─────────────────────────── Navbar ─────────────────────────── */
+/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ Navbar â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 
 export function Navbar() {
   const pathname = usePathname();
@@ -189,7 +189,7 @@ export function Navbar() {
         {/* Logo */}
         <Logo />
 
-        {/* ── Desktop nav ── */}
+        {/* â”€â”€ Desktop nav â”€â”€ */}
         <nav aria-label="Primary navigation" className="hidden items-center gap-1 lg:flex">
 
           <div className="relative" onMouseEnter={() => openDropdown('services')} onMouseLeave={closeDropdown}>
@@ -235,15 +235,15 @@ export function Navbar() {
           ))}
         </nav>
 
-        {/* ── Desktop right ── */}
+        {/* â”€â”€ Desktop right â”€â”€ */}
         <div className="hidden items-center gap-3 lg:flex">
           
           <Button href="/contact" variant="primary" className="text-sm px-5 py-2.5">
-            Start a Project →
+            Start a Project â†’
           </Button>
         </div>
 
-        {/* ── Hamburger ── */}
+        {/* â”€â”€ Hamburger â”€â”€ */}
         <button
           ref={hamburgerRef}
           className="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 text-slate-700 transition hover:bg-slate-50 lg:hidden"
@@ -273,7 +273,7 @@ export function Navbar() {
         </button>
       </div>
 
-      {/* ══════════════════ Premium Mobile Drawer ══════════════════ */}
+      {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• Premium Mobile Drawer â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
       <AnimatePresence>
         {mobileOpen && (
           <>
@@ -295,7 +295,7 @@ export function Navbar() {
               transition={{ type: 'spring', stiffness: 320, damping: 32 }}
               className="fixed right-0 top-[68px] z-50 flex h-[calc(100dvh-68px)] w-full max-w-sm flex-col overflow-y-auto bg-white shadow-2xl lg:hidden"
             >
-              {/* ── Gradient header ── */}
+              {/* â”€â”€ Gradient header â”€â”€ */}
               <div className="bg-gradient-to-br from-[#0051FF] to-[#003ED9] px-6 py-6">
                 <p className="text-[11px] font-bold uppercase tracking-widest text-blue-200">HN Tech</p>
                 <h2 className="mt-1 text-xl font-extrabold leading-tight text-white">
@@ -306,7 +306,7 @@ export function Navbar() {
                     href="/contact" onClick={() => setMobileOpen(false)}
                     className="flex-1 rounded-xl bg-white py-3 text-center text-sm font-bold text-[#0051FF] transition hover:bg-blue-50"
                   >
-                    Start a Project →
+                    Start a Project â†’
                   </Link>
                   <a
                     href="https://wa.me/917990743263?text=Hi%20HN%20Tech!"
@@ -322,7 +322,7 @@ export function Navbar() {
                 </div>
               </div>
 
-              {/* ── Accordion nav ── */}
+              {/* â”€â”€ Accordion nav â”€â”€ */}
               <div className="flex-1">
                 <MobileSection title="Services" items={SERVICES_MENU} onClose={() => setMobileOpen(false)} isActive={isActive} />
                 <MobileSection title="Company"  items={COMPANY_MENU}  onClose={() => setMobileOpen(false)} isActive={isActive} />
@@ -346,13 +346,13 @@ export function Navbar() {
                 </div>
               </div>
 
-              {/* ── Footer strip ── */}
+              {/* â”€â”€ Footer strip â”€â”€ */}
               <div className="border-t border-slate-100 px-6 py-5">
                 <div className="flex items-center gap-2">
                   <span className="h-2 w-2 animate-pulse rounded-full bg-green-500" />
                   <p className="text-xs font-semibold text-slate-600">Available for new projects</p>
                 </div>
-                <p className="mt-0.5 text-xs text-slate-400">contact@hn.studio</p>
+                <p className="mt-0.5 text-xs text-slate-400">contact.hnsolutions@gmail.com</p>
               </div>
             </motion.div>
           </>

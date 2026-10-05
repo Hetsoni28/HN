@@ -1,4 +1,4 @@
-import Link from 'next/link';
+﻿import Link from 'next/link';
 import { FadeIn } from '@/components/atoms/fade-in';
 import { Breadcrumb } from '@/components/molecules/breadcrumb';
 
@@ -87,8 +87,8 @@ export function LegalPageLayout({
                 <h3 className="text-base font-bold text-slate-900">Questions?</h3>
                 <p className="mt-2 text-sm leading-7 text-slate-600">
                   If you have any questions about this policy, please email us at{' '}
-                  <a href="mailto:contact@hn.studio" className="font-semibold text-[#0051FF] hover:underline">
-                    contact@hn.studio
+                  <a href="mailto:contact.hnsolutions@gmail.com" className="font-semibold text-[#0051FF] hover:underline">
+                    contact.hnsolutions@gmail.com
                   </a>{' '}
                   or reach out via our{' '}
                   <Link href="/contact" className="font-semibold text-[#0051FF] hover:underline">

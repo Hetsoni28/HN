@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+﻿import type { Metadata } from 'next';
 import Image from 'next/image';
 import { ContactForm } from '@/components/organisms/contact-form';
 import { FadeIn } from '@/components/atoms/fade-in';
@@ -6,15 +6,15 @@ import { Breadcrumb } from '@/components/molecules/breadcrumb';
 import { WhatsAppButton } from '@/components/atoms/whatsapp-button';
 
 export const metadata: Metadata = {
-  title: 'Contact — HN',
-  description: 'Start your project with HN. Tell us what you want to build and we\'ll get back to you within 24–48 hours.',
+  title: 'Contact â€” HN',
+  description: 'Start your project with HN. Tell us what you want to build and we\'ll get back to you within 24â€“48 hours.',
 };
 
 const CONTACT_DETAILS = [
   {
     label: 'Email',
-    value: 'contact@hn.studio',
-    href: 'mailto:contact@hn.studio',
+    value: 'contact.hnsolutions@gmail.com',
+    href: 'mailto:contact.hnsolutions@gmail.com',
     icon: (
       <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.6}>
         <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
@@ -23,7 +23,7 @@ const CONTACT_DETAILS = [
   },
   {
     label: 'Response Time',
-    value: 'Within 24–48 hours',
+    value: 'Within 24â€“48 hours',
     href: null,
     icon: (
       <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.6}>
@@ -33,7 +33,7 @@ const CONTACT_DETAILS = [
   },
   {
     label: 'Based in',
-    value: 'India · Available worldwide',
+    value: 'India Â· Available worldwide',
     href: null,
     icon: (
       <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.6}>
@@ -79,7 +79,7 @@ export default async function ContactPage({ searchParams }: Props) {
                 <span className="gradient-text">great together.</span>
               </h1>
               <p className="mt-6 text-base leading-7 text-slate-600 sm:text-lg sm:leading-8">
-                Fill in the form and we&apos;ll get back to you within 24–48 hours with a clear plan and honest proposal.
+                Fill in the form and we&apos;ll get back to you within 24â€“48 hours with a clear plan and honest proposal.
               </p>
             </FadeIn>
           </div>
@@ -161,7 +161,7 @@ export default async function ContactPage({ searchParams }: Props) {
                     </div>
                   </div>
                   <p className="mt-4 text-sm italic leading-6 text-slate-500">
-                    &ldquo;We read every message ourselves. No bots, no sales team — just three engineers who want to help you build something great.&rdquo;
+                    &ldquo;We read every message ourselves. No bots, no sales team â€” just three engineers who want to help you build something great.&rdquo;
                   </p>
                 </div>
 
