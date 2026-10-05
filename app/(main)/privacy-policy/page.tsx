@@ -12,6 +12,7 @@ export default function PrivacyPolicyPage() {
       eyebrow="Legal"
       title="Privacy Policy"
       lastUpdated="2025-09-01"
+      heroImage="/privacy-hero.png"
       intro="HN Digital Product Studio ('HN', 'we', 'us', or 'our') is committed to protecting your privacy. This Privacy Policy explains what information we collect when you visit our website or contact us, how we use it, and your rights regarding that information. We operate from India and comply with applicable Indian data protection laws."
       sections={[
         {

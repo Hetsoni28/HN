@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import { FadeIn } from '@/components/atoms/fade-in';
 import { OnboardingChecklist } from './onboarding-checklist';
 
@@ -12,8 +13,20 @@ export default function StartPage() {
   return (
     <>
       {/* ── A) Hero ── */}
-      <section className="bg-[#EEF0FF] py-20 sm:py-28">
-        <div className="container">
+      <section className="relative overflow-hidden min-h-[70vh] flex flex-col justify-center py-20 sm:py-28">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/start-hero.png"
+            alt="Getting Started Background"
+            fill
+            quality={100}
+            className="object-cover object-center"
+            priority
+          />
+        </div>
+
+        <div className="container relative z-10">
           <FadeIn>
             <div className="mx-auto max-w-3xl text-center">
               <h1 className="text-4xl font-bold tracking-tight text-[#0B111E] sm:text-5xl md:text-6xl">

@@ -33,6 +33,11 @@ const NAV = [
       { href: '/work/data-insight',    label: 'Data Insight' },
       { href: '/work/smartdrive-x',    label: 'SmartDrive X' },
       { href: 'https://ovow-foods.vercel.app/', label: 'Ovow Foods' },
+      { href: 'https://salon-product-website.vercel.app', label: 'Salon' },
+      { href: 'https://rajeshwari-jewellers.vercel.app', label: 'Rajeshwari Jewellers' },
+      { href: 'https://rkinteriordesign.co/?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAb21jcAQWEthleHRuA2FlbQIxMQBzcnRjBmFwcF9pZA81NjcwNjczNDMzNTI0MjcAAaefgQ0bmnU0ywLUa38riFD9eYGYC4TmYYaKjfAXHSHdj4hmaE6-_fSYs4GpJw_aem_1mwgamlgq7OnPy2kAA623w', label: 'RK INTERIOR' },
+      { href: 'https://shri-hari-jewellers-eta.vercel.app/', label: 'Shri Hari Jewellers' },
+      { href: 'https://finance-advisor-wine.vercel.app/', label: 'Finance Advisor' },
     ],
   },
   {

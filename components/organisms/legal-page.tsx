@@ -13,6 +13,7 @@ interface LegalPageLayoutProps {
   lastUpdated: string;
   intro: string;
   sections: LegalSection[];
+  heroImage?: string;
 }
 
 export function LegalPageLayout({
@@ -21,12 +22,16 @@ export function LegalPageLayout({
   lastUpdated,
   intro,
   sections,
+  heroImage,
 }: LegalPageLayoutProps) {
   return (
     <>
       {/* Hero */}
-      <section className="section bg-[#EEF0FF]">
-        <div className="container">
+      <section 
+        className="section relative bg-[#EEF0FF] bg-cover bg-center"
+        style={heroImage ? { backgroundImage: `url(${heroImage})` } : undefined}
+      >
+        <div className="container relative z-10">
           <FadeIn>
             <Breadcrumb className="mb-6" />
             {eyebrow && (

@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 import { FadeIn } from '@/components/atoms/fade-in';
 import { ReferralForm } from './referral-form';
@@ -71,8 +72,20 @@ export default function ReferralPage() {
       {/* ══════════════════════════════════════
           A) Hero
       ══════════════════════════════════════ */}
-      <section className="bg-[#EEF0FF] px-4 py-20 sm:py-28">
-        <div className="container mx-auto max-w-4xl text-center">
+      <section className="relative overflow-hidden min-h-[70vh] flex flex-col justify-center px-4 py-20 sm:py-28">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/referral-hero.png"
+            alt="Referral Program Background"
+            fill
+            quality={100}
+            className="object-cover object-center"
+            priority
+          />
+        </div>
+
+        <div className="container relative z-10 mx-auto max-w-4xl text-center">
           <FadeIn>
             <h1 className="text-4xl font-extrabold leading-tight tracking-tight text-gray-900 sm:text-5xl md:text-6xl">
               Refer a Friend.
