@@ -12,6 +12,7 @@ export default function TermsPage() {
       eyebrow="Legal"
       title="Terms of Service"
       lastUpdated="2025-09-01"
+      heroImage="/terms-hero.jpg"
       intro="These Terms of Service ('Terms') govern your use of the HN Digital Product Studio website at hntech.in and any services we provide. By accessing our website or engaging our services, you agree to be bound by these Terms. Please read them carefully before proceeding."
       sections={[
         {

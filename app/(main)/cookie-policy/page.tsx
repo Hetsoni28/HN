@@ -12,6 +12,7 @@ export default function CookiePolicyPage() {
       eyebrow="Legal"
       title="Cookie Policy"
       lastUpdated="2025-09-01"
+      heroImage="/cookie-hero.png"
       intro="This Cookie Policy explains what cookies are, which cookies our website (hntech.in) uses, and how you can control them. We keep our cookie usage minimal — we do not use advertising or tracking cookies."
       sections={[
         {

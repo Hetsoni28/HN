@@ -134,8 +134,11 @@ export default function ComparePage() {
   return (
     <>
       {/* ── Hero ── */}
-      <section className="section bg-[#EEF0FF]">
-        <div className="container text-center">
+      <section 
+        className="section relative bg-[#EEF0FF] bg-cover bg-center"
+        style={{ backgroundImage: `url('/compare-hero.png')` }}
+      >
+        <div className="container relative z-10 text-center">
           <FadeIn>
             <div className="inline-flex items-center gap-2 rounded-full border border-[#0051FF]/20 bg-white px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-[#0051FF]">
               The honest comparison
