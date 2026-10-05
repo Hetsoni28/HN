@@ -61,17 +61,17 @@ export function FeaturedWork({ projects }: { projects: WorkProject[] }) {
           </div>
         </FadeIn>
 
-        <div className="mt-12 grid gap-6 md:grid-cols-3">
+        <div className="mt-12 grid gap-6 md:grid-cols-3 items-stretch">
           {list.map((p, i) => {
             const slug = getSlug(p.slug);
             return (
-              <FadeIn key={slug} delay={i * 0.1}>
+              <FadeIn key={slug} delay={i * 0.1} className="h-full">
                 <Link
                   href={`/work/${slug}`}
-                  className="group block overflow-hidden rounded-2xl border border-[#E2E5F1] bg-white transition duration-300 hover:-translate-y-1 hover:border-[#0051FF]/30 hover:shadow-xl hover:shadow-[#0051FF]/8"
+                  className="group flex flex-col h-full overflow-hidden rounded-2xl border border-[#E2E5F1] bg-white transition duration-300 hover:-translate-y-1 hover:border-[#0051FF]/30 hover:shadow-xl hover:shadow-[#0051FF]/8"
                 >
                   {/* Thumbnail */}
-                  <div className="h-48 relative overflow-hidden bg-[#EEF0FF]">
+                  <div className="h-48 relative overflow-hidden bg-[#EEF0FF] shrink-0">
                     {(p as any).heroImage ? (
                       <Image
                         src={urlFor((p as any).heroImage).width(600).height(338).url()}
@@ -88,12 +88,12 @@ export function FeaturedWork({ projects }: { projects: WorkProject[] }) {
                     )}
                   </div>
                   {/* Body */}
-                  <div className="p-6">
+                  <div className="flex flex-col flex-1 p-6">
                     <span className="text-xs font-bold uppercase tracking-wider text-[#0051FF]">
                       {p.category || 'Digital Product'}
                     </span>
                     <h3 className="mt-2 text-xl font-bold text-slate-900">{p.title}</h3>
-                    <p className="mt-2 text-sm leading-6 text-slate-500">{p.shortDescription || ''}</p>
+                    <p className="mt-2 text-sm leading-6 text-slate-500 flex-1">{p.shortDescription || ''}</p>
                     <div className="mt-4 flex flex-wrap gap-2">
                       {(p.technology || []).slice(0, 3).map((t) => (
                         <span
