@@ -12,7 +12,7 @@ export function Logo() {
     <Link href="/" aria-label="HN home" className="flex items-center gap-3 group">
       {/* Icon mark */}
       <Image
-        src="/hn-logo.svg"
+        src="/hn-logo.png"
         alt="HN"
         width={830}
         height={735}
