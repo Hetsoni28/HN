@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import { useState, useEffect, useRef, useCallback } from 'react';
 import Link from 'next/link';
@@ -7,7 +7,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Logo } from '@/components/atoms/logo';
 import { Button } from '@/components/atoms/button';
 
-/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ Data â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ──────────────────────────â”€ Data ──────────────────────────â”€ */
 
 const SERVICES_MENU = [
   { label: 'Websites',          href: '/services/websites',            desc: 'Fast, beautiful marketing & business sites',   icon: 'ðŸŒ' },
@@ -36,11 +36,11 @@ const TOP_LINKS = [
   { label: 'Contact',   href: '/contact',  icon: 'âœ‰ï¸' },
 ];
 
-/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ Types â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ──────────────────────────â”€ Types ──────────────────────────â”€ */
 
 interface DropdownItem { label: string; href: string; desc: string; icon?: string; }
 
-/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ Sub-components â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ──────────────────────────â”€ Sub-components ──────────────────────────â”€ */
 
 function ChevronDown({ open }: { open: boolean }) {
   return (
@@ -129,7 +129,7 @@ function MobileSection({ title, items, onClose, isActive }: {
   );
 }
 
-/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ Navbar â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ──────────────────────────â”€ Navbar ──────────────────────────â”€ */
 
 export function Navbar() {
   const pathname = usePathname();
@@ -189,7 +189,7 @@ export function Navbar() {
         {/* Logo */}
         <Logo />
 
-        {/* â”€â”€ Desktop nav â”€â”€ */}
+        {/* ── Desktop nav ── */}
         <nav aria-label="Primary navigation" className="hidden items-center gap-1 lg:flex">
 
           <div className="relative" onMouseEnter={() => openDropdown('services')} onMouseLeave={closeDropdown}>
@@ -235,15 +235,15 @@ export function Navbar() {
           ))}
         </nav>
 
-        {/* â”€â”€ Desktop right â”€â”€ */}
+        {/* ── Desktop right ── */}
         <div className="hidden items-center gap-3 lg:flex">
           
           <Button href="/contact" variant="primary" className="text-sm px-5 py-2.5">
-            Start a Project â†’
-          </Button>
+            Start a Project &rarr;
+            </Button>
         </div>
 
-        {/* â”€â”€ Hamburger â”€â”€ */}
+        {/* ── Hamburger ── */}
         <button
           ref={hamburgerRef}
           className="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 text-slate-700 transition hover:bg-slate-50 lg:hidden"
@@ -295,7 +295,7 @@ export function Navbar() {
               transition={{ type: 'spring', stiffness: 320, damping: 32 }}
               className="fixed right-0 top-[68px] z-50 flex h-[calc(100dvh-68px)] w-full max-w-sm flex-col overflow-y-auto bg-white shadow-2xl lg:hidden"
             >
-              {/* â”€â”€ Gradient header â”€â”€ */}
+              {/* ── Gradient header ── */}
               <div className="bg-gradient-to-br from-[#0051FF] to-[#003ED9] px-6 py-6">
                 <p className="text-[11px] font-bold uppercase tracking-widest text-blue-200">HN Tech</p>
                 <h2 className="mt-1 text-xl font-extrabold leading-tight text-white">
@@ -306,8 +306,8 @@ export function Navbar() {
                     href="/contact" onClick={() => setMobileOpen(false)}
                     className="flex-1 rounded-xl bg-white py-3 text-center text-sm font-bold text-[#0051FF] transition hover:bg-blue-50"
                   >
-                    Start a Project â†’
-                  </Link>
+                    Start a Project &rarr;
+            </Link>
                   <a
                     href="https://wa.me/917990743263?text=Hi%20HN%20Tech!"
                     target="_blank" rel="noopener noreferrer"
@@ -322,7 +322,7 @@ export function Navbar() {
                 </div>
               </div>
 
-              {/* â”€â”€ Accordion nav â”€â”€ */}
+              {/* ── Accordion nav ── */}
               <div className="flex-1">
                 <MobileSection title="Services" items={SERVICES_MENU} onClose={() => setMobileOpen(false)} isActive={isActive} />
                 <MobileSection title="Company"  items={COMPANY_MENU}  onClose={() => setMobileOpen(false)} isActive={isActive} />
@@ -346,7 +346,7 @@ export function Navbar() {
                 </div>
               </div>
 
-              {/* â”€â”€ Footer strip â”€â”€ */}
+              {/* ── Footer strip ── */}
               <div className="border-t border-slate-100 px-6 py-5">
                 <div className="flex items-center gap-2">
                   <span className="h-2 w-2 animate-pulse rounded-full bg-green-500" />

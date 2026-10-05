@@ -56,7 +56,7 @@ export function FeaturedWork({ projects }: { projects: WorkProject[] }) {
               className="mb-0"
             />
             <Button href="/work" variant="secondary" className="shrink-0">
-              All projects →
+              All projects &rarr;
             </Button>
           </div>
         </FadeIn>
