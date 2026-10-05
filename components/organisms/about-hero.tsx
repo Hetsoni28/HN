@@ -17,10 +17,9 @@ export function AboutHero() {
             </p>
           </div>
 
-          <div className="mt-16 grid grid-cols-2 gap-4 md:grid-cols-4 md:gap-6">
+          <div className="mt-16 grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-6">
             {[
               { stat: '2024', label: 'Founded', sub: 'Est. in India' },
-              { stat: '15+', label: 'Projects', sub: 'Products shipped' },
               { stat: '100%', label: 'On-Time', sub: 'Every single project' },
               { stat: '2', label: 'Founders', sub: 'Het & Neel' },
             ].map((item) => (
