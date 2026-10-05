@@ -1,7 +1,9 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { FadeIn } from '@/components/atoms/fade-in';
 import { Button } from '@/components/atoms/button';
 import { SectionHeading } from '@/components/molecules/section-heading';
+import { urlFor } from '@/sanity/lib/image';
 
 export type WorkProject = {
   slug: { current: string } | string;
@@ -69,12 +71,21 @@ export function FeaturedWork({ projects }: { projects: WorkProject[] }) {
                   className="group block overflow-hidden rounded-2xl border border-[#E2E5F1] bg-white transition duration-300 hover:-translate-y-1 hover:border-[#0051FF]/30 hover:shadow-xl hover:shadow-[#0051FF]/8"
                 >
                   {/* Thumbnail */}
-                  <div className="aspect-[16/10] overflow-hidden">
-                    <div className="h-full w-full bg-gradient-to-br from-[#EEF0FF] via-[#E2E5F1] to-[#F5F8FF] p-6 transition duration-500 group-hover:scale-[1.03]">
-                      <div className="flex h-full items-end">
-                        <span className="text-2xl font-bold text-[#0051FF]">{p.title}</span>
+                  <div className="aspect-video relative overflow-hidden bg-[#EEF0FF]">
+                    {(p as any).heroImage ? (
+                      <Image
+                        src={urlFor((p as any).heroImage).width(600).height(338).url()}
+                        alt={(p as any).heroImage.alt || p.title}
+                        fill
+                        className="object-cover transition duration-500 group-hover:scale-[1.03]"
+                      />
+                    ) : (
+                      <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-[#EEF0FF] via-[#E2E5F1] to-[#F5F8FF] transition duration-500 group-hover:scale-[1.03]">
+                        <svg className="h-12 w-12 text-[#0051FF]/20" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1}>
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+                        </svg>
                       </div>
-                    </div>
+                    )}
                   </div>
                   {/* Body */}
                   <div className="p-6">
