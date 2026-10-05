@@ -1,5 +1,7 @@
 import Link from 'next/link';
 import type { Project, PortableTextContent } from '@/lib/content';
+import Image from 'next/image';
+import { urlFor } from '@/sanity/lib/image';
 import { FadeIn } from '@/components/atoms/fade-in';
 import { PlainTextRenderer, PortableTextRenderer } from '@/components/molecules/portable-text-renderer';
 
@@ -77,12 +79,38 @@ export function CaseStudyFeatures({ project }: { project: Project }) {
   );
 }
 
-/* UI Screens placeholder */
+/* UI Screens — shows actual Sanity gallery images, or placeholder tiles */
 export function CaseStudyScreens({ project }: { project: Project }) {
+  if (project.gallery?.length) {
+    return (
+      <section className="section bg-[#EEF0FF]">
+        <div className="container">
+          <FadeIn>
+            <h2 className="mt-5 text-3xl font-bold text-slate-900 md:text-4xl">Interface preview.</h2>
+          </FadeIn>
+          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {project.gallery.map((img, i) => (
+              <FadeIn key={img.asset?._ref || i} delay={i * 0.08}>
+                <div className="aspect-[4/3] relative rounded-2xl border border-[#E2E5F1] overflow-hidden bg-white shadow-sm">
+                  <Image
+                    src={urlFor(img).width(800).height(600).url()}
+                    alt={img.alt || `Screenshot ${i + 1}`}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+              </FadeIn>
+            ))}
+          </div>
+        </div>
+      </section>
+    );
+  }
+
   const screens = [
-    { label: 'Dashboard',    bg: 'from-[#EEF0FF] to-[#E2E5F1]' },
-    { label: 'Detail View',  bg: 'from-[#E8EDFF] to-[#EEF0FF]' },
-    { label: 'Mobile View',  bg: 'from-[#F5F6FF] to-[#EEF0FF]' },
+    { label: 'Dashboard',   bg: 'from-[#EEF0FF] to-[#E2E5F1]' },
+    { label: 'Detail View', bg: 'from-[#E8EDFF] to-[#EEF0FF]' },
+    { label: 'Mobile View', bg: 'from-[#F5F6FF] to-[#EEF0FF]' },
   ];
   return (
     <section className="section bg-[#EEF0FF]">
@@ -91,7 +119,7 @@ export function CaseStudyScreens({ project }: { project: Project }) {
           <h2 className="mt-5 text-3xl font-bold text-slate-900 md:text-4xl">Interface preview.</h2>
         </FadeIn>
         <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {(project.gallery?.length ? project.gallery.map((_, i) => screens[i] ?? screens[0]) : screens).map((s, i) => (
+          {screens.map((s, i) => (
             <FadeIn key={s.label} delay={i * 0.08}>
               <div className={`aspect-[4/3] rounded-2xl border border-[#E2E5F1] bg-gradient-to-br ${s.bg} flex items-center justify-center`}>
                 <div className="text-center text-[#0051FF]/30">
@@ -111,6 +139,7 @@ export function CaseStudyScreens({ project }: { project: Project }) {
     </section>
   );
 }
+
 
 /* Technology pills */
 export function CaseStudyTechnology({ project }: { project: Project }) {
