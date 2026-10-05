@@ -94,7 +94,7 @@ export function CaseStudyScreens({ project }: { project: Project }) {
                 <div className="aspect-[4/3] relative rounded-2xl border border-[#E2E5F1] overflow-hidden bg-white shadow-sm">
                   <Image
                     src={urlFor(img).width(800).height(600).url()}
-                    alt={img.alt || Screenshot }
+                    alt={img.alt || `Screenshot ${i + 1}`}
                     fill
                     className="object-cover"
                   />
