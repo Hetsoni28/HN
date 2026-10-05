@@ -1,8 +1,8 @@
-﻿import type { Metadata } from 'next';
+import type { Metadata } from 'next';
 import { LegalPageLayout } from '@/components/organisms/legal-page';
 
 export const metadata: Metadata = {
-  title: 'Terms of Service â€” HN',
+  title: 'Terms of Service — HN',
   description: 'Terms and conditions for using HN services and website.',
 };
 
@@ -11,7 +11,7 @@ export default function TermsPage() {
     <LegalPageLayout
       eyebrow="Legal"
       title="Terms of Service"
-      lastUpdated="2025-09-01"
+      
       heroImage="/terms-hero.jpg"
       intro="These Terms of Service ('Terms') govern your use of the HN Digital Product Studio website at hntech.in and any services we provide. By accessing our website or engaging our services, you agree to be bound by these Terms. Please read them carefully before proceeding."
       sections={[
@@ -41,7 +41,7 @@ export default function TermsPage() {
         {
           heading: '4. Intellectual Property',
           content: [
-            'Upon receipt of full and final payment, all custom work created specifically for your project â€” including design files, source code, and written content â€” is transferred to you, the client.',
+            'Upon receipt of full and final payment, all custom work created specifically for your project — including design files, source code, and written content — is transferred to you, the client.',
             'HN retains ownership of any pre-existing tools, reusable components, libraries, or internal frameworks developed independently. You receive a perpetual, royalty-free licence to use these within your project.',
             'HN reserves the right to display completed work in our portfolio and case studies unless you explicitly request otherwise in writing before project completion.',
           ],

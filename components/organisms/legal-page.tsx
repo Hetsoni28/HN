@@ -1,4 +1,4 @@
-﻿import Link from 'next/link';
+import Link from 'next/link';
 import { FadeIn } from '@/components/atoms/fade-in';
 import { Breadcrumb } from '@/components/molecules/breadcrumb';
 
@@ -10,7 +10,7 @@ interface LegalSection {
 interface LegalPageLayoutProps {
   eyebrow: string;
   title: string;
-  lastUpdated: string;
+  lastUpdated?: string;
   intro: string;
   sections: LegalSection[];
   heroImage?: string;
@@ -40,14 +40,16 @@ export function LegalPageLayout({
               </span>
             )}
             <h1 className="mt-5 text-4xl font-bold text-slate-900 md:text-5xl">{title}</h1>
-            <p className="mt-4 text-sm text-slate-400">
-              Last updated:{' '}
-              <time dateTime={lastUpdated}>
-                {new Date(lastUpdated).toLocaleDateString('en-IN', {
-                  year: 'numeric', month: 'long', day: 'numeric',
-                })}
-              </time>
-            </p>
+            {lastUpdated && (
+              <p className="mt-4 text-sm text-slate-400">
+                Last updated:{' '}
+                <time dateTime={lastUpdated}>
+                  {new Date(lastUpdated).toLocaleDateString('en-IN', {
+                    year: 'numeric', month: 'long', day: 'numeric',
+                  })}
+                </time>
+              </p>
+            )}
           </FadeIn>
         </div>
       </section>
