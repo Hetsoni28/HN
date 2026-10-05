@@ -195,13 +195,13 @@ export default function ReferralPage() {
       {/* ══════════════════════════════════════
           E) Bottom CTA
       ══════════════════════════════════════ */}
-      <section className="bg-[#EEF0FF] px-4 py-14 text-center">
+      <section className="bg-[#0051FF] px-4 py-14 text-center">
         <FadeIn>
-          <p className="text-base text-gray-600">
+          <p className="text-base text-white/90">
             Questions about the program?{' '}
             <Link
               href="/contact"
-              className="font-semibold text-[#0051FF] transition hover:underline"
+              className="font-bold text-white transition hover:text-[#00D2FF]"
             >
               Contact us →
             </Link>
