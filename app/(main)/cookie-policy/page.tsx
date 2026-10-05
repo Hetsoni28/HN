@@ -1,8 +1,8 @@
-﻿import type { Metadata } from 'next';
+import type { Metadata } from 'next';
 import { LegalPageLayout } from '@/components/organisms/legal-page';
 
 export const metadata: Metadata = {
-  title: 'Cookie Policy â€” HN',
+  title: 'Cookie Policy — HN',
   description: 'Information about how HN uses cookies on its website.',
 };
 
@@ -13,7 +13,7 @@ export default function CookiePolicyPage() {
       title="Cookie Policy"
       lastUpdated="2025-09-01"
       heroImage="/cookie-hero.png"
-      intro="This Cookie Policy explains what cookies are, which cookies our website (hntech.in) uses, and how you can control them. We keep our cookie usage minimal â€” we do not use advertising or tracking cookies."
+      intro="This Cookie Policy explains what cookies are, which cookies our website (hntech.in) uses, and how you can control them. We keep our cookie usage minimal — we do not use advertising or tracking cookies."
       sections={[
         {
           heading: '1. What Are Cookies?',
@@ -26,7 +26,7 @@ export default function CookiePolicyPage() {
           heading: '2. Cookies We Use',
           content: [
             'Strictly Necessary Cookies: These cookies are essential for our website to function correctly. They enable basic features such as page navigation and access to secure areas. Our website cannot function properly without these cookies, and they cannot be switched off.',
-            'Analytics Cookies: We may use anonymised analytics tools (such as Vercel Analytics) to understand how visitors interact with our website â€” for example, which pages are visited most and how long visitors stay. This data is aggregated and does not identify individual users. No personally identifiable information is collected through analytics cookies.',
+            'Analytics Cookies: We may use anonymised analytics tools (such as Vercel Analytics) to understand how visitors interact with our website — for example, which pages are visited most and how long visitors stay. This data is aggregated and does not identify individual users. No personally identifiable information is collected through analytics cookies.',
             'We do NOT use: advertising cookies, retargeting cookies, social media tracking cookies, or any cookies that profile you for commercial purposes.',
           ],
         },

@@ -1,8 +1,8 @@
-﻿import type { Metadata } from 'next';
+import type { Metadata } from 'next';
 import { LegalPageLayout } from '@/components/organisms/legal-page';
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy â€” HN',
+  title: 'Privacy Policy — HN',
   description: 'How HN collects, uses, and protects your personal information.',
 };
 

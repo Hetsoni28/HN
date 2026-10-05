@@ -40,7 +40,7 @@ const TOP_LINKS = [
 
 interface DropdownItem { label: string; href: string; desc: string; icon?: string; }
 
-/* ──────────────────────────â”€ Sub-components ──────────────────────────â”€ */
+/* ─────────────────────────── Sub-components ─────────────────────────── */
 
 function ChevronDown({ open }: { open: boolean }) {
   return (
@@ -69,7 +69,7 @@ function MegaDropdown({ items, onClose }: { items: DropdownItem[]; onClose: () =
       <div className="mt-2 flex items-center justify-between rounded-xl bg-[#0051FF] px-4 py-2.5">
         <span className="text-xs font-semibold text-white/80">Not sure what you need?</span>
         <Link href="/estimate" onClick={onClose} className="text-xs font-bold text-white underline-offset-2 hover:underline">
-          Use the estimator â†’
+          Use the estimator →
         </Link>
       </div>
     </div>
@@ -129,7 +129,7 @@ function MobileSection({ title, items, onClose, isActive }: {
   );
 }
 
-/* ──────────────────────────â”€ Navbar ──────────────────────────â”€ */
+/* ─────────────────────────── Navbar ─────────────────────────── */
 
 export function Navbar() {
   const pathname = usePathname();

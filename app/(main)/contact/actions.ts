@@ -1,11 +1,11 @@
-﻿'use server';
+'use server';
 
 import { headers } from 'next/headers';
 import { z } from 'zod';
 import { Resend } from 'resend';
 import { sanitizeText } from '@/lib/security';
 
-/* â”€â”€â”€ Schema â”€â”€â”€ */
+/* ─── Schema ─── */
 const InquirySchema = z.object({
   name:        z.string().min(2, 'Name must be at least 2 characters').max(100),
   email:       z.string().email('Please enter a valid email address').max(254),
@@ -15,7 +15,7 @@ const InquirySchema = z.object({
   description: z.string().min(20, 'Please describe your project in at least 20 characters').max(3000),
   
   timeline:    z.string().min(1, 'Please select a timeline').max(60),
-  /* Honeypot â€” must be empty */
+  /* Honeypot — must be empty */
   website:     z.string().max(0, 'Bot detected'),
 });
 
@@ -27,7 +27,7 @@ export type FormState = {
   errors?: Partial<Record<keyof InquiryFormData, string>>;
 };
 
-/* â”€â”€â”€ Rate limit (simple in-memory, resets on cold start) â”€â”€â”€ */
+/* ─── Rate limit (simple in-memory, resets on cold start) ─── */
 const rateMap = new Map<string, { count: number; resetAt: number }>();
 function isRateLimited(ip: string): boolean {
   const now = Date.now();
@@ -38,7 +38,7 @@ function isRateLimited(ip: string): boolean {
   return false;
 }
 
-/* â”€â”€â”€ Server Action â”€â”€â”€ */
+/* ─── Server Action ─── */
 export async function submitInquiry(
   _prev: FormState,
   formData: FormData,
@@ -69,7 +69,7 @@ export async function submitInquiry(
     description: sanitizeText(String(formData.get('description') ?? '')),
     
     timeline:    sanitizeText(String(formData.get('timeline') ?? '')),
-    website:     String(formData.get('website') ?? ''), // honeypot â€” don't sanitize (check raw)
+    website:     String(formData.get('website') ?? ''), // honeypot — don't sanitize (check raw)
   };
 
   /* 2. Validate with Zod */
@@ -106,11 +106,11 @@ export async function submitInquiry(
 
   if (!apiKey) {
     if (process.env.NODE_ENV === 'development') {
-      /* Dev mode â€” log to console and succeed for local development testing */
-      console.log('[Contact Form â€” DEV MODE] Inbound inquiry:', data, fileBase64 ? `[Attached: ${fileName}]` : '');
+      /* Dev mode — log to console and succeed for local development testing */
+      console.log('[Contact Form — DEV MODE] Inbound inquiry:', data, fileBase64 ? `[Attached: ${fileName}]` : '');
       return { status: 'success' };
     }
-    console.error('[Contact Form â€” PRODUCTION ERROR] RESEND_API_KEY is not configured.');
+    console.error('[Contact Form — PRODUCTION ERROR] RESEND_API_KEY is not configured.');
     return {
       status: 'error',
       message: 'Email service is temporarily unavailable. Please contact us directly at het@hntech.in or via WhatsApp.',
@@ -129,7 +129,7 @@ export async function submitInquiry(
       from:    'HN Contact Form <onboarding@resend.dev>',
       to:      [toEmail],
       replyTo: data.email,
-      subject: `New Inquiry â€” ${data.projectType} from ${data.name}${fileBase64 ? ' ðŸ“Ž' : ''}`,
+      subject: `New Inquiry — ${data.projectType} from ${data.name}${fileBase64 ? ' 📎' : ''}`,
       attachments,
       html: `
         <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;max-width:600px;margin:0 auto;background-color:#ffffff;border:1px solid #e2e8f0;border-radius:12px;overflow:hidden">
@@ -166,7 +166,7 @@ export async function submitInquiry(
               </div>
               <div style="margin-bottom:0">
                 <span style="color:#64748b;font-size:14px;display:inline-block;width:80px">Attachment</span>
-                <span style="color:#0f172a;font-weight:500;font-size:15px">${fileBase64 ? `ðŸ“Ž ${fileName}` : 'None'}</span>
+                <span style="color:#0f172a;font-weight:500;font-size:15px">${fileBase64 ? `📎 ${fileName}` : 'None'}</span>
               </div>
             </div>
             <h3 style="margin:0 0 12px 0;font-size:14px;text-transform:uppercase;letter-spacing:1px;color:#64748b">Message</h3>
@@ -185,7 +185,7 @@ export async function submitInquiry(
     });
 
     if (sendError) {
-      console.error('[Contact Form â€” Resend Delivery Error]:', sendError.message);
+      console.error('[Contact Form — Resend Delivery Error]:', sendError.message);
       return {
         status: 'error',
         message: 'Delivery error. Please email us directly at het@hntech.in or message us on WhatsApp.',

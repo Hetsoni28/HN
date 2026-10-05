@@ -1,8 +1,8 @@
-﻿/* JSON-LD Structured Data components â€” drop <StructuredData> anywhere in a Server Component */
+/* JSON-LD Structured Data components — drop <StructuredData> anywhere in a Server Component */
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://hntech.in';
 
-/* â”€â”€ Organisation (sitewide) â”€â”€ */
+/* ── Organisation (sitewide) ── */
 export function OrganizationJsonLd() {
   const data = {
     '@context': 'https://schema.org',
@@ -42,7 +42,7 @@ export function OrganizationJsonLd() {
   );
 }
 
-/* â”€â”€ WebSite (home page search box) â”€â”€ */
+/* ── WebSite (home page search box) ── */
 export function WebSiteJsonLd() {
   const data = {
     '@context': 'https://schema.org',
@@ -65,7 +65,7 @@ export function WebSiteJsonLd() {
   );
 }
 
-/* â”€â”€ Article (blog post) â”€â”€ */
+/* ── Article (blog post) ── */
 export function ArticleJsonLd({
   title,
   description,
@@ -106,7 +106,7 @@ export function ArticleJsonLd({
   );
 }
 
-/* â”€â”€ BreadcrumbList â”€â”€ */
+/* ── BreadcrumbList ── */
 export function BreadcrumbJsonLd({
   items,
 }: {
@@ -130,7 +130,7 @@ export function BreadcrumbJsonLd({
   );
 }
 
-/* â”€â”€ Service â”€â”€ */
+/* ── Service ── */
 export function ServiceJsonLd({
   name,
   description,
