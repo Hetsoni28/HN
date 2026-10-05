@@ -247,19 +247,19 @@ export default async function ServiceDetailPage({
       )}
 
       {/* ── 6. CTA ── */}
-      <section className="section">
-        <div className="container">
+      <section className="section relative overflow-hidden bg-[#0051FF] text-white">
+        <div className="absolute left-1/3 top-0 h-48 w-48 rounded-full bg-white/10 blur-3xl pointer-events-none" />
+        <div className="container relative z-10">
           <FadeIn>
-            <div className="rounded-3xl bg-[#0051FF] px-8 py-16 text-center text-white md:px-20">
-              <div className="absolute left-1/3 top-0 h-48 w-48 rounded-full bg-white/10 blur-3xl" />
-              <h2 className="relative text-3xl font-bold sm:text-4xl md:text-5xl">
+            <div className="px-8 py-8 text-center md:px-20">
+              <h2 className="text-3xl font-bold sm:text-4xl md:text-5xl">
                 Ready to build your{' '}
                 <span className="text-[#00D2FF]">{service.title.toLowerCase()}?</span>
               </h2>
-              <p className="relative mx-auto mt-4 max-w-xl text-base text-white/80 sm:mt-5 sm:text-lg">
+              <p className="mx-auto mt-4 max-w-xl text-base text-white/80 sm:mt-5 sm:text-lg">
                 Tell us your idea. We&apos;ll send you a clear plan and proposal within 48 hours.
               </p>
-              <div className="relative mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+              <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
                 <Button
                   href="/contact"
                   className="w-full bg-white px-10 py-4 text-base font-bold text-[#0051FF] hover:bg-blue-50 sm:w-auto"
