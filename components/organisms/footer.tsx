@@ -32,10 +32,7 @@ const NAV = [
     links: [
       { href: '/work/data-insight',    label: 'Data Insight' },
       { href: '/work/smartdrive-x',    label: 'SmartDrive X' },
-      { href: '/work/medimind-ai',     label: 'MediMind AI' },
-      { href: '/work/nexus-ecommerce', label: 'Nexus E-Commerce' },
-      { href: '/work/financeflow',     label: 'FinanceFlow' },
-      { href: '/work/fittrack-pro',    label: 'FitTrack Pro' },
+      { href: 'https://ovow-foods.vercel.app/', label: 'Ovow Foods' },
     ],
   },
   {
