@@ -464,6 +464,7 @@ export const FALLBACK_TEAM: TeamMember[] = [
     bio: 'Full-stack engineer focused on React ecosystems, backend architecture, and AI integration. Co-founded HN to build the kind of digital products he wished more businesses could access.',
     skills: ['Next.js', 'React', 'Node.js', 'FastAPI', 'PostgreSQL', 'TypeScript', 'AI/ML'],
     github: 'https://github.com/Hetsoni28',
+    linkedin: 'https://www.linkedin.com/in/soni-het-9b6b30360/',
     displayOrder: 1,
   },
   {

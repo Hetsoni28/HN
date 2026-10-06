@@ -22,7 +22,11 @@ export function OrganizationJsonLd() {
         '@type': 'Person',
         name: 'Het Soni',
         jobTitle: 'Full Stack Developer',
-        sameAs: ['https://github.com/Hetsoni28', 'https://twitter.com/hetsoni'],
+        sameAs: [
+          'https://github.com/Hetsoni28',
+          'https://www.linkedin.com/in/soni-het-9b6b30360/',
+          'https://twitter.com/hetsoni',
+        ],
       },
       { '@type': 'Person', name: 'Neel Patel', jobTitle: 'Web Developer' },
       {
