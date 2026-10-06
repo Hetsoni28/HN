@@ -48,16 +48,26 @@ export async function GET() {
   }
 
   const controller = new AbortController();
-  const timeoutId = setTimeout(() => controller.abort(), 5000);
+  const timeoutId = setTimeout(() => controller.abort(), 8000);
 
   try {
-    // Array of repositories to pull commits from
-    const repos = ['HN']; // Add 'new-site' or others here if needed!
+    // 1. Dynamically fetch the 3 repositories you most recently pushed to
+    const reposRes = await fetch(
+      'https://api.github.com/users/Hetsoni28/repos?sort=pushed&direction=desc&per_page=3',
+      { headers, signal: controller.signal, next: { revalidate: 60 } }
+    );
+
+    if (!reposRes.ok) throw new Error('Failed to fetch repos');
+    
+    const reposData = await reposRes.json();
+    const activeRepos = Array.isArray(reposData) ? reposData.map((r: any) => r.name) : ['HN'];
+
+    // 2. Fetch the latest commits from those dynamic repositories
     const allCommits: CommitItem[] = [];
 
-    for (const repo of repos) {
+    for (const repo of activeRepos) {
       const res = await fetch(
-        \https://api.github.com/repos/Hetsoni28/\/commits?per_page=6\,
+        \https://api.github.com/repos/Hetsoni28/\/commits?per_page=5\,
         { headers, signal: controller.signal, next: { revalidate: 60 } }
       );
 
@@ -80,7 +90,7 @@ export async function GET() {
 
     clearTimeout(timeoutId);
 
-    // Sort by date descending
+    // 3. Sort all commits by date descending to get a unified timeline
     allCommits.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
     const finalCommits = allCommits.slice(0, 6);
