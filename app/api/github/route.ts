@@ -1,4 +1,4 @@
-import { NextResponse } from 'next/server';
+﻿import { NextResponse } from 'next/server';
 
 export const revalidate = 60;
 
@@ -62,7 +62,7 @@ export async function GET() {
   };
 
   if (token) {
-    headers.Authorization = `Bearer ${token}`;
+    headers.Authorization = \Bearer \ + token;
   }
 
   const controller = new AbortController();
@@ -70,7 +70,7 @@ export async function GET() {
 
   try {
     const res = await fetch(
-      'https://api.github.com/repos/Hetsoni28/HN/commits?per_page=6',
+      'https://api.github.com/users/Hetsoni28/events/public?per_page=30',
       {
         headers,
         signal: controller.signal,
@@ -80,11 +80,8 @@ export async function GET() {
 
     clearTimeout(timeoutId);
 
-    // Explicitly handle rate limiting (403, 429) or non-OK statuses gracefully
     if (res.status === 403 || res.status === 429 || !res.ok) {
-      console.warn(
-        `[/api/github] GitHub API responded with status ${res.status}. Serving resilient fallback commits.`,
-      );
+      console.warn('[/api/github] GitHub API responded with status ' + res.status);
       return NextResponse.json(FALLBACK_COMMITS, {
         status: 200,
         headers: CACHE_HEADERS,
@@ -93,33 +90,29 @@ export async function GET() {
 
     const data = await res.json();
 
-    // Validate that response is an array
     if (!Array.isArray(data)) {
-      console.warn('[/api/github] Received non-array response from GitHub API. Serving fallback.');
       return NextResponse.json(FALLBACK_COMMITS, {
         status: 200,
         headers: CACHE_HEADERS,
       });
     }
 
-    // Map and validate each commit item
     const commits: CommitItem[] = [];
-    for (const item of data) {
-      if (
-        item &&
-        typeof item === 'object' &&
-        item.commit &&
-        typeof item.commit.message === 'string' &&
-        item.commit.author &&
-        typeof item.commit.author.date === 'string'
-      ) {
-        commits.push({
-          repo: 'HN',
-          message: item.commit.message.split('\n')[0] || 'Update repository',
-          date: item.commit.author.date,
-          url: typeof item.html_url === 'string' ? item.html_url : 'https://github.com/Hetsoni28/HN',
-        });
+    for (const event of data) {
+      if (event.type === 'PushEvent' && event.payload && event.payload.commits) {
+        // GitHub sends commits in chronological order within the push, reverse to get latest first
+        const recentCommits = event.payload.commits.reverse();
+        for (const c of recentCommits) {
+          commits.push({
+            repo: event.repo.name.replace('Hetsoni28/', ''),
+            message: c.message.split('\n')[0] || 'Update repository',
+            date: event.created_at,
+            url: 'https://github.com/' + event.repo.name + '/commit/' + c.sha,
+          });
+          if (commits.length >= 6) break;
+        }
       }
+      if (commits.length >= 6) break;
     }
 
     if (commits.length === 0) {
@@ -135,10 +128,6 @@ export async function GET() {
     });
   } catch (err: unknown) {
     clearTimeout(timeoutId);
-    const isAbort = err instanceof Error && err.name === 'AbortError';
-    console.warn(
-      `[/api/github] Request failed (${isAbort ? 'Timeout' : 'Network error'}). Serving fallback commits.`,
-    );
     return NextResponse.json(FALLBACK_COMMITS, {
       status: 200,
       headers: CACHE_HEADERS,
