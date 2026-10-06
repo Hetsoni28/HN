@@ -4,6 +4,7 @@ import { FadeIn } from '@/components/atoms/fade-in';
 import { Button } from '@/components/atoms/button';
 import { SectionHeading } from '@/components/molecules/section-heading';
 import { urlFor } from '@/sanity/lib/image';
+import type { SanityImage } from '@/lib/content';
 
 export type WorkProject = {
   slug: { current: string } | string;
@@ -11,6 +12,7 @@ export type WorkProject = {
   category?: string;
   shortDescription?: string;
   technology?: string[];
+  heroImage?: SanityImage;
 };
 
 const fallback: WorkProject[] = [
@@ -72,10 +74,10 @@ export function FeaturedWork({ projects }: { projects: WorkProject[] }) {
                 >
                   {/* Thumbnail */}
                   <div className="h-48 relative overflow-hidden bg-[#EEF0FF] shrink-0">
-                    {(p as any).heroImage ? (
+                    {p.heroImage ? (
                       <Image
-                        src={urlFor((p as any).heroImage).width(600).height(338).url()}
-                        alt={(p as any).heroImage.alt || p.title}
+                        src={urlFor(p.heroImage).width(600).height(338).url()}
+                        alt={p.heroImage.alt || p.title}
                         fill
                         className="object-cover transition duration-500 group-hover:scale-[1.03]"
                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
