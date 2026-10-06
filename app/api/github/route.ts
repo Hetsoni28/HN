@@ -1,4 +1,4 @@
-﻿import { NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
 
 export const revalidate = 60;
 
@@ -44,7 +44,7 @@ export async function GET() {
   };
 
   if (token) {
-    headers.Authorization = \Bearer \\;
+    headers.Authorization = 'Bearer ' + token;
   }
 
   const controller = new AbortController();
@@ -67,7 +67,7 @@ export async function GET() {
 
     for (const repo of activeRepos) {
       const res = await fetch(
-        \https://api.github.com/repos/Hetsoni28/\/commits?per_page=5\,
+        'https://api.github.com/repos/Hetsoni28/' + repo + '/commits?per_page=5',
         { headers, signal: controller.signal, next: { revalidate: 60 } }
       );
 
@@ -80,7 +80,7 @@ export async function GET() {
                 repo: repo,
                 message: item.commit.message.split('\n')[0] || 'Update repository',
                 date: item.commit.author.date,
-                url: typeof item.html_url === 'string' ? item.html_url : \https://github.com/Hetsoni28/\\,
+                url: typeof item.html_url === 'string' ? item.html_url : 'https://github.com/Hetsoni28/' + repo,
               });
             }
           }
