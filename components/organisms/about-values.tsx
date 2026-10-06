@@ -147,7 +147,7 @@ export function AboutTeam({ members }: { members: TeamMember[] }) {
                       </svg>
                     </a>
                   )}
-                  {m.linkedin && (
+                  {m.linkedin && m.linkedin !== '#' && (
                     <a
                       href={m.linkedin.startsWith('http') ? m.linkedin : `https://${m.linkedin}`}
                       target="_blank"

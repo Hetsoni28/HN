@@ -60,14 +60,14 @@ export async function GET() {
     if (!reposRes.ok) throw new Error('Failed to fetch repos');
     
     const reposData = await reposRes.json();
-    const activeRepos = Array.isArray(reposData) ? reposData.map((r: any) => r.name) : ['HN'];
+    const activeRepos = Array.isArray(reposData) ? reposData.map((r: { name: string }) => r.name) : ['HN'];
 
     // 2. Fetch the latest commits from those dynamic repositories
     const allCommits: CommitItem[] = [];
 
     for (const repo of activeRepos) {
       const res = await fetch(
-        'https://api.github.com/repos/Hetsoni28/' + repo + '/commits?per_page=5',
+        `https://api.github.com/repos/Hetsoni28/${repo}/commits?per_page=5`,
         { headers, signal: controller.signal, next: { revalidate: 60 } }
       );
 
@@ -80,7 +80,7 @@ export async function GET() {
                 repo: repo,
                 message: item.commit.message.split('\n')[0] || 'Update repository',
                 date: item.commit.author.date,
-                url: typeof item.html_url === 'string' ? item.html_url : 'https://github.com/Hetsoni28/' + repo,
+                url: typeof item.html_url === 'string' ? item.html_url : `https://github.com/Hetsoni28/${repo}`,
               });
             }
           }
@@ -100,7 +100,7 @@ export async function GET() {
     }
 
     return NextResponse.json(finalCommits, { status: 200, headers: CACHE_HEADERS });
-  } catch (err: unknown) {
+  } catch {
     clearTimeout(timeoutId);
     return NextResponse.json(FALLBACK_COMMITS, { status: 200, headers: CACHE_HEADERS });
   }

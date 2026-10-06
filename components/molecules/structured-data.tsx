@@ -18,9 +18,22 @@ export function OrganizationJsonLd() {
     description: 'HN is a technology company building websites, web apps, SaaS platforms, mobile apps, and AI solutions.',
     foundingDate: '2024',
     founders: [
-      { '@type': 'Person', name: 'Het Soni', jobTitle: 'Full Stack Developer' },
+      {
+        '@type': 'Person',
+        name: 'Het Soni',
+        jobTitle: 'Full Stack Developer',
+        sameAs: ['https://github.com/Hetsoni28', 'https://twitter.com/hetsoni'],
+      },
       { '@type': 'Person', name: 'Neel Patel', jobTitle: 'Web Developer' },
-      { '@type': 'Person', name: 'Vraj Prajapati', jobTitle: 'Full Stack Developer' },
+      {
+        '@type': 'Person',
+        name: 'Vraj Prajapati',
+        jobTitle: 'Full Stack Developer',
+        sameAs: [
+          'https://github.com/Vrajprajapati2708',
+          'https://www.linkedin.com/in/prajapati-vraj',
+        ],
+      },
     ],
     address: { '@type': 'PostalAddress', addressCountry: 'IN' },
     contactPoint: {
