@@ -297,7 +297,7 @@ export function Navbar() {
             >
               {/* ── Gradient header ── */}
               <div className="bg-gradient-to-br from-[#0051FF] to-[#003ED9] px-6 py-6">
-                <p className="text-[11px] font-bold uppercase tracking-widest text-blue-200">HN Tech</p>
+                <p className="text-xs font-bold uppercase tracking-widest text-blue-200">HN Tech</p>
                 <h2 className="mt-1 text-xl font-extrabold leading-tight text-white">
                   What can we<br />build for you?
                 </h2>
@@ -329,7 +329,7 @@ export function Navbar() {
 
                 {/* Quick links 2-col grid */}
                 <div className="px-6 py-5">
-                  <p className="mb-3 text-[10px] font-bold uppercase tracking-widest text-slate-400">Quick Links</p>
+                  <p className="mb-3 text-xs font-bold uppercase tracking-widest text-slate-400">Quick Links</p>
                   <div className="grid grid-cols-2 gap-2">
                     {TOP_LINKS.map(({ label, href, icon }) => (
                       <Link key={href} href={href} onClick={() => setMobileOpen(false)}

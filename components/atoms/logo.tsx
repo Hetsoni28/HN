@@ -25,10 +25,10 @@ export function Logo() {
 
       {/* Wordmark */}
       <div className="flex flex-col justify-center gap-[4px]">
-        <span className="text-[16px] font-black leading-none tracking-[-0.02em] text-[#0B111E] group-hover:text-[#0051FF] transition-colors">
+        <span className="text-base font-black leading-none tracking-[-0.02em] text-[#0B111E] group-hover:text-[#0051FF] transition-colors">
           HN
         </span>
-        <span className="text-[10px] font-bold uppercase leading-none tracking-[0.22em] text-slate-400">
+        <span className="text-xs font-bold uppercase leading-none tracking-[0.18em] text-slate-400">
           Tech
         </span>
       </div>

@@ -20,7 +20,7 @@ export function AboutHero() {
       <div className="container relative z-10">
         <FadeIn>
           <div className="max-w-3xl">
-            <h1 className="text-5xl font-bold tracking-tight text-slate-900 md:text-7xl">
+            <h1 className="text-5xl font-bold tracking-tight text-slate-900 md:text-6xl">
               Why <span className="text-[#0051FF]">HN</span> exists.
             </h1>
             <p className="mt-6 text-lg leading-8 text-slate-600 sm:text-xl md:leading-9">

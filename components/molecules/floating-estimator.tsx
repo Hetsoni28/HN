@@ -33,7 +33,7 @@ export function FloatingEstimator() {
           </div>
           
           <div className="flex flex-col pr-2">
-            <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">Want to know?</span>
+            <span className="text-xs font-bold uppercase tracking-wider text-slate-400">Want to know?</span>
             <span className="text-sm font-bold text-slate-900">Calculate Cost</span>
           </div>
         </Link>

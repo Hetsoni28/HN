@@ -168,7 +168,7 @@ export function Footer() {
                 <span className="text-3xl font-black text-slate-900 tracking-tight sm:text-4xl transition-colors duration-300 group-hover:text-[#0051FF]">
                   {s.value}
                 </span>
-                <span className="text-[10px] font-bold uppercase tracking-widest text-slate-600 transition-colors duration-300 group-hover:text-slate-900 sm:text-xs">
+                <span className="text-xs font-bold uppercase tracking-widest text-slate-600 transition-colors duration-300 group-hover:text-slate-900">
                   {s.label}
                 </span>
               </div>
