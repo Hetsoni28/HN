@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 
-export const revalidate = 3600;
+export const revalidate = 60;
 
 interface CommitItem {
   repo: string;
@@ -74,7 +74,7 @@ export async function GET() {
       {
         headers,
         signal: controller.signal,
-        next: { revalidate: 3600 },
+        next: { revalidate: 60 },
       },
     );
 
