@@ -493,7 +493,10 @@ export const FALLBACK_TEAM: TeamMember[] = [
     tagline: 'Crafting responsive, high-performance web experiences.',
     bio: 'Dedicated developer passionate about building seamless user interfaces and robust web applications with modern tech stacks.',
     skills: ['React', 'Next.js', 'Tailwind CSS', 'TypeScript', 'JavaScript'],
-    displayOrder: 4,  },
+    github: 'https://github.com/Vrajprajapati2708',
+    linkedin: 'https://www.linkedin.com/in/prajapati-vraj',
+    displayOrder: 4,
+  },
 ];
 
 export async function getTeamMembers(): Promise<TeamMember[]> {
