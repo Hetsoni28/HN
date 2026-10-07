@@ -386,7 +386,8 @@ export async function getProjects(): Promise<Project[]> {
   if (!hasSanity) return FALLBACK_PROJECTS;
   const data = await client.fetch<Project[]>(
     `*[_type == "project"] | order(_createdAt desc) {
-      _id, title, slug, category, industry, shortDescription, technology, featured
+      _id, title, slug, category, industry, shortDescription, technology, featured,
+      "heroImage": heroImage { asset->, alt }
     }`,
     {},
     { next: { revalidate: REVALIDATE.DYNAMIC_CONTENT } }
@@ -398,7 +399,8 @@ export async function getFeaturedProjects(): Promise<Project[]> {
   if (!hasSanity) return FALLBACK_PROJECTS.slice(0, 3);
   const data = await client.fetch<Project[]>(
     `*[_type == "project" && featured == true] | order(_createdAt desc)[0...3] {
-      _id, title, slug, category, industry, shortDescription, technology
+      _id, title, slug, category, industry, shortDescription, technology,
+      "heroImage": heroImage { asset->, alt }
     }`,
     {},
     { next: { revalidate: REVALIDATE.DYNAMIC_CONTENT } }
