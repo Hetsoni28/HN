@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from 'next';
+import Script from 'next/script';
 import { spaceGrotesk, plusJakarta } from '@/lib/fonts';
 import '../styles/globals.css';
 import { OrganizationJsonLd, WebSiteJsonLd } from '@/components/molecules/structured-data';
@@ -52,7 +53,19 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       <head>
         <link rel="dns-prefetch" href="https://cdn.sanity.io" />
         <link rel="preconnect" href="https://cdn.sanity.io" crossOrigin="anonymous" />
-      </head>
+              <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-THBXTP7VK9"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-THBXTP7VK9');
+          }
+        </Script>
+</head>
       <body>
         <WelcomeManager />
         <SkipLink />
