@@ -2,6 +2,8 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
+import { urlFor } from '@/sanity/lib/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import type { BlogPost } from '@/lib/content';
 import { BLOG_CATEGORIES } from '@/lib/content';
@@ -34,14 +36,24 @@ function ArticleCard({ post, featured = false }: { post: BlogPost; featured?: bo
 
         {/* Cover image / placeholder */}
         <div className={`relative overflow-hidden bg-gradient-to-br from-[#EEF0FF] to-[#E2E5F1] ${featured ? 'min-h-[240px]' : 'aspect-[16/9]'}`}>
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="text-center text-[#0051FF]/20">
-              <svg className="mx-auto h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={0.8}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
-              </svg>
-              <span className="mt-2 block text-xs font-semibold uppercase tracking-widest">Insight</span>
+          {post.coverImage ? (
+            <Image
+              src={urlFor(post.coverImage).width(800).url()}
+              alt={post.coverImage.alt || post.title}
+              fill
+              className="object-cover object-top transition duration-500 group-hover:scale-105"
+              sizes="(max-width: 768px) 100vw, 50vw"
+            />
+          ) : (
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="text-center text-[#0051FF]/20">
+                <svg className="mx-auto h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={0.8}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
+                </svg>
+                <span className="mt-2 block text-xs font-semibold uppercase tracking-widest">Insight</span>
+              </div>
             </div>
-          </div>
+          )}
           {/* Category badge */}
           {post.category && (
             <span className={`absolute left-4 top-4 rounded-full border px-3 py-1 text-[10px] font-bold uppercase tracking-widest ${categoryColor(post.category)}`}>
