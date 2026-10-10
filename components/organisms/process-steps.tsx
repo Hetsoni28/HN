@@ -200,9 +200,10 @@ export function ProcessHero() {
           alt="Process Background Illustration"
           fill
           quality={100}
+          unoptimized
           className="object-cover object-center"
           priority
-         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
+          sizes="100vw" />
       </div>
 
       <div className="container relative z-10 text-center">

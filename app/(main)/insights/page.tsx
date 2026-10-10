@@ -24,12 +24,13 @@ export default async function InsightsPage() {
           aria-hidden="true"
           fill
           priority
+          quality={100}
+          unoptimized
           className="object-cover object-center"
           sizes="100vw"
         />
 
-        {/* Gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-white/95 via-white/80 to-white/40 sm:bg-gradient-to-r sm:from-white sm:via-white/70 sm:to-transparent" />
+        {/* Gradient overlay removed for clear image */}
 
         <div className="container relative z-10 py-16 sm:py-24">
           <FadeIn>

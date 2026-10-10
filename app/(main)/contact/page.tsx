@@ -63,12 +63,13 @@ export default async function ContactPage({ searchParams }: Props) {
           aria-hidden="true"
           fill
           priority
+          quality={100}
+          unoptimized
           className="object-cover object-center lg:object-right"
           sizes="100vw"
         />
 
-        {/* Gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-white/95 via-white/80 to-white/40 sm:bg-gradient-to-r sm:from-white sm:via-white/70 sm:to-transparent" />
+        {/* Gradient overlay removed for clear image */}
 
         <div className="container relative z-10 py-16 sm:py-24">
           <div className="max-w-2xl">
@@ -153,15 +154,14 @@ export default async function ContactPage({ searchParams }: Props) {
                     <div className="flex -space-x-2">
                       <div className="flex h-9 w-9 items-center justify-center rounded-full border-2 border-white bg-gradient-to-br from-[#0051FF] to-[#0070F3] text-xs font-bold text-white shadow-sm">HS</div>
                       <div className="flex h-9 w-9 items-center justify-center rounded-full border-2 border-white bg-gradient-to-br from-[#0070F3] to-[#00D2FF] text-xs font-bold text-white shadow-sm">NP</div>
-                      <div className="flex h-9 w-9 items-center justify-center rounded-full border-2 border-white bg-gradient-to-br from-[#00D2FF] to-[#0051FF] text-xs font-bold text-white shadow-sm">VP</div>
                     </div>
                     <div>
-                      <div className="text-sm font-bold text-slate-900">Het, Neel &amp; Vraj</div>
+                      <div className="text-sm font-bold text-slate-900">Het &amp; Neel</div>
                       <div className="text-xs text-slate-400">Reply personally to every inquiry</div>
                     </div>
                   </div>
                   <p className="mt-4 text-sm italic leading-6 text-slate-500">
-                    &ldquo;We read every message ourselves. No bots, no sales team — just three engineers who want to help you build something great.&rdquo;
+                    &ldquo;We read every message ourselves. No bots, no sales team — just two engineers who want to help you build something great.&rdquo;
                   </p>
                 </div>
 

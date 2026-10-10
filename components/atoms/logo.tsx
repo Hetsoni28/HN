@@ -17,6 +17,7 @@ export function Logo() {
         width={830}
         height={735}
         className="h-11 w-auto object-contain"
+        unoptimized
         priority
       />
 
