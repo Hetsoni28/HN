@@ -89,7 +89,7 @@ export function ArticleHero({ post }: { post: BlogPost }) {
 
         {/* Cover image */}
         <FadeIn delay={0.15}>
-          <div className="mt-12 aspect-[21/9] w-full relative overflow-hidden rounded-t-3xl border border-[#E2E5F1] border-b-0 bg-gradient-to-br from-[#EEF0FF] via-[#E8EDFF] to-[#E2E5F1]">
+          <div className="mt-12 aspect-video w-full relative overflow-hidden rounded-t-3xl border border-[#E2E5F1] border-b-0 bg-gradient-to-br from-[#EEF0FF] via-[#E8EDFF] to-[#E2E5F1]">
             {post.coverImage ? (
               <Image
                 src={urlFor(post.coverImage).width(1920).url()}
