@@ -96,7 +96,7 @@ export function ArticleHero({ post }: { post: BlogPost }) {
                 alt={post.coverImage.alt || post.title}
                 fill
                 priority
-                className="object-cover"
+                className="object-cover object-top"
                 sizes="100vw"
               />
             ) : (
