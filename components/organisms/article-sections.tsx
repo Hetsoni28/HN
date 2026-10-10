@@ -1,4 +1,6 @@
 import Link from 'next/link';
+import Image from 'next/image';
+import { urlFor } from '@/sanity/lib/image';
 import type { BlogPost } from '@/lib/content';
 import { FadeIn } from '@/components/atoms/fade-in';
 import { PortableTextRenderer, PlainTextRenderer } from '@/components/molecules/portable-text-renderer';
@@ -85,17 +87,28 @@ export function ArticleHero({ post }: { post: BlogPost }) {
           </div>
         </FadeIn>
 
-        {/* Cover image placeholder */}
+        {/* Cover image */}
         <FadeIn delay={0.15}>
-          <div className="mt-12 aspect-[21/9] w-full overflow-hidden rounded-t-3xl border border-[#E2E5F1] border-b-0 bg-gradient-to-br from-[#EEF0FF] via-[#E8EDFF] to-[#E2E5F1]">
-            <div className="flex h-full items-center justify-center text-[#0051FF]/20">
-              <div className="text-center">
-                <svg className="mx-auto h-14 w-14" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={0.7}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
-                </svg>
-                <p className="mt-3 text-xs font-semibold uppercase tracking-widest">Add cover image in Sanity</p>
+          <div className="mt-12 aspect-[21/9] w-full relative overflow-hidden rounded-t-3xl border border-[#E2E5F1] border-b-0 bg-gradient-to-br from-[#EEF0FF] via-[#E8EDFF] to-[#E2E5F1]">
+            {post.coverImage ? (
+              <Image
+                src={urlFor(post.coverImage).width(1920).url()}
+                alt={post.coverImage.alt || post.title}
+                fill
+                priority
+                className="object-cover"
+                sizes="100vw"
+              />
+            ) : (
+              <div className="flex h-full items-center justify-center text-[#0051FF]/20">
+                <div className="text-center">
+                  <svg className="mx-auto h-14 w-14" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={0.7}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
+                  </svg>
+                  <p className="mt-3 text-xs font-semibold uppercase tracking-widest">Add cover image in Sanity</p>
+                </div>
               </div>
-            </div>
+            )}
           </div>
         </FadeIn>
       </div>
