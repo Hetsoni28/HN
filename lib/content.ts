@@ -461,9 +461,9 @@ export const FALLBACK_TEAM: TeamMember[] = [
   {
     _id: 'tm1',
     name: 'Het Soni',
-    role: 'Full Stack Developer',
+    role: 'Founder @ HNTech · Full Stack Developer',
     tagline: 'Architecting scalable systems from database to UI.',
-    bio: 'Full-stack engineer focused on React ecosystems, backend architecture, and AI integration. Co-founded HN to build the kind of digital products he wished more businesses could access.',
+    bio: 'Full-stack engineer focused on React ecosystems, backend architecture, and AI integration. Founded HN to build the kind of digital products he wished more businesses could access.',
     skills: ['Next.js', 'React', 'Node.js', 'FastAPI', 'PostgreSQL', 'TypeScript', 'AI/ML'],
     github: 'https://github.com/Hetsoni28',
     linkedin: 'https://www.linkedin.com/in/soni-het-9b6b30360/',
@@ -472,9 +472,9 @@ export const FALLBACK_TEAM: TeamMember[] = [
   {
     _id: 'tm2',
     name: 'Neel Patel',
-    role: 'Web Developer',
+    role: 'Founder @ HNTech · Web Developer',
     tagline: 'Turning interfaces into experiences people remember.',
-    bio: 'Frontend engineer and UI specialist who cares deeply about performance, accessibility, and design quality. Brings the pixel-perfect execution that makes HN products stand out.',
+    bio: 'Frontend engineer and UI specialist who cares deeply about performance, accessibility, and design quality. Founded HN to bring the pixel-perfect execution that makes digital products stand out.',
     skills: ['React', 'Tailwind CSS', 'TypeScript', 'Figma', 'Laravel', 'Motion Design'],
     github: '#',
     displayOrder: 2,

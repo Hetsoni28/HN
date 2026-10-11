@@ -75,7 +75,7 @@ export function AboutIntro() {
             {[
               {
                 name: 'Het Soni',
-                role: 'Full Stack Developer',
+                role: 'Founder @ HNTech · Full Stack Developer',
                 initials: 'HS',
                 color: 'from-[#0051FF] to-[#0070F3]',
                 bio: 'Focused on full-stack architecture, React ecosystems, and AI integration. Loves turning complex requirements into clean, scalable systems.',
@@ -84,7 +84,7 @@ export function AboutIntro() {
               },
               {
                 name: 'Neel Patel',
-                role: 'Web Developer',
+                role: 'Founder @ HNTech · Web Developer',
                 initials: 'NP',
                 color: 'from-[#0070F3] to-[#00D2FF]',
                 bio: 'Specialises in frontend engineering, UI/UX implementation, and performance optimisation. Turns designs into pixel-perfect, fast-loading interfaces.',

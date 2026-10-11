@@ -182,7 +182,7 @@ export function ArticleBody({
                   <div className="text-sm font-bold text-slate-900">{post.author.name}</div>
                   <div className="text-xs text-[#0051FF]">{post.author.role ?? 'HN Tech'}</div>
                   <p className="mt-2 text-sm text-slate-500">
-                    Building digital products at HN — websites, web apps, SaaS, and AI solutions. Co-founder of HN Tech.
+                    Building digital products at HN — websites, web apps, SaaS, and AI solutions. Founder of HN Tech.
                   </p>
                 </div>
               </div>
