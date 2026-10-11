@@ -166,20 +166,6 @@ export function HeroSection() {
               {/* Subtle bottom gradient for depth */}
               <div className="absolute inset-0 bg-gradient-to-t from-white/20 via-transparent to-transparent" />
             </div>
-
-
-
-            {/* Floating stat — top right */}
-            <motion.div
-              initial={{ opacity: 0, y: -16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.85 }}
-              className="absolute -right-5 -top-5 rounded-2xl bg-[#0051FF] px-5 py-3 shadow-lg shadow-[#0051FF]/30"
-            >
-              <div className="text-2xl font-black text-white">99%</div>
-              <div className="mt-0.5 text-xs text-white/75">Client Satisfaction</div>
-            </motion.div>
-
           </motion.div>
 
         </div>
