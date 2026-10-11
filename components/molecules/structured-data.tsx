@@ -32,7 +32,7 @@ export function OrganizationJsonLd() {
       {
         '@type': 'Person',
         name: 'Vraj Prajapati',
-        jobTitle: 'Full Stack Developer',
+        jobTitle: 'Co-Founder & Software Engineer',
         telephone: '+918141688775',
         sameAs: [
           'https://github.com/Vrajprajapati2708',
