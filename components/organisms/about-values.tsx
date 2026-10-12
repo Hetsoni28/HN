@@ -1,5 +1,17 @@
+import Image from 'next/image';
 import { FadeIn } from '@/components/atoms/fade-in';
 import type { TeamMember } from '@/lib/content';
+import { urlFor } from '@/sanity/lib/image';
+
+function getMemberPhotoUrl(photo?: TeamMember['photo']): string | null {
+  if (!photo) return null;
+  if (typeof photo === 'string') return photo;
+  try {
+    return urlFor(photo).width(300).height(300).fit('crop').url();
+  } catch {
+    return photo.asset?.url || null;
+  }
+}
 
 const VALUES = [
   {
@@ -103,20 +115,34 @@ export function AboutTeam({ members }: { members: TeamMember[] }) {
         </FadeIn>
 
         <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-2">
-          {members.map((m, i) => (
-            <FadeIn key={m._id} delay={i * 0.1}>
-              <div className="group flex h-full flex-col rounded-3xl border border-[#E2E5F1] bg-white p-8 transition duration-300 hover:border-[#0051FF]/20 hover:shadow-xl hover:shadow-[#0051FF]/8">
-                <div className="flex items-start gap-5">
-                  {/* Avatar */}
-                  <div className={`flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl text-2xl font-bold text-white ${avatarGradients[i] ?? avatarGradients[0]}`}>
-                    {m.name.split(' ').map((n) => n[0]).join('')}
+          {members.map((m, i) => {
+            const photoUrl = getMemberPhotoUrl(m.photo);
+            return (
+              <FadeIn key={m._id} delay={i * 0.1}>
+                <div className="group flex h-full flex-col rounded-3xl border border-[#E2E5F1] bg-white p-8 transition duration-300 hover:border-[#0051FF]/20 hover:shadow-xl hover:shadow-[#0051FF]/8">
+                  <div className="flex items-start gap-5">
+                    {/* Avatar */}
+                    <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-2xl border border-[#E2E5F1] bg-[#EEF0FF] shadow-sm">
+                      {photoUrl ? (
+                        <Image
+                          src={photoUrl}
+                          alt={m.photo?.alt || m.name}
+                          fill
+                          className="object-cover object-top"
+                          sizes="64px"
+                        />
+                      ) : (
+                        <div className={`flex h-full w-full items-center justify-center text-2xl font-bold text-white ${avatarGradients[i % avatarGradients.length]}`}>
+                          {m.name.split(' ').map((n) => n[0]).join('')}
+                        </div>
+                      )}
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <div className="text-xl font-bold text-slate-900">{m.name}</div>
+                      <div className="mt-0.5 text-sm font-semibold text-[#0051FF]">{m.role}</div>
+                      {m.tagline && <p className="mt-1 text-xs italic text-slate-400">{m.tagline}</p>}
+                    </div>
                   </div>
-                  <div className="flex-1">
-                    <div className="text-xl font-bold text-slate-900">{m.name}</div>
-                    <div className="mt-0.5 text-sm font-semibold text-[#0051FF]">{m.role}</div>
-                    {m.tagline && <p className="mt-1 text-xs italic text-slate-400">{m.tagline}</p>}
-                  </div>
-                </div>
 
                 {m.bio && (
                   <p className="mt-5 flex-1 text-sm leading-7 text-slate-500">{m.bio}</p>
@@ -180,7 +206,8 @@ export function AboutTeam({ members }: { members: TeamMember[] }) {
                 </div>
               </div>
             </FadeIn>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

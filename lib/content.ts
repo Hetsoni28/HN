@@ -467,6 +467,13 @@ export const FALLBACK_TEAM: TeamMember[] = [
     skills: ['Next.js', 'React', 'Node.js', 'FastAPI', 'PostgreSQL', 'TypeScript', 'AI/ML'],
     github: 'https://github.com/Hetsoni28',
     linkedin: 'https://www.linkedin.com/in/soni-het-9b6b30360/',
+    photo: {
+      asset: {
+        _id: 'image-a6bb7832381d4de7a5b84b25856ac22f249e0840-1024x1536-png',
+        url: 'https://cdn.sanity.io/images/zpuvaooc/production/a6bb7832381d4de7a5b84b25856ac22f249e0840-1024x1536.png',
+      },
+      alt: 'Het Soni',
+    },
     displayOrder: 1,
   },
   {
@@ -477,6 +484,13 @@ export const FALLBACK_TEAM: TeamMember[] = [
     bio: 'Frontend engineer and UI specialist who cares deeply about performance, accessibility, and design quality. Founded HN to bring the pixel-perfect execution that makes digital products stand out.',
     skills: ['React', 'Tailwind CSS', 'TypeScript', 'Figma', 'Laravel', 'Motion Design'],
     github: '#',
+    photo: {
+      asset: {
+        _id: 'image-11ad038dccbb318288a8db4884f5a9452ebaf819-1086x1448-png',
+        url: 'https://cdn.sanity.io/images/zpuvaooc/production/11ad038dccbb318288a8db4884f5a9452ebaf819-1086x1448.png',
+      },
+      alt: 'Neel Patel',
+    },
     displayOrder: 2,
   },
   {

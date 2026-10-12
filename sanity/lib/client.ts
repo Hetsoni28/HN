@@ -34,7 +34,7 @@ export const client = createClient({
 
 /** Revalidation intervals for ISR */
 export const REVALIDATE = {
-  STATIC_CONTENT: 60 * 60 * 24,  // 24 h  — team, services, FAQs
-  DYNAMIC_CONTENT: 60,            //  1 min — blog posts, projects (changed from 1 hour to 1 min for faster updates)
-  REALTIME: 60,                   //  1 min — contact, page-level settings
+  STATIC_CONTENT: 60,            //  1 min — team, services, FAQs (allows fast CMS updates)
+  DYNAMIC_CONTENT: 60,           //  1 min — blog posts, projects
+  REALTIME: 60,                  //  1 min — contact, page-level settings
 } as const;

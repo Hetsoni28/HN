@@ -16,7 +16,7 @@ export default async function AboutPage() {
   return (
     <>
       <AboutHero />
-      <AboutIntro />
+      <AboutIntro team={team} />
       <AboutVision />
       <AboutValues />
       <AboutTeam members={team} />
