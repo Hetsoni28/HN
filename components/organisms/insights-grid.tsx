@@ -16,6 +16,28 @@ function formatDate(iso?: string) {
   });
 }
 
+const KNOWN_AUTHOR_PHOTOS: Record<string, string> = {
+  'het soni': 'https://cdn.sanity.io/images/zpuvaooc/production/a6bb7832381d4de7a5b84b25856ac22f249e0840-1024x1536.png',
+  'neel patel': 'https://cdn.sanity.io/images/zpuvaooc/production/11ad038dccbb318288a8db4884f5a9452ebaf819-1086x1448.png',
+};
+
+function getAuthorPhotoUrl(author?: BlogPost['author']): string | null {
+  if (!author) return null;
+  if (author.photo) {
+    if (typeof author.photo === 'string') return author.photo;
+    try {
+      return urlFor(author.photo).width(120).height(120).fit('crop').url();
+    } catch {
+      if ((author.photo as any)?.asset?.url) return (author.photo as any).asset.url;
+    }
+  }
+  const lowerName = author.name?.toLowerCase().trim() || '';
+  if (KNOWN_AUTHOR_PHOTOS[lowerName]) return KNOWN_AUTHOR_PHOTOS[lowerName];
+  if (lowerName.includes('het')) return KNOWN_AUTHOR_PHOTOS['het soni'];
+  if (lowerName.includes('neel')) return KNOWN_AUTHOR_PHOTOS['neel patel'];
+  return null;
+}
+
 function categoryColor(cat?: string) {
   const map: Record<string, string> = {
     'AI':                  'bg-purple-50 text-purple-600 border-purple-200',
@@ -74,9 +96,21 @@ function ArticleCard({ post, featured = false }: { post: BlogPost; featured?: bo
           <div className="mt-auto flex items-center justify-between pt-5 border-t border-[#E2E5F1] mt-5">
             <div className="flex items-center gap-2.5">
               {/* Author avatar */}
-              <div className="flex h-7 w-7 items-center justify-center rounded-full bg-gradient-to-br from-[#0051FF] to-[#00D2FF] text-[10px] font-bold text-white">
-                {post.author?.name.split(' ').map((n) => n[0]).join('') ?? 'HN'}
-              </div>
+              {getAuthorPhotoUrl(post.author) ? (
+                <div className="relative h-7 w-7 shrink-0 overflow-hidden rounded-full border border-[#E2E5F1] shadow-sm">
+                  <Image
+                    src={getAuthorPhotoUrl(post.author)!}
+                    alt={post.author?.name ?? 'Author'}
+                    fill
+                    className="object-cover object-top"
+                    sizes="28px"
+                  />
+                </div>
+              ) : (
+                <div className="flex h-7 w-7 items-center justify-center rounded-full bg-gradient-to-br from-[#0051FF] to-[#00D2FF] text-[10px] font-bold text-white">
+                  {post.author?.name.split(' ').map((n) => n[0]).join('') ?? 'HN'}
+                </div>
+              )}
               <span className="text-xs font-semibold text-slate-600">{post.author?.name ?? 'HN'}</span>
             </div>
             <div className="flex items-center gap-3 text-xs text-slate-400">

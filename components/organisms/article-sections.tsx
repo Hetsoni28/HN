@@ -13,6 +13,28 @@ function formatDate(iso?: string) {
   });
 }
 
+const KNOWN_AUTHOR_PHOTOS: Record<string, string> = {
+  'het soni': 'https://cdn.sanity.io/images/zpuvaooc/production/a6bb7832381d4de7a5b84b25856ac22f249e0840-1024x1536.png',
+  'neel patel': 'https://cdn.sanity.io/images/zpuvaooc/production/11ad038dccbb318288a8db4884f5a9452ebaf819-1086x1448.png',
+};
+
+function getAuthorPhotoUrl(author?: BlogPost['author']): string | null {
+  if (!author) return null;
+  if (author.photo) {
+    if (typeof author.photo === 'string') return author.photo;
+    try {
+      return urlFor(author.photo).width(160).height(160).fit('crop').url();
+    } catch {
+      if ((author.photo as any)?.asset?.url) return (author.photo as any).asset.url;
+    }
+  }
+  const lowerName = author.name?.toLowerCase().trim() || '';
+  if (KNOWN_AUTHOR_PHOTOS[lowerName]) return KNOWN_AUTHOR_PHOTOS[lowerName];
+  if (lowerName.includes('het')) return KNOWN_AUTHOR_PHOTOS['het soni'];
+  if (lowerName.includes('neel')) return KNOWN_AUTHOR_PHOTOS['neel patel'];
+  return null;
+}
+
 function categoryColor(cat?: string) {
   const map: Record<string, string> = {
     'AI':                  'bg-purple-50 text-purple-600 border-purple-200',
@@ -61,9 +83,21 @@ export function ArticleHero({ post }: { post: BlogPost }) {
           <div className="mt-10 flex flex-wrap items-center gap-6 border-t border-[#E2E5F1] pt-7">
             {/* Author */}
             <div className="flex items-center gap-3">
-              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-[#0051FF] to-[#00D2FF] text-sm font-bold text-white">
-                {post.author?.name.split(' ').map((n) => n[0]).join('') ?? 'HN'}
-              </div>
+              {getAuthorPhotoUrl(post.author) ? (
+                <div className="relative h-10 w-10 shrink-0 overflow-hidden rounded-full border border-[#E2E5F1] shadow-sm">
+                  <Image
+                    src={getAuthorPhotoUrl(post.author)!}
+                    alt={post.author?.name ?? 'Author'}
+                    fill
+                    className="object-cover object-top"
+                    sizes="40px"
+                  />
+                </div>
+              ) : (
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-[#0051FF] to-[#00D2FF] text-sm font-bold text-white">
+                  {post.author?.name.split(' ').map((n) => n[0]).join('') ?? 'HN'}
+                </div>
+              )}
               <div>
                 <div className="text-sm font-bold text-slate-900">{post.author?.name ?? 'HN'}</div>
                 <div className="text-xs text-slate-400">{post.author?.role ?? 'HN Tech'}</div>
@@ -175,9 +209,21 @@ export function ArticleBody({
             {/* Author card */}
             {post.author && (
               <div className="mt-12 flex gap-5 rounded-2xl border border-[#E2E5F1] bg-[#EEF0FF] p-7">
-                <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-[#0051FF] to-[#00D2FF] text-lg font-bold text-white">
-                  {post.author.name.split(' ').map((n) => n[0]).join('')}
-                </div>
+                {getAuthorPhotoUrl(post.author) ? (
+                  <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-2xl border border-[#E2E5F1] shadow-sm">
+                    <Image
+                      src={getAuthorPhotoUrl(post.author)!}
+                      alt={post.author.name}
+                      fill
+                      className="object-cover object-top"
+                      sizes="56px"
+                    />
+                  </div>
+                ) : (
+                  <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-[#0051FF] to-[#00D2FF] text-lg font-bold text-white">
+                    {post.author.name.split(' ').map((n) => n[0]).join('')}
+                  </div>
+                )}
                 <div>
                   <div className="text-sm font-bold text-slate-900">{post.author.name}</div>
                   <div className="text-xs text-[#0051FF]">{post.author.role ?? 'HN Tech'}</div>
