@@ -32,9 +32,9 @@ export async function generateMetadata({
     return { title: 'Page not found' };
   }
 
-  const title       = `${serviceName} in ${cityName} | HN`;
+  const title       = `${serviceName} in ${cityName} | HN Tech`;
   const description =
-    `HN Studio delivers expert ${serviceName} in ${cityName}, ${cityData.state}. ` +
+    `HN Tech delivers expert ${serviceName} in ${cityName}, ${cityData.state}. ` +
     `We build fast, scalable, production-ready products — on time and on budget. ` +
     `Get a free proposal within 48 hours.`;
 
@@ -47,7 +47,7 @@ export async function generateMetadata({
       `${serviceName.toLowerCase()} agency ${cityName}`,
       `${serviceName.toLowerCase()} ${cityData.state}`,
       `hire ${serviceName.toLowerCase()} ${cityName}`,
-      'HN Studio',
+      'HN Tech',
     ],
     openGraph: {
       title,
@@ -126,7 +126,7 @@ export default async function ServiceCityPage({
             </h1>
 
             <p className="mt-5 max-w-2xl text-lg leading-8 text-slate-600">
-              Partner with HN Studio — a product-focused digital agency — to build
+              Partner with HN Tech — a premium technology company — to build
               world-class {serviceName.toLowerCase()} solutions right here in {cityName}.
               We combine deep technical expertise with sharp business thinking to
               deliver software that actually moves the needle.

@@ -18,7 +18,7 @@ export default function OgImage() {
           <div style={{ fontSize: '22px', color: '#64748B', lineHeight: 1.5, maxWidth: '800px' }}>An unfiltered side-by-side comparison across quality, cost, timelines, and accountability.</div>
         </div>
         <div style={{ borderTop: '1px solid #E2E8F0', padding: '20px 64px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', background: '#F8FAFC' }}>
-          <span style={{ fontSize: '16px', color: '#94A3B8', fontWeight: 600 }}>hntech.in/compare</span>
+          <span style={{ fontSize: '16px', color: '#94A3B8', fontWeight: 600 }}>www.hntech.in/compare</span>
           <div style={{ display: 'flex', gap: '8px' }}>
             {['HN Tech', 'Freelancer', 'Big Agency'].map((tag) => (
               <div key={tag} style={{ background: '#7C3AED20', border: '1px solid #7C3AED40', borderRadius: '100px', padding: '6px 14px', fontSize: '13px', fontWeight: 700, color: '#7C3AED' }}>{tag}</div>

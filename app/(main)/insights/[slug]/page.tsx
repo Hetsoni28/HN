@@ -44,7 +44,9 @@ export default async function ArticlePage({
 
   const related = await getRelatedPosts(post._id, post.category);
 
-  const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://hntech.in';
+  const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL && !process.env.NEXT_PUBLIC_SITE_URL.includes('localhost')
+    ? process.env.NEXT_PUBLIC_SITE_URL
+    : 'https://www.hntech.in';
 
   return (
     <article>

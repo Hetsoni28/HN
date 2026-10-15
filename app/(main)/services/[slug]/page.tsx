@@ -161,7 +161,7 @@ export default async function ServiceDetailPage({
                       Start this project →
                     </Button>
                     <WhatsAppButton 
-                      message={`Hi HN Studio, I'm interested in your ${service.title} services.`} 
+                      message={`Hi HN Tech, I'm interested in your ${service.title} services.`} 
                       fullWidth 
                     />
                   </div>

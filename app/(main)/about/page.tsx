@@ -6,8 +6,8 @@ import { FadeIn } from '@/components/atoms/fade-in';
 import { Button } from '@/components/atoms/button';
 
 export const metadata: Metadata = {
-  title: 'About — HN',
-  description: 'Meet the HN team — Het Soni and Neel Patel (Founders), Vraj Prajapati (Co-Founder), and Heer Soni (Marketing & SMM Manager). We build websites, web apps, SaaS platforms, and AI solutions.',
+  title: 'About — HN Tech',
+  description: 'Meet the HN Tech team — Het Soni and Neel Patel (Founders), Vraj Prajapati (Co-Founder), and Heer Soni (Marketing & SMM Manager). We build websites, web apps, SaaS platforms, and AI solutions.',
 };
 
 export default async function AboutPage() {

@@ -1,18 +1,18 @@
 <div align="center">
-  <a href="https://hn.studio">
-    <img src="public/hn-logo.svg" alt="HN Studio Logo" width="120" />
+  <a href="https://www.hntech.in">
+    <img src="public/hn-logo.svg" alt="HN Tech Logo" width="120" />
   </a>
 
   <br />
   <br />
 
-  <h1 align="center">HN — Digital Product Studio</h1>
+  <h1 align="center">HN Tech — Digital Products From Ideas to Scale</h1>
 
   <p align="center">
     A world-class digital storefront built for uncompromising performance, scalability, and design excellence.
     <br />
     <br />
-    <a href="https://hn-tawny.vercel.app"><strong>Explore the live site →</strong></a>
+    <a href="https://www.hntech.in"><strong>Explore the live site →</strong></a>
   </p>
 
   <p align="center">
@@ -27,9 +27,9 @@
 
 <hr />
 
-##  The Vision
+## ── The Vision
 
-HN Studio is a two-person digital agency delivering high-end websites, web applications, and AI integrations. This repository houses our digital storefront—a masterclass in modern web engineering. Built on the bleeding edge of the React ecosystem, it achieves perfect Lighthouse scores, seamless headless CMS integration, and fluid micro-interactions without sacrificing SEO or accessibility.
+HN Tech is a technology company delivering high-end websites, web applications, SaaS platforms, and AI integrations. This repository houses our digital storefront—a masterclass in modern web engineering. Built on the bleeding edge of the React ecosystem, it achieves perfect Lighthouse scores, seamless headless CMS integration, and fluid micro-interactions without sacrificing SEO or accessibility.
 
 ## 𓅗 Architectural Highlights
 

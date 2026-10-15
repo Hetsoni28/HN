@@ -19,8 +19,8 @@ export const projectId = isSanityConfigured ? rawProjectId! : '';
 export const dataset = rawDataset || 'production';
 
 export default defineConfig({
-  name: 'hn-studio',
-  title: 'HN Studio',
+  name: 'hn-tech',
+  title: 'HN Tech Studio',
   projectId: projectId || 'unconfigured',
   dataset,
   basePath: '/studio',

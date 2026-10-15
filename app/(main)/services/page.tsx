@@ -6,8 +6,8 @@ import { Button } from '@/components/atoms/button';
 import { ServiceIcon } from '@/components/atoms/service-icon';
 
 export const metadata: Metadata = {
-  title: 'Services',
-  description: 'Full-stack digital services — websites, web apps, mobile, AI, SaaS, and more from HN.',
+  title: 'Services — HN Tech',
+  description: 'Full-stack digital services — websites, web apps, mobile apps, AI solutions, and SaaS platforms from HN Tech.',
 };
 
 export default async function ServicesPage() {

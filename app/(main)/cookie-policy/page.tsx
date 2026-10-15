@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import { LegalPageLayout } from '@/components/organisms/legal-page';
 
 export const metadata: Metadata = {
-  title: 'Cookie Policy — HN',
-  description: 'Information about how HN uses cookies on its website.',
+  title: 'Cookie Policy — HN Tech',
+  description: 'Information about how HN Tech uses cookies on its website.',
 };
 
 export default function CookiePolicyPage() {
@@ -13,7 +13,7 @@ export default function CookiePolicyPage() {
       title="Cookie Policy"
       lastUpdated="2025-09-01"
       heroImage="/cookie-hero.png"
-      intro="This Cookie Policy explains what cookies are, which cookies our website (hntech.in) uses, and how you can control them. We keep our cookie usage minimal — we do not use advertising or tracking cookies."
+      intro="This Cookie Policy explains what cookies are, which cookies our website (https://www.hntech.in) uses, and how you can control them. We keep our cookie usage minimal — we do not use advertising or tracking cookies."
       sections={[
         {
           heading: '1. What Are Cookies?',

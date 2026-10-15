@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import { LegalPageLayout } from '@/components/organisms/legal-page';
 
 export const metadata: Metadata = {
-  title: 'Terms of Service — HN',
-  description: 'Terms and conditions for using HN services and website.',
+  title: 'Terms of Service — HN Tech',
+  description: 'Terms and conditions for using HN Tech services and website.',
 };
 
 export default function TermsPage() {
@@ -13,13 +13,13 @@ export default function TermsPage() {
       title="Terms of Service"
       
       heroImage="/terms-hero.jpg"
-      intro="These Terms of Service ('Terms') govern your use of the HN Digital Product Studio website at hntech.in and any services we provide. By accessing our website or engaging our services, you agree to be bound by these Terms. Please read them carefully before proceeding."
+      intro="These Terms of Service ('Terms') govern your use of the HN Tech website at https://www.hntech.in and any services we provide. By accessing our website or engaging our services, you agree to be bound by these Terms. Please read them carefully before proceeding."
       sections={[
         {
-          heading: '1. About HN',
+          heading: '1. About HN Tech',
           content: [
-            'HN Digital Product Studio is a freelance digital product studio based in India, founded by Het Soni and Neel Patel. We provide web development, web app development, SaaS development, mobile app development, AI integration, and digital product design services.',
-            'For any queries, contact us at contact.hnsolutions@gmail.com or via WhatsApp at +91 7990 743263.',
+            'HN Tech is a technology company based in Gujarat, India, founded by Het Soni, Neel Patel, and Vraj Prajapati. We provide web development, web app development, SaaS development, mobile app development, AI integration, and digital product design services.',
+            'For any queries, contact us at contact.hnsolutions@gmail.com or via WhatsApp at +91 79907 43263.',
           ],
         },
         {
@@ -80,7 +80,7 @@ export default function TermsPage() {
         {
           heading: '9. Website Use',
           content: [
-            'The content on our website (hntech.in) is provided for informational purposes only. Prices, timelines, and service descriptions are indicative and subject to change.',
+            'The content on our website (https://www.hntech.in) is provided for informational purposes only. Prices, timelines, and service descriptions are indicative and subject to change.',
             'You may not reproduce, distribute, or use our website content without written permission.',
           ],
         },

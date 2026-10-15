@@ -2,9 +2,9 @@ import type { MetadataRoute } from 'next';
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'HN — Digital Products',
-    short_name: 'HN',
-    description: 'HN digital product studio',
+    name: 'HN Tech — Digital Products',
+    short_name: 'HN Tech',
+    description: 'HN Tech — Premium Technology Company building websites, web apps, SaaS platforms, and AI solutions.',
     start_url: '/',
     display: 'standalone',
     background_color: '#ffffff',

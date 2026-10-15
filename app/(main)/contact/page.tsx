@@ -6,8 +6,8 @@ import { Breadcrumb } from '@/components/molecules/breadcrumb';
 import { WhatsAppButton } from '@/components/atoms/whatsapp-button';
 
 export const metadata: Metadata = {
-  title: 'Contact — HN',
-  description: 'Start your project with HN. Tell us what you want to build and we\'ll get back to you within 24–48 hours.',
+  title: 'Contact — HN Tech',
+  description: 'Start your project with HN Tech. Tell us what you want to build and we\'ll get back to you within 24–48 hours.',
 };
 
 const CONTACT_DETAILS = [

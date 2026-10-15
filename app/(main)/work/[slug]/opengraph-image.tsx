@@ -24,7 +24,7 @@ export default async function OgImage({
   const project = await getProjectBySlug(slug);
 
   const title = project?.title ?? 'Case Study';
-  const description = project?.shortDescription ?? 'A digital product built by HN Studio';
+  const description = project?.shortDescription ?? 'A digital product built by HN Tech';
   const category = project?.category ?? '';
   const accent = CATEGORY_COLORS[category] ?? CATEGORY_COLORS['default'];
   const tech = project?.technology?.slice(0, 4) ?? [];
@@ -141,7 +141,7 @@ export default async function OgImage({
           }}
         >
           <span style={{ fontSize: '16px', color: '#94A3B8', fontWeight: 600 }}>
-            hntech.in/work/{slug}
+            www.hntech.in/work/{slug}
           </span>
           <span style={{ fontSize: '16px', color: '#94A3B8', fontWeight: 600 }}>
             Case Study

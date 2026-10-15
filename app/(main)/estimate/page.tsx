@@ -5,8 +5,8 @@ import { Breadcrumb } from '@/components/molecules/breadcrumb';
 import { CostEstimator } from '@/components/organisms/cost-estimator';
 
 export const metadata: Metadata = {
-  title: 'Project Cost Estimator — HN',
-  description: 'Get an instant, realistic budget estimate for your next web or mobile app project.',
+  title: 'Project Cost Estimator — HN Tech',
+  description: 'Get an instant, realistic budget estimate from HN Tech for your next web or mobile app project.',
 };
 
 export default function EstimatePage() {

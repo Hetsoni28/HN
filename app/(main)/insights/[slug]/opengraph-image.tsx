@@ -23,9 +23,9 @@ export default async function OgImage({
   const post = await getPostBySlug(slug);
 
   const title = post?.title ?? 'Insight';
-  const excerpt = post?.excerpt ?? 'A practical article from HN Studio';
+  const excerpt = post?.excerpt ?? 'A practical article from HN Tech';
   const category = post?.category ?? '';
-  const author = post?.author?.name ?? 'HN Studio';
+  const author = post?.author?.name ?? 'HN Tech';
   const readTime = post?.readTime;
   const publishedAt = post?.publishedAt
     ? new Date(post.publishedAt).toLocaleDateString('en-IN', { year: 'numeric', month: 'short', day: 'numeric' })

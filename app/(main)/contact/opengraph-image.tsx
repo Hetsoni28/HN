@@ -14,7 +14,7 @@ export default function OgImage() {
           {/* Brand */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: 'auto' }}>
             <div style={{ background: '#0051FF', borderRadius: '10px', padding: '8px 18px', fontSize: '16px', fontWeight: 900, color: 'white' }}>HN Tech</div>
-            <span style={{ fontSize: '14px', color: 'rgba(255,255,255,0.4)', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase' as const }}>hntech.in</span>
+            <span style={{ fontSize: '14px', color: 'rgba(255,255,255,0.4)', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase' as const }}>www.hntech.in</span>
           </div>
           {/* Headline */}
           <div style={{ fontSize: '72px', fontWeight: 900, color: 'white', lineHeight: 1.05, letterSpacing: '-0.03em', marginBottom: '24px' }}>
@@ -27,7 +27,7 @@ export default function OgImage() {
           </div>
         </div>
         <div style={{ borderTop: '1px solid rgba(255,255,255,0.08)', padding: '20px 64px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-          <span style={{ fontSize: '16px', color: 'rgba(255,255,255,0.3)', fontWeight: 600 }}>hntech.in/contact</span>
+          <span style={{ fontSize: '16px', color: 'rgba(255,255,255,0.3)', fontWeight: 600 }}>www.hntech.in/contact</span>
           <span style={{ fontSize: '16px', color: '#0051FF', fontWeight: 700 }}>24h response guaranteed</span>
         </div>
       </div>

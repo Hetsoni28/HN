@@ -113,7 +113,7 @@ export async function submitInquiry(
     console.error('[Contact Form — PRODUCTION ERROR] RESEND_API_KEY is not configured.');
     return {
       status: 'error',
-      message: 'Email service is temporarily unavailable. Please contact us directly at het@hntech.in or via WhatsApp.',
+      message: 'Email service is temporarily unavailable. Please contact us directly at contact.hnsolutions@gmail.com or via WhatsApp.',
     };
   }
 
@@ -188,7 +188,7 @@ export async function submitInquiry(
       console.error('[Contact Form — Resend Delivery Error]:', sendError.message);
       return {
         status: 'error',
-        message: 'Delivery error. Please email us directly at het@hntech.in or message us on WhatsApp.',
+        message: 'Delivery error. Please email us directly at contact.hnsolutions@gmail.com or message us on WhatsApp.',
       };
     }
 
@@ -197,7 +197,7 @@ export async function submitInquiry(
     console.error('[Contact Form] Unexpected delivery failure:', err);
     return {
       status: 'error',
-      message: 'Something went wrong sending your inquiry. Please email us directly at het@hntech.in or reach out via WhatsApp.',
+      message: 'Something went wrong sending your inquiry. Please email us directly at contact.hnsolutions@gmail.com or reach out via WhatsApp.',
     };
   }
 }

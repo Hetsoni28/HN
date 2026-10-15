@@ -6,8 +6,8 @@ import { TransformationSection } from '@/components/organisms/transformation-sec
 import { WorkFilter } from './work-filter';
 
 export const metadata: Metadata = {
-  title: 'Our Work',
-  description: 'Explore our portfolio of scalable web applications, SaaS platforms, and AI solutions.',
+  title: 'Our Work — HN Tech',
+  description: 'Explore the HN Tech portfolio of scalable web applications, SaaS platforms, and AI solutions.',
 };
 
 export default async function WorkPage() {

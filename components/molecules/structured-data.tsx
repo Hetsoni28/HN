@@ -1,6 +1,8 @@
 /* JSON-LD Structured Data components — drop <StructuredData> anywhere in a Server Component */
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://hntech.in';
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL && !process.env.NEXT_PUBLIC_SITE_URL.includes('localhost')
+  ? process.env.NEXT_PUBLIC_SITE_URL
+  : 'https://www.hntech.in';
 
 /* ── Organisation (sitewide) ── */
 export function OrganizationJsonLd() {
@@ -15,7 +17,7 @@ export function OrganizationJsonLd() {
       '@type': 'ImageObject',
       url: `${SITE_URL}/opengraph-image.png`,
     },
-    description: 'HN is a technology company building websites, web apps, SaaS platforms, mobile apps, and AI solutions.',
+    description: 'HN Tech is a technology company building websites, web apps, SaaS platforms, mobile apps, and AI solutions.',
     foundingDate: '2024',
     founders: [
       {
@@ -40,11 +42,16 @@ export function OrganizationJsonLd() {
         ],
       },
     ],
-    address: { '@type': 'PostalAddress', addressCountry: 'IN' },
+    address: {
+      '@type': 'PostalAddress',
+      addressRegion: 'Gujarat',
+      addressCountry: 'IN',
+    },
     contactPoint: {
       '@type': 'ContactPoint',
       contactType: 'customer service',
       email: 'contact.hnsolutions@gmail.com',
+      telephone: '+917990743263',
     },
     sameAs: [
       'https://github.com/Hetsoni28',
@@ -67,7 +74,7 @@ export function WebSiteJsonLd() {
     '@type': 'WebSite',
     '@id': `${SITE_URL}/#website`,
     url: SITE_URL,
-    name: 'HN',
+    name: 'HN Tech',
     publisher: { '@id': `${SITE_URL}/#organization` },
     potentialAction: {
       '@type': 'SearchAction',

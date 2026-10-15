@@ -6,8 +6,8 @@ import { Breadcrumb } from '@/components/molecules/breadcrumb';
 import { InsightsGrid } from '@/components/organisms/insights-grid';
 
 export const metadata: Metadata = {
-  title: 'Insights — HN',
-  description: 'Practical articles on AI, SaaS, web development, product thinking, and digital products — written by the engineers at HN Studio.',
+  title: 'Insights — HN Tech',
+  description: 'Practical articles on AI, SaaS, web development, product thinking, and digital products — written by the engineers at HN Tech.',
 };
 
 export default async function InsightsPage() {
@@ -41,7 +41,7 @@ export default async function InsightsPage() {
                 <span className="gradient-text">loud.</span>
               </h1>
               <p className="max-w-xl text-base leading-7 text-slate-600 sm:text-lg sm:leading-8">
-                Practical articles on AI, SaaS, web development, and product thinking — written by the engineers at HN Studio.
+                Practical articles on AI, SaaS, web development, and product thinking — written by the engineers at HN Tech.
               </p>
             </div>
           </FadeIn>

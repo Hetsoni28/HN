@@ -6,7 +6,9 @@ import { OrganizationJsonLd, WebSiteJsonLd } from '@/components/molecules/struct
 import { SkipLink } from '@/components/atoms/skip-link';
 import { WelcomeManager } from '@/components/welcome/WelcomeManager';
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://hntech.in';
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL && !process.env.NEXT_PUBLIC_SITE_URL.includes('localhost')
+  ? process.env.NEXT_PUBLIC_SITE_URL
+  : 'https://www.hntech.in';
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -15,8 +17,8 @@ export const metadata: Metadata = {
     template: '%s — HN Tech',
   },
   description: 'HN Tech is a premium technology company. We design and build websites, web apps, SaaS platforms, mobile apps, and AI solutions for ambitious businesses.',
-  keywords: ['HN Tech', 'technology company', 'web development', 'web applications', 'AI solutions', 'SaaS development', 'mobile app development', 'Next.js agency', 'software development India', 'Het Soni', 'Neel Patel'],
-  authors: [{ name: 'Het Soni' }, { name: 'Neel Patel' }],
+  keywords: ['HN Tech', 'technology company', 'web development', 'web applications', 'AI solutions', 'SaaS development', 'mobile app development', 'Next.js agency', 'software development India', 'Het Soni', 'Neel Patel', 'Vraj Prajapati'],
+  authors: [{ name: 'Het Soni' }, { name: 'Neel Patel' }, { name: 'Vraj Prajapati' }],
   creator: 'HN Tech',
   publisher: 'HN Tech',
   alternates: { canonical: SITE_URL },

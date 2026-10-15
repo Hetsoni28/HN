@@ -18,7 +18,7 @@ export default function OgImage() {
           <div style={{ fontSize: '22px', color: '#64748B', lineHeight: 1.5, maxWidth: '800px' }}>Monthly plans keeping your website fast, secure, and always up-to-date. Month-to-month, no lock-in.</div>
         </div>
         <div style={{ borderTop: '1px solid #E2E8F0', padding: '20px 64px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', background: '#F0FDF4' }}>
-          <span style={{ fontSize: '16px', color: '#94A3B8', fontWeight: 600 }}>hntech.in/maintenance</span>
+          <span style={{ fontSize: '16px', color: '#94A3B8', fontWeight: 600 }}>www.hntech.in/maintenance</span>
           <div style={{ display: 'flex', gap: '8px' }}>
             {['From ₹8,000/mo', '99.9% uptime', '48h response'].map((tag) => (
               <div key={tag} style={{ background: '#05996920', border: '1px solid #05996940', borderRadius: '100px', padding: '6px 14px', fontSize: '13px', fontWeight: 700, color: '#059669' }}>{tag}</div>

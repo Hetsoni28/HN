@@ -3,7 +3,7 @@ import { BriefGenerator } from '@/components/organisms/brief-generator';
 import { FadeIn } from '@/components/atoms/fade-in';
 
 export const metadata: Metadata = {
-  title: 'Project Brief Generator — HN Studio',
+  title: 'Project Brief Generator — HN Tech',
   description: 'Generate a comprehensive project strategy brief in 60 seconds.',
 };
 

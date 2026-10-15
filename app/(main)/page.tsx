@@ -16,12 +16,12 @@ import { FinalCta }           from '@/components/organisms/final-cta';
 import { GithubActivity }     from '@/components/organisms/github-activity';
 
 export const metadata: Metadata = {
-  title: 'HN \u2014 Building Digital Products From Ideas to Scale',
-  description: 'HN is a premium technology company. We design and develop modern websites, applications, AI solutions, SaaS platforms, and custom software for businesses and ambitious ideas.',
+  title: 'HN Tech — Building Digital Products From Ideas to Scale',
+  description: 'HN Tech is a premium technology company. We design and develop modern websites, applications, AI solutions, SaaS platforms, and custom software for businesses and ambitious ideas.',
   openGraph: {
-    title: 'HN \u2014 Building Digital Products From Ideas to Scale',
-    description: 'HN is a premium technology company. We design and develop modern websites, applications, AI solutions, SaaS platforms, and custom software for businesses and ambitious ideas.',
-    url: 'https://hntech.in',
+    title: 'HN Tech — Building Digital Products From Ideas to Scale',
+    description: 'HN Tech is a premium technology company. We design and develop modern websites, applications, AI solutions, SaaS platforms, and custom software for businesses and ambitious ideas.',
+    url: 'https://www.hntech.in',
     type: 'website',
   },
 };

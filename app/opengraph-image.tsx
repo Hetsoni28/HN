@@ -112,7 +112,7 @@ export default function OgImage() {
           }}
         >
           <span style={{ fontSize: '18px', color: 'rgba(255,255,255,0.5)', fontWeight: 600 }}>
-            hntech.in
+            www.hntech.in
           </span>
           <div
             style={{

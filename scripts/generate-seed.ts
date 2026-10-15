@@ -107,9 +107,9 @@ FALLBACK_POSTS.forEach((post) => {
 docs.push({
   _type: 'siteSettings',
   _id: 'siteSettings',
-  title: 'HN Studio',
-  description: 'A digital product studio founded by Het Soni and Neel Patel.',
-  contactEmail: 'het@hntech.in',
+  title: 'HN Tech',
+  description: 'A premium technology company founded by Het Soni, Neel Patel, and Vraj Prajapati.',
+  contactEmail: 'contact.hnsolutions@gmail.com',
   githubUrl: 'https://github.com/Hetsoni28',
 });
 

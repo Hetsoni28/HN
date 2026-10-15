@@ -11,13 +11,13 @@ function OgCard({ accent, title, subtitle, tags }: { accent: string; title: stri
       <div style={{ display: 'flex', flexDirection: 'column', padding: '56px 64px', flex: 1 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: 'auto' }}>
           <div style={{ background: accent, borderRadius: '10px', padding: '8px 18px', fontSize: '16px', fontWeight: 900, color: 'white', letterSpacing: '-0.02em' }}>HN Tech</div>
-          <span style={{ fontSize: '14px', color: '#94A3B8', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase' as const }}>hntech.in</span>
+          <span style={{ fontSize: '14px', color: '#94A3B8', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase' as const }}>www.hntech.in</span>
         </div>
         <div style={{ fontSize: title.length > 30 ? '54px' : '68px', fontWeight: 900, color: '#0F172A', lineHeight: 1.05, letterSpacing: '-0.03em', marginBottom: '20px', maxWidth: '900px' }}>{title}</div>
         <div style={{ fontSize: '22px', color: '#64748B', lineHeight: 1.5, maxWidth: '800px' }}>{subtitle}</div>
       </div>
       <div style={{ borderTop: '1px solid #E2E8F0', padding: '20px 64px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', background: '#F8FAFC' }}>
-        <span style={{ fontSize: '16px', color: '#94A3B8', fontWeight: 600 }}>hntech.in</span>
+        <span style={{ fontSize: '16px', color: '#94A3B8', fontWeight: 600 }}>www.hntech.in</span>
         <div style={{ display: 'flex', gap: '8px' }}>
           {tags.map((tag) => (
             <div key={tag} style={{ background: `${accent}20`, border: `1px solid ${accent}40`, borderRadius: '100px', padding: '6px 14px', fontSize: '13px', fontWeight: 700, color: accent }}>{tag}</div>

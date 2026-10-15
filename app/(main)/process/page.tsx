@@ -4,8 +4,8 @@ import { FadeIn } from '@/components/atoms/fade-in';
 import { Button } from '@/components/atoms/button';
 
 export const metadata: Metadata = {
-  title: 'Our Process — HN',
-  description: 'A transparent 6-step process: Discover, Plan, Design, Build, Launch, Evolve. Know exactly what happens at every stage of your project with HN.',
+  title: 'Our Process — HN Tech',
+  description: 'A transparent 6-step process: Discover, Plan, Design, Build, Launch, Evolve. Know exactly what happens at every stage of your project with HN Tech.',
 };
 
 export default function ProcessPage() {
