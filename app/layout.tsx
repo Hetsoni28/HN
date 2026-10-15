@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from 'next';
 import Script from 'next/script';
 import { spaceGrotesk, plusJakarta } from '@/lib/fonts';
 import '../styles/globals.css';
-import { OrganizationJsonLd, WebSiteJsonLd } from '@/components/molecules/structured-data';
+import { OrganizationJsonLd, WebSiteJsonLd, ProfessionalServiceJsonLd } from '@/components/molecules/structured-data';
 import { SkipLink } from '@/components/atoms/skip-link';
 import { WelcomeManager } from '@/components/welcome/WelcomeManager';
 
@@ -13,28 +13,53 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL && !process.env.NEXT_PUBLIC_SI
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: 'HN Tech — Digital Products From Ideas to Scale',
+    default: 'HN Tech — Best Tech Company for Web Development & Digital Services',
     template: '%s — HN Tech',
   },
-  description: 'HN Tech is a premium technology company. We design and build websites, web apps, SaaS platforms, mobile apps, and AI solutions for ambitious businesses.',
-  keywords: ['HN Tech', 'technology company', 'web development', 'web applications', 'AI solutions', 'SaaS development', 'mobile app development', 'Next.js agency', 'software development India', 'Het Soni', 'Neel Patel', 'Vraj Prajapati'],
+  description: 'Looking for the best tech company for all development? HN Tech delivers top-tier custom web development, SaaS platforms, mobile applications, and AI digital services worldwide.',
+  keywords: [
+    'best tech company for all development',
+    'best web development company',
+    'best digital services company',
+    'top software development company',
+    'custom web development',
+    'SaaS platform development',
+    'mobile app development company',
+    'full stack development agency',
+    'AI solutions and integrations',
+    'Next.js development company',
+    'HN Tech',
+    'Het Soni',
+    'Neel Patel',
+    'Vraj Prajapati',
+  ],
   authors: [{ name: 'Het Soni' }, { name: 'Neel Patel' }, { name: 'Vraj Prajapati' }],
   creator: 'HN Tech',
   publisher: 'HN Tech',
   alternates: { canonical: SITE_URL },
   openGraph: {
     type: 'website', locale: 'en_IN', url: SITE_URL, siteName: 'HN Tech',
-    title: 'HN Tech — Digital Products From Ideas to Scale',
-    description: 'A premium technology company building websites, web apps, SaaS, mobile apps, and AI solutions.',
-    images: [{ url: '/opengraph-image.png', width: 1200, height: 630, alt: 'HN Tech' }],
+    title: 'HN Tech — Best Tech Company for Web Development & Digital Services',
+    description: 'Looking for the best tech company for all development? HN Tech delivers top-tier custom web development, SaaS platforms, mobile applications, and AI digital services worldwide.',
+    images: [{ url: '/opengraph-image.png', width: 1200, height: 630, alt: 'HN Tech — Best Tech Company for Web Development & Digital Services' }],
   },
   twitter: {
     card: 'summary_large_image', site: '@hetsoni', creator: '@hetsoni',
-    title: 'HN Tech — Digital Products From Ideas to Scale',
-    description: 'A premium technology company building websites, web apps, SaaS, mobile apps, and AI solutions.',
+    title: 'HN Tech — Best Tech Company for Web Development & Digital Services',
+    description: 'Looking for the best tech company for all development? HN Tech delivers top-tier custom web development, SaaS platforms, mobile applications, and AI digital services worldwide.',
     images: ['/opengraph-image.png'],
   },
-  robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large' } },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+      'max-video-preview': -1,
+    },
+  },
   verification: { google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION },
 };
 
@@ -73,6 +98,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <SkipLink />
         <OrganizationJsonLd />
         <WebSiteJsonLd />
+        <ProfessionalServiceJsonLd />
         {children}
       </body>
     </html>

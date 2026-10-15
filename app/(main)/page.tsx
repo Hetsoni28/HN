@@ -15,12 +15,24 @@ import { FaqSection }         from '@/components/organisms/faq-section';
 import { FinalCta }           from '@/components/organisms/final-cta';
 import { GithubActivity }     from '@/components/organisms/github-activity';
 
+import { FAQPageJsonLd }       from '@/components/molecules/structured-data';
+
 export const metadata: Metadata = {
-  title: 'HN Tech — Building Digital Products From Ideas to Scale',
-  description: 'HN Tech is a premium technology company. We design and develop modern websites, applications, AI solutions, SaaS platforms, and custom software for businesses and ambitious ideas.',
+  title: 'HN Tech — Best Tech Company for Web Development & Digital Services',
+  description: 'Looking for the best tech company for all development? HN Tech delivers top-tier custom web development, SaaS platforms, mobile applications, and AI digital services worldwide.',
+  keywords: [
+    'best tech company for all development',
+    'best web development company',
+    'best digital services company',
+    'custom software development company',
+    'SaaS platform development',
+    'mobile app development company',
+    'full stack developers India',
+    'Next.js development company',
+  ],
   openGraph: {
-    title: 'HN Tech — Building Digital Products From Ideas to Scale',
-    description: 'HN Tech is a premium technology company. We design and develop modern websites, applications, AI solutions, SaaS platforms, and custom software for businesses and ambitious ideas.',
+    title: 'HN Tech — Best Tech Company for Web Development & Digital Services',
+    description: 'Looking for the best tech company for all development? HN Tech delivers top-tier custom web development, SaaS platforms, mobile applications, and AI digital services worldwide.',
     url: 'https://www.hntech.in',
     type: 'website',
   },
@@ -35,6 +47,7 @@ export default async function Home() {
 
   return (
     <>
+      <FAQPageJsonLd faqs={faqs} />
       <HeroSection />
       <TrustBar />
       <WhatWeBuild />

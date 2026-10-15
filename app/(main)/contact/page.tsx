@@ -6,8 +6,17 @@ import { Breadcrumb } from '@/components/molecules/breadcrumb';
 import { WhatsAppButton } from '@/components/atoms/whatsapp-button';
 
 export const metadata: Metadata = {
-  title: 'Contact — HN Tech',
-  description: 'Start your project with HN Tech. Tell us what you want to build and we\'ll get back to you within 24–48 hours.',
+  title: 'Contact HN Tech — Get a Quote for Web Development & Digital Services',
+  description:
+    'Start your project with HN Tech. Tell us about your web development, SaaS, mobile app, or AI project and get a proposal within 24 hours.',
+  alternates: { canonical: 'https://www.hntech.in/contact' },
+  openGraph: {
+    title: 'Contact HN Tech — Get a Quote for Web Development & Digital Services',
+    description:
+      'Start your project with HN Tech. Tell us about your web development, SaaS, mobile app, or AI project and get a proposal within 24 hours.',
+    url: 'https://www.hntech.in/contact',
+    images: [{ url: '/contact/opengraph-image', width: 1200, height: 630, alt: 'Contact HN Tech' }],
+  },
 };
 
 const CONTACT_DETAILS = [

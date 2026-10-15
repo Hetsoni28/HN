@@ -60,7 +60,7 @@ export function HeroSection() {
               variants={item}
               className="mb-6 text-xs font-bold uppercase tracking-[0.3em] text-[#0051FF]"
             >
-              Tech Company
+              Best Tech &amp; Digital Services Company
             </motion.p>
 
             {/* Headline */}
@@ -78,8 +78,7 @@ export function HeroSection() {
               variants={item}
               className="mt-6 max-w-lg text-base leading-7 text-slate-500 sm:text-lg sm:leading-8"
             >
-              HN designs and develops modern websites, applications, AI solutions,
-              SaaS platforms, and custom software for businesses and ambitious ideas.
+              HN Tech is your full-stack technology and digital services partner. We architect and build high-performance websites, custom SaaS platforms, mobile applications, and AI solutions for ambitious businesses worldwide.
             </motion.p>
 
             {/* CTAs */}

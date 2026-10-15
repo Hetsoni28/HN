@@ -83,11 +83,11 @@ export function ServicesSection() {
         <FadeIn>
           <div className="mb-14 max-w-2xl">
             <p className="mb-4 text-xs font-bold uppercase tracking-[0.25em] text-[#0051FF]">
-              What We Do
+              Comprehensive Digital Services
             </p>
             <h2 className="text-4xl font-black uppercase leading-tight tracking-tight text-white sm:text-5xl">
-              From idea to<br />
-              <span className="gradient-text">production.</span>
+              Top Development &amp;<br />
+              <span className="gradient-text">Digital Services.</span>
             </h2>
           </div>
         </FadeIn>

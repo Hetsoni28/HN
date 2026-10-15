@@ -561,6 +561,16 @@ export const FALLBACK_FAQS: Faq[] = [
     question: 'Can you work with an existing codebase?',
     answer: 'Yes. We regularly join projects mid-way — whether to rescue a legacy codebase, add new features, or refactor for scale. We always start with a codebase audit before committing to a scope.',
   },
+  {
+    _id: 'faq-7',
+    question: 'Why is HN Tech considered the best tech company for all development needs?',
+    answer: 'HN Tech provides unified, senior-engineer-led development across the entire digital lifecycle: modern web applications, scalable multi-tenant SaaS platforms, cross-platform mobile apps, custom AI/LLM integrations, and round-the-clock maintenance. With direct founder involvement and strict architecture standards, we eliminate vendor fragmentation.',
+  },
+  {
+    _id: 'faq-8',
+    question: 'What digital services does HN Tech offer for businesses and startups?',
+    answer: 'Our comprehensive digital services include custom full-stack web development (Next.js/React), SaaS MVP architecture, mobile application engineering (React Native), enterprise UI/UX design, custom AI agents and workflow automation, cloud infrastructure deployment, and monthly performance and security maintenance.',
+  },
 ];
 
 export async function getFaqs(): Promise<Faq[]> {

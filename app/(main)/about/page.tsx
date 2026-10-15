@@ -6,8 +6,17 @@ import { FadeIn } from '@/components/atoms/fade-in';
 import { Button } from '@/components/atoms/button';
 
 export const metadata: Metadata = {
-  title: 'About — HN Tech',
-  description: 'Meet the HN Tech team — Het Soni and Neel Patel (Founders), Vraj Prajapati (Co-Founder), and Heer Soni (Marketing & SMM Manager). We build websites, web apps, SaaS platforms, and AI solutions.',
+  title: 'About HN Tech — Best Tech Company for Web Development & Digital Services',
+  description:
+    'Meet the engineering and leadership team behind HN Tech. Het Soni, Neel Patel, Vraj Prajapati, and Heer Soni — building world-class websites, web apps, SaaS platforms, and AI solutions.',
+  alternates: { canonical: 'https://www.hntech.in/about' },
+  openGraph: {
+    title: 'About HN Tech — Best Tech Company for Web Development & Digital Services',
+    description:
+      'Meet the engineering and leadership team behind HN Tech. Building world-class websites, web apps, SaaS platforms, and AI digital services.',
+    url: 'https://www.hntech.in/about',
+    images: [{ url: '/about/opengraph-image', width: 1200, height: 630, alt: 'About HN Tech' }],
+  },
 };
 
 export default async function AboutPage() {

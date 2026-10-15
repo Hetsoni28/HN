@@ -49,9 +49,9 @@ export function WhatWeBuild() {
       <div className="container">
         <FadeIn>
           <SectionHeading
-            eyebrow="What We Build"
-            title="Full-stack expertise, end to end."
-            description="From the first sketch to a live product used by thousands — we cover every layer of the stack."
+            eyebrow="All-In-One Tech & Development"
+            title="The Best Tech Company for All Your Digital Development Needs."
+            description="From enterprise web architecture and custom SaaS platforms to native mobile apps and AI solutions — we cover every layer of the modern tech stack."
           />
         </FadeIn>
 

@@ -6,8 +6,37 @@ import { Button } from '@/components/atoms/button';
 import { ServiceIcon } from '@/components/atoms/service-icon';
 
 export const metadata: Metadata = {
-  title: 'Services — HN Tech',
-  description: 'Full-stack digital services — websites, web apps, mobile apps, AI solutions, and SaaS platforms from HN Tech.',
+  title: 'Best Web Development & Digital Services Company — HN Tech',
+  description:
+    'HN Tech is the best tech company for all development needs. Full-stack custom web development, SaaS platforms, mobile apps, and enterprise AI digital services.',
+  keywords: [
+    'best web development company',
+    'best tech company for all development',
+    'best digital services company',
+    'custom web development services',
+    'saas development company',
+    'mobile app development company',
+    'full stack tech services',
+    'HN Tech services',
+  ],
+  alternates: {
+    canonical: 'https://www.hntech.in/services',
+  },
+  openGraph: {
+    title: 'Best Web Development & Digital Services Company — HN Tech',
+    description:
+      'HN Tech is the best tech company for all development needs. Full-stack custom web development, SaaS platforms, mobile apps, and enterprise AI digital services.',
+    url: 'https://www.hntech.in/services',
+    type: 'website',
+    images: [
+      {
+        url: '/services/opengraph-image',
+        width: 1200,
+        height: 630,
+        alt: 'Best Web Development & Digital Services Company — HN Tech',
+      },
+    ],
+  },
 };
 
 export default async function ServicesPage() {
@@ -19,13 +48,15 @@ export default async function ServicesPage() {
       <section className="section bg-[#EEF0FF]">
         <div className="container text-center">
           <FadeIn>
-            <h1 className="mx-auto mt-5 max-w-3xl text-5xl font-bold leading-tight md:text-6xl">
-              Everything you need to go from{' '}
-              <span className="gradient-text">idea to launch.</span>
+            <p className="text-xs font-bold uppercase tracking-[0.25em] text-[#0051FF]">
+              Best Tech &amp; Digital Services
+            </p>
+            <h1 className="mx-auto mt-4 max-w-4xl text-5xl font-bold leading-tight md:text-6xl">
+              The Best Tech Company for{' '}
+              <span className="gradient-text">All Development.</span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-slate-500">
-              HN covers the full stack — strategy, design, engineering, and support.
-              Pick the service you need or let us scope the right solution for your goals.
+              HN Tech covers the entire digital ecosystem — high-performance web development, custom SaaS engineering, cross-platform mobile apps, and enterprise AI solutions.
             </p>
           </FadeIn>
         </div>

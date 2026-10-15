@@ -181,3 +181,138 @@ export function ServiceJsonLd({
     />
   );
 }
+
+/* ── ProfessionalService (LocalBusiness & Tech Agency) ── */
+export function ProfessionalServiceJsonLd() {
+  const data = {
+    '@context': 'https://schema.org',
+    '@type': 'ProfessionalService',
+    '@id': `${SITE_URL}/#service-agency`,
+    name: 'HN Tech — Best Tech Company for Web Development & Digital Services',
+    alternateName: ['HN Tech', 'HN Development', 'HN Studio'],
+    url: SITE_URL,
+    logo: `${SITE_URL}/opengraph-image.png`,
+    image: `${SITE_URL}/opengraph-image.png`,
+    description: 'HN Tech is the premier tech company delivering full-stack custom web development, SaaS platforms, mobile applications, and AI digital services for businesses worldwide.',
+    priceRange: '₹₹ - ₹₹₹₹',
+    telephone: '+917990743263',
+    email: 'contact.hnsolutions@gmail.com',
+    address: {
+      '@type': 'PostalAddress',
+      addressRegion: 'Gujarat',
+      addressCountry: 'IN',
+    },
+    geo: {
+      '@type': 'GeoCoordinates',
+      latitude: 23.0225,
+      longitude: 72.5714,
+    },
+    openingHoursSpecification: [
+      {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+        opens: '09:00',
+        closes: '20:00',
+      },
+    ],
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: '4.9',
+      reviewCount: '52',
+      bestRating: '5',
+      worstRating: '1',
+    },
+    areaServed: [
+      { '@type': 'Country', name: 'India' },
+      { '@type': 'Country', name: 'United States' },
+      { '@type': 'Country', name: 'United Kingdom' },
+      { '@type': 'Country', name: 'United Arab Emirates' },
+      { '@type': 'Country', name: 'Worldwide' },
+    ],
+    hasOfferCatalog: {
+      '@type': 'OfferCatalog',
+      name: 'Full Stack Tech & Digital Services',
+      itemListElement: [
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'Custom Web Development',
+            description: 'High-performance Next.js and React web development, modern animations, and SEO-optimized web architecture.',
+            url: `${SITE_URL}/services/websites`,
+          },
+        },
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'Web Applications & SaaS Platforms',
+            description: 'Scalable multi-tenant SaaS engineering, cloud databases, user authentication, and Stripe billing integrations.',
+            url: `${SITE_URL}/services/saas-platforms`,
+          },
+        },
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'Mobile App Development',
+            description: 'Cross-platform iOS and Android mobile app development with React Native, smooth gesture animations, and offline sync.',
+            url: `${SITE_URL}/services/mobile-applications`,
+          },
+        },
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'AI Solutions & LLM Integrations',
+            description: 'Custom AI agents, intelligent workflows, LLM fine-tuning, and automated enterprise data pipelines.',
+            url: `${SITE_URL}/services/ai-solutions`,
+          },
+        },
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'Website Maintenance & Speed Optimization',
+            description: '24/7 uptime monitoring, security patching, Core Web Vitals optimization, and continuous product evolution.',
+            url: `${SITE_URL}/maintenance`,
+          },
+        },
+      ],
+    },
+  };
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+    />
+  );
+}
+
+/* ── FAQPage (Rich Google Snippet for FAQs) ── */
+export function FAQPageJsonLd({
+  faqs,
+}: {
+  faqs?: { question: string; answer: string }[];
+}) {
+  if (!faqs || faqs.length === 0) return null;
+  const data = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((f) => ({
+      '@type': 'Question',
+      name: f.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: f.answer,
+      },
+    })),
+  };
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+    />
+  );
+}
+
