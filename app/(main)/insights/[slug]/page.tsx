@@ -19,12 +19,17 @@ export async function generateMetadata({
   const { slug } = await params;
   const post = await getPostBySlug(slug);
   if (!post) return { title: 'Article not found' };
+  const rawDesc = post.seoDescription ?? post.excerpt ?? `${post.title} article by HN Tech.`;
+  const description = rawDesc.length > 155 ? `${rawDesc.slice(0, 152).trim()}...` : rawDesc;
   return {
     title: post.seoTitle ?? post.title,
-    description: post.seoDescription ?? post.excerpt,
+    description,
+    alternates: {
+      canonical: `https://www.hntech.in/insights/${slug}`,
+    },
     openGraph: {
-      title: post.title,
-      description: post.excerpt,
+      title: `${post.title} | HN Tech Insights`,
+      description,
       type: 'article',
       publishedTime: post.publishedAt,
       authors: post.author ? [post.author.name] : undefined,

@@ -193,7 +193,7 @@ export function ProfessionalServiceJsonLd() {
     url: SITE_URL,
     logo: `${SITE_URL}/opengraph-image.png`,
     image: `${SITE_URL}/opengraph-image.png`,
-    description: 'HN Tech is the premier tech company delivering full-stack custom web development, SaaS platforms, mobile applications, and AI digital services for businesses worldwide.',
+    description: 'HN Tech is the best tech company for all development: custom websites, SaaS platforms, mobile apps, and scalable AI digital services for businesses.',
     priceRange: '₹₹ - ₹₹₹₹',
     telephone: '+917990743263',
     email: 'contact.hnsolutions@gmail.com',

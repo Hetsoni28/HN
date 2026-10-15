@@ -6,9 +6,9 @@ import { Button } from '@/components/atoms/button';
 import { ServiceIcon } from '@/components/atoms/service-icon';
 
 export const metadata: Metadata = {
-  title: 'Best Web Development & Digital Services Company — HN Tech',
+  title: 'Web & App Development Services',
   description:
-    'HN Tech is the best tech company for all development needs. Full-stack custom web development, SaaS platforms, mobile apps, and enterprise AI digital services.',
+    'Explore HN Tech development services: high-performance websites, custom SaaS platforms, native mobile apps, and enterprise AI automation solutions.',
   keywords: [
     'best web development company',
     'best tech company for all development',
@@ -23,9 +23,9 @@ export const metadata: Metadata = {
     canonical: 'https://www.hntech.in/services',
   },
   openGraph: {
-    title: 'Best Web Development & Digital Services Company — HN Tech',
+    title: 'Web & App Development Services | HN Tech',
     description:
-      'HN Tech is the best tech company for all development needs. Full-stack custom web development, SaaS platforms, mobile apps, and enterprise AI digital services.',
+      'Explore HN Tech development services: high-performance websites, custom SaaS platforms, native mobile apps, and enterprise AI automation solutions.',
     url: 'https://www.hntech.in/services',
     type: 'website',
     images: [
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
         url: '/services/opengraph-image',
         width: 1200,
         height: 630,
-        alt: 'Best Web Development & Digital Services Company — HN Tech',
+        alt: 'Web & App Development Services — HN Tech',
       },
     ],
   },

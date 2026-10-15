@@ -2,8 +2,16 @@ import type { Metadata } from 'next';
 import { LegalPageLayout } from '@/components/organisms/legal-page';
 
 export const metadata: Metadata = {
-  title: 'Cookie Policy — HN Tech',
-  description: 'Information about how HN Tech uses cookies on its website.',
+  title: 'Cookie Policy',
+  description:
+    'Learn how HN Tech uses cookies to enhance browsing experiences and maintain website security. Read our full cookie policy and management options.',
+  alternates: { canonical: 'https://www.hntech.in/cookie-policy' },
+  openGraph: {
+    title: 'Cookie Policy | HN Tech',
+    description:
+      'Learn how HN Tech uses cookies to enhance browsing experiences and maintain website security. Read our full cookie policy and management options.',
+    url: 'https://www.hntech.in/cookie-policy',
+  },
 };
 
 export default function CookiePolicyPage() {

@@ -6,8 +6,16 @@ import { Breadcrumb } from '@/components/molecules/breadcrumb';
 import { InsightsGrid } from '@/components/organisms/insights-grid';
 
 export const metadata: Metadata = {
-  title: 'Insights — HN Tech',
-  description: 'Practical articles on AI, SaaS, web development, product thinking, and digital products — written by the engineers at HN Tech.',
+  title: 'Tech & Engineering Insights',
+  description:
+    'Practical articles on web development, SaaS architecture, Next.js, and AI automation — written by the senior engineers and founders at HN Tech.',
+  alternates: { canonical: 'https://www.hntech.in/insights' },
+  openGraph: {
+    title: 'Tech & Engineering Insights | HN Tech',
+    description:
+      'Practical articles on web development, SaaS architecture, Next.js, and AI automation — written by the senior engineers and founders at HN Tech.',
+    url: 'https://www.hntech.in/insights',
+  },
 };
 
 export default async function InsightsPage() {

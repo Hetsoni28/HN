@@ -38,10 +38,19 @@ export async function generateMetadata({
   }
   const p = await getProjectBySlug(slug);
   if (!p) return { title: 'Project not found' };
+  const rawDesc = p.seoDescription ?? p.shortDescription ?? `${p.title} case study by HN Tech.`;
+  const description = rawDesc.length > 155 ? `${rawDesc.slice(0, 152).trim()}...` : rawDesc;
   return {
     title: p.seoTitle ?? p.title,
-    description: p.seoDescription ?? p.shortDescription,
-    openGraph: { title: p.title, description: p.shortDescription },
+    description,
+    alternates: {
+      canonical: `https://www.hntech.in/work/${slug}`,
+    },
+    openGraph: {
+      title: `${p.title} | Case Study`,
+      description,
+      url: `https://www.hntech.in/work/${slug}`,
+    },
   };
 }
 

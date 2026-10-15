@@ -6,8 +6,16 @@ import { TransformationSection } from '@/components/organisms/transformation-sec
 import { WorkFilter } from './work-filter';
 
 export const metadata: Metadata = {
-  title: 'Our Work — HN Tech',
-  description: 'Explore the HN Tech portfolio of scalable web applications, SaaS platforms, and AI solutions.',
+  title: 'Portfolio & Case Studies',
+  description:
+    'Explore HN Tech portfolio of featured projects: custom web applications, multi-tenant SaaS platforms, e-commerce, and enterprise AI implementations.',
+  alternates: { canonical: 'https://www.hntech.in/work' },
+  openGraph: {
+    title: 'Portfolio & Case Studies | HN Tech',
+    description:
+      'Explore HN Tech portfolio of featured projects: custom web applications, multi-tenant SaaS platforms, e-commerce, and enterprise AI implementations.',
+    url: 'https://www.hntech.in/work',
+  },
 };
 
 export default async function WorkPage() {

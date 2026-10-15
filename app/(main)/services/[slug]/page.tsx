@@ -26,9 +26,19 @@ export async function generateMetadata({
   const { slug } = await params;
   const service = await getServiceBySlug(slug);
   if (!service) return { title: 'Service not found' };
+  const rawDesc = service.shortDescription ?? service.tagline ?? `${service.title} solutions engineered by HN Tech.`;
+  const description = rawDesc.length > 155 ? `${rawDesc.slice(0, 152).trim()}...` : rawDesc;
   return {
-    title: service.title,
-    description: service.tagline ?? service.shortDescription,
+    title: `${service.title} Services`,
+    description,
+    alternates: {
+      canonical: `https://www.hntech.in/services/${slug}`,
+    },
+    openGraph: {
+      title: `${service.title} Services | HN Tech`,
+      description,
+      url: `https://www.hntech.in/services/${slug}`,
+    },
   };
 }
 

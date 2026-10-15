@@ -4,17 +4,24 @@ import Link from 'next/link';
 import { FadeIn } from '@/components/atoms/fade-in';
 import { ReferralForm } from './referral-form';
 
-/* ── Metadata ── */
 export const metadata: Metadata = {
-  title: 'Refer a Friend, Earn 10% | HN Referral Program',
+  title: 'Refer & Earn 10% Reward',
   description:
-    'Know someone who needs a website or app? Refer them to HN and earn 10% when they sign a contract. No limits — refer as many as you like.',
+    'Know someone who needs a website or app? Refer them to HN Tech and earn 10% when they sign a contract. No limits — refer as many friends as you like.',
   keywords: [
     'referral program',
     'earn money',
     'refer a friend',
     'web development referral',
+    'HN Tech rewards',
   ],
+  alternates: { canonical: 'https://www.hntech.in/referral' },
+  openGraph: {
+    title: 'Refer & Earn 10% Reward | HN Tech',
+    description:
+      'Know someone who needs a website or app? Refer them to HN Tech and earn 10% when they sign a contract. No limits — refer as many friends as you like.',
+    url: 'https://www.hntech.in/referral',
+  },
 };
 
 /* ── Static data ── */

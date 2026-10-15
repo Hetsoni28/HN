@@ -3,8 +3,16 @@ import { ShowreelPlayer } from '@/components/organisms/showreel-player';
 import { FadeIn } from '@/components/atoms/fade-in';
 
 export const metadata: Metadata = {
-  title: 'Our Vision & Work | HN Showreel',
-  description: 'See how HN transforms messy ideas into world-class software. A 40-second cinematic overview of our work, process, and vision.',
+  title: 'Cinematic Showreel',
+  description:
+    'Watch how HN Tech engineers world-class software. A cinematic showreel exploring our product development standards, modern design, and engineering vision.',
+  alternates: { canonical: 'https://www.hntech.in/showreel' },
+  openGraph: {
+    title: 'Cinematic Showreel | HN Tech',
+    description:
+      'Watch how HN Tech engineers world-class software. A cinematic showreel exploring our product development standards, modern design, and engineering vision.',
+    url: 'https://www.hntech.in/showreel',
+  },
 };
 
 export default function ShowreelPage() {

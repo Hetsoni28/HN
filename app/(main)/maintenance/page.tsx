@@ -5,14 +5,22 @@ import { FadeIn } from '@/components/atoms/fade-in';
 import { Button } from '@/components/atoms/button';
 
 export const metadata: Metadata = {
-  title: 'Website Maintenance Plans | HN — Keep Your Product Running Perfectly',
+  title: 'Website & App Maintenance Plans',
   description:
-    'Bi-monthly website and app maintenance plans from HN. We handle updates, security patches, performance monitoring, and bug fixes so you can focus on your business.',
+    'Website and app maintenance plans by HN Tech. 24/7 uptime monitoring, security patching, performance tuning, and fast bug fixes for your products.',
   keywords: [
     'website maintenance plan',
-    'bi-monthly website support',
+    'monthly website support',
     'web app maintenance India',
+    'software security updates',
   ],
+  alternates: { canonical: 'https://www.hntech.in/maintenance' },
+  openGraph: {
+    title: 'Website & App Maintenance Plans | HN Tech',
+    description:
+      'Website and app maintenance plans by HN Tech. 24/7 uptime monitoring, security patching, performance tuning, and fast bug fixes for your products.',
+    url: 'https://www.hntech.in/maintenance',
+  },
 };
 
 /* ── Data ── */

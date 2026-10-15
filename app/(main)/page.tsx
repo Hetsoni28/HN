@@ -18,8 +18,11 @@ import { GithubActivity }     from '@/components/organisms/github-activity';
 import { FAQPageJsonLd }       from '@/components/molecules/structured-data';
 
 export const metadata: Metadata = {
-  title: 'HN Tech — Best Tech Company for Web Development & Digital Services',
-  description: 'Looking for the best tech company for all development? HN Tech delivers top-tier custom web development, SaaS platforms, mobile applications, and AI digital services worldwide.',
+  title: {
+    absolute: 'HN Tech — Best Tech Company for Web Development',
+  },
+  description:
+    'HN Tech is the best tech company for all development: custom websites, SaaS platforms, mobile apps, and scalable AI digital services for businesses.',
   keywords: [
     'best tech company for all development',
     'best web development company',
@@ -30,9 +33,13 @@ export const metadata: Metadata = {
     'full stack developers India',
     'Next.js development company',
   ],
+  alternates: {
+    canonical: 'https://www.hntech.in',
+  },
   openGraph: {
-    title: 'HN Tech — Best Tech Company for Web Development & Digital Services',
-    description: 'Looking for the best tech company for all development? HN Tech delivers top-tier custom web development, SaaS platforms, mobile applications, and AI digital services worldwide.',
+    title: 'HN Tech — Best Tech Company for Web Development',
+    description:
+      'HN Tech is the best tech company for all development: custom websites, SaaS platforms, mobile apps, and scalable AI digital services for businesses.',
     url: 'https://www.hntech.in',
     type: 'website',
   },

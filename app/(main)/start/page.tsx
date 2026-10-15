@@ -4,9 +4,16 @@ import { FadeIn } from '@/components/atoms/fade-in';
 import { OnboardingChecklist } from './onboarding-checklist';
 
 export const metadata: Metadata = {
-  title: 'Getting Started | HN — What to Prepare Before We Begin',
+  title: 'Project Onboarding Checklist',
   description:
-    'A complete onboarding checklist for new HN clients. Know exactly what to prepare before your project kicks off.',
+    'A complete onboarding checklist for new HN Tech clients. Prepare brand assets, project requirements, and technical access before development kicks off.',
+  alternates: { canonical: 'https://www.hntech.in/start' },
+  openGraph: {
+    title: 'Project Onboarding Checklist | HN Tech',
+    description:
+      'A complete onboarding checklist for new HN Tech clients. Prepare brand assets, project requirements, and technical access before development kicks off.',
+    url: 'https://www.hntech.in/start',
+  },
 };
 
 export default function StartPage() {

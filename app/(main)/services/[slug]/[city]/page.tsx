@@ -32,11 +32,9 @@ export async function generateMetadata({
     return { title: 'Page not found' };
   }
 
-  const title       = `${serviceName} in ${cityName} | HN Tech`;
-  const description =
-    `HN Tech delivers expert ${serviceName} in ${cityName}, ${cityData.state}. ` +
-    `We build fast, scalable, production-ready products — on time and on budget. ` +
-    `Get a free proposal within 48 hours.`;
+  const title = `${serviceName} in ${cityName}`;
+  const rawDesc = `Expert ${serviceName} in ${cityName}, ${cityData.state} by HN Tech. We engineer high-performance websites, apps, and SaaS platforms. Free proposal in 24h.`;
+  const description = rawDesc.length > 155 ? `${rawDesc.slice(0, 152).trim()}...` : rawDesc;
 
   return {
     title,
@@ -50,12 +48,12 @@ export async function generateMetadata({
       'HN Tech',
     ],
     openGraph: {
-      title,
+      title: `${title} | HN Tech`,
       description,
       type: 'website',
     },
     alternates: {
-      canonical: `/services/${slug}/${city}`,
+      canonical: `https://www.hntech.in/services/${slug}/${city}`,
     },
   };
 }

@@ -3,8 +3,16 @@ import { BriefGenerator } from '@/components/organisms/brief-generator';
 import { FadeIn } from '@/components/atoms/fade-in';
 
 export const metadata: Metadata = {
-  title: 'Project Brief Generator — HN Tech',
-  description: 'Generate a comprehensive project strategy brief in 60 seconds.',
+  title: 'Project Brief Generator',
+  description:
+    'Answer 5 quick questions and instantly generate a comprehensive architectural and strategy brief for your digital product with the HN Tech generator.',
+  alternates: { canonical: 'https://www.hntech.in/brief' },
+  openGraph: {
+    title: 'Project Brief Generator | HN Tech',
+    description:
+      'Answer 5 quick questions and instantly generate a comprehensive architectural and strategy brief for your digital product with the HN Tech generator.',
+    url: 'https://www.hntech.in/brief',
+  },
 };
 
 export default function BriefPage() {

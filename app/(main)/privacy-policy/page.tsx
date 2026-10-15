@@ -2,8 +2,16 @@ import type { Metadata } from 'next';
 import { LegalPageLayout } from '@/components/organisms/legal-page';
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy — HN Tech',
-  description: 'How HN Tech collects, uses, and protects your personal information.',
+  title: 'Privacy Policy',
+  description:
+    'Read the HN Tech Privacy Policy. Understand how we collect, safeguard, and handle your data and project inquiries with total transparency.',
+  alternates: { canonical: 'https://www.hntech.in/privacy-policy' },
+  openGraph: {
+    title: 'Privacy Policy | HN Tech',
+    description:
+      'Read the HN Tech Privacy Policy. Understand how we collect, safeguard, and handle your data and project inquiries with total transparency.',
+    url: 'https://www.hntech.in/privacy-policy',
+  },
 };
 
 export default function PrivacyPolicyPage() {

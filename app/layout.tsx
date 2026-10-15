@@ -13,10 +13,11 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL && !process.env.NEXT_PUBLIC_SI
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: 'HN Tech — Best Tech Company for Web Development & Digital Services',
-    template: '%s — HN Tech',
+    default: 'HN Tech — Best Tech Company for Web Development',
+    template: '%s | HN Tech',
   },
-  description: 'Looking for the best tech company for all development? HN Tech delivers top-tier custom web development, SaaS platforms, mobile applications, and AI digital services worldwide.',
+  description:
+    'HN Tech is the best tech company for all development: custom websites, SaaS platforms, mobile apps, and scalable AI digital services for businesses.',
   keywords: [
     'best tech company for all development',
     'best web development company',
@@ -39,14 +40,16 @@ export const metadata: Metadata = {
   alternates: { canonical: SITE_URL },
   openGraph: {
     type: 'website', locale: 'en_IN', url: SITE_URL, siteName: 'HN Tech',
-    title: 'HN Tech — Best Tech Company for Web Development & Digital Services',
-    description: 'Looking for the best tech company for all development? HN Tech delivers top-tier custom web development, SaaS platforms, mobile applications, and AI digital services worldwide.',
+    title: 'HN Tech — Best Tech Company for Web Development',
+    description:
+      'HN Tech is the best tech company for all development: custom websites, SaaS platforms, mobile apps, and scalable AI digital services for businesses.',
     images: [{ url: '/opengraph-image.png', width: 1200, height: 630, alt: 'HN Tech — Best Tech Company for Web Development & Digital Services' }],
   },
   twitter: {
     card: 'summary_large_image', site: '@hetsoni', creator: '@hetsoni',
-    title: 'HN Tech — Best Tech Company for Web Development & Digital Services',
-    description: 'Looking for the best tech company for all development? HN Tech delivers top-tier custom web development, SaaS platforms, mobile applications, and AI digital services worldwide.',
+    title: 'HN Tech — Best Tech Company for Web Development',
+    description:
+      'HN Tech is the best tech company for all development: custom websites, SaaS platforms, mobile apps, and scalable AI digital services for businesses.',
     images: ['/opengraph-image.png'],
   },
   robots: {

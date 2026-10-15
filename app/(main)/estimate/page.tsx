@@ -5,8 +5,16 @@ import { Breadcrumb } from '@/components/molecules/breadcrumb';
 import { CostEstimator } from '@/components/organisms/cost-estimator';
 
 export const metadata: Metadata = {
-  title: 'Project Cost Estimator — HN Tech',
-  description: 'Get an instant, realistic budget estimate from HN Tech for your next web or mobile app project.',
+  title: 'Project Cost Estimator',
+  description:
+    'Calculate realistic development budgets for websites, SaaS platforms, and mobile apps with the instant HN Tech interactive project cost estimator.',
+  alternates: { canonical: 'https://www.hntech.in/estimate' },
+  openGraph: {
+    title: 'Project Cost Estimator | HN Tech',
+    description:
+      'Calculate realistic development budgets for websites, SaaS platforms, and mobile apps with the instant HN Tech interactive project cost estimator.',
+    url: 'https://www.hntech.in/estimate',
+  },
 };
 
 export default function EstimatePage() {

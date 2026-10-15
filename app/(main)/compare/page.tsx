@@ -3,9 +3,9 @@ import { FadeIn } from '@/components/atoms/fade-in';
 import { Button } from '@/components/atoms/button';
 
 export const metadata: Metadata = {
-  title: 'HN vs Freelancer vs Big Agency | Which is Right for You?',
+  title: 'Compare: HN Tech vs Freelancers vs Agencies',
   description:
-    'Comparing HN Tech against hiring a freelancer or a big agency. See quality, cost, accountability, timelines, and hidden costs side-by-side before you decide.',
+    'Compare HN Tech against hiring a freelancer or big agency across code quality, total cost, accountability, delivery speed, and long-term maintenance.',
   keywords: [
     'hire freelancer vs agency',
     'HN vs freelancer vs agency',
@@ -17,10 +17,12 @@ export const metadata: Metadata = {
     'best way to build a web app',
     'hire developers India',
   ],
+  alternates: { canonical: 'https://www.hntech.in/compare' },
   openGraph: {
-    title: 'HN vs Freelancer vs Big Agency | Which is Right for You?',
+    title: 'Compare: HN Tech vs Freelancers vs Agencies | HN Tech',
     description:
-      'Stop guessing. Compare HN, freelancers, and big agencies across quality, cost, timelines, accountability, and more.',
+      'Compare HN Tech against hiring a freelancer or big agency across code quality, total cost, accountability, delivery speed, and long-term maintenance.',
+    url: 'https://www.hntech.in/compare',
     type: 'website',
   },
 };

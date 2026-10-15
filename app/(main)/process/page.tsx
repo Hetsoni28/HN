@@ -4,8 +4,16 @@ import { FadeIn } from '@/components/atoms/fade-in';
 import { Button } from '@/components/atoms/button';
 
 export const metadata: Metadata = {
-  title: 'Our Process — HN Tech',
-  description: 'A transparent 6-step process: Discover, Plan, Design, Build, Launch, Evolve. Know exactly what happens at every stage of your project with HN Tech.',
+  title: 'How We Build Products',
+  description:
+    'A transparent 6-step process: Discover, Plan, Design, Build, Launch, Evolve. Know exactly what happens at every stage of your project with HN Tech.',
+  alternates: { canonical: 'https://www.hntech.in/process' },
+  openGraph: {
+    title: 'How We Build Products | HN Tech',
+    description:
+      'A transparent 6-step process: Discover, Plan, Design, Build, Launch, Evolve. Know exactly what happens at every stage of your project with HN Tech.',
+    url: 'https://www.hntech.in/process',
+  },
 };
 
 export default function ProcessPage() {
