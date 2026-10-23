@@ -31,16 +31,6 @@ export function OrganizationJsonLd() {
         ],
       },
       { '@type': 'Person', name: 'Neel Patel', jobTitle: 'Founder & Web Developer' },
-      {
-        '@type': 'Person',
-        name: 'Vraj Prajapati',
-        jobTitle: 'Co-Founder & Software Engineer',
-        telephone: '+918141688775',
-        sameAs: [
-          'https://github.com/Vrajprajapati2708',
-          'https://www.linkedin.com/in/prajapati-vraj',
-        ],
-      },
     ],
     address: {
       '@type': 'PostalAddress',

@@ -8,12 +8,12 @@ import { Button } from '@/components/atoms/button';
 export const metadata: Metadata = {
   title: 'About Our Team',
   description:
-    'Meet the team behind HN Tech: Het Soni, Neel Patel, Vraj Prajapati & Heer Soni. Senior engineers building enterprise websites, SaaS apps, and AI solutions.',
+    'Meet the team behind HN Tech: Het Soni, Neel Patel & Heer Soni. Senior engineers building enterprise websites, SaaS apps, and AI solutions.',
   alternates: { canonical: 'https://www.hntech.in/about' },
   openGraph: {
     title: 'About Our Team | HN Tech',
     description:
-      'Meet the team behind HN Tech: Het Soni, Neel Patel, Vraj Prajapati & Heer Soni. Senior engineers building enterprise websites, SaaS apps, and AI solutions.',
+      'Meet the team behind HN Tech: Het Soni, Neel Patel & Heer Soni. Senior engineers building enterprise websites, SaaS apps, and AI solutions.',
     url: 'https://www.hntech.in/about',
     images: [{ url: '/about/opengraph-image', width: 1200, height: 630, alt: 'About HN Tech' }],
   },

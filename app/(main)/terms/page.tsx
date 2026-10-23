@@ -26,7 +26,7 @@ export default function TermsPage() {
         {
           heading: '1. About HN Tech',
           content: [
-            'HN Tech is a technology company based in Gujarat, India, founded by Het Soni, Neel Patel, and Vraj Prajapati. We provide web development, web app development, SaaS development, mobile app development, AI integration, and digital product design services.',
+            'HN Tech is a technology company based in Gujarat, India, founded by Het Soni and Neel Patel. We provide web development, web app development, SaaS development, mobile app development, AI integration, and digital product design services.',
             'For any queries, contact us at contact.hnsolutions@gmail.com or via WhatsApp at +91 79907 43263.',
           ],
         },
