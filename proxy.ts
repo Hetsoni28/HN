@@ -29,19 +29,19 @@ function edgeRateLimit(ip: string, limit = 10, windowMs = 60_000): boolean {
 function buildCSP(isDev: boolean): string {
   const directives: Record<string, string> = {
     'default-src':     "'self'",
-    'script-src':      "'self' 'unsafe-inline' 'unsafe-eval'",
+    'script-src':      "'self' 'unsafe-inline' 'unsafe-eval' https://*.googletagmanager.com https://*.google-analytics.com https://*.analytics.google.com https://tagassistant.google.com",
     'style-src':       "'self' 'unsafe-inline'",
-    'img-src':         "'self' data: blob: https://cdn.sanity.io",
+    'img-src':         "'self' data: blob: https://cdn.sanity.io https://*.google-analytics.com https://*.googletagmanager.com https://*.google.com https://*.google.co.in",
     'media-src':       "'self' data: blob:",
     'font-src':        "'self' data:",
     'connect-src':     isDev
-      ? "'self' ws: wss: http: https: https://cdn.sanity.io https://*.api.sanity.io https://api.resend.com"
-      : "'self' https://cdn.sanity.io https://*.api.sanity.io https://api.resend.com",
-    'frame-src':       "'none'",
+      ? "'self' ws: wss: http: https: https://cdn.sanity.io https://*.api.sanity.io https://api.resend.com https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://tagassistant.google.com"
+      : "'self' https://cdn.sanity.io https://*.api.sanity.io https://api.resend.com https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://tagassistant.google.com",
+    'frame-src':       "'self' https://tagassistant.google.com https://www.googletagmanager.com",
     'object-src':      "'none'",
     'base-uri':        "'self'",
     'form-action':     "'self'",
-    'frame-ancestors': "'none'",
+    'frame-ancestors': "'self' https://tagassistant.google.com",
   };
 
   // Only upgrade insecure requests on production HTTPS deployments
@@ -99,7 +99,7 @@ export function proxy(request: NextRequest) {
     headers.set('Strict-Transport-Security', 'max-age=63072000; includeSubDomains; preload');
   }
   headers.set('X-Content-Type-Options', 'nosniff');
-  headers.set('X-Frame-Options', 'DENY');
+  headers.set('X-Frame-Options', 'SAMEORIGIN');
   headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
   headers.set('Permissions-Policy', 'camera=(), microphone=(), geolocation=(), payment=()');
   headers.set('X-XSS-Protection', '1; mode=block');
