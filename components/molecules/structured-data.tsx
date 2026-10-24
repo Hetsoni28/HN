@@ -45,7 +45,6 @@ export function OrganizationJsonLd() {
     },
     sameAs: [
       'https://github.com/Hetsoni28',
-      'https://www.linkedin.com/in/hn-in-b66003440',
       'https://www.instagram.com/___hn.in?stkn=ZWdpcHNscHd5eTVt',
       'https://www.youtube.com/@hntech-w1v',
       'https://www.facebook.com/share/19W4Kwh6ia/?mibextid=wwXIfr',
