@@ -77,6 +77,9 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       <head>
         <link rel="dns-prefetch" href="https://cdn.sanity.io" />
         <link rel="preconnect" href="https://cdn.sanity.io" crossOrigin="anonymous" />
+        {/* Plain <script> tags on purpose: Google Tag verification reads the raw <head> HTML,
+            and next/script / @next/third-parties inject the tag client-side, which fails it. */}
+        {/* eslint-disable-next-line @next/next/next-script-for-ga -- see note above */}
         <script
           async
           src="https://www.googletagmanager.com/gtag/js?id=G-THBXTP7VK9"
