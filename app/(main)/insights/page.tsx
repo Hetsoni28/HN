@@ -77,7 +77,7 @@ export default async function InsightsPage() {
             <h2 className="text-3xl font-bold text-white sm:text-4xl md:text-5xl">
               Get new insights weekly.
             </h2>
-            <p className="mx-auto mt-4 max-w-xl text-base text-white/70 sm:mt-5 sm:text-lg">
+            <p className="mx-auto mt-4 max-w-xl text-base text-white/90 sm:mt-5 sm:text-lg">
               No trend-chasing, no AI-generated filler. Just practical thinking from two engineers in the field.
             </p>
             <a

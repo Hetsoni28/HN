@@ -62,6 +62,7 @@ export function WelcomeScreen({ onComplete, isVisible }: WelcomeScreenProps) {
       {isVisible && (
         <motion.div
           key="welcome"
+          aria-hidden="true"
           className="fixed inset-0 z-[9999] flex items-center justify-center overflow-hidden bg-white"
           initial={{ opacity: 1 }}
           exit={{

@@ -1,3 +1,4 @@
+import { cache } from 'react';
 import { client, isSanityConfigured } from '@/sanity/lib/client';
 
 const hasSanity = isSanityConfigured;
@@ -382,7 +383,7 @@ export const FALLBACK_PROJECTS: Project[] = [
 
 import { REVALIDATE } from '@/sanity/lib/client';
 
-export async function getProjects(): Promise<Project[]> {
+export const getProjects = cache(async (): Promise<Project[]> => {
   if (!hasSanity) return FALLBACK_PROJECTS;
   const data = await client.fetch<Project[]>(
     `*[_type == "project"] | order(_createdAt desc) {
@@ -393,7 +394,7 @@ export async function getProjects(): Promise<Project[]> {
     { next: { revalidate: REVALIDATE.DYNAMIC_CONTENT } }
   );
   return data.length ? data : FALLBACK_PROJECTS;
-}
+});
 
 export async function getFeaturedProjects(): Promise<Project[]> {
   if (!hasSanity) return FALLBACK_PROJECTS.slice(0, 3);
@@ -408,7 +409,7 @@ export async function getFeaturedProjects(): Promise<Project[]> {
   return data.length ? data : FALLBACK_PROJECTS.slice(0, 3);
 }
 
-export async function getProjectBySlug(slug: string): Promise<Project | null> {
+export const getProjectBySlug = cache(async (slug: string): Promise<Project | null> => {
   const found = FALLBACK_PROJECTS.find((p) => p.slug.current === slug) ?? null;
   if (!hasSanity) return found;
   const data = await client.fetch<Project | null>(
@@ -426,7 +427,7 @@ export async function getProjectBySlug(slug: string): Promise<Project | null> {
   );
   // Sanity is the source of truth once connected — never serve sample case studies as real ones.
   return data;
-}
+});
 
 export async function getServices(): Promise<Service[]> {
   if (!hasSanity) return FALLBACK_SERVICES;
@@ -443,7 +444,7 @@ export async function getServices(): Promise<Service[]> {
   return data.length ? data : FALLBACK_SERVICES;
 }
 
-export async function getServiceBySlug(slug: string): Promise<Service | null> {
+export const getServiceBySlug = cache(async (slug: string): Promise<Service | null> => {
   const found = FALLBACK_SERVICES.find((s) => s.slug.current === slug) ?? null;
   if (!hasSanity) return found;
   const data = await client.fetch<Service | null>(
@@ -457,7 +458,7 @@ export async function getServiceBySlug(slug: string): Promise<Service | null> {
     { next: { revalidate: REVALIDATE.STATIC_CONTENT } }
   );
   return data ?? found;
-}
+});
 
 export const FALLBACK_TEAM: TeamMember[] = [
   {
@@ -971,7 +972,7 @@ We have taken on rebuilds — and they are always more expensive than greenfield
   },
 ];
 
-export async function getPosts(category?: string): Promise<BlogPost[]> {
+export const getPosts = cache(async (category?: string): Promise<BlogPost[]> => {
   if (!hasSanity) {
     if (category && category !== 'All') {
       return FALLBACK_POSTS.filter((p) => p.category === category);
@@ -992,9 +993,9 @@ export async function getPosts(category?: string): Promise<BlogPost[]> {
     { next: { revalidate: REVALIDATE.DYNAMIC_CONTENT } }
   );
   return data.length ? data : FALLBACK_POSTS;
-}
+});
 
-export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
+export const getPostBySlug = cache(async (slug: string): Promise<BlogPost | null> => {
   const found = FALLBACK_POSTS.find((p) => p.slug.current === slug) ?? null;
   if (!hasSanity) return found;
   const data = await client.fetch<BlogPost | null>(
@@ -1010,7 +1011,7 @@ export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
   );
   // Sanity is the source of truth once connected — never serve sample articles as real ones.
   return data;
-}
+});
 
 export async function getRelatedPosts(currentId: string, category?: string): Promise<BlogPost[]> {
   if (!hasSanity) {

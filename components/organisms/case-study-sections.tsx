@@ -30,7 +30,7 @@ export function CaseStudyTextSection({
         <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
           <FadeIn className="lg:col-span-4 lg:pr-8">
             {eyebrow && (
-              <span className="mb-4 inline-block rounded-full bg-[#0051FF]/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-[#0051FF]">
+              <span className="mb-4 inline-block rounded-full bg-[#0051FF]/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-[#0041CC]">
                 {eyebrow}
               </span>
             )}

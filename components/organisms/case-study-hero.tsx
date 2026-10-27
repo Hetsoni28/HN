@@ -14,11 +14,11 @@ export function CaseStudyHero({ project }: { project: Project }) {
       <div className="container relative z-10">
         <FadeIn>
           {/* Breadcrumb */}
-          <Breadcrumb label={project.title} className="mb-6 text-white/60 [&_a]:text-white/40 [&_a:hover]:text-white [&_svg]:text-white/20 [&_span:last-child>span]:text-white" />
+          <Breadcrumb label={project.title} className="mb-6 text-white/60 [&_a]:text-white [&_a:hover]:text-white [&_svg]:text-white/20 [&_span:last-child>span]:text-white" />
 
           <div className="flex flex-wrap gap-2">
             {project.industry && (
-              <span className="inline-flex items-center rounded-full border border-white/20 bg-white/10 px-3 py-1 text-[11px] font-bold uppercase tracking-widest text-white/70">
+              <span className="inline-flex items-center rounded-full border border-white/20 bg-white/10 px-3 py-1 text-[11px] font-bold uppercase tracking-widest text-white">
                 {project.industry}
               </span>
             )}
@@ -28,7 +28,7 @@ export function CaseStudyHero({ project }: { project: Project }) {
             {project.title}
           </h1>
 
-          <p className="mt-4 max-w-2xl text-base leading-7 text-white/70 sm:mt-6 sm:text-lg sm:leading-8">
+          <p className="mt-4 max-w-2xl text-base leading-7 text-white/90 sm:mt-6 sm:text-lg sm:leading-8">
             {project.shortDescription}
           </p>
 
@@ -42,13 +42,13 @@ export function CaseStudyHero({ project }: { project: Project }) {
                 : []),
             ].map((m) => (
               <div key={m.label}>
-                <div className="text-xs font-bold uppercase tracking-widest text-white/40">{m.label}</div>
+                <div className="text-xs font-bold uppercase tracking-widest text-white/90">{m.label}</div>
                 <div className="mt-1 text-sm font-semibold text-white sm:text-base">{m.value}</div>
               </div>
             ))}
             {project.liveUrl && (
               <div>
-                <div className="text-xs font-bold uppercase tracking-widest text-white/40">Live</div>
+                <div className="text-xs font-bold uppercase tracking-widest text-white/90">Live</div>
                 <a href={project.liveUrl} target="_blank" rel="noopener noreferrer"
                   className="mt-1 block text-sm font-semibold text-[#00D2FF] hover:underline sm:text-base">
                   View Site ↗

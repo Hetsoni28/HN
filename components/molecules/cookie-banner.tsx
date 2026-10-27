@@ -30,6 +30,10 @@ export function CookieBanner() {
     <AnimatePresence>
       {isVisible && (
         <motion.div
+          role="dialog"
+          aria-modal="false"
+          aria-labelledby="cookie-banner-title"
+          aria-describedby="cookie-banner-desc"
           initial={{ opacity: 0, y: 20, scale: 0.95 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, y: 20, scale: 0.95 }}
@@ -38,14 +42,14 @@ export function CookieBanner() {
         >
           <div className="flex items-center gap-3">
             <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#0051FF] text-white">
-              <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+              <svg aria-hidden="true" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
             </div>
-            <h3 className="text-base font-bold">We respect your privacy</h3>
+            <h2 id="cookie-banner-title" className="text-base font-bold">We respect your privacy</h2>
           </div>
-          <p className="mt-4 text-sm leading-relaxed text-slate-300">
-            We use cookies to improve your experience and analyze site traffic. We don&apos;t sell your data. Read our <Link href="/privacy-policy" className="text-[#00D2FF] hover:underline">Privacy Policy</Link>.
+          <p id="cookie-banner-desc" className="mt-4 text-sm leading-relaxed text-slate-300">
+            We use cookies to improve your experience and analyze site traffic. We don&apos;t sell your data. Read our <Link href="/privacy-policy" className="text-[#00D2FF] underline underline-offset-2">Privacy Policy</Link>.
           </p>
           <div className="mt-6 flex items-center gap-3">
             <button

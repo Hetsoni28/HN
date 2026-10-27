@@ -82,7 +82,7 @@ export function ServicesSection() {
 
         <FadeIn>
           <div className="mb-14 max-w-2xl">
-            <p className="mb-4 text-xs font-bold uppercase tracking-[0.25em] text-[#0051FF]">
+            <p className="mb-4 text-xs font-bold uppercase tracking-[0.25em] text-[#5B8CFF]">
               Comprehensive Digital Services
             </p>
             <h2 className="text-4xl font-black uppercase leading-tight tracking-tight text-white sm:text-5xl">
@@ -100,6 +100,7 @@ export function ServicesSection() {
               <button
                 key={s.number}
                 onClick={() => setActive(i)}
+                aria-pressed={active === i}
                 className={`group w-full border-b border-white/10 px-0 py-5 text-left transition-all ${
                   active === i ? 'bg-transparent' : 'hover:bg-white/3'
                 }`}
@@ -108,22 +109,23 @@ export function ServicesSection() {
                   <div className="flex items-center gap-5">
                     <span
                       className={`text-xs font-black tracking-widest transition-colors ${
-                        active === i ? 'text-[#0051FF]' : 'text-gray-600'
+                        active === i ? 'text-[#5B8CFF]' : 'text-white/50'
                       }`}
                     >
                       {s.number}
                     </span>
                     <span
                       className={`text-base font-bold transition-colors sm:text-lg ${
-                        active === i ? 'text-white' : 'text-gray-400 group-hover:text-white'
+                        active === i ? 'text-white' : 'text-white/70 group-hover:text-white'
                       }`}
                     >
                       {s.title}
                     </span>
                   </div>
                   <span
+                    aria-hidden="true"
                     className={`shrink-0 text-lg transition-all duration-300 ${
-                      active === i ? 'rotate-45 text-[#0051FF]' : 'text-gray-600'
+                      active === i ? 'rotate-45 text-[#5B8CFF]' : 'text-white/50'
                     }`}
                   >
                     +
@@ -144,7 +146,7 @@ export function ServicesSection() {
                 transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
                 className="sticky top-32"
               >
-                <p className="text-xs font-black tracking-[0.2em] text-[#0051FF]">
+                <p className="text-xs font-black tracking-[0.2em] text-[#5B8CFF]">
                   {current.number} — {current.title}
                 </p>
 
@@ -152,13 +154,13 @@ export function ServicesSection() {
                   {current.title}
                 </h3>
 
-                <p className="mt-4 text-base leading-7 text-gray-400">
+                <p className="mt-4 text-base leading-7 text-white/70">
                   {current.description}
                 </p>
 
                 {/* Technologies */}
                 <div className="mt-8">
-                  <p className="mb-3 text-xs font-bold uppercase tracking-widest text-gray-600">
+                  <p className="mb-3 text-xs font-bold uppercase tracking-widest text-white/50">
                     Technologies
                   </p>
                   <div className="flex flex-wrap gap-2">
@@ -175,12 +177,12 @@ export function ServicesSection() {
 
                 {/* Deliverables */}
                 <div className="mt-6">
-                  <p className="mb-3 text-xs font-bold uppercase tracking-widest text-gray-600">
+                  <p className="mb-3 text-xs font-bold uppercase tracking-widest text-white/50">
                     Deliverables
                   </p>
                   <ul className="space-y-2">
                     {current.deliverables.map((d) => (
-                      <li key={d} className="flex items-center gap-3 text-sm text-gray-400">
+                      <li key={d} className="flex items-center gap-3 text-sm text-white/70">
                         <span className="h-1 w-1 rounded-full bg-[#0051FF]" />
                         {d}
                       </li>
@@ -190,7 +192,7 @@ export function ServicesSection() {
 
                 <Link
                   href="/contact"
-                  className="mt-8 inline-flex items-center gap-2 text-sm font-bold text-[#0051FF] transition-all hover:gap-3"
+                  className="mt-8 inline-flex items-center gap-2 text-sm font-bold text-[#5B8CFF] transition-all hover:gap-3"
                 >
                   Start this service →
                 </Link>

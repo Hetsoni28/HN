@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import Image from 'next/image';
 import { motion, type Variants } from 'framer-motion';
 import { Button } from '@/components/atoms/button';
@@ -13,23 +13,47 @@ const item: Variants = {
   hidden: { opacity: 0, y: 28 },
   show:   { opacity: 1, y: 0, transition: { duration: 0.65 } },
 };
+// The headline is the likely LCP element: keep it visible from the first paint and only slide it in.
+const headline: Variants = {
+  hidden: { y: 28 },
+  show:   { y: 0, transition: { duration: 0.65 } },
+};
+
+const HERO_VIDEO = '/video/Digital_studio_product_video_loop_20261002013835.mp4';
 
 const services = ['Web', 'Mobile', 'AI', 'SaaS', 'Software'];
 
 export function HeroSection() {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const [videoSrc, setVideoSrc] = useState<string | null>(null);
+  const [videoPlaying, setVideoPlaying] = useState(false);
+
+  // The 3 MB loop is only visible on desktop (lg+). Load it after the page has finished loading so it
+  // never competes with the LCP image, and skip it for reduced-motion and data-saver visitors.
+  useEffect(() => {
+    const desktop = window.matchMedia('(min-width: 1024px)').matches;
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const saveData = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection?.saveData;
+    if (!desktop || reduceMotion || saveData) return;
+
+    const start = () => setVideoSrc(HERO_VIDEO);
+    if (document.readyState === 'complete') {
+      const t = setTimeout(start, 300);
+      return () => clearTimeout(t);
+    }
+    window.addEventListener('load', start, { once: true });
+    return () => window.removeEventListener('load', start);
+  }, []);
 
   useEffect(() => {
-    // Respect prefers-reduced-motion: only autoplay when reduced motion is NOT requested
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (videoRef.current && !prefersReducedMotion) {
-      videoRef.current.defaultMuted = true;
-      videoRef.current.muted = true;
-      videoRef.current.play().catch(() => {
-        // Autoplay policy fallback: video remains paused on poster frame if blocked
-      });
-    }
-  }, []);
+    const video = videoRef.current;
+    if (!video) return;
+    video.defaultMuted = true;
+    video.muted = true;
+    video.play().catch(() => {
+      // Autoplay blocked: the static mockup image underneath stays visible
+    });
+  }, [videoSrc]);
 
   return (
     <section className="relative min-h-[100svh] overflow-hidden flex items-center">
@@ -65,7 +89,7 @@ export function HeroSection() {
 
             {/* Headline */}
             <motion.h1
-              variants={item}
+              variants={headline}
               className="text-5xl font-black uppercase leading-[1.0] tracking-tight text-[#0B111E] sm:text-6xl xl:text-[4.5rem]"
             >
               Building Digital<br />
@@ -141,26 +165,27 @@ export function HeroSection() {
                 src="/hero-mockup.png"
                 alt="Web dashboard, mobile app and AI features built by HN Tech"
                 fill
-                priority
-                fetchPriority="high"
-                sizes="45vw"
+                sizes="(min-width: 1280px) 530px, 45vw"
                 className="object-cover"
               />
-              {/* Video overlay */}
-              <video
-                ref={videoRef}
-                autoPlay
-                muted
-                loop
-                playsInline
-                preload="metadata"
-                poster="/hero-mockup.png"
-                aria-hidden="true"
-                tabIndex={-1}
-                className="absolute inset-0 h-full w-full object-cover motion-reduce:hidden"
-              >
-                <source src="/video/Digital_studio_product_video_loop_20261002013835.mp4" type="video/mp4" />
-              </video>
+              {/* Video overlay — loaded after page load on desktop only, fades in once playing */}
+              {videoSrc && (
+                <video
+                  ref={videoRef}
+                  src={videoSrc}
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  preload="auto"
+                  aria-hidden="true"
+                  tabIndex={-1}
+                  onPlaying={() => setVideoPlaying(true)}
+                  className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-700 motion-reduce:hidden ${
+                    videoPlaying ? 'opacity-100' : 'opacity-0'
+                  }`}
+                />
+              )}
 
               {/* Subtle bottom gradient for depth */}
               <div className="absolute inset-0 bg-gradient-to-t from-white/20 via-transparent to-transparent" />

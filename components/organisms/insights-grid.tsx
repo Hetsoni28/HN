@@ -45,7 +45,7 @@ function categoryColor(cat?: string) {
     'Web Development':     'bg-blue-50 text-blue-600 border-blue-200',
     'SaaS':                'bg-green-50 text-green-600 border-green-200',
     'Product Development': 'bg-orange-50 text-orange-600 border-orange-200',
-    'Technology':          'bg-cyan-50 text-cyan-600 border-cyan-200',
+    'Technology':          'bg-cyan-50 text-cyan-700 border-cyan-200',
     'HN Updates':          'bg-[#EEF0FF] text-[#0051FF] border-[#E2E5F1]',
   };
   return map[cat ?? ''] ?? 'bg-[#EEF0FF] text-[#0051FF] border-[#E2E5F1]';

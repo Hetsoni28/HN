@@ -1,6 +1,6 @@
 'use client';
 
-import { useActionState, useRef } from 'react';
+import { useActionState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { submitInquiry, type FormState } from '@/app/(main)/contact/actions';
 
@@ -24,19 +24,19 @@ const TIMELINES = [
 const initialState: FormState = { status: 'idle' };
 
 function Field({
-  label, required, error, children,
+  id, label, required, error, children,
 }: {
-  label: string; required?: boolean; error?: string; children: React.ReactNode;
+  id: string; label: string; required?: boolean; error?: string; children: React.ReactNode;
 }) {
   return (
     <div>
-      <label className="mb-1.5 block text-sm font-semibold text-slate-700">
-        {label}{required && <span className="ml-0.5 text-[#0051FF]">*</span>}
+      <label htmlFor={id} className="mb-1.5 block text-sm font-semibold text-slate-700">
+        {label}{required && <span aria-hidden="true" className="ml-0.5 text-[#0051FF]">*</span>}
       </label>
       {children}
       {error && (
-        <p className="mt-1.5 flex items-center gap-1 text-xs font-medium text-red-500">
-          <svg className="h-3 w-3 shrink-0" viewBox="0 0 16 16" fill="currentColor">
+        <p id={`${id}-error`} className="mt-1.5 flex items-center gap-1 text-xs font-medium text-red-600">
+          <svg aria-hidden="true" className="h-3 w-3 shrink-0" viewBox="0 0 16 16" fill="currentColor">
             <path d="M8 1a7 7 0 110 14A7 7 0 018 1zm0 3.5a.75.75 0 00-.75.75v3.5a.75.75 0 001.5 0v-3.5A.75.75 0 008 4.5zm0 7a.75.75 0 100-1.5.75.75 0 000 1.5z"/>
           </svg>
           {error}
@@ -45,6 +45,13 @@ function Field({
     </div>
   );
 }
+
+/** id + error wiring so screen readers announce the label, invalid state and error text. */
+const a11y = (id: string, error?: string) => ({
+  id,
+  'aria-invalid': error ? true : undefined,
+  'aria-describedby': error ? `${id}-error` : undefined,
+});
 
 const inputCls = (error?: string) =>
   `w-full rounded-xl border px-4 py-3 text-base outline-none transition focus:ring-2 focus:ring-[#0051FF]/20 ${
@@ -56,6 +63,16 @@ const inputCls = (error?: string) =>
 export function ContactForm({ initialProject }: { initialProject?: string }) {
   const [state, action, pending] = useActionState(submitInquiry, initialState);
   const formRef = useRef<HTMLFormElement>(null);
+  const successRef = useRef<HTMLHeadingElement>(null);
+
+  // After a failed submit, move focus to the first invalid field; after success, to the confirmation.
+  useEffect(() => {
+    if (state.status === 'error' && state.errors) {
+      formRef.current?.querySelector<HTMLElement>('[aria-invalid="true"]')?.focus();
+    } else if (state.status === 'success') {
+      successRef.current?.focus();
+    }
+  }, [state]);
 
   const initialDescription = initialProject
     ? `I saw the ${initialProject} project and I'm interested in building something similar.\n\n`
@@ -64,16 +81,17 @@ export function ContactForm({ initialProject }: { initialProject?: string }) {
   if (state.status === 'success') {
     return (
       <motion.div
+        role="status"
         initial={{ opacity: 0, scale: 0.97 }}
         animate={{ opacity: 1, scale: 1 }}
         className="flex flex-col items-center justify-center rounded-3xl border border-[#E2E5F1] bg-white p-14 text-center"
       >
         <div className="flex h-20 w-20 items-center justify-center rounded-full bg-[#EEF0FF]">
-          <svg className="h-10 w-10 text-[#0051FF]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+          <svg aria-hidden="true" className="h-10 w-10 text-[#0051FF]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
           </svg>
         </div>
-        <h2 className="mt-6 text-2xl font-bold text-slate-900">We got your message!</h2>
+        <h2 ref={successRef} tabIndex={-1} className="mt-6 text-2xl font-bold text-slate-900 outline-none">We got your message!</h2>
         <p className="mt-3 max-w-sm text-slate-500">
           Expect a reply from Het or Neel within 24–48 hours. We&apos;ve also sent a confirmation to your email.
         </p>
@@ -100,8 +118,9 @@ export function ContactForm({ initialProject }: { initialProject?: string }) {
         <AnimatePresence>
           {state.status === 'error' && state.message && (
             <motion.div
+              role="alert"
               initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}
-              className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-600"
+              className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700"
             >
               {state.message}
             </motion.div>
@@ -112,20 +131,20 @@ export function ContactForm({ initialProject }: { initialProject?: string }) {
         <div>
           <p className="mb-4 text-[10px] font-bold uppercase tracking-widest text-[#0051FF]">About You</p>
           <div className="grid gap-4 sm:grid-cols-2">
-            <Field label="Full Name" required error={state.errors?.name}>
-              <input name="name" type="text" autoComplete="name"
+            <Field id="cf-name" label="Full Name" required error={state.errors?.name}>
+              <input {...a11y('cf-name', state.errors?.name)} name="name" type="text" autoComplete="name"
                 className={inputCls(state.errors?.name)} required />
             </Field>
-            <Field label="Email Address" required error={state.errors?.email}>
-              <input name="email" type="email" autoComplete="email"
+            <Field id="cf-email" label="Email Address" required error={state.errors?.email}>
+              <input {...a11y('cf-email', state.errors?.email)} name="email" type="email" autoComplete="email"
                 className={inputCls(state.errors?.email)} required />
             </Field>
-            <Field label="Phone Number" error={state.errors?.phone}>
-              <input name="phone" type="tel" autoComplete="tel"
+            <Field id="cf-phone" label="Phone Number" error={state.errors?.phone}>
+              <input {...a11y('cf-phone', state.errors?.phone)} name="phone" type="tel" autoComplete="tel"
                 className={inputCls(state.errors?.phone)} />
             </Field>
-            <Field label="Company / Organisation" error={state.errors?.company}>
-              <input name="company" type="text"
+            <Field id="cf-company" label="Company / Organisation" error={state.errors?.company}>
+              <input {...a11y('cf-company', state.errors?.company)} name="company" type="text"
 
                 className={inputCls(state.errors?.company)} />
             </Field>
@@ -138,15 +157,16 @@ export function ContactForm({ initialProject }: { initialProject?: string }) {
         <div>
           <p className="mb-4 text-[10px] font-bold uppercase tracking-widest text-[#0051FF]">Your Project</p>
           <div className="space-y-4">
-            <Field label="Project Type" required error={state.errors?.projectType}>
-              <select name="projectType" defaultValue="" className={`${inputCls(state.errors?.projectType)} cursor-pointer`} required>
+            <Field id="cf-type" label="Project Type" required error={state.errors?.projectType}>
+              <select {...a11y('cf-type', state.errors?.projectType)} name="projectType" defaultValue="" className={`${inputCls(state.errors?.projectType)} cursor-pointer`} required>
                 <option value="" disabled>Select a project type…</option>
                 {PROJECT_TYPES.map((t) => <option key={t} value={t}>{t}</option>)}
               </select>
             </Field>
 
-            <Field label="Project Description" required error={state.errors?.description}>
+            <Field id="cf-description" label="Project Description" required error={state.errors?.description}>
               <textarea
+                {...a11y('cf-description', state.errors?.description)}
                 name="description" rows={5}
                 defaultValue={initialDescription}
                 className={`${inputCls(state.errors?.description)} resize-none`}
@@ -154,9 +174,11 @@ export function ContactForm({ initialProject }: { initialProject?: string }) {
               />
             </Field>
 
-            <Field label="Attachment (Optional)">
+            <Field id="cf-file" label="Attachment (Optional)">
               <div className="relative group">
                 <input
+                  id="cf-file"
+                  aria-describedby="cf-file-hint"
                   type="file"
                   name="file"
                   accept=".pdf,.doc,.docx,.txt,.png,.jpg,.jpeg"
@@ -181,19 +203,19 @@ export function ContactForm({ initialProject }: { initialProject?: string }) {
                 />
                 <div className="flex w-full items-center gap-3 rounded-xl border border-dashed border-[#E2E5F1] bg-slate-50 px-4 py-4 text-sm transition group-hover:border-[#0051FF]/50 peer-focus:ring-2 peer-focus:ring-[#0051FF]/20">
                   <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-white shadow-sm border border-[#E2E5F1] text-slate-500">
-                    <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg aria-hidden="true" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13" />
                     </svg>
                   </div>
                   <div className="flex-1 truncate text-slate-500">
-                    <span className="block font-medium transition-colors">Upload project brief, RFP, or wireframes (Max 5MB)</span>
+                    <span id="cf-file-hint" className="block font-medium transition-colors">Upload project brief, RFP, or wireframes (Max 5MB)</span>
                   </div>
                 </div>
               </div>
             </Field>
 
-            <Field label="Ideal Timeline" required error={state.errors?.timeline}>
-                <select name="timeline" defaultValue="" className={`${inputCls(state.errors?.timeline)} cursor-pointer`} required>
+            <Field id="cf-timeline" label="Ideal Timeline" required error={state.errors?.timeline}>
+                <select {...a11y('cf-timeline', state.errors?.timeline)} name="timeline" defaultValue="" className={`${inputCls(state.errors?.timeline)} cursor-pointer`} required>
                   <option value="" disabled>Select a timeline…</option>
                   {TIMELINES.map((t) => <option key={t} value={t}>{t}</option>)}
                 </select>
@@ -205,11 +227,12 @@ export function ContactForm({ initialProject }: { initialProject?: string }) {
         <button
           type="submit"
           disabled={pending}
+          aria-busy={pending}
           className="flex w-full items-center justify-center gap-3 rounded-xl bg-[#0051FF] px-8 py-4 text-base font-bold text-white transition hover:bg-[#0040CC] focus:outline-none focus:ring-4 focus:ring-[#0051FF]/30 disabled:cursor-not-allowed disabled:opacity-60"
         >
           {pending ? (
             <>
-              <svg className="h-5 w-5 animate-spin" viewBox="0 0 24 24" fill="none">
+              <svg aria-hidden="true" className="h-5 w-5 animate-spin" viewBox="0 0 24 24" fill="none">
                 <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
                 <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
               </svg>

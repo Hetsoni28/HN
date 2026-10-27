@@ -42,7 +42,7 @@ function categoryColor(cat?: string) {
     'Web Development':     'bg-blue-50 text-blue-600 border-blue-200',
     'SaaS':                'bg-green-50 text-green-600 border-green-200',
     'Product Development': 'bg-orange-50 text-orange-600 border-orange-200',
-    'Technology':          'bg-cyan-50 text-cyan-600 border-cyan-200',
+    'Technology':          'bg-cyan-50 text-cyan-700 border-cyan-200',
     'HN Updates':          'bg-[#EEF0FF] text-[#0051FF] border-[#E2E5F1]',
   };
   return map[cat ?? ''] ?? 'bg-[#EEF0FF] text-[#0051FF] border-[#E2E5F1]';
@@ -238,7 +238,7 @@ export function ArticleBody({
             {/* CTA */}
             <div className="mt-10 rounded-2xl bg-[#0051FF] p-8 text-center">
               <h3 className="text-xl font-bold text-white">Want to build something like this?</h3>
-              <p className="mt-2 text-sm text-white/70">Talk to Het and Neel — get a free proposal within 48 hours.</p>
+              <p className="mt-2 text-sm text-white/90">Talk to Het and Neel — get a free proposal within 48 hours.</p>
               <Link
                 href="/contact"
                 className="mt-5 inline-flex items-center gap-2 rounded-xl bg-white px-6 py-3 text-sm font-bold text-[#0051FF] transition hover:bg-blue-50"

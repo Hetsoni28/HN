@@ -106,7 +106,7 @@ export default async function ServiceCityPage({
               <span className="font-medium text-slate-800">{cityName}</span>
             </nav>
 
-            <div className="inline-flex items-center gap-2 rounded-full bg-[#0051FF]/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-[#0051FF]">
+            <div className="inline-flex items-center gap-2 rounded-full bg-[#0051FF]/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-[#0041CC]">
               {cityData.state} · India
             </div>
 

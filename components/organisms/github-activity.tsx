@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 
 interface Commit {
@@ -103,8 +103,23 @@ const FALLBACK_COMMITS: Commit[] = [
 export function GithubActivity() {
   const [commits, setCommits] = useState<Commit[]>(FALLBACK_COMMITS);
   const [loading, setLoading] = useState(true);
+  const [inView, setInView] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  // This section sits near the bottom of the homepage: only call the GitHub API once it's about to be seen.
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { setInView(true); io.disconnect(); } },
+      { rootMargin: '400px 0px' },
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
 
   useEffect(() => {
+    if (!inView) return;
     let isMounted = true;
 
     fetch('/api/github')
@@ -129,10 +144,11 @@ export function GithubActivity() {
     return () => {
       isMounted = false;
     };
-  }, []);
+  }, [inView]);
 
   return (
     <section
+      ref={sectionRef}
       className="section"
       style={{ background: '#0B111E' }}
       aria-label="Live GitHub activity"
@@ -143,7 +159,7 @@ export function GithubActivity() {
           <div>
             <p
               className="mb-1 text-xs font-bold uppercase tracking-widest"
-              style={{ color: '#0051FF' }}
+              style={{ color: '#5B8CFF' }}
             >
               Open source
             </p>
@@ -157,7 +173,7 @@ export function GithubActivity() {
         {loading ? (
           <Skeleton />
         ) : commits.length === 0 ? (
-          <p className="text-sm text-slate-500">
+          <p className="text-sm text-white/70">
             Could not load recent commits. Check back soon.
           </p>
         ) : (
@@ -179,7 +195,7 @@ export function GithubActivity() {
                   {/* Repo name */}
                   <span
                     className="shrink-0 text-sm font-semibold"
-                    style={{ color: '#0051FF' }}
+                    style={{ color: '#5B8CFF' }}
                   >
                     {c.repo}
                   </span>

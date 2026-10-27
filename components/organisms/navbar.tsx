@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useRef, useCallback } from 'react';
+import { useState, useEffect, useRef, useCallback, useId } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -45,6 +45,7 @@ interface DropdownItem { label: string; href: string; desc: string; icon?: strin
 function ChevronDown({ open }: { open: boolean }) {
   return (
     <svg
+      aria-hidden="true"
       className={`h-3.5 w-3.5 transition-transform duration-200 ${open ? 'rotate-180' : ''}`}
       fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}
     >
@@ -53,9 +54,9 @@ function ChevronDown({ open }: { open: boolean }) {
   );
 }
 
-function MegaDropdown({ items, onClose }: { items: DropdownItem[]; onClose: () => void }) {
+function MegaDropdown({ id, items, onClose }: { id: string; items: DropdownItem[]; onClose: () => void }) {
   return (
-    <div className="absolute left-0 top-full z-50 mt-2 w-[520px] rounded-2xl border border-slate-200/80 bg-white p-3 shadow-xl shadow-slate-200/60 ring-1 ring-black/5">
+    <div id={id} className="absolute left-0 top-full z-50 mt-2 w-[520px] rounded-2xl border border-slate-200/80 bg-white p-3 shadow-xl shadow-slate-200/60 ring-1 ring-black/5">
       <div className="grid grid-cols-2 gap-1">
         {items.map((item) => (
           <Link key={item.href} href={item.href} onClick={onClose}
@@ -83,15 +84,18 @@ function MobileSection({ title, items, onClose, isActive }: {
   isActive: (href: string) => boolean;
 }) {
   const [open, setOpen] = useState(false);
+  const panelId = useId();
 
   return (
     <div className="border-b border-slate-100">
       <button
         onClick={() => setOpen(!open)}
+        aria-expanded={open}
+        aria-controls={panelId}
         className="flex w-full items-center justify-between px-6 py-4 text-left"
       >
         <span className="text-base font-bold text-slate-900">{title}</span>
-        <motion.div animate={{ rotate: open ? 180 : 0 }} transition={{ duration: 0.2 }}>
+        <motion.div aria-hidden="true" animate={{ rotate: open ? 180 : 0 }} transition={{ duration: 0.2 }}>
           <svg className="h-5 w-5 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
           </svg>
@@ -101,6 +105,7 @@ function MobileSection({ title, items, onClose, isActive }: {
       <AnimatePresence initial={false}>
         {open && (
           <motion.div
+            id={panelId}
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
@@ -114,7 +119,7 @@ function MobileSection({ title, items, onClose, isActive }: {
                     isActive(href) ? 'bg-[#EEF0FF]' : 'hover:bg-slate-50'
                   }`}
                 >
-                  <span className="mt-0.5 text-xl leading-none">{icon}</span>
+                  <span aria-hidden="true" className="mt-0.5 text-xl leading-none">{icon}</span>
                   <div>
                     <p className={`text-sm font-semibold ${isActive(href) ? 'text-[#0051FF]' : 'text-slate-800'}`}>{label}</p>
                     <p className="mt-0.5 text-xs text-slate-400">{desc}</p>
@@ -138,6 +143,9 @@ export function Navbar() {
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const dropdownTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const hamburgerRef = useRef<HTMLButtonElement>(null);
+  const drawerRef = useRef<HTMLDivElement>(null);
+  const servicesBtnRef = useRef<HTMLButtonElement>(null);
+  const companyBtnRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -158,12 +166,45 @@ export function Navbar() {
   }, [mobileOpen]);
 
   useEffect(() => {
+    if (!mobileOpen && !activeDropdown) return;
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') { setMobileOpen(false); setActiveDropdown(null); hamburgerRef.current?.focus(); }
+      if (e.key !== 'Escape') return;
+      if (mobileOpen) {
+        setMobileOpen(false);
+        hamburgerRef.current?.focus();
+      } else if (activeDropdown) {
+        (activeDropdown === 'services' ? servicesBtnRef : companyBtnRef).current?.focus();
+        setActiveDropdown(null);
+      }
     };
     document.addEventListener('keydown', onKey);
     return () => document.removeEventListener('keydown', onKey);
-  }, []);
+  }, [mobileOpen, activeDropdown]);
+
+  // Mobile menu: move focus into it on open, and keep Tab cycling between the menu and its toggle.
+  useEffect(() => {
+    if (!mobileOpen) return;
+    const focusables = () =>
+      Array.from(drawerRef.current?.querySelectorAll<HTMLElement>('a[href], button') ?? []);
+    const t = setTimeout(() => focusables()[0]?.focus(), 50);
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key !== 'Tab') return;
+      const items = focusables();
+      const first = items[0];
+      const last = items[items.length - 1];
+      const active = document.activeElement;
+      if (!e.shiftKey && active === last) { e.preventDefault(); hamburgerRef.current?.focus(); }
+      else if (e.shiftKey && active === first) { e.preventDefault(); hamburgerRef.current?.focus(); }
+      else if (active === hamburgerRef.current) { e.preventDefault(); (e.shiftKey ? last : first)?.focus(); }
+    };
+    document.addEventListener('keydown', onKey);
+    return () => { clearTimeout(t); document.removeEventListener('keydown', onKey); };
+  }, [mobileOpen]);
+
+  /** Close a desktop dropdown when keyboard focus leaves it. */
+  const onDropdownBlur = (e: React.FocusEvent<HTMLDivElement>) => {
+    if (!e.currentTarget.contains(e.relatedTarget as Node | null)) setActiveDropdown(null);
+  };
 
   const openDropdown = useCallback((name: string) => {
     if (dropdownTimer.current) clearTimeout(dropdownTimer.current);
@@ -192,19 +233,21 @@ export function Navbar() {
         {/* ── Desktop nav ── */}
         <nav aria-label="Primary navigation" className="hidden items-center gap-1 lg:flex">
 
-          <div className="relative" onMouseEnter={() => openDropdown('services')} onMouseLeave={closeDropdown}>
+          <div className="relative" onMouseEnter={() => openDropdown('services')} onMouseLeave={closeDropdown} onBlur={onDropdownBlur}>
             <button
+              ref={servicesBtnRef}
+              onClick={() => setActiveDropdown(activeDropdown === 'services' ? null : 'services')}
               className={`flex items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-semibold transition ${
                 isActive('/services') || activeDropdown === 'services'
                   ? 'bg-[#EEF0FF] text-[#0051FF]'
                   : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'
               }`}
-              aria-haspopup="true" aria-expanded={activeDropdown === 'services'}
+              aria-expanded={activeDropdown === 'services'} aria-controls="nav-services-menu"
             >
               Services <ChevronDown open={activeDropdown === 'services'} />
             </button>
             {activeDropdown === 'services' && (
-              <MegaDropdown items={SERVICES_MENU} onClose={() => setActiveDropdown(null)} />
+              <MegaDropdown id="nav-services-menu" items={SERVICES_MENU} onClose={() => setActiveDropdown(null)} />
             )}
           </div>
 
@@ -212,19 +255,21 @@ export function Navbar() {
             isActive('/work') ? 'bg-[#EEF0FF] text-[#0051FF]' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'
           }`}>Work</Link>
 
-          <div className="relative" onMouseEnter={() => openDropdown('company')} onMouseLeave={closeDropdown}>
+          <div className="relative" onMouseEnter={() => openDropdown('company')} onMouseLeave={closeDropdown} onBlur={onDropdownBlur}>
             <button
+              ref={companyBtnRef}
+              onClick={() => setActiveDropdown(activeDropdown === 'company' ? null : 'company')}
               className={`flex items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-semibold transition ${
                 (isActive('/about') || isActive('/process') || isActive('/insights') || isActive('/compare')) || activeDropdown === 'company'
                   ? 'bg-[#EEF0FF] text-[#0051FF]'
                   : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'
               }`}
-              aria-haspopup="true" aria-expanded={activeDropdown === 'company'}
+              aria-expanded={activeDropdown === 'company'} aria-controls="nav-company-menu"
             >
               Company <ChevronDown open={activeDropdown === 'company'} />
             </button>
             {activeDropdown === 'company' && (
-              <MegaDropdown items={COMPANY_MENU} onClose={() => setActiveDropdown(null)} />
+              <MegaDropdown id="nav-company-menu" items={COMPANY_MENU} onClose={() => setActiveDropdown(null)} />
             )}
           </div>
 
@@ -253,7 +298,7 @@ export function Navbar() {
         >
           <AnimatePresence mode="wait" initial={false}>
             {mobileOpen ? (
-              <motion.svg key="close"
+              <motion.svg key="close" aria-hidden="true"
                 initial={{ rotate: -90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }}
                 exit={{ rotate: 90, opacity: 0 }} transition={{ duration: 0.15 }}
                 width="18" height="18" viewBox="0 0 18 18" fill="none"
@@ -261,7 +306,7 @@ export function Navbar() {
                 <path d="M3 3l12 12M15 3L3 15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
               </motion.svg>
             ) : (
-              <motion.svg key="menu"
+              <motion.svg key="menu" aria-hidden="true"
                 initial={{ rotate: 90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }}
                 exit={{ rotate: -90, opacity: 0 }} transition={{ duration: 0.15 }}
                 width="18" height="18" viewBox="0 0 18 18" fill="none"
@@ -280,6 +325,7 @@ export function Navbar() {
             {/* Blurred backdrop */}
             <motion.div
               key="backdrop"
+              aria-hidden="true"
               initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
               transition={{ duration: 0.2 }}
               className="fixed inset-0 top-[68px] z-40 bg-black/40 backdrop-blur-sm lg:hidden"
@@ -290,7 +336,8 @@ export function Navbar() {
             <motion.div
               key="drawer"
               id="mobile-menu"
-              role="dialog" aria-modal="true" aria-label="Navigation menu"
+              ref={drawerRef}
+              role="navigation" aria-label="Mobile navigation"
               initial={{ x: '100%' }} animate={{ x: 0 }} exit={{ x: '100%' }}
               transition={{ type: 'spring', stiffness: 320, damping: 32 }}
               className="fixed right-0 top-[68px] z-50 flex h-[calc(100dvh-68px)] w-full max-w-sm flex-col overflow-y-auto bg-white shadow-2xl lg:hidden"
@@ -312,9 +359,9 @@ export function Navbar() {
                     href="https://wa.me/917990743263?text=Hi%20HN%20Tech!"
                     target="_blank" rel="noopener noreferrer"
                     onClick={() => setMobileOpen(false)}
-                    className="flex items-center justify-center gap-2 rounded-xl bg-[#25D366] px-4 py-3 text-sm font-bold text-white transition hover:bg-[#1ebe5d]"
+                    className="flex items-center justify-center gap-2 rounded-xl bg-[#15803D] px-4 py-3 text-sm font-bold text-white transition hover:bg-[#166534]"
                   >
-                    <svg viewBox="0 0 24 24" className="h-4 w-4" fill="white">
+                    <svg aria-hidden="true" viewBox="0 0 24 24" className="h-4 w-4" fill="white">
                       <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
                     </svg>
                     WhatsApp
@@ -339,7 +386,7 @@ export function Navbar() {
                             : 'bg-slate-50 text-slate-700 hover:bg-[#EEF0FF] hover:text-[#0051FF]'
                         }`}
                       >
-                        <span>{icon}</span>{label}
+                        <span aria-hidden="true">{icon}</span>{label}
                       </Link>
                     ))}
                   </div>
@@ -349,7 +396,7 @@ export function Navbar() {
               {/* ── Footer strip ── */}
               <div className="border-t border-slate-100 px-6 py-5">
                 <div className="flex items-center gap-2">
-                  <span className="h-2 w-2 animate-pulse rounded-full bg-green-500" />
+                  <span aria-hidden="true" className="h-2 w-2 animate-pulse rounded-full bg-green-500" />
                   <p className="text-xs font-semibold text-slate-600">Available for new projects</p>
                 </div>
                 <p className="mt-0.5 text-xs text-slate-400">contact.hnsolutions@gmail.com</p>

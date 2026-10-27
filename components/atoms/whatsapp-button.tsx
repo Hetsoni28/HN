@@ -34,7 +34,7 @@ export function WhatsAppButton({
       onClick={handleClick} 
       target="_blank" 
       rel="noopener noreferrer"
-      className={`inline-flex items-center justify-center gap-2 rounded-xl bg-[#25D366] hover:bg-[#20bd5a] text-white px-6 py-3.5 font-semibold transition-all duration-200 active:scale-[0.98] ${fullWidth ? 'w-full' : ''} ${className}`}
+      className={`inline-flex items-center justify-center gap-2 rounded-xl bg-[#15803D] hover:bg-[#166534] text-white px-6 py-3.5 font-semibold transition-all duration-200 active:scale-[0.98] ${fullWidth ? 'w-full' : ''} ${className}`}
     >
       {/* Custom WhatsApp Icon SVG */}
       <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">

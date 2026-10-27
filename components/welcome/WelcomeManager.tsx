@@ -1,7 +1,14 @@
 'use client';
 
 import { useState, useEffect, useSyncExternalStore } from 'react';
+import { MotionGlobalConfig } from 'framer-motion';
 import { WelcomeScreen } from './WelcomeScreen';
+
+// Visitors whose OS asks for reduced motion get every framer-motion animation finished instantly.
+// Runs at module load (before hydration) because this component is mounted on every page.
+if (typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  MotionGlobalConfig.skipAnimations = true;
+}
 
 function subscribe() {
   return () => {};

@@ -140,7 +140,7 @@ export default function ReferralPage() {
             {STEPS.map((step, i) => (
               <FadeIn key={step.n} delay={i * 0.1} className="flex">
                 <div className="relative flex w-full flex-col gap-4 rounded-2xl border border-gray-100 bg-gray-50 p-7 transition hover:border-[#0051FF]/20 hover:bg-[#EEF3FF]/40">
-                  <span className="text-4xl font-extrabold leading-none text-[#0051FF]/15">
+                  <span aria-hidden="true" className="text-4xl font-extrabold leading-none text-[#0051FF]/15">
                     {step.n}
                   </span>
                   <h3 className="text-base font-bold text-gray-900">{step.title}</h3>

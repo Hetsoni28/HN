@@ -85,7 +85,7 @@ const PERSONAS = [
     who: 'Choose HN if…',
     accent: 'bg-[#0051FF]',
     textColor: 'text-white',
-    subColor: 'text-white/75',
+    subColor: 'text-white/90',
     borderColor: 'border-[#0051FF]',
     points: [
       "You're a startup founder moving fast",
@@ -156,7 +156,7 @@ export default function ComparePage() {
       <section className="section">
         <div className="container">
           <FadeIn>
-            <div className="overflow-x-auto rounded-2xl border border-[#E2E5F1] shadow-xl shadow-slate-100">
+            <div tabIndex={0} role="region" aria-label="Comparison of HN Tech, freelancers and agencies" className="overflow-x-auto rounded-2xl border border-[#E2E5F1] shadow-xl shadow-slate-100">
               <table className="w-full min-w-[700px] border-collapse text-sm">
                 {/* Header */}
                 <thead>
@@ -166,7 +166,7 @@ export default function ComparePage() {
                     </th>
                     {/* HN — highlighted */}
                     <th className="border-b border-[#0051FF] bg-[#0051FF] px-6 py-4 text-left">
-                      <div className="text-xs font-bold uppercase tracking-widest text-white/60">
+                      <div className="text-xs font-bold uppercase tracking-widest text-white/90">
                         Recommended
                       </div>
                       <div className="mt-0.5 text-base font-bold text-white">HN Tech</div>
@@ -312,7 +312,7 @@ export default function ComparePage() {
             <h2 className="text-4xl font-bold text-white md:text-5xl">
               Ready to work with the right team?
             </h2>
-            <p className="mx-auto mt-5 max-w-xl text-lg text-white/70">
+            <p className="mx-auto mt-5 max-w-xl text-lg text-white/90">
               Skip the guesswork. Get a free proposal from HN — three senior engineers who treat your
               project like their own.
             </p>

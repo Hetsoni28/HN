@@ -218,7 +218,7 @@ export default function MaintenancePage() {
                     <div
                       className={[
                         'text-xs font-bold uppercase tracking-widest',
-                        isPopular ? 'text-white/60' : 'text-slate-400',
+                        isPopular ? 'text-white/90' : 'text-slate-400',
                       ].join(' ')}
                     >
                       {plan.name}
@@ -230,7 +230,7 @@ export default function MaintenancePage() {
                       <span
                         className={[
                           'mb-1 text-sm',
-                          isPopular ? 'text-white/70' : 'text-slate-400',
+                          isPopular ? 'text-white/90' : 'text-slate-400',
                         ].join(' ')}
                       >
                         / 2 months
@@ -269,7 +269,7 @@ export default function MaintenancePage() {
                     <div
                       className={[
                         'mt-6 rounded-xl px-4 py-3 text-xs font-medium',
-                        isPopular ? 'bg-white/15 text-white/80' : 'bg-[#EEF0FF] text-[#0051FF]',
+                        isPopular ? 'bg-white/15 text-white' : 'bg-[#EEF0FF] text-[#0041CC]',
                       ].join(' ')}
                     >
                       Best for: {plan.bestFor}

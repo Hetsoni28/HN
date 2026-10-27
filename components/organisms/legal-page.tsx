@@ -35,7 +35,7 @@ export function LegalPageLayout({
           <FadeIn>
             <Breadcrumb className="mb-6" />
             {eyebrow && (
-              <span className="inline-block rounded-full bg-[#0051FF]/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-[#0051FF]">
+              <span className="inline-block rounded-full bg-[#0051FF]/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-[#0041CC]">
                 {eyebrow}
               </span>
             )}

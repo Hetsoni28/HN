@@ -34,6 +34,13 @@ const nextConfig: NextConfig = {
         ],
       },
       {
+        // Video and raw images in public/ (not content-hashed, so cache for a week rather than forever)
+        source: '/:path*\\.(mp4|webm|png|jpg|jpeg|webp|avif|svg)',
+        headers: [
+          { key: 'Cache-Control', value: 'public, max-age=604800, stale-while-revalidate=86400' },
+        ],
+      },
+      {
         // Default security headers on all pages
         source: '/(.*)',
         headers: [
