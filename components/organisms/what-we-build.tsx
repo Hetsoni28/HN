@@ -50,7 +50,7 @@ export function WhatWeBuild() {
         <FadeIn>
           <SectionHeading
             eyebrow="All-In-One Tech & Development"
-            title="The Best Tech Company for All Your Digital Development Needs."
+            title="Website, App, SaaS & AI Development Under One Roof."
             description="From enterprise web architecture and custom SaaS platforms to native mobile apps and AI solutions — we cover every layer of the modern tech stack."
           />
         </FadeIn>

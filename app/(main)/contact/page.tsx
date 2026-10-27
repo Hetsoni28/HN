@@ -1,23 +1,18 @@
 import type { Metadata } from 'next';
+import { pageMetadata } from '@/lib/seo';
 import Image from 'next/image';
 import { ContactForm } from '@/components/organisms/contact-form';
 import { FadeIn } from '@/components/atoms/fade-in';
 import { Breadcrumb } from '@/components/molecules/breadcrumb';
 import { WhatsAppButton } from '@/components/atoms/whatsapp-button';
 
-export const metadata: Metadata = {
-  title: 'Contact Us & Get a Quote',
+export const metadata: Metadata = pageMetadata({
+  title: 'Contact Us — Get a Free Project Quote',
   description:
-    'Start your project with HN Tech. Tell us about your web development, SaaS, mobile app, or AI project and get a proposal within 24 hours.',
-  alternates: { canonical: 'https://www.hntech.in/contact' },
-  openGraph: {
-    title: 'Contact Us & Get a Quote | HN Tech',
-    description:
-      'Start your project with HN Tech. Tell us about your web development, SaaS, mobile app, or AI project and get a proposal within 24 hours.',
-    url: 'https://www.hntech.in/contact',
-    images: [{ url: '/contact/opengraph-image', width: 1200, height: 630, alt: 'Contact HN Tech' }],
-  },
-};
+    "Tell us about your website, web app, SaaS, mobile app or AI project and get a free proposal within 48 hours from HN Tech's senior engineers.",
+  path: '/contact',
+  ownImage: true,
+});
 
 const CONTACT_DETAILS = [
   {

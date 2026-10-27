@@ -1,27 +1,23 @@
 import type { Metadata } from 'next';
+import { pageMetadata } from '@/lib/seo';
 import Link from 'next/link';
 import Image from 'next/image';
 import { FadeIn } from '@/components/atoms/fade-in';
 import { Button } from '@/components/atoms/button';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: 'Website & App Maintenance Plans',
   description:
-    'Website and app maintenance plans by HN Tech. 24/7 uptime monitoring, security patching, performance tuning, and fast bug fixes for your products.',
+    'Website and app maintenance plans: 24/7 uptime monitoring, security patching, performance tuning and fast bug fixes for your live product.',
+  path: '/maintenance',
   keywords: [
-    'website maintenance plan',
-    'monthly website support',
-    'web app maintenance India',
-    'software security updates',
+    'website maintenance plans',
+    'website maintenance services India',
+    'web app maintenance',
+    'website security updates',
   ],
-  alternates: { canonical: 'https://www.hntech.in/maintenance' },
-  openGraph: {
-    title: 'Website & App Maintenance Plans | HN Tech',
-    description:
-      'Website and app maintenance plans by HN Tech. 24/7 uptime monitoring, security patching, performance tuning, and fast bug fixes for your products.',
-    url: 'https://www.hntech.in/maintenance',
-  },
-};
+  ownImage: true,
+});
 
 /* ── Data ── */
 
@@ -145,11 +141,11 @@ export default function MaintenancePage() {
         <div className="absolute inset-0 z-0">
           <Image
             src="/maintenance-hero.png"
-            alt="Website Maintenance Background"
+            alt="Website and app maintenance and uptime monitoring illustration"
             fill
             priority
             className="object-cover object-center"
-           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
+           sizes="100vw" />
         </div>
 
         <div className="container relative z-10 flex justify-center">

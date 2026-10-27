@@ -1,31 +1,23 @@
 import type { Metadata } from 'next';
+import { pageMetadata } from '@/lib/seo';
 import { FadeIn } from '@/components/atoms/fade-in';
 import { Button } from '@/components/atoms/button';
 
-export const metadata: Metadata = {
-  title: 'Compare: HN Tech vs Freelancers vs Agencies',
+export const metadata: Metadata = pageMetadata({
+  title: 'Freelancer vs Agency vs HN Tech: Compared',
   description:
-    'Compare HN Tech against hiring a freelancer or big agency across code quality, total cost, accountability, delivery speed, and long-term maintenance.',
+    'Hiring a freelancer or an agency? Compare code quality, total cost, accountability, delivery speed and long-term maintenance before you choose.',
+  path: '/compare',
   keywords: [
-    'hire freelancer vs agency',
-    'HN vs freelancer vs agency',
+    'freelancer vs agency',
+    'hire freelancer or agency',
     'freelancer vs agency comparison',
-    'digital agency vs freelancer',
-    'when to hire a freelancer',
-    'when to hire an agency',
-    'tech company vs agency',
-    'best way to build a web app',
-    'hire developers India',
+    'hire web developers India',
+    'outsource web development India',
+    'dedicated development team',
   ],
-  alternates: { canonical: 'https://www.hntech.in/compare' },
-  openGraph: {
-    title: 'Compare: HN Tech vs Freelancers vs Agencies | HN Tech',
-    description:
-      'Compare HN Tech against hiring a freelancer or big agency across code quality, total cost, accountability, delivery speed, and long-term maintenance.',
-    url: 'https://www.hntech.in/compare',
-    type: 'website',
-  },
-};
+  ownImage: true,
+});
 
 /* ── Comparison table data ── */
 const TABLE_ROWS = [

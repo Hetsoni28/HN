@@ -21,6 +21,10 @@ const components = {
       }
       return <p className="mt-5 text-lg leading-relaxed text-slate-600 first:mt-0">{children}</p>;
     },
+    // The page title is the only <h1>; a CMS "Heading 1" inside the body becomes an <h2>.
+    h1: ({ children }: { children?: React.ReactNode }) => (
+      <h2 className="mt-12 text-3xl font-bold tracking-tight text-slate-900 first:mt-0">{children}</h2>
+    ),
     h2: ({ children }: { children?: React.ReactNode }) => (
       <h2 className="mt-12 text-3xl font-bold tracking-tight text-slate-900 first:mt-0">{children}</h2>
     ),

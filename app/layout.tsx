@@ -4,6 +4,7 @@ import '../styles/globals.css';
 import { OrganizationJsonLd, WebSiteJsonLd, ProfessionalServiceJsonLd } from '@/components/molecules/structured-data';
 import { SkipLink } from '@/components/atoms/skip-link';
 import { WelcomeManager } from '@/components/welcome/WelcomeManager';
+import { DEFAULT_OG_IMAGE } from '@/lib/seo';
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL && !process.env.NEXT_PUBLIC_SITE_URL.includes('localhost')
   ? process.env.NEXT_PUBLIC_SITE_URL
@@ -12,25 +13,22 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL && !process.env.NEXT_PUBLIC_SI
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: 'HN Tech — Best Tech Company for Web Development',
+    default: 'Web & App Development Company in India | HN Tech',
     template: '%s | HN Tech',
   },
   description:
-    'HN Tech is the best tech company for all development: custom websites, SaaS platforms, mobile apps, and scalable AI digital services for businesses.',
+    'HN Tech is a web and app development company in India building custom websites, web apps, SaaS platforms, mobile apps and AI solutions for businesses.',
   keywords: [
-    'best tech company for all development',
-    'best web development company',
-    'best digital services company',
-    'top software development company',
-    'custom web development',
-    'SaaS platform development',
+    'web development company in India',
+    'app development company in India',
+    'software development company',
+    'custom website development',
+    'web application development',
+    'SaaS development company',
     'mobile app development company',
-    'full stack development agency',
-    'AI solutions and integrations',
+    'AI development services',
     'Next.js development company',
     'HN Tech',
-    'Het Soni',
-    'Neel Patel',
   ],
   authors: [{ name: 'Het Soni' }, { name: 'Neel Patel' }],
   creator: 'HN Tech',
@@ -38,17 +36,15 @@ export const metadata: Metadata = {
   alternates: { canonical: SITE_URL },
   openGraph: {
     type: 'website', locale: 'en_IN', url: SITE_URL, siteName: 'HN Tech',
-    title: 'HN Tech — Best Tech Company for Web Development',
+    title: 'Web & App Development Company in India | HN Tech',
     description:
-      'HN Tech is the best tech company for all development: custom websites, SaaS platforms, mobile apps, and scalable AI digital services for businesses.',
-    images: [{ url: '/opengraph-image.png', width: 1200, height: 630, alt: 'HN Tech — Best Tech Company for Web Development & Digital Services' }],
+      'HN Tech is a web and app development company in India building custom websites, web apps, SaaS platforms, mobile apps and AI solutions for businesses.',
+    images: [DEFAULT_OG_IMAGE],
   },
+  // No title/description here: X falls back to each page's og:title / og:description.
   twitter: {
     card: 'summary_large_image', site: '@hetsoni', creator: '@hetsoni',
-    title: 'HN Tech — Best Tech Company for Web Development',
-    description:
-      'HN Tech is the best tech company for all development: custom websites, SaaS platforms, mobile apps, and scalable AI digital services for businesses.',
-    images: ['/opengraph-image.png'],
+    images: [DEFAULT_OG_IMAGE.url],
   },
   robots: {
     index: true,

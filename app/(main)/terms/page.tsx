@@ -1,18 +1,13 @@
 import type { Metadata } from 'next';
+import { pageMetadata } from '@/lib/seo';
 import { LegalPageLayout } from '@/components/organisms/legal-page';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: 'Terms of Service',
   description:
-    'Review the Terms of Service for HN Tech. Learn about project engagement, intellectual property rights, payment terms, and client guarantees.',
-  alternates: { canonical: 'https://www.hntech.in/terms' },
-  openGraph: {
-    title: 'Terms of Service | HN Tech',
-    description:
-      'Review the Terms of Service for HN Tech. Learn about project engagement, intellectual property rights, payment terms, and client guarantees.',
-    url: 'https://www.hntech.in/terms',
-  },
-};
+    'Review the Terms of Service for HN Tech: project engagement, intellectual property rights, payment terms and client guarantees.',
+  path: '/terms',
+});
 
 export default function TermsPage() {
   return (

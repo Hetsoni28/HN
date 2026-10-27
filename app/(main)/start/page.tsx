@@ -1,20 +1,15 @@
 import type { Metadata } from 'next';
+import { pageMetadata } from '@/lib/seo';
 import Image from 'next/image';
 import { FadeIn } from '@/components/atoms/fade-in';
 import { OnboardingChecklist } from './onboarding-checklist';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: 'Project Onboarding Checklist',
   description:
-    'A complete onboarding checklist for new HN Tech clients. Prepare brand assets, project requirements, and technical access before development kicks off.',
-  alternates: { canonical: 'https://www.hntech.in/start' },
-  openGraph: {
-    title: 'Project Onboarding Checklist | HN Tech',
-    description:
-      'A complete onboarding checklist for new HN Tech clients. Prepare brand assets, project requirements, and technical access before development kicks off.',
-    url: 'https://www.hntech.in/start',
-  },
-};
+    'A complete onboarding checklist for new HN Tech clients. Prepare brand assets, project requirements and technical access before development kicks off.',
+  path: '/start',
+});
 
 export default function StartPage() {
   return (
@@ -25,12 +20,12 @@ export default function StartPage() {
         <div className="absolute inset-0 z-0">
           <Image
             src="/start-hero.png"
-            alt="Getting Started Background"
+            alt="Project onboarding checklist for new HN Tech clients"
             fill
             quality={100}
             className="object-cover object-center"
             priority
-           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
+           sizes="100vw" />
         </div>
 
         <div className="container relative z-10">

@@ -60,7 +60,7 @@ export function HeroSection() {
               variants={item}
               className="mb-6 text-xs font-bold uppercase tracking-[0.3em] text-[#0051FF]"
             >
-              Best Tech &amp; Digital Services Company
+              Web &amp; App Development Company in India
             </motion.p>
 
             {/* Headline */}
@@ -139,7 +139,7 @@ export function HeroSection() {
               {/* Static poster fallback */}
               <Image
                 src="/hero-mockup.png"
-                alt="HN digital product preview"
+                alt="Web dashboard, mobile app and AI features built by HN Tech"
                 fill
                 priority
                 fetchPriority="high"

@@ -218,7 +218,7 @@ export function ShowreelPlayer() {
           className={`absolute inset-0 w-full h-full z-20 flex flex-col items-center justify-center bg-slate-50 transition-all duration-1000 group ${!isPlaying && progress === 0 ? 'opacity-100 cursor-pointer hover:bg-slate-100' : 'opacity-0 pointer-events-none'}`}
         >
           <div className="flex flex-col items-center gap-4 md:gap-10 transform transition-transform duration-700 group-hover:scale-105 p-4">
-            <Image src="/hn-logo.svg" alt="HN Logo" width={280} height={90} className="w-32 md:w-[280px] h-auto opacity-90" />
+            <Image src="/hn-logo.svg" alt="HN Tech logo" width={280} height={90} className="w-32 md:w-[280px] h-auto opacity-90" />
             <div className="flex flex-col md:flex-row items-center gap-2 md:gap-4 text-[#0051FF] font-bold tracking-widest uppercase text-xs md:text-sm">
               <div className="flex items-center justify-center w-10 h-10 md:w-14 md:h-14 rounded-full bg-[#0051FF] text-white shadow-xl shadow-blue-500/30 transition-transform group-hover:scale-110">
                 <svg className="w-4 h-4 md:w-6 md:h-6 translate-x-[2px]" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
@@ -230,27 +230,27 @@ export function ShowreelPlayer() {
 
         {/* Media Layers */}
         <div className={`absolute inset-0 transition-opacity duration-1000 ${media.before ? 'opacity-100 scale-100' : 'opacity-0 scale-105'}`}>
-          <Image src="/images/showreel/before.jpg" alt="Before" fill className="object-cover" priority  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
+          <Image src="/images/showreel/before.jpg" alt="Legacy interface before the redesign" fill className="object-cover" priority  sizes="100vw" />
         </div>
 
         <div className={`absolute inset-0 transition-opacity duration-500 ${media.wipeScene ? 'opacity-100' : 'opacity-0'}`}>
-          <Image src="/images/showreel/before.jpg" alt="Before" fill className="object-cover"  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
+          <Image src="/images/showreel/before.jpg" alt="Legacy interface before the redesign" fill className="object-cover"  sizes="100vw" />
           <div 
             className="absolute inset-0 overflow-hidden border-r-4 border-cyan-400 shadow-[20px_0_40px_rgba(34,211,238,0.5)] transition-all duration-100 ease-linear"
             style={{ width: `${media.wipeProgress}%` }}
           >
             <div className="relative w-full h-full" style={{ width: containerWidth }}>
-              <Image src="/images/showreel/after.jpg" alt="After" fill className="object-cover"  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
+              <Image src="/images/showreel/after.jpg" alt="Interface after the HN Tech redesign" fill className="object-cover"  sizes="100vw" />
             </div>
           </div>
         </div>
 
         <div className={`absolute inset-0 transition-opacity duration-1000 ${media.dev ? 'opacity-100 scale-100' : 'opacity-0 scale-105'}`}>
-          <Image src="/images/showreel/dev.jpg" alt="Developer" fill className="object-cover"  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
+          <Image src="/images/showreel/dev.jpg" alt="HN Tech developer writing code" fill className="object-cover"  sizes="100vw" />
         </div>
 
         <div className={`absolute inset-0 transition-opacity duration-1000 ${media.mobile ? 'opacity-100 scale-100' : 'opacity-0 scale-105'}`}>
-          <Image src="/images/showreel/mobile.jpg" alt="Mobile" fill className="object-cover"  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
+          <Image src="/images/showreel/mobile.jpg" alt="Mobile app built by HN Tech on a smartphone" fill className="object-cover"  sizes="100vw" />
         </div>
 
         {/* Overlay */}
@@ -320,7 +320,7 @@ export function ShowreelPlayer() {
             Stop waiting. Start building.
           </h2>
           <div className={`mt-8 transition-all duration-1000 ${s7 >= 2 ? 'translate-y-0 blur-0 opacity-100' : 'translate-y-4 blur-md opacity-0'}`}>
-            <Image src="/hn-logo.svg" alt="HN Logo" width={300} height={100} />
+            <Image src="/hn-logo.svg" alt="HN Tech logo" width={300} height={100} />
           </div>
         </div>
 

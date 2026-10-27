@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { pageMetadata } from '@/lib/seo';
 import { getFeaturedProjects, getFaqs, getTestimonials } from '@/lib/content';
 
 import { HeroSection }        from '@/components/organisms/hero-section';
@@ -17,33 +18,22 @@ import { GithubActivity }     from '@/components/organisms/github-activity';
 
 import { FAQPageJsonLd }       from '@/components/molecules/structured-data';
 
-export const metadata: Metadata = {
-  title: {
-    absolute: 'HN Tech — Best Tech Company for Web Development',
-  },
+export const metadata: Metadata = pageMetadata({
+  title: { absolute: 'Web & App Development Company in India | HN Tech' },
   description:
-    'HN Tech is the best tech company for all development: custom websites, SaaS platforms, mobile apps, and scalable AI digital services for businesses.',
+    'HN Tech is a web and app development company in India building custom websites, web apps, SaaS platforms, mobile apps and AI solutions for businesses.',
+  path: '/',
   keywords: [
-    'best tech company for all development',
-    'best web development company',
-    'best digital services company',
+    'web development company in India',
+    'app development company in India',
     'custom software development company',
-    'SaaS platform development',
+    'website development services',
+    'SaaS development company',
     'mobile app development company',
-    'full stack developers India',
+    'AI development services',
     'Next.js development company',
   ],
-  alternates: {
-    canonical: 'https://www.hntech.in',
-  },
-  openGraph: {
-    title: 'HN Tech — Best Tech Company for Web Development',
-    description:
-      'HN Tech is the best tech company for all development: custom websites, SaaS platforms, mobile apps, and scalable AI digital services for businesses.',
-    url: 'https://www.hntech.in',
-    type: 'website',
-  },
-};
+});
 
 export default async function Home() {
   const [projects, faqs, testimonials] = await Promise.all([

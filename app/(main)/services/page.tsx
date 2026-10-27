@@ -1,43 +1,27 @@
 import Link from 'next/link';
 import type { Metadata } from 'next';
+import { pageMetadata } from '@/lib/seo';
 import { getServices } from '@/lib/content';
 import { FadeIn } from '@/components/atoms/fade-in';
 import { Button } from '@/components/atoms/button';
 import { ServiceIcon } from '@/components/atoms/service-icon';
 
-export const metadata: Metadata = {
-  title: 'Web & App Development Services',
+export const metadata: Metadata = pageMetadata({
+  title: 'Web, App & Software Development Services',
   description:
-    'Explore HN Tech development services: high-performance websites, custom SaaS platforms, native mobile apps, and enterprise AI automation solutions.',
+    'Website development, web apps, SaaS platforms, mobile apps, AI automation, e-commerce and UI/UX design: full-service development by HN Tech in India.',
+  path: '/services',
   keywords: [
-    'best web development company',
-    'best tech company for all development',
-    'best digital services company',
+    'web development services',
+    'software development services India',
     'custom web development services',
-    'saas development company',
+    'SaaS development company',
     'mobile app development company',
-    'full stack tech services',
-    'HN Tech services',
+    'AI development services',
+    'e-commerce website development',
+    'UI/UX design services',
   ],
-  alternates: {
-    canonical: 'https://www.hntech.in/services',
-  },
-  openGraph: {
-    title: 'Web & App Development Services | HN Tech',
-    description:
-      'Explore HN Tech development services: high-performance websites, custom SaaS platforms, native mobile apps, and enterprise AI automation solutions.',
-    url: 'https://www.hntech.in/services',
-    type: 'website',
-    images: [
-      {
-        url: '/services/opengraph-image',
-        width: 1200,
-        height: 630,
-        alt: 'Web & App Development Services — HN Tech',
-      },
-    ],
-  },
-};
+});
 
 export default async function ServicesPage() {
   const services = await getServices();
@@ -49,11 +33,11 @@ export default async function ServicesPage() {
         <div className="container text-center">
           <FadeIn>
             <p className="text-xs font-bold uppercase tracking-[0.25em] text-[#0051FF]">
-              Best Tech &amp; Digital Services
+              Our Services
             </p>
             <h1 className="mx-auto mt-4 max-w-4xl text-5xl font-bold leading-tight md:text-6xl">
-              The Best Tech Company for{' '}
-              <span className="gradient-text">All Development.</span>
+              Web, App &amp; Software{' '}
+              <span className="gradient-text">Development Services.</span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-slate-500">
               HN Tech covers the entire digital ecosystem — high-performance web development, custom SaaS engineering, cross-platform mobile apps, and enterprise AI solutions.

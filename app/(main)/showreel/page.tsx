@@ -1,19 +1,14 @@
 import { Metadata } from 'next';
 import { ShowreelPlayer } from '@/components/organisms/showreel-player';
+import { pageMetadata } from '@/lib/seo';
 import { FadeIn } from '@/components/atoms/fade-in';
 
-export const metadata: Metadata = {
-  title: 'Cinematic Showreel',
+export const metadata: Metadata = pageMetadata({
+  title: 'Showreel — How We Design & Build Products',
   description:
-    'Watch how HN Tech engineers world-class software. A cinematic showreel exploring our product development standards, modern design, and engineering vision.',
-  alternates: { canonical: 'https://www.hntech.in/showreel' },
-  openGraph: {
-    title: 'Cinematic Showreel | HN Tech',
-    description:
-      'Watch how HN Tech engineers world-class software. A cinematic showreel exploring our product development standards, modern design, and engineering vision.',
-    url: 'https://www.hntech.in/showreel',
-  },
-};
+    'A 40-second showreel of how HN Tech designs and engineers digital products: our development standards, interface design and engineering approach.',
+  path: '/showreel',
+});
 
 export default function ShowreelPage() {
   return (

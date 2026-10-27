@@ -1,6 +1,6 @@
-import { notFound, permanentRedirect } from 'next/navigation';
+import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
-import { getProjectBySlug, getProjects, FALLBACK_PROJECTS } from '@/lib/content';
+import { getProjectBySlug, getProjects } from '@/lib/content';
 import { CaseStudyHero, CaseStudyOverview } from '@/components/organisms/case-study-hero';
 import {
   CaseStudyTextSection,
@@ -10,12 +10,8 @@ import {
   CaseStudyNext,
   CaseStudyCta,
 } from '@/components/organisms/case-study-sections';
-
-const LEGACY_SLUG_MAP: Record<string, string> = {
-  'urbanfit-app': 'fittrack-pro',
-  'nexusecom': 'nexus-ecommerce',
-  'fintech-vault': 'financeflow',
-};
+import { BreadcrumbJsonLd } from '@/components/molecules/structured-data';
+import { pageMetadata, cmsTitle, SITE_URL } from '@/lib/seo';
 
 /* ── ISR — rebuild every 1 hour at most ── */
 export const revalidate = 3600;
@@ -33,25 +29,15 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  if (LEGACY_SLUG_MAP[slug]) {
-    permanentRedirect(`/work/${LEGACY_SLUG_MAP[slug]}`);
-  }
   const p = await getProjectBySlug(slug);
   if (!p) return { title: 'Project not found' };
-  const rawDesc = p.seoDescription ?? p.shortDescription ?? `${p.title} case study by HN Tech.`;
-  const description = rawDesc.length > 155 ? `${rawDesc.slice(0, 152).trim()}...` : rawDesc;
-  return {
-    title: p.seoTitle ?? p.title,
-    description,
-    alternates: {
-      canonical: `https://www.hntech.in/work/${slug}`,
-    },
-    openGraph: {
-      title: `${p.title} | Case Study`,
-      description,
-      url: `https://www.hntech.in/work/${slug}`,
-    },
-  };
+  return pageMetadata({
+    title: cmsTitle(p.seoTitle ?? p.title),
+    description: p.seoDescription ?? p.shortDescription ?? `${p.title} case study by HN Tech.`,
+    path: `/work/${slug}`,
+    ownImage: true,
+    openGraph: { title: `${p.title} | Case Study` },
+  });
 }
 
 /* ── Page ── */
@@ -61,18 +47,20 @@ export default async function CaseStudyPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  if (LEGACY_SLUG_MAP[slug]) {
-    permanentRedirect(`/work/${LEGACY_SLUG_MAP[slug]}`);
-  }
   const project = await getProjectBySlug(slug);
   if (!project) notFound();
 
-  const all = FALLBACK_PROJECTS;
+  const all = await getProjects();
   const idx = all.findIndex((p) => p.slug.current === slug);
-  const next = all[(idx + 1) % all.length];
+  const next = idx === -1 ? null : all[(idx + 1) % all.length];
 
   return (
     <article>
+      <BreadcrumbJsonLd items={[
+        { name: 'Home', url: SITE_URL },
+        { name: 'Work', url: `${SITE_URL}/work` },
+        { name: project.title, url: `${SITE_URL}/work/${slug}` },
+      ]} />
       <CaseStudyHero    project={project} />
       <CaseStudyOverview project={project} />
 

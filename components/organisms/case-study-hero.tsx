@@ -37,7 +37,9 @@ export function CaseStudyHero({ project }: { project: Project }) {
             {[
               { label: 'Timeline', value: project.timeline ?? '—' },
               { label: 'Role',     value: project.role ?? 'Full-Stack Development' },
-              { label: 'Stack',    value: `${project.technology?.length ?? 0} technologies` },
+              ...(project.technology?.length
+                ? [{ label: 'Stack', value: `${project.technology.length} technologies` }]
+                : []),
             ].map((m) => (
               <div key={m.label}>
                 <div className="text-xs font-bold uppercase tracking-widest text-white/40">{m.label}</div>
@@ -66,7 +68,7 @@ export function CaseStudyHero({ project }: { project: Project }) {
                 fill
                 className="object-cover"
                 priority
-               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
+               sizes="(max-width: 1280px) 100vw, 1280px" />
             ) : (
               <div className="flex h-full w-full flex-col items-center justify-center gap-3 text-white/40 sm:gap-4">
                 <svg className="h-10 w-10 sm:h-16 sm:w-16" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={0.8} aria-hidden="true">

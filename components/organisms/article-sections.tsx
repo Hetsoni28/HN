@@ -25,7 +25,8 @@ function getAuthorPhotoUrl(author?: BlogPost['author']): string | null {
     try {
       return urlFor(author.photo).width(160).height(160).fit('crop').url();
     } catch {
-      if ((author.photo as any)?.asset?.url) return (author.photo as any).asset.url;
+      const assetUrl = (author.photo as { asset?: { url?: string } })?.asset?.url;
+      if (assetUrl) return assetUrl;
     }
   }
   const lowerName = author.name?.toLowerCase().trim() || '';

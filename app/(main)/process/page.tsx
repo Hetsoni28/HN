@@ -1,20 +1,15 @@
 import type { Metadata } from 'next';
+import { pageMetadata } from '@/lib/seo';
 import { ProcessHero, ProcessSteps, ProcessFaq } from '@/components/organisms/process-steps';
 import { FadeIn } from '@/components/atoms/fade-in';
 import { Button } from '@/components/atoms/button';
 
-export const metadata: Metadata = {
-  title: 'How We Build Products',
+export const metadata: Metadata = pageMetadata({
+  title: 'Our Software Development Process',
   description:
-    'A transparent 6-step process: Discover, Plan, Design, Build, Launch, Evolve. Know exactly what happens at every stage of your project with HN Tech.',
-  alternates: { canonical: 'https://www.hntech.in/process' },
-  openGraph: {
-    title: 'How We Build Products | HN Tech',
-    description:
-      'A transparent 6-step process: Discover, Plan, Design, Build, Launch, Evolve. Know exactly what happens at every stage of your project with HN Tech.',
-    url: 'https://www.hntech.in/process',
-  },
-};
+    'Our 6-step software development process: Discover, Plan, Design, Build, Launch, Evolve. Know exactly what happens at every stage of your project.',
+  path: '/process',
+});
 
 export default function ProcessPage() {
   return (

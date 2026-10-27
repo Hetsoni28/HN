@@ -13,7 +13,7 @@ export function Logo() {
       {/* Icon mark */}
       <Image
         src="/hn-logo.svg"
-        alt="HN"
+        alt="HN Tech logo"
         width={830}
         height={735}
         className="h-11 w-auto object-contain"

@@ -208,39 +208,6 @@ textarea:focus-visible {
   background-clip: text;
 }
 
-/* Hero background grid */
-.bg-grid {
-  background-image:
-    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
-  background-size: 64px 64px;
-}
-
-/* Glassmorphism card */
-.glass {
-  background: rgba(255, 255, 255, 0.04);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-/* Blob animation delays */
-.animation-delay-2000 { animation-delay: 2s; }
-.animation-delay-4000 { animation-delay: 4s; }
-
-/* Glow effect */
-.glow-blue {
-  box-shadow: 0 0 60px rgba(0, 81, 255, 0.25);
-}
-
-/* Border gradient */
-.border-gradient {
-  border: 1px solid transparent;
-  background:
-    linear-gradient(#0B111E, #0B111E) padding-box,
-    linear-gradient(135deg, rgba(0,81,255,.5), rgba(0,210,255,.3)) border-box;
-}
-
 /* Noise overlay */
 .noise::after {
   content: '';

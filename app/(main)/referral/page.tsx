@@ -1,28 +1,23 @@
 import type { Metadata } from 'next';
+import { pageMetadata } from '@/lib/seo';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FadeIn } from '@/components/atoms/fade-in';
 import { ReferralForm } from './referral-form';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: 'Refer & Earn 10% Reward',
   description:
-    'Know someone who needs a website or app? Refer them to HN Tech and earn 10% when they sign a contract. No limits — refer as many friends as you like.',
+    'Know someone who needs a website or app? Refer them to HN Tech and earn 10% when they sign a contract. No limits on how many friends you refer.',
+  path: '/referral',
   keywords: [
     'referral program',
-    'earn money',
-    'refer a friend',
+    'refer a client',
     'web development referral',
     'HN Tech rewards',
   ],
-  alternates: { canonical: 'https://www.hntech.in/referral' },
-  openGraph: {
-    title: 'Refer & Earn 10% Reward | HN Tech',
-    description:
-      'Know someone who needs a website or app? Refer them to HN Tech and earn 10% when they sign a contract. No limits — refer as many friends as you like.',
-    url: 'https://www.hntech.in/referral',
-  },
-};
+  ownImage: true,
+});
 
 /* ── Static data ── */
 const STEPS = [
@@ -84,12 +79,12 @@ export default function ReferralPage() {
         <div className="absolute inset-0 z-0">
           <Image
             src="/referral-hero.png"
-            alt="Referral Program Background"
+            alt="HN Tech refer-and-earn referral program illustration"
             fill
             quality={100}
             className="object-cover object-center"
             priority
-           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
+           sizes="100vw" />
         </div>
 
         {/* Background Image Overlay to improve contrast */}

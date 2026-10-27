@@ -21,12 +21,12 @@ export function AboutHero() {
       <div className="absolute inset-0 z-0">
         <Image
           src="/about-hero.png"
-          alt="About HN Background"
+          alt="HN Tech office with the HN logo on the wall"
           fill
           quality={100}
           className="object-cover object-center"
           priority
-         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
+         sizes="100vw" />
       </div>
 
       <div className="container relative z-10">

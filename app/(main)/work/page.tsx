@@ -1,22 +1,17 @@
 import type { Metadata } from 'next';
+import { pageMetadata } from '@/lib/seo';
 import Image from 'next/image';
 import { getProjects } from '@/lib/content';
 import { FadeIn } from '@/components/atoms/fade-in';
 import { TransformationSection } from '@/components/organisms/transformation-section';
 import { WorkFilter } from './work-filter';
 
-export const metadata: Metadata = {
-  title: 'Portfolio & Case Studies',
+export const metadata: Metadata = pageMetadata({
+  title: 'Portfolio — Web, SaaS & AI Case Studies',
   description:
-    'Explore HN Tech portfolio of featured projects: custom web applications, multi-tenant SaaS platforms, e-commerce, and enterprise AI implementations.',
-  alternates: { canonical: 'https://www.hntech.in/work' },
-  openGraph: {
-    title: 'Portfolio & Case Studies | HN Tech',
-    description:
-      'Explore HN Tech portfolio of featured projects: custom web applications, multi-tenant SaaS platforms, e-commerce, and enterprise AI implementations.',
-    url: 'https://www.hntech.in/work',
-  },
-};
+    'See HN Tech case studies: custom web applications, SaaS platforms, e-commerce websites and AI products, with the stack, timeline and results of each.',
+  path: '/work',
+});
 
 export default async function WorkPage() {
   const projects = await getProjects();
@@ -28,11 +23,11 @@ export default async function WorkPage() {
         <div className="absolute inset-0 -z-20">
           <Image
             src="/work-hero.jpg"
-            alt="Work Portfolio Background"
+            alt="Websites, web apps and mobile apps built by HN Tech shown on laptop, phone and monitors"
             fill
             className="object-cover object-center"
             priority
-           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
+           sizes="100vw" />
           {/* Clean gradient overlay: no blur, ensures text is readable while keeping the image crisp */}
           <div className="absolute inset-0 bg-[#EEF0FF]/50"></div>
           <div className="absolute inset-0 bg-gradient-to-b from-[#EEF0FF]/90 via-transparent to-[#EEF0FF]"></div>

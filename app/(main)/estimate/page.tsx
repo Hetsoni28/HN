@@ -1,21 +1,16 @@
 import type { Metadata } from 'next';
+import { pageMetadata } from '@/lib/seo';
 import Image from 'next/image';
 import { FadeIn } from '@/components/atoms/fade-in';
 import { Breadcrumb } from '@/components/molecules/breadcrumb';
 import { CostEstimator } from '@/components/organisms/cost-estimator';
 
-export const metadata: Metadata = {
-  title: 'Project Cost Estimator',
+export const metadata: Metadata = pageMetadata({
+  title: 'Website & App Development Cost Calculator',
   description:
-    'Calculate realistic development budgets for websites, SaaS platforms, and mobile apps with the instant HN Tech interactive project cost estimator.',
-  alternates: { canonical: 'https://www.hntech.in/estimate' },
-  openGraph: {
-    title: 'Project Cost Estimator | HN Tech',
-    description:
-      'Calculate realistic development budgets for websites, SaaS platforms, and mobile apps with the instant HN Tech interactive project cost estimator.',
-    url: 'https://www.hntech.in/estimate',
-  },
-};
+    'Estimate the cost of a website, web app, SaaS platform or mobile app in India. Pick your features and timeline for an instant, transparent budget range.',
+  path: '/estimate',
+});
 
 export default function EstimatePage() {
   return (

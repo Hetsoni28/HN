@@ -22,7 +22,7 @@ const SERVICES_MENU = [
 const COMPANY_MENU = [
   { label: 'About Us',         href: '/about',    desc: 'Who we are and how we work',       icon: '👥' },
   { label: 'Our Process',      href: '/process',  desc: 'From discovery to delivery',       icon: '📋' },
-  { label: 'Portfolio',        href: '/work',     desc: 'Case studies of our best work',    icon: '💼' },
+  { label: 'Portfolio',        href: '/work',     desc: 'Case studies of our recent work',    icon: '💼' },
   { label: 'Insights / Blog',  href: '/insights', desc: 'Articles on web, SaaS & AI',      icon: '✍️' },
   { label: 'Showreel',         href: '/showreel', desc: '40-second cinematic overview',     icon: '🎬' },
   { label: 'HN vs Others',     href: '/compare',  desc: 'Why choose HN over alternatives', icon: '⚖️' },

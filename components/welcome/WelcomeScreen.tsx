@@ -116,7 +116,7 @@ export function WelcomeScreen({ onComplete, isVisible }: WelcomeScreenProps) {
             >
               <Image
                 src="/hn-logo.svg"
-                alt="HN"
+                alt="HN Tech logo"
                 width={140}
                 height={124}
                 priority

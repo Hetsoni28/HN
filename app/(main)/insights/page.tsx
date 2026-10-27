@@ -1,22 +1,17 @@
 import type { Metadata } from 'next';
+import { pageMetadata } from '@/lib/seo';
 import Image from 'next/image';
 import { getPosts } from '@/lib/content';
 import { FadeIn } from '@/components/atoms/fade-in';
 import { Breadcrumb } from '@/components/molecules/breadcrumb';
 import { InsightsGrid } from '@/components/organisms/insights-grid';
 
-export const metadata: Metadata = {
-  title: 'Tech & Engineering Insights',
+export const metadata: Metadata = pageMetadata({
+  title: 'Web Development & AI Insights Blog',
   description:
-    'Practical articles on web development, SaaS architecture, Next.js, and AI automation — written by the senior engineers and founders at HN Tech.',
-  alternates: { canonical: 'https://www.hntech.in/insights' },
-  openGraph: {
-    title: 'Tech & Engineering Insights | HN Tech',
-    description:
-      'Practical articles on web development, SaaS architecture, Next.js, and AI automation — written by the senior engineers and founders at HN Tech.',
-    url: 'https://www.hntech.in/insights',
-  },
-};
+    'Practical articles on web development, SaaS architecture, Next.js and AI automation, written by the senior engineers and founders at HN Tech.',
+  path: '/insights',
+});
 
 export default async function InsightsPage() {
   const posts = await getPosts();

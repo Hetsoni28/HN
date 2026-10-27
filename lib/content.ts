@@ -414,6 +414,7 @@ export async function getProjectBySlug(slug: string): Promise<Project | null> {
   const data = await client.fetch<Project | null>(
     `*[_type == "project" && slug.current == $slug][0] {
       _id, title, slug, category, industry, shortDescription,
+      timeline, role, liveUrl,
       "heroImage": heroImage { asset->, alt },
       "gallery": gallery[] { asset->, alt },
       challenge, approach, solution, architecture, results, body,
@@ -423,7 +424,8 @@ export async function getProjectBySlug(slug: string): Promise<Project | null> {
     { slug },
     { next: { revalidate: REVALIDATE.DYNAMIC_CONTENT } }
   );
-  return data ?? found;
+  // Sanity is the source of truth once connected — never serve sample case studies as real ones.
+  return data;
 }
 
 export async function getServices(): Promise<Service[]> {
@@ -563,7 +565,7 @@ export const FALLBACK_FAQS: Faq[] = [
   },
   {
     _id: 'faq-7',
-    question: 'Why is HN Tech considered the best tech company for all development needs?',
+    question: 'Why choose HN Tech as your web and app development company?',
     answer: 'HN Tech provides unified, senior-engineer-led development across the entire digital lifecycle: modern web applications, scalable multi-tenant SaaS platforms, cross-platform mobile apps, custom AI/LLM integrations, and round-the-clock maintenance. With direct founder involvement and strict architecture standards, we eliminate vendor fragmentation.',
   },
   {
@@ -992,20 +994,6 @@ export async function getPosts(category?: string): Promise<BlogPost[]> {
   return data.length ? data : FALLBACK_POSTS;
 }
 
-export async function getFeaturedPosts(): Promise<BlogPost[]> {
-  if (!hasSanity) return FALLBACK_POSTS.filter((p) => p.featured);
-  const data = await client.fetch<BlogPost[]>(
-    `*[_type == "blogPost" && featured == true] | order(publishedAt desc)[0...3] {
-      _id, title, slug, excerpt, category, tags, readTime, featured, publishedAt,
-      "coverImage": coverImage { asset->, alt },
-      "author": author-> { name, role, "photo": photo { asset->, alt } }
-    }`,
-    {},
-    { next: { revalidate: REVALIDATE.DYNAMIC_CONTENT } }
-  );
-  return data.length ? data : FALLBACK_POSTS.filter((p) => p.featured);
-}
-
 export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
   const found = FALLBACK_POSTS.find((p) => p.slug.current === slug) ?? null;
   if (!hasSanity) return found;
@@ -1020,7 +1008,8 @@ export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
     { slug },
     { next: { revalidate: REVALIDATE.DYNAMIC_CONTENT } }
   );
-  return data ?? found;
+  // Sanity is the source of truth once connected — never serve sample articles as real ones.
+  return data;
 }
 
 export async function getRelatedPosts(currentId: string, category?: string): Promise<BlogPost[]> {
@@ -1029,8 +1018,9 @@ export async function getRelatedPosts(currentId: string, category?: string): Pro
       .filter((p) => p._id !== currentId && p.category === category)
       .slice(0, 3);
   }
+  // Same-category posts first, then the latest other real posts — never sample articles.
   const data = await client.fetch<BlogPost[]>(
-    `*[_type == "blogPost" && _id != $currentId && category == $category] | order(publishedAt desc)[0...3] {
+    `*[_type == "blogPost" && _id != $currentId] | order(select(category == $category => 0, 1) asc, publishedAt desc)[0...3] {
       _id, title, slug, excerpt, category, readTime, publishedAt,
       "coverImage": coverImage { asset->, alt },
       "author": author-> { name, role }
@@ -1038,9 +1028,7 @@ export async function getRelatedPosts(currentId: string, category?: string): Pro
     { currentId, category: category ?? '' },
     { next: { revalidate: REVALIDATE.DYNAMIC_CONTENT } }
   );
-  return data.length
-    ? data
-    : FALLBACK_POSTS.filter((p) => p._id !== currentId && p.category === category).slice(0, 3);
+  return data;
 }
 
 

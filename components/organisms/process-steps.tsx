@@ -197,7 +197,7 @@ export function ProcessHero() {
       <div className="absolute inset-0 z-0">
         <Image
           src="/process-hero.png"
-          alt="Process Background Illustration"
+          alt="Software development process illustration"
           fill
           quality={100}
           unoptimized

@@ -4,6 +4,7 @@ import type { Metadata } from 'next';
 import { CITIES, SERVICES_LIST, getCityName, getServiceName, getCanonicalServiceSlug } from '@/lib/locations';
 import { FadeIn } from '@/components/atoms/fade-in';
 import { Button } from '@/components/atoms/button';
+import { pageMetadata } from '@/lib/seo';
 
 /* ── Static generation for all 50 combinations ── */
 export function generateStaticParams() {
@@ -32,30 +33,21 @@ export async function generateMetadata({
     return { title: 'Page not found' };
   }
 
-  const title = `${serviceName} in ${cityName}`;
-  const rawDesc = `Expert ${serviceName} in ${cityName}, ${cityData.state} by HN Tech. We engineer high-performance websites, apps, and SaaS platforms. Free proposal in 24h.`;
-  const description = rawDesc.length > 155 ? `${rawDesc.slice(0, 152).trim()}...` : rawDesc;
+  const service = serviceName.toLowerCase();
 
-  return {
-    title,
-    description,
+  return pageMetadata({
+    title: `${serviceName} Company in ${cityName}`,
+    description: `HN Tech offers ${service} services in ${cityName}, ${cityData.state}: senior engineers, transparent pricing and a free project proposal within 48 hours.`,
+    path: `/services/${slug}/${city}`,
     keywords: [
-      `${serviceName.toLowerCase()} in ${cityName}`,
-      `${serviceName.toLowerCase()} company ${cityName}`,
-      `${serviceName.toLowerCase()} agency ${cityName}`,
-      `${serviceName.toLowerCase()} ${cityData.state}`,
-      `hire ${serviceName.toLowerCase()} ${cityName}`,
+      `${service} company in ${cityName}`,
+      `${service} services in ${cityName}`,
+      `${service} ${cityName}`,
+      `${service} company ${cityData.state}`,
+      `hire ${service} team ${cityName}`,
       'HN Tech',
     ],
-    openGraph: {
-      title: `${title} | HN Tech`,
-      description,
-      type: 'website',
-    },
-    alternates: {
-      canonical: `https://www.hntech.in/services/${slug}/${city}`,
-    },
-  };
+  });
 }
 
 /* ── Benefit cards data ── */

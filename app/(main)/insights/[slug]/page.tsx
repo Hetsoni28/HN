@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import { getPostBySlug, getPosts, getRelatedPosts } from '@/lib/content';
 import { ArticleHero, ArticleBody } from '@/components/organisms/article-sections';
 import { ArticleJsonLd, BreadcrumbJsonLd } from '@/components/molecules/structured-data';
+import { pageMetadata, cmsTitle } from '@/lib/seo';
 
 /* ── Static params ── */
 export async function generateStaticParams() {
@@ -19,22 +20,18 @@ export async function generateMetadata({
   const { slug } = await params;
   const post = await getPostBySlug(slug);
   if (!post) return { title: 'Article not found' };
-  const rawDesc = post.seoDescription ?? post.excerpt ?? `${post.title} article by HN Tech.`;
-  const description = rawDesc.length > 155 ? `${rawDesc.slice(0, 152).trim()}...` : rawDesc;
-  return {
-    title: post.seoTitle ?? post.title,
-    description,
-    alternates: {
-      canonical: `https://www.hntech.in/insights/${slug}`,
-    },
+  return pageMetadata({
+    title: cmsTitle(post.seoTitle ?? post.title),
+    description: post.seoDescription ?? post.excerpt ?? `${post.title} article by HN Tech.`,
+    path: `/insights/${slug}`,
+    ownImage: true,
     openGraph: {
       title: `${post.title} | HN Tech Insights`,
-      description,
       type: 'article',
       publishedTime: post.publishedAt,
       authors: post.author ? [post.author.name] : undefined,
     },
-  };
+  });
 }
 
 /* ── Page ── */

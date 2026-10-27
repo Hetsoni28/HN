@@ -57,10 +57,10 @@ const nextConfig: NextConfig = {
       { source: '/services/mobile-app-development', destination: '/services/mobile-applications', permanent: true },
       { source: '/services/ai-development', destination: '/services/ai-solutions', permanent: true },
 
-      // Legacy case-study slugs -> canonical case-study routes
-      { source: '/work/urbanfit-app', destination: '/work/fittrack-pro', permanent: true },
-      { source: '/work/nexusecom', destination: '/work/nexus-ecommerce', permanent: true },
-      { source: '/work/fintech-vault', destination: '/work/financeflow', permanent: true },
+      // Legacy sample case-study slugs -> portfolio (those projects no longer exist)
+      { source: '/work/urbanfit-app', destination: '/work', permanent: true },
+      { source: '/work/nexusecom', destination: '/work', permanent: true },
+      { source: '/work/fintech-vault', destination: '/work', permanent: true },
     ];
   },
 

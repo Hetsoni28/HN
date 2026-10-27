@@ -31,7 +31,6 @@ const NAV = [
     heading: 'WORK',
     links: [
       { href: '/work/data-insight',    label: 'Data Insight' },
-      { href: '/work/smartdrive-x',    label: 'SmartDrive X' },
       { href: 'https://ovow-foods.vercel.app/', label: 'Ovow Foods' },
       { href: 'https://salon-product-website.vercel.app', label: 'Salon' },
       { href: 'https://rajeshwari-jewellers.vercel.app', label: 'Rajeshwari Jewellers' },

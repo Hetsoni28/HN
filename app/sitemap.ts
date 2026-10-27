@@ -51,7 +51,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     url: `${BASE}/services/${s.slug.current}`,
     lastModified: new Date(),
     changeFrequency: 'monthly',
-    priority: 0.6,
+    priority: 0.9,
   }));
 
   // 50 city × service location pages — high SEO value

@@ -1,23 +1,18 @@
 import type { Metadata } from 'next';
+import { pageMetadata } from '@/lib/seo';
 import { getTeamMembers } from '@/lib/content';
 import { AboutHero, AboutIntro, AboutVision } from '@/components/organisms/about-hero';
 import { AboutValues, AboutTeam } from '@/components/organisms/about-values';
 import { FadeIn } from '@/components/atoms/fade-in';
 import { Button } from '@/components/atoms/button';
 
-export const metadata: Metadata = {
-  title: 'About Our Team',
+export const metadata: Metadata = pageMetadata({
+  title: 'About HN Tech — Web & App Developers in India',
   description:
-    'Meet the team behind HN Tech: Het Soni, Neel Patel & Heer Soni. Senior engineers building enterprise websites, SaaS apps, and AI solutions.',
-  alternates: { canonical: 'https://www.hntech.in/about' },
-  openGraph: {
-    title: 'About Our Team | HN Tech',
-    description:
-      'Meet the team behind HN Tech: Het Soni, Neel Patel & Heer Soni. Senior engineers building enterprise websites, SaaS apps, and AI solutions.',
-    url: 'https://www.hntech.in/about',
-    images: [{ url: '/about/opengraph-image', width: 1200, height: 630, alt: 'About HN Tech' }],
-  },
-};
+    'Meet the team behind HN Tech: Het Soni, Neel Patel & Heer Soni. Senior engineers in India building business websites, SaaS apps and AI solutions.',
+  path: '/about',
+  ownImage: true,
+});
 
 export default async function AboutPage() {
   const team = await getTeamMembers();

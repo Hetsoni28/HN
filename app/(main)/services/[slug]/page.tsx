@@ -7,6 +7,8 @@ import { Button } from '@/components/atoms/button';
 import { ServiceIcon } from '@/components/atoms/service-icon';
 import { Breadcrumb } from '@/components/molecules/breadcrumb';
 import { WhatsAppButton } from '@/components/atoms/whatsapp-button';
+import { ServiceJsonLd, BreadcrumbJsonLd } from '@/components/molecules/structured-data';
+import { pageMetadata, SERVICE_SEO, SITE_URL } from '@/lib/seo';
 
 /* ── ISR — rebuild every 24 hours ── */
 export const revalidate = 86400;
@@ -26,20 +28,12 @@ export async function generateMetadata({
   const { slug } = await params;
   const service = await getServiceBySlug(slug);
   if (!service) return { title: 'Service not found' };
-  const rawDesc = service.shortDescription ?? service.tagline ?? `${service.title} solutions engineered by HN Tech.`;
-  const description = rawDesc.length > 155 ? `${rawDesc.slice(0, 152).trim()}...` : rawDesc;
-  return {
-    title: `${service.title} Services`,
-    description,
-    alternates: {
-      canonical: `https://www.hntech.in/services/${slug}`,
-    },
-    openGraph: {
-      title: `${service.title} Services | HN Tech`,
-      description,
-      url: `https://www.hntech.in/services/${slug}`,
-    },
-  };
+  const seo = SERVICE_SEO[slug];
+  return pageMetadata({
+    title: seo?.title ?? `${service.title} Services`,
+    description: seo?.description ?? service.shortDescription ?? service.tagline ?? `${service.title} solutions engineered by HN Tech.`,
+    path: `/services/${slug}`,
+  });
 }
 
 export default async function ServiceDetailPage({
@@ -61,9 +55,21 @@ export default async function ServiceDetailPage({
     'maintenance-support': '/service-maintenance-hero.png',
   };
   const heroImage = heroImages[service.slug.current];
+  const url = `${SITE_URL}/services/${slug}`;
 
   return (
     <>
+      <ServiceJsonLd
+        name={SERVICE_SEO[slug]?.title ?? service.title}
+        description={SERVICE_SEO[slug]?.description ?? service.shortDescription}
+        url={url}
+      />
+      <BreadcrumbJsonLd items={[
+        { name: 'Home', url: SITE_URL },
+        { name: 'Services', url: `${SITE_URL}/services` },
+        { name: service.title, url },
+      ]} />
+
       {/* 1. Hero */}
       {heroImage ? (
         <section className="relative overflow-hidden min-h-[65vh] flex flex-col justify-center py-16 md:py-24">
@@ -71,7 +77,7 @@ export default async function ServiceDetailPage({
           <div className="absolute inset-0">
             <Image
               src={heroImage}
-              alt={`${service.title} Background`}
+              alt={`${SERVICE_SEO[slug]?.title ?? service.title} by HN Tech`}
               fill
               className="object-cover object-[92%_center] md:object-[96%_center] xl:object-right"
               priority
@@ -79,7 +85,7 @@ export default async function ServiceDetailPage({
                 imageRendering: '-webkit-optimize-contrast',
                 filter: 'brightness(1.04) contrast(1.03)',
               }}
-             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
+             sizes="100vw" />
             {/* Pure white left text zone (0-45%) cleanly fading into transparent on right (78%+) */}
             <div 
               aria-hidden="true"
