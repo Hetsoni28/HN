@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { pageMetadata } from '@/lib/seo';
 import { BriefGenerator } from '@/components/organisms/brief-generator';
 import { FadeIn } from '@/components/atoms/fade-in';
+import { Breadcrumb } from '@/components/molecules/breadcrumb';
 
 export const metadata: Metadata = pageMetadata({
   title: 'Free Software Project Brief Generator',
@@ -16,6 +17,7 @@ export default function BriefPage() {
       <div className="container">
         <FadeIn>
           <div className="mx-auto max-w-2xl text-center no-print">
+            <Breadcrumb className="mb-6 justify-center" />
             <h1 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-5xl">
               Project Brief Generator
             </h1>

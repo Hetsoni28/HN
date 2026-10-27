@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import { pageMetadata } from '@/lib/seo';
 import { getServices } from '@/lib/content';
 import { FadeIn } from '@/components/atoms/fade-in';
+import { Breadcrumb } from '@/components/molecules/breadcrumb';
 import { Button } from '@/components/atoms/button';
 import { ServiceIcon } from '@/components/atoms/service-icon';
 
@@ -32,6 +33,7 @@ export default async function ServicesPage() {
       <section className="section bg-[#EEF0FF]">
         <div className="container text-center">
           <FadeIn>
+            <Breadcrumb className="mb-6 justify-center" />
             <p className="text-xs font-bold uppercase tracking-[0.25em] text-[#0051FF]">
               Our Services
             </p>

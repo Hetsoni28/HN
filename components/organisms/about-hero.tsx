@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { FadeIn } from '@/components/atoms/fade-in';
+import { Breadcrumb } from '@/components/molecules/breadcrumb';
 import { urlFor } from '@/sanity/lib/image';
 import type { TeamMember } from '@/lib/content';
 
@@ -32,6 +33,7 @@ export function AboutHero() {
       <div className="container relative z-10">
         <FadeIn>
           <div className="max-w-3xl">
+            <Breadcrumb className="mb-6" />
             <h1 className="text-5xl font-bold tracking-tight text-slate-900 md:text-6xl">
               Why <span className="text-[#0051FF]">HN</span> exists.
             </h1>

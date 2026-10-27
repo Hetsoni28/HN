@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { pageMetadata } from '@/lib/seo';
 import { FadeIn } from '@/components/atoms/fade-in';
+import { Breadcrumb } from '@/components/molecules/breadcrumb';
 import { Button } from '@/components/atoms/button';
 
 export const metadata: Metadata = pageMetadata({
@@ -134,6 +135,7 @@ export default function ComparePage() {
       >
         <div className="container relative z-10 text-center">
           <FadeIn>
+            <Breadcrumb className="mb-6 justify-center" />
             <div className="inline-flex items-center gap-2 rounded-full border border-[#0051FF]/20 bg-white px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-[#0051FF]">
               The honest comparison
             </div>

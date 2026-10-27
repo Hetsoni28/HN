@@ -3,6 +3,7 @@ import { pageMetadata } from '@/lib/seo';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FadeIn } from '@/components/atoms/fade-in';
+import { Breadcrumb } from '@/components/molecules/breadcrumb';
 import { ReferralForm } from './referral-form';
 
 export const metadata: Metadata = pageMetadata({
@@ -69,7 +70,7 @@ const PILLS = [
 
 export default function ReferralPage() {
   return (
-    <main>
+    <div>
 
       {/* ══════════════════════════════════════
           A) Hero
@@ -93,6 +94,7 @@ export default function ReferralPage() {
         <div className="container relative z-10 mx-auto max-w-4xl text-center">
           <FadeIn>
             <div className="rounded-3xl bg-white/70 backdrop-blur-md p-8 shadow-xl ring-1 ring-black/5 sm:p-12">
+              <Breadcrumb className="mb-6 justify-center" />
               <h1 className="text-4xl font-extrabold leading-tight tracking-tight text-gray-900 sm:text-5xl md:text-6xl">
                 Refer a Friend.
                 <br />
@@ -216,6 +218,6 @@ export default function ReferralPage() {
         </FadeIn>
       </section>
 
-    </main>
+    </div>
   );
 }

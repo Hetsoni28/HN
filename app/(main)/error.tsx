@@ -15,7 +15,7 @@ export default function GlobalError({
   }, [error]);
 
   return (
-    <main className="flex min-h-[80vh] items-center justify-center bg-white">
+    <div className="flex min-h-[80vh] items-center justify-center bg-white">
       <div className="container py-24 text-center">
         <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-2xl bg-red-50 border border-red-200">
           <svg className="h-10 w-10 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.6}>
@@ -48,6 +48,6 @@ export default function GlobalError({
           </Link>
         </div>
       </div>
-    </main>
+    </div>
   );
 }

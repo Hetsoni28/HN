@@ -11,6 +11,11 @@ const LABELS: Record<string, string> = {
   contact:  'Contact',
   process:  'Process',
   insights: 'Insights',
+  estimate:    'Cost Estimator',
+  brief:       'Brief Generator',
+  start:       'Getting Started',
+  referral:    'Refer & Earn',
+  maintenance: 'Maintenance Plans',
 };
 
 function toLabel(segment: string): string {

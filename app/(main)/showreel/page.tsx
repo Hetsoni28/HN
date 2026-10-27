@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import { ShowreelPlayer } from '@/components/organisms/showreel-player';
 import { pageMetadata } from '@/lib/seo';
 import { FadeIn } from '@/components/atoms/fade-in';
+import { Breadcrumb } from '@/components/molecules/breadcrumb';
 
 export const metadata: Metadata = pageMetadata({
   title: 'Showreel — How We Design & Build Products',
@@ -12,10 +13,11 @@ export const metadata: Metadata = pageMetadata({
 
 export default function ShowreelPage() {
   return (
-    <main className="min-h-screen bg-white pt-32 pb-24">
+    <div className="min-h-screen bg-white pt-32 pb-24">
       <div className="container mx-auto px-4">
         <FadeIn>
           <div className="text-center max-w-3xl mx-auto mb-16">
+            <Breadcrumb className="mb-6 justify-center" />
             <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-slate-900 mb-6">
               Our Vision in <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-400">40 Seconds</span>.
             </h1>
@@ -30,6 +32,6 @@ export default function ShowreelPage() {
           <ShowreelPlayer />
         </FadeIn>
       </div>
-    </main>
+    </div>
   );
 }

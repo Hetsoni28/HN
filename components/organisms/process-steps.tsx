@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { FadeIn } from '@/components/atoms/fade-in';
+import { Breadcrumb } from '@/components/molecules/breadcrumb';
 const STEPS = [
   {
     number: '01',
@@ -208,6 +209,7 @@ export function ProcessHero() {
 
       <div className="container relative z-10 text-center">
         <FadeIn>
+          <Breadcrumb className="mx-auto mb-6 w-fit justify-center rounded-full bg-white/80 px-4 py-1.5 backdrop-blur-sm" />
           <h1 className="mx-auto mt-5 max-w-3xl text-4xl font-bold leading-tight text-slate-900 sm:text-5xl md:text-6xl drop-shadow-sm">
             Your journey from <span className="gradient-text">idea to live product.</span>
           </h1>

@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { pageMetadata } from '@/lib/seo';
 import Image from 'next/image';
 import { FadeIn } from '@/components/atoms/fade-in';
+import { Breadcrumb } from '@/components/molecules/breadcrumb';
 import { OnboardingChecklist } from './onboarding-checklist';
 
 export const metadata: Metadata = pageMetadata({
@@ -31,6 +32,7 @@ export default function StartPage() {
         <div className="container relative z-10">
           <FadeIn>
             <div className="mx-auto max-w-3xl text-center">
+              <Breadcrumb className="mb-6 justify-center" />
               <h1 className="text-4xl font-bold tracking-tight text-[#0B111E] sm:text-5xl md:text-6xl">
                 Before We Build,
                 <br />

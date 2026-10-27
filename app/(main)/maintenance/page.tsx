@@ -3,6 +3,7 @@ import { pageMetadata } from '@/lib/seo';
 import Link from 'next/link';
 import Image from 'next/image';
 import { FadeIn } from '@/components/atoms/fade-in';
+import { Breadcrumb } from '@/components/molecules/breadcrumb';
 import { Button } from '@/components/atoms/button';
 
 export const metadata: Metadata = pageMetadata({
@@ -152,6 +153,7 @@ export default function MaintenancePage() {
           <div className="w-full max-w-4xl">
             {/* Glassmorphism Card for Text Readability */}
             <div className="p-8 sm:p-14 text-center">
+              <Breadcrumb className="mx-auto mb-6 w-fit justify-center rounded-full bg-white/80 px-4 py-1.5 backdrop-blur-sm" />
               <h1 className="mx-auto max-w-3xl text-4xl font-extrabold leading-tight tracking-tight text-slate-900 sm:text-5xl md:text-6xl [text-shadow:0_0_30px_white,0_0_10px_white]">
                 Your Product Deserves
                 <br />

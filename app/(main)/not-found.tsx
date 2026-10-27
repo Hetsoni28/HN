@@ -10,7 +10,7 @@ const QUICK_LINKS = [
 
 export default function NotFound() {
   return (
-    <main className="flex min-h-[80vh] items-center justify-center bg-white">
+    <div className="flex min-h-[80vh] items-center justify-center bg-white">
       <div className="container py-24 text-center">
 
         {/* Large 404 */}
@@ -59,6 +59,6 @@ export default function NotFound() {
           </Link>
         </div>
       </div>
-    </main>
+    </div>
   );
 }
