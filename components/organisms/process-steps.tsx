@@ -200,11 +200,11 @@ export function ProcessHero() {
           src="/process-hero.png"
           alt="Software development process illustration"
           fill
-          quality={100}
-          unoptimized
           className="object-cover object-center"
           priority
           sizes="100vw" />
+        {/* Phones/tablets: the wide artwork shrinks to a busy slice behind the text, so soften it below lg */}
+        <div aria-hidden="true" className="absolute inset-0 z-0 bg-white/70 lg:hidden" />
       </div>
 
       <div className="container relative z-10 text-center">

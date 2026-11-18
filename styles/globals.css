@@ -193,6 +193,8 @@ textarea:focus-visible {
   [role="button"],
   a {
     min-height: 44px;
+    /* Keep text vertically centred in the taller box (otherwise it sits at the top, e.g. breadcrumbs) */
+    align-content: center;
   }
 }
 

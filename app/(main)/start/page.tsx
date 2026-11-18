@@ -23,10 +23,11 @@ export default function StartPage() {
             src="/start-hero.png"
             alt="Project onboarding checklist for new HN Tech clients"
             fill
-            quality={100}
             className="object-cover object-center"
             priority
            sizes="100vw" />
+          {/* Phones/tablets: the wide artwork shrinks to a busy slice behind the text, so soften it below lg */}
+          <div aria-hidden="true" className="absolute inset-0 z-0 bg-white/70 lg:hidden" />
         </div>
 
         <div className="container relative z-10">

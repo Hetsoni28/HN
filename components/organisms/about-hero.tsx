@@ -24,10 +24,11 @@ export function AboutHero() {
           src="/about-hero.png"
           alt="HN Tech office with the HN logo on the wall"
           fill
-          quality={100}
           className="object-cover object-center"
           priority
          sizes="100vw" />
+        {/* Phones/tablets: the wide artwork shrinks to a busy slice behind the text, so soften it below lg */}
+        <div aria-hidden="true" className="absolute inset-0 z-0 bg-white/70 lg:hidden" />
       </div>
 
       <div className="container relative z-10">

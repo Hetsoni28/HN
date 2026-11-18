@@ -67,13 +67,12 @@ export default async function ContactPage({ searchParams }: Props) {
           aria-hidden="true"
           fill
           priority
-          quality={100}
-          unoptimized
           className="object-cover object-center lg:object-right"
           sizes="100vw"
         />
 
-        {/* Gradient overlay removed for clear image */}
+        {/* Phones/tablets: the wide artwork shrinks to a busy slice behind the text, so soften it below lg */}
+        <div aria-hidden="true" className="absolute inset-0 z-0 bg-white/70 lg:hidden" />
 
         <div className="container relative z-10 py-16 sm:py-24">
           <div className="max-w-2xl">
@@ -119,7 +118,7 @@ export default async function ContactPage({ searchParams }: Props) {
                         <div>
                           <div className="text-[10px] font-bold uppercase tracking-wider text-slate-400">{c.label}</div>
                           {c.href ? (
-                            <a href={c.href} className="text-sm font-semibold text-slate-800 hover:text-[#0051FF]">{c.value}</a>
+                            <a href={c.href} className="inline-block py-1 text-sm font-semibold text-slate-800 hover:text-[#0051FF]">{c.value}</a>
                           ) : (
                             <div className="text-sm font-semibold text-slate-800">{c.value}</div>
                           )}

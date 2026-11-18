@@ -82,7 +82,6 @@ export default function ReferralPage() {
             src="/referral-hero.png"
             alt="HN Tech refer-and-earn referral program illustration"
             fill
-            quality={100}
             className="object-cover object-center"
             priority
            sizes="100vw" />

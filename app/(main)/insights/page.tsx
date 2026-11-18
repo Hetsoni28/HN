@@ -27,13 +27,12 @@ export default async function InsightsPage() {
           aria-hidden="true"
           fill
           priority
-          quality={100}
-          unoptimized
           className="object-cover object-center"
           sizes="100vw"
         />
 
-        {/* Gradient overlay removed for clear image */}
+        {/* Phones/tablets: the wide artwork shrinks to a busy slice behind the text, so soften it below lg */}
+        <div aria-hidden="true" className="absolute inset-0 z-0 bg-white/70 lg:hidden" />
 
         <div className="container relative z-10 py-16 sm:py-24">
           <FadeIn>

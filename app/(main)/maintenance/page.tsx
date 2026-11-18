@@ -147,6 +147,8 @@ export default function MaintenancePage() {
             priority
             className="object-cover object-center"
            sizes="100vw" />
+          {/* Phones/tablets: the wide artwork shrinks to a busy slice behind the text, so soften it below lg */}
+          <div aria-hidden="true" className="absolute inset-0 z-0 bg-white/70 lg:hidden" />
         </div>
 
         <div className="container relative z-10 flex justify-center">
