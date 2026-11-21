@@ -6,6 +6,7 @@ import { FadeIn } from '@/components/atoms/fade-in';
 import { Breadcrumb } from '@/components/molecules/breadcrumb';
 import { TransformationSection } from '@/components/organisms/transformation-section';
 import { WorkFilter } from './work-filter';
+import { LiveProjectsGrid } from '@/components/organisms/live-projects-grid';
 
 export const metadata: Metadata = pageMetadata({
   title: 'Portfolio — Web, SaaS & AI Case Studies',
@@ -44,6 +45,12 @@ export default async function WorkPage() {
               A collection of our recent work across web applications, SaaS platforms, AI integrations, and high-performance websites.
             </p>
           </FadeIn>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="container">
+          <LiveProjectsGrid />
         </div>
       </section>
 
