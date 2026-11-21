@@ -24,8 +24,12 @@ function getSnapshot() {
   }
 }
 
+/**
+ * Rendered on the server so the intro is the first thing painted (no flash of the site underneath).
+ * Repeat visits and reduced-motion users are hidden before paint by the inline script in app/layout.tsx.
+ */
 function getServerSnapshot() {
-  return false;
+  return true;
 }
 
 export function WelcomeManager() {
@@ -54,5 +58,5 @@ export function WelcomeManager() {
 
   if (!showWelcome) return null;
 
-  return <WelcomeScreen isVisible={showWelcome} onComplete={handleComplete} />;
+  return <WelcomeScreen onComplete={handleComplete} />;
 }

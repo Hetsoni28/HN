@@ -221,6 +221,13 @@ textarea:focus-visible {
   border-radius: inherit;
 }
 
+/* ── Welcome intro (components/welcome) ── */
+/* Hidden before paint for repeat visits / reduced motion (set by the inline script in app/layout.tsx) */
+html.hn-intro-skip #hn-welcome { display: none !important; }
+/* Fail-safe: if scripts never run, the server-rendered intro gets out of the way on its own */
+#hn-welcome { animation: hn-intro-failsafe 0s linear 8s forwards; }
+@keyframes hn-intro-failsafe { to { visibility: hidden; pointer-events: none; } }
+
 /* ── FadeIn scroll-reveal ── */
 .fade-in-root {
   opacity: 0;

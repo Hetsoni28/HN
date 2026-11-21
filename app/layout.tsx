@@ -73,8 +73,18 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${spaceGrotesk.variable} ${plusJakarta.variable}`} data-scroll-behavior="smooth">
+    // suppressHydrationWarning: the inline script below may add the hn-intro-skip class before React hydrates
+    <html lang="en" className={`${spaceGrotesk.variable} ${plusJakarta.variable}`} data-scroll-behavior="smooth" suppressHydrationWarning>
       <head>
+        {/* Before first paint: skip the welcome intro for repeat visits this session and reduced-motion users */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `try{if(sessionStorage.getItem('hn-welcome-played')||matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('hn-intro-skip')}catch(e){document.documentElement.classList.add('hn-intro-skip')}`,
+          }}
+        />
+        <noscript>
+          <style>{'#hn-welcome{display:none!important}'}</style>
+        </noscript>
         <link rel="dns-prefetch" href="https://cdn.sanity.io" />
         <link rel="preconnect" href="https://cdn.sanity.io" crossOrigin="anonymous" />
         {/* Plain <script> tags on purpose: Google Tag verification reads the raw <head> HTML,

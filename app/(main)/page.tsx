@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { pageMetadata } from '@/lib/seo';
-import { getFeaturedProjects, getFaqs, getTestimonials } from '@/lib/content';
+import { getFeaturedProjects, getFaqs } from '@/lib/content';
 
 import { HeroSection }        from '@/components/organisms/hero-section';
 import { TrustBar }           from '@/components/organisms/trust-bar';
@@ -11,7 +11,6 @@ import { ServicesSection }    from '@/components/organisms/services-section';
 import { ProcessSection }     from '@/components/organisms/process-section';
 import { TechSection }        from '@/components/organisms/tech-section';
 import { AboutSection }       from '@/components/organisms/about-section';
-import { TestimonialsSection } from '@/components/organisms/testimonials-section';
 import { FaqSection }         from '@/components/organisms/faq-section';
 import { FinalCta }           from '@/components/organisms/final-cta';
 import { GithubActivity }     from '@/components/organisms/github-activity';
@@ -36,10 +35,9 @@ export const metadata: Metadata = pageMetadata({
 });
 
 export default async function Home() {
-  const [projects, faqs, testimonials] = await Promise.all([
+  const [projects, faqs] = await Promise.all([
     getFeaturedProjects(),
     getFaqs(),
-    getTestimonials(),
   ]);
 
   return (
@@ -54,7 +52,6 @@ export default async function Home() {
       <ProcessSection />
       <TechSection />
       <AboutSection />
-      <TestimonialsSection testimonials={testimonials} />
       <FaqSection faqs={faqs} />
       <GithubActivity />
       <FinalCta />

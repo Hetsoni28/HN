@@ -45,7 +45,7 @@ export function FaqSection({ faqs }: { faqs?: FaqItem[] }) {
   const list = faqs && faqs.length ? faqs : fallback;
 
   return (
-    <section className="section bg-white">
+    <section className="section bg-[#F5F6FF]">
       <div className="container">
         <div className="mx-auto max-w-3xl">
           <FadeIn className="text-center">
