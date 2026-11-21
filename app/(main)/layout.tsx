@@ -4,6 +4,7 @@ import { AnnouncementBar } from '@/components/molecules/announcement-bar';
 import { FloatingEstimator } from '@/components/molecules/floating-estimator';
 import { CookieBanner } from '@/components/molecules/cookie-banner';
 import { WhatsAppButton } from '@/components/molecules/whatsapp-button';
+import { AnalyticsListener } from '@/components/molecules/analytics-listener';
 
 export default function MainLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -17,6 +18,7 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
       <FloatingEstimator />
       <WhatsAppButton />
       <CookieBanner />
+      <AnalyticsListener />
     </>
   );
 }

@@ -1,43 +1,13 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/atoms/button';
 import { WhatsAppButton } from '@/components/atoms/whatsapp-button';
+import { PROJECT_BASES, FEATURES, TIMELINES, COMMON_INCLUDES, formatINR, calculateEstimate } from '@/lib/estimator';
+import { trackEvent } from '@/lib/analytics';
+import { EstimateEmailForm } from './estimate-email-form';
 
-// --- ACCURATE PRICING DATA ---
-// You can adjust these base rates and feature costs anytime.
-// Currently calibrated for professional agency rates in INR.
-
-const PROJECT_BASES = [
-  { id: 'website', name: 'Website / Landing Page', min: 25000, max: 50000, desc: 'High-converting static or CMS-backed site.' },
-  { id: 'webapp', name: 'Web Application / SaaS', min: 80000, max: 150000, desc: 'Complex logic, databases, and custom workflows.' },
-  { id: 'mobile', name: 'Mobile App (iOS & Android)', min: 120000, max: 250000, desc: 'React Native / Flutter cross-platform app.' },
-  { id: 'ecommerce', name: 'E-Commerce Store', min: 60000, max: 120000, desc: 'Full shopping cart, inventory, and checkout.' },
-];
-
-const FEATURES = [
-  { id: 'design', name: 'Custom UI/UX Design', min: 15000, max: 30000, desc: 'Framer/Figma prototyping and branding.' },
-  { id: 'auth', name: 'User Accounts & Profiles', min: 10000, max: 20000, desc: 'Authentication, roles, and profile management.' },
-  { id: 'payments', name: 'Payment Gateway', min: 8000, max: 15000, desc: 'Razorpay, Stripe, or PayPal integration.' },
-  { id: 'admin', name: 'Admin Dashboard / CMS', min: 20000, max: 40000, desc: 'Custom portal to manage your data/users.' },
-  { id: 'ai', name: 'AI Integration', min: 30000, max: 60000, desc: 'OpenAI, Claude, or custom GenAI features.' },
-  { id: 'api', name: '3rd-Party APIs', min: 15000, max: 30000, desc: 'Connecting external services (CRM, ERP, etc).' },
-  { id: 'seo', name: 'Advanced SEO & Analytics', min: 8000, max: 15000, desc: 'Technical SEO, schema, and tracking setup.' },
-];
-
-const TIMELINES = [
-  { id: 'flexible', name: 'Flexible (Standard)', multiplier: 1, desc: 'Standard development lifecycle.' },
-  { id: 'rush', name: 'Rush (Priority)', multiplier: 1.35, desc: 'Fast-tracked delivery. +35% premium.' },
-];
-
-const formatINR = (value: number) => {
-  return new Intl.NumberFormat('en-IN', {
-    style: 'currency',
-    currency: 'INR',
-    maximumFractionDigits: 0,
-  }).format(value);
-};
 
 export function CostEstimator() {
   const [selectedBase, setSelectedBase] = useState<string>('webapp');
@@ -46,26 +16,17 @@ export function CostEstimator() {
 
   const [targetBudget, setTargetBudget] = useState<string>('');
 
-  // Calculate totals
-  const totals = useMemo(() => {
-    const base = PROJECT_BASES.find(b => b.id === selectedBase);
-    const timeline = TIMELINES.find(t => t.id === selectedTimeline);
-    
-    let min = base?.min ?? 0;
-    let max = base?.max ?? 0;
+  const started = useRef(false);
+  const markStarted = () => {
+    if (started.current) return;
+    started.current = true;
+    trackEvent('estimator_start');
+  };
 
-    const activeFeatures = FEATURES.filter(f => selectedFeatures.has(f.id));
-    for (const f of activeFeatures) {
-      min += f.min;
-      max += f.max;
-    }
-
-    const mult = timeline?.multiplier ?? 1;
-    min = Math.round(min * mult);
-    max = Math.round(max * mult);
-
-    return { min, max, base, activeFeatures, timeline };
-  }, [selectedBase, selectedFeatures, selectedTimeline]);
+  const totals = useMemo(
+    () => calculateEstimate(selectedBase, selectedFeatures, selectedTimeline),
+    [selectedBase, selectedFeatures, selectedTimeline],
+  );
 
   const toggleFeature = (id: string) => {
     const next = new Set(selectedFeatures);
@@ -109,7 +70,7 @@ I'd like to discuss the next steps!`;
               return (
                 <button
                   key={base.id}
-                  onClick={() => setSelectedBase(base.id)}
+                  onClick={() => { markStarted(); setSelectedBase(base.id); }}
                   className={`flex flex-col items-start rounded-2xl border p-5 text-left transition-all ${
                     isSelected 
                       ? 'border-[#0051FF] bg-[#0051FF]/5 ring-1 ring-[#0051FF]' 
@@ -141,7 +102,7 @@ I'd like to discuss the next steps!`;
               return (
                 <button
                   key={feature.id}
-                  onClick={() => toggleFeature(feature.id)}
+                  onClick={() => { markStarted(); toggleFeature(feature.id); }}
                   className={`flex items-start gap-4 rounded-2xl border p-4 text-left transition-all ${
                     isSelected 
                       ? 'border-[#0051FF] bg-[#0051FF]/5 ring-1 ring-[#0051FF]' 
@@ -177,7 +138,7 @@ I'd like to discuss the next steps!`;
               return (
                 <button
                   key={timeline.id}
-                  onClick={() => setSelectedTimeline(timeline.id)}
+                  onClick={() => { markStarted(); setSelectedTimeline(timeline.id); }}
                   className={`flex flex-col items-start rounded-2xl border p-5 text-left transition-all ${
                     isSelected 
                       ? 'border-[#0051FF] bg-[#0051FF]/5 ring-1 ring-[#0051FF]' 
@@ -197,11 +158,26 @@ I'd like to discuss the next steps!`;
           </div>
         </section>
 
+        {/* Step 4: Email */}
+        <section id="email-estimate" className="scroll-mt-28">
+          <div className="mb-4">
+            <h3 className="text-xl font-bold text-slate-900">4. Get this estimate by email</h3>
+            <p className="text-sm text-slate-500">Keep a copy and get a reply from our team.</p>
+          </div>
+          <EstimateEmailForm
+            base={selectedBase}
+            features={[...selectedFeatures]}
+            timeline={selectedTimeline}
+            budget={targetBudget}
+            rangeLabel={`${formatINR(totals.min)} – ${formatINR(totals.max)}`}
+          />
+        </section>
+
       </div>
 
       {/* Right: Sticky Receipt */}
       <div className="relative">
-        <div className="sticky top-28 rounded-3xl border border-[#E2E5F1] bg-white p-6 shadow-sm lg:p-8">
+        <div className="sticky top-28 rounded-3xl border border-[#E2E5F1] bg-white p-6 shadow-sm lg:max-h-[calc(100vh-8rem)] lg:overflow-y-auto lg:p-8">
           <h3 className="text-lg font-bold text-slate-900">Estimated Investment</h3>
           <p className="mt-2 text-xs text-slate-500">
             This is a rough estimate based on industry standards. Final cost depends on specific scope and complexity.
@@ -231,6 +207,25 @@ I'd like to discuss the next steps!`;
             <div className="flex justify-between gap-4">
               <span className="font-semibold text-slate-800">{totals.base?.name}</span>
             </div>
+
+            {/* What the base price covers */}
+            <div className="rounded-xl bg-[#F5F6FF] p-4">
+              <p className="text-xs font-bold uppercase tracking-widest text-[#0041CC]">Included in this price</p>
+              <ul className="mt-3 space-y-2">
+                {[...(totals.base?.includes ?? []), ...COMMON_INCLUDES].map((item) => (
+                  <li key={item} className="flex gap-2 text-[13px] leading-5 text-slate-700">
+                    <svg aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0 text-[#0051FF]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                    </svg>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {totals.activeFeatures.length > 0 && (
+              <p className="text-xs font-bold uppercase tracking-widest text-slate-500">Add-ons</p>
+            )}
             
             {totals.activeFeatures.length > 0 && (
               <div className="pl-3 space-y-2 border-l-2 border-[#EEF0FF]">
@@ -294,6 +289,9 @@ I'd like to discuss the next steps!`;
               message={inquiryMessage} 
               fullWidth 
             />
+            <a href="#email-estimate" className="block pt-1 text-center text-sm font-semibold text-[#0041CC] hover:underline">
+              Email me this estimate ↓
+            </a>
           </div>
         </div>
       </div>

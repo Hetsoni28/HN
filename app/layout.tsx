@@ -100,6 +100,8 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
             __html: `
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
+              var hnConsent = null; try { hnConsent = localStorage.getItem('hn-cookie-consent'); } catch (e) {}
+              gtag('consent', 'default', { analytics_storage: hnConsent === 'declined' ? 'denied' : 'granted', ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied' });
               gtag('js', new Date());
               gtag('config', 'G-THBXTP7VK9');
             `,

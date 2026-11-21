@@ -14,6 +14,7 @@ const STATIC_ROUTES: MetadataRoute.Sitemap = [
   { url: `${BASE}/insights`,      lastModified: new Date(), changeFrequency: 'weekly',  priority: 0.8 },
   { url: `${BASE}/compare`,       lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
   { url: `${BASE}/showreel`,      lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
+  { url: `${BASE}/website-cost-india`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
   { url: `${BASE}/estimate`,      lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
   { url: `${BASE}/brief`,         lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
   { url: `${BASE}/referral`,      lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },

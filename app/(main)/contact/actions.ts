@@ -1,6 +1,8 @@
 'use server';
 
 import { headers } from 'next/headers';
+import { after } from 'next/server';
+import { sendWhatsAppAlert, leadMessage } from '@/lib/whatsapp-alert';
 import { z } from 'zod';
 import { Resend } from 'resend';
 import { sanitizeText } from '@/lib/security';
@@ -108,6 +110,7 @@ export async function submitInquiry(
     if (process.env.NODE_ENV === 'development') {
       /* Dev mode — log to console and succeed for local development testing */
       console.log('[Contact Form — DEV MODE] Inbound inquiry:', data, fileBase64 ? `[Attached: ${fileName}]` : '');
+      after(() => sendWhatsAppAlert(leadMessage('New project enquiry', { Name: data.name, Phone: data.phone, Email: data.email, Company: data.company, Project: data.projectType, Timeline: data.timeline, Message: data.description.slice(0, 300) })));
       return { status: 'success' };
     }
     console.error('[Contact Form — PRODUCTION ERROR] RESEND_API_KEY is not configured.');
@@ -192,6 +195,7 @@ export async function submitInquiry(
       };
     }
 
+    after(() => sendWhatsAppAlert(leadMessage('New project enquiry', { Name: data.name, Phone: data.phone, Email: data.email, Company: data.company, Project: data.projectType, Timeline: data.timeline, Message: data.description.slice(0, 300) })));
     return { status: 'success' };
   } catch (err) {
     console.error('[Contact Form] Unexpected delivery failure:', err);

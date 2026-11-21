@@ -16,6 +16,7 @@ const LABELS: Record<string, string> = {
   start:       'Getting Started',
   referral:    'Refer & Earn',
   maintenance: 'Maintenance Plans',
+  'website-cost-india': 'Website Cost Guide',
 };
 
 function toLabel(segment: string): string {

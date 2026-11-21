@@ -3,6 +3,7 @@
 import { useActionState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { submitInquiry, type FormState } from '@/app/(main)/contact/actions';
+import { trackEvent } from '@/lib/analytics';
 
 const PROJECT_TYPES = [
   'Website', 'Web Application', 'Mobile Application',
@@ -64,6 +65,7 @@ export function ContactForm({ initialProject }: { initialProject?: string }) {
   const [state, action, pending] = useActionState(submitInquiry, initialState);
   const formRef = useRef<HTMLFormElement>(null);
   const successRef = useRef<HTMLHeadingElement>(null);
+  const submittedType = useRef<string | undefined>(undefined);
 
   // After a failed submit, move focus to the first invalid field; after success, to the confirmation.
   useEffect(() => {
@@ -71,6 +73,7 @@ export function ContactForm({ initialProject }: { initialProject?: string }) {
       formRef.current?.querySelector<HTMLElement>('[aria-invalid="true"]')?.focus();
     } else if (state.status === 'success') {
       successRef.current?.focus();
+      trackEvent('generate_lead', { form: 'contact', project_type: submittedType.current });
     }
   }, [state]);
 
@@ -106,7 +109,12 @@ export function ContactForm({ initialProject }: { initialProject?: string }) {
   }
 
   return (
-    <form ref={formRef} action={action} noValidate>
+    <form
+      ref={formRef}
+      action={action}
+      noValidate
+      onSubmit={(e) => { submittedType.current = String(new FormData(e.currentTarget).get('projectType') ?? '') || undefined; }}
+    >
       {/* Honeypot — visually hidden from humans, visible to bots */}
       <div aria-hidden="true" className="absolute -left-[9999px] opacity-0">
         <label htmlFor="website">Leave this empty</label>

@@ -1,12 +1,17 @@
 'use client';
 
-import { useActionState } from 'react';
+import { useActionState, useEffect } from 'react';
+import { trackEvent } from '@/lib/analytics';
 import { submitReferral, type FormState } from './actions';
 
 const initialState: FormState = { status: 'idle' };
 
 export function ReferralForm() {
   const [state, formAction, isPending] = useActionState(submitReferral, initialState);
+
+  useEffect(() => {
+    if (state.status === 'success') trackEvent('generate_lead', { form: 'referral' });
+  }, [state.status]);
 
   /* ── Success state ── */
   if (state.status === 'success') {

@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { FadeIn } from '@/components/atoms/fade-in';
 import { Breadcrumb } from '@/components/molecules/breadcrumb';
 import { Button } from '@/components/atoms/button';
+import { PLANS } from '@/lib/maintenance-plans';
 
 export const metadata: Metadata = pageMetadata({
   title: 'Website & App Maintenance Plans',
@@ -26,63 +27,6 @@ const TRUST_PILLS = [
   '99.9% uptime goal',
   '48h response time',
   'Flexible, no lock-in',
-];
-
-type Plan = {
-  id: 'starter' | 'growth' | 'scale';
-  name: string;
-  price: string;
-  popular: boolean;
-  features: string[];
-  bestFor: string;
-};
-
-const PLANS: Plan[] = [
-  {
-    id: 'starter',
-    name: 'Starter',
-    price: '₹8,000',
-    popular: false,
-    features: [
-      'Security updates & patches (every 2 months)',
-      'CMS content updates (up to 4 updates)',
-      'Uptime monitoring (24/7 alerts)',
-      'Performance report (every 2 months)',
-      'Email support (72h response)',
-    ],
-    bestFor: 'Small business websites',
-  },
-  {
-    id: 'growth',
-    name: 'Growth',
-    price: '₹18,000',
-    popular: true,
-    features: [
-      'Everything in Starter, plus:',
-      'Priority bug fixes (48h response)',
-      'CMS content updates (up to 12 updates)',
-      'Google Analytics insights report',
-      'Minor design tweaks (up to 2h)',
-      'WhatsApp support',
-    ],
-    bestFor: 'Growing startups and e-commerce',
-  },
-  {
-    id: 'scale',
-    name: 'Scale',
-    price: '₹35,000',
-    popular: false,
-    features: [
-      'Everything in Growth, plus:',
-      'Dedicated engineer (4h included)',
-      'Feature additions (up to 4h dev time)',
-      'Detailed performance reports',
-      'Database backups & optimisation',
-      'Phone + WhatsApp support (24h response)',
-      'Strategy call included',
-    ],
-    bestFor: 'SaaS platforms and web apps',
-  },
 ];
 
 const INCLUDED = [

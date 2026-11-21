@@ -27,6 +27,7 @@ const COMPANY = [
 
 const RESOURCES = [
   { href: '/estimate',    label: 'Cost Estimator' },
+  { href: '/website-cost-india', label: 'Website Cost Guide' },
   { href: '/brief',       label: 'Brief Generator' },
   { href: '/maintenance', label: 'Maintenance Plans' },
   { href: '/start',       label: 'Getting Started' },

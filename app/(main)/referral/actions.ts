@@ -1,6 +1,8 @@
 'use server';
 
 import { headers } from 'next/headers';
+import { after } from 'next/server';
+import { sendWhatsAppAlert, leadMessage } from '@/lib/whatsapp-alert';
 import { z } from 'zod';
 import { Resend } from 'resend';
 import { sanitizeText } from '@/lib/security';
@@ -90,6 +92,7 @@ export async function submitReferral(
   if (!apiKey) {
     if (process.env.NODE_ENV === 'development') {
       console.log('[Referral Form — DEV MODE] Inbound referral:', data);
+      after(() => sendWhatsAppAlert(leadMessage('New referral', { 'Referred by': `${data.referrerName} (${data.referrerEmail}${data.referrerPhone ? ', ' + data.referrerPhone : ''})`, Friend: `${data.friendName} (${data.friendEmail})` })));
       return { status: 'success', friendName: data.friendName };
     }
     console.error('[Referral Form — PRODUCTION ERROR] RESEND_API_KEY is not configured.');
@@ -195,6 +198,7 @@ export async function submitReferral(
       };
     }
 
+    after(() => sendWhatsAppAlert(leadMessage('New referral', { 'Referred by': `${data.referrerName} (${data.referrerEmail}${data.referrerPhone ? ', ' + data.referrerPhone : ''})`, Friend: `${data.friendName} (${data.friendEmail})` })));
     return { status: 'success', friendName: data.friendName };
   } catch (err) {
     console.error('[Referral Form] Unexpected delivery failure:', err);

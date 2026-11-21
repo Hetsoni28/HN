@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import { pageMetadata } from '@/lib/seo';
 import Image from 'next/image';
 import { FadeIn } from '@/components/atoms/fade-in';
@@ -40,6 +41,9 @@ export default function EstimatePage() {
               <p className="max-w-xl text-base leading-7 text-slate-600 sm:text-lg sm:leading-8">
                 No hidden fees, no sales traps. Select what you need below to get a realistic, transparent budget range for your project based on current Indian market rates.
               </p>
+              <Link href="/website-cost-india" className="w-fit text-sm font-semibold text-[#0041CC] underline underline-offset-4 hover:text-[#0051FF]">
+                Read our full website cost guide →
+              </Link>
             </div>
           </FadeIn>
         </div>

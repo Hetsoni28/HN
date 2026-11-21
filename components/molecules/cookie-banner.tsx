@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
+import { setAnalyticsConsent } from '@/lib/analytics';
 
 export function CookieBanner() {
   const [isVisible, setIsVisible] = useState(false);
@@ -18,11 +19,13 @@ export function CookieBanner() {
 
   const handleAccept = () => {
     localStorage.setItem('hn-cookie-consent', 'accepted');
+    setAnalyticsConsent(true);
     setIsVisible(false);
   };
 
   const handleDecline = () => {
     localStorage.setItem('hn-cookie-consent', 'declined');
+    setAnalyticsConsent(false);
     setIsVisible(false);
   };
 
