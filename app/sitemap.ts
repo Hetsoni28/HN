@@ -1,6 +1,5 @@
 import type { MetadataRoute } from 'next';
 import { getProjects, getPosts, getServices } from '@/lib/content';
-import { CITIES, SERVICES_LIST } from '@/lib/locations';
 
 const BASE = process.env.NEXT_PUBLIC_SITE_URL && !process.env.NEXT_PUBLIC_SITE_URL.includes('localhost')
   ? process.env.NEXT_PUBLIC_SITE_URL
@@ -54,15 +53,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.9,
   }));
 
-  // 50 city × service location pages — high SEO value
-  const locationUrls: MetadataRoute.Sitemap = SERVICES_LIST.flatMap((service) =>
-    CITIES.map((city) => ({
-      url: `${BASE}/services/${service.slug}/${city.slug}`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.8,
-    }))
-  );
-
-  return [...STATIC_ROUTES, ...projectUrls, ...postUrls, ...serviceUrls, ...locationUrls];
+  return [...STATIC_ROUTES, ...projectUrls, ...postUrls, ...serviceUrls];
 }

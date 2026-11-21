@@ -64,6 +64,13 @@ const nextConfig: NextConfig = {
       { source: '/services/mobile-app-development', destination: '/services/mobile-applications', permanent: true },
       { source: '/services/ai-development', destination: '/services/ai-solutions', permanent: true },
 
+      // Former city pages (/services/<service>/<city>) were removed -> the matching service page
+      { source: '/services/web-development/:city', destination: '/services/websites', permanent: true },
+      { source: '/services/web-app-development/:city', destination: '/services/web-applications', permanent: true },
+      { source: '/services/saas-development/:city', destination: '/services/saas-platforms', permanent: true },
+      { source: '/services/mobile-app-development/:city', destination: '/services/mobile-applications', permanent: true },
+      { source: '/services/ai-development/:city', destination: '/services/ai-solutions', permanent: true },
+
       // Legacy sample case-study slugs -> portfolio (those projects no longer exist)
       { source: '/work/urbanfit-app', destination: '/work', permanent: true },
       { source: '/work/nexusecom', destination: '/work', permanent: true },

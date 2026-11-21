@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
 import { usePathname } from 'next/navigation';
 
-const WHATSAPP_NUMBER = '917990743263'; // +91 7990 743263
+const WHATSAPP_NUMBER = '917202031164'; // Het Soni, +91 72020 31164 (main enquiries number)
 
 /* ─── Generate contextual message based on current page ─── */
 function getDynamicMessage(pathname: string): string {
@@ -16,14 +16,6 @@ function getDynamicMessage(pathname: string): string {
       .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
       .join(' ');
     return `Hi HN Tech! I just viewed the "${projectName}" case study on your website and I'm interested in building something similar. Can we discuss?`;
-  }
-
-  // /services/[slug]/[city] — city location page
-  if (pathname.match(/^\/services\/[^/]+\/[^/]+/)) {
-    const parts = pathname.split('/').filter(Boolean);
-    const service = parts[1]?.split('-').map((w) => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
-    const city = parts[2]?.charAt(0).toUpperCase() + parts[2]?.slice(1);
-    return `Hi HN Tech! I'm looking for ${service} services in ${city}. Can we discuss my project requirements?`;
   }
 
   // /services/[slug] — service page

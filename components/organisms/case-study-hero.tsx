@@ -35,7 +35,7 @@ export function CaseStudyHero({ project }: { project: Project }) {
           {/* Meta strip */}
           <div className="mt-8 flex flex-wrap gap-6 border-t border-white/20 pt-6 sm:mt-12 sm:gap-10 sm:pt-8">
             {[
-              { label: 'Timeline', value: project.timeline ?? '—' },
+              ...(project.timeline ? [{ label: 'Timeline', value: project.timeline }] : []),
               { label: 'Role',     value: project.role ?? 'Full-Stack Development' },
               ...(project.technology?.length
                 ? [{ label: 'Stack', value: `${project.technology.length} technologies` }]
@@ -112,10 +112,10 @@ export function CaseStudyOverview({ project }: { project: Project }) {
               <div className="mt-5 space-y-4">
                 {[
                   { label: 'Category', value: project.category ?? 'Digital Product' },
-                  { label: 'Industry', value: project.industry ?? '—' },
-                  { label: 'Timeline', value: project.timeline ?? '—' },
+                  { label: 'Industry', value: project.industry },
+                  { label: 'Timeline', value: project.timeline },
                   { label: 'Our Role', value: project.role ?? 'Full-Stack Development' },
-                ].map((f) => (
+                ].filter((f) => f.value).map((f) => (
                   <div key={f.label} className="flex justify-between gap-4 border-b border-[#E2E5F1] pb-4 last:border-0 last:pb-0">
                     <span className="text-xs font-bold uppercase tracking-wider text-slate-400">{f.label}</span>
                     <span className="text-right text-sm font-semibold text-slate-900">{f.value}</span>

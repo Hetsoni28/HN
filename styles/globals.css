@@ -51,9 +51,12 @@ body {
   font-family: var(--font-plus-jakarta, ui-sans-serif, system-ui, sans-serif);
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-space-grotesk, ui-sans-serif, system-ui, sans-serif);
-  letter-spacing: -0.035em;
+/* In the base layer so Tailwind font/tracking utilities on a heading can override it */
+@layer base {
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-space-grotesk, ui-sans-serif, system-ui, sans-serif);
+    letter-spacing: -0.035em;
+  }
 }
 
 ::selection {

@@ -15,8 +15,8 @@ export function WhatsAppButton({
   className = "",
   fullWidth = false
 }: WhatsAppButtonProps) {
-  // Use the secondary number the user explicitly asked to add (+91 7990743263)
-  const phoneNumber = "917990743263"; 
+  // Enquiries go to the main number: Het Soni, +91 72020 31164
+  const phoneNumber = "917202031164";
   const defaultWaUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
 
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
