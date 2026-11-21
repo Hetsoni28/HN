@@ -183,24 +183,35 @@ I'd like to discuss the next steps!`;
             This is a rough estimate based on industry standards. Final cost depends on specific scope and complexity.
           </p>
 
-          <div className="my-6 border-t border-dashed border-[#E2E5F1]" />
-
-          {/* Target Budget Input */}
-          <div className="mb-6">
-            <label className="mb-2 block text-xs font-bold uppercase tracking-widest text-slate-400">
-              Add Amount
-            </label>
-            <div className="relative">
-              <span className="absolute left-4 top-1/2 -translate-y-1/2 font-semibold text-slate-400">₹</span>
-              <input 
-                type="number"
-                placeholder="Enter amount"
-                value={targetBudget}
-                onChange={(e) => setTargetBudget(e.target.value)}
-                className="w-full rounded-xl border border-[#E2E5F1] bg-slate-50 py-3 pl-8 pr-4 text-sm font-semibold text-slate-900 outline-none transition focus:border-[#0051FF] focus:bg-white focus:ring-2 focus:ring-[#0051FF]/20"
-              />
-            </div>
+          {/* Total */}
+          <div className="mt-5">
+            <span className="text-xs font-bold uppercase tracking-widest text-slate-400">Calculated Range (INR)</span>
+            <motion.div 
+              key={`${totals.min}-${totals.max}`}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="mt-2 text-3xl font-black text-[#0051FF] tracking-tight"
+            >
+              {formatINR(totals.min)} <span className="text-xl text-slate-400 font-medium mx-1">to</span> {formatINR(totals.max)}
+            </motion.div>
           </div>
+
+          {/* CTAs */}
+          <div className="mt-6 space-y-3">
+            <Button href="/contact" variant="primary" fullWidth>
+              Discuss this project →
+            </Button>
+            <WhatsAppButton 
+              label="Send estimate via WhatsApp" 
+              message={inquiryMessage} 
+              fullWidth 
+            />
+            <a href="#email-estimate" className="block pt-1 text-center text-sm font-semibold text-[#0041CC] hover:underline">
+              Email me this estimate ↓
+            </a>
+          </div>
+
+          <div className="my-6 border-t border-dashed border-[#E2E5F1]" />
 
           {/* Receipt Lines */}
           <div className="space-y-4 text-sm">
@@ -247,21 +258,26 @@ I'd like to discuss the next steps!`;
 
           <div className="my-6 border-t border-dashed border-[#E2E5F1]" />
 
-          {/* Total */}
-          <div className="mb-6">
-            <span className="text-xs font-bold uppercase tracking-widest text-slate-400">Calculated Range (INR)</span>
-            <motion.div 
-              key={`${totals.min}-${totals.max}`}
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="mt-2 text-3xl font-black text-[#0051FF] tracking-tight"
-            >
-              {formatINR(totals.min)} <span className="text-xl text-slate-400 font-medium mx-1">to</span> {formatINR(totals.max)}
-            </motion.div>
+          {/* Target Budget Input */}
+          <div>
+            <label htmlFor="est-budget" className="mb-2 block text-xs font-bold uppercase tracking-widest text-slate-500">
+              Your budget (optional)
+            </label>
+            <div className="relative">
+              <span className="absolute left-4 top-1/2 -translate-y-1/2 font-semibold text-slate-400">₹</span>
+              <input 
+                id="est-budget"
+                type="number"
+                placeholder="Enter amount"
+                value={targetBudget}
+                onChange={(e) => setTargetBudget(e.target.value)}
+                className="w-full rounded-xl border border-[#E2E5F1] bg-slate-50 py-3 pl-8 pr-4 text-sm font-semibold text-slate-900 outline-none transition focus:border-[#0051FF] focus:bg-white focus:ring-2 focus:ring-[#0051FF]/20"
+              />
+            </div>
           </div>
 
           {/* Dynamic Budget Alerts */}
-          <div className="mb-8">
+          <div className="mt-3">
             {isUnderAbsoluteMinimum && (
               <div className="rounded-lg bg-red-50 p-3 text-xs font-medium leading-5 text-red-600 border border-red-100">
                 🔴 <strong>Notice:</strong> HN Tech&apos;s minimum engagement starts at ₹25,000 for standard websites. We may not be able to accommodate this budget.
@@ -279,20 +295,6 @@ I'd like to discuss the next steps!`;
             )}
           </div>
 
-          {/* CTAs */}
-          <div className="space-y-3">
-            <Button href="/contact" variant="primary" fullWidth>
-              Discuss this project →
-            </Button>
-            <WhatsAppButton 
-              label="Send estimate via WhatsApp" 
-              message={inquiryMessage} 
-              fullWidth 
-            />
-            <a href="#email-estimate" className="block pt-1 text-center text-sm font-semibold text-[#0041CC] hover:underline">
-              Email me this estimate ↓
-            </a>
-          </div>
         </div>
       </div>
     </div>

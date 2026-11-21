@@ -1,8 +1,6 @@
 'use server';
 
 import { headers } from 'next/headers';
-import { after } from 'next/server';
-import { sendWhatsAppAlert, leadMessage } from '@/lib/whatsapp-alert';
 import { z } from 'zod';
 import { Resend } from 'resend';
 import { sanitizeText } from '@/lib/security';
@@ -106,7 +104,6 @@ export async function emailEstimate(_prev: EstimateFormState, formData: FormData
   if (!apiKey) {
     if (process.env.NODE_ENV === 'development') {
       console.log('[Estimate — DEV MODE] Lead:', { ...data, estimate: `${estimate.min}-${estimate.max}` });
-      after(() => sendWhatsAppAlert(leadMessage('New estimate lead', { Name: data.name, Phone: data.phone, Email: data.email, Project: estimate.base?.name, Features: estimate.activeFeatures.map((f) => f.name).join(', '), Estimate: `${formatINR(estimate.min)} – ${formatINR(estimate.max)}`, Budget: budget })));
       return { status: 'success', visitorEmailed: false, email: data.email };
     }
     console.error('[Estimate — PRODUCTION ERROR] RESEND_API_KEY is not configured.');
@@ -185,6 +182,5 @@ export async function emailEstimate(_prev: EstimateFormState, formData: FormData
     }
   }
 
-  after(() => sendWhatsAppAlert(leadMessage('New estimate lead', { Name: data.name, Phone: data.phone, Email: data.email, Project: estimate.base?.name, Features: estimate.activeFeatures.map((f) => f.name).join(', '), Estimate: `${formatINR(estimate.min)} – ${formatINR(estimate.max)}`, Budget: budget })));
   return { status: 'success', visitorEmailed, email: data.email };
 }
