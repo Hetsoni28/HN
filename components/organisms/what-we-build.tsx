@@ -59,7 +59,7 @@ export function WhatWeBuild() {
           {pillars.map((p, i) => (
             <FadeIn key={p.title} delay={i * 0.12}>
               <div
-                className={`card h-full border ${p.bg} ${p.border} p-8 transition duration-300 hover:-translate-y-1 hover:shadow-xl`}
+                className={`card h-full border ${p.bg} ${p.border} p-8 transition duration-300 hover:-translate-y-1 hover:border-[#0051FF]/30 hover:shadow-[0_16px_40px_-20px_rgba(0,81,255,0.35)]`}
               >
                 <div className={`mb-5 text-4xl ${p.accent}`}>{p.icon}</div>
                 <h3 className="text-2xl font-bold">{p.title}</h3>

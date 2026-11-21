@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import type { Testimonial } from '@/lib/content';
+import { Eyebrow } from '@/components/atoms/eyebrow';
 
 /* ── Animation variants ────────────────────────────────────────────────── */
 
@@ -82,7 +83,7 @@ function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
   return (
     <motion.article
       variants={cardVariant}
-      className="group flex flex-col rounded-2xl border border-slate-100 bg-white p-7 shadow-sm transition-shadow duration-300 hover:shadow-md hover:border-slate-200"
+      className="group flex flex-col rounded-2xl border border-slate-200 bg-white p-7 transition duration-300 hover:-translate-y-1 hover:border-[#0051FF]/30 hover:shadow-[0_16px_40px_-20px_rgba(0,81,255,0.35)]"
     >
       <QuoteIcon />
 
@@ -112,14 +113,12 @@ export function TestimonialsSection({
   testimonials: Testimonial[];
 }) {
   return (
-    <section className="section">
+    <section className="section bg-[#F5F6FF]">
       <div className="container">
         {/* Heading */}
         <div className="mb-12 max-w-2xl">
-          <p className="text-xs font-bold uppercase tracking-widest text-[#0051FF]">
-            Social proof
-          </p>
-          <h2 className="mt-3 text-3xl font-bold leading-tight text-slate-900 sm:text-4xl md:text-5xl">
+          <Eyebrow>Social proof</Eyebrow>
+          <h2 className="mt-4 text-3xl font-bold leading-[1.1] tracking-tight sm:text-4xl md:text-[2.75rem] text-[#0B111E]">
             What clients say
           </h2>
           <p className="mt-4 text-base leading-7 text-slate-600 sm:text-lg">

@@ -30,7 +30,7 @@ const groups = [
 
 export function TechSection() {
   return (
-    <section className="section bg-white">
+    <section className="section bg-[#F5F6FF]">
       <div className="container">
 
         {/* Header */}
@@ -51,7 +51,7 @@ export function TechSection() {
         </FadeIn>
 
         {/* Horizontal rows */}
-        <div className="divide-y divide-slate-100 rounded-2xl border border-slate-200 bg-[#EEF0FF]">
+        <div className="divide-y divide-slate-100 rounded-2xl border border-slate-200 bg-white">
           {groups.map(({ cat, color, dot, items }, i) => (
             <FadeIn key={cat} delay={i * 0.08}>
               <div className="flex flex-col gap-4 px-6 py-5 sm:flex-row sm:items-center sm:gap-10">
@@ -87,7 +87,7 @@ export function TechSection() {
               { label: 'Databases',   value: '5+',  bg: 'bg-[#EEF3FF]', val: 'text-[#0051FF]' },
               { label: 'Cloud tools', value: '8+',  bg: 'bg-[#EEF3FF]', val: 'text-[#0051FF]' },
             ].map(({ label, value, bg, val }) => (
-              <div key={label} className={`rounded-2xl ${bg} p-6 text-center`}>
+              <div key={label} className={`rounded-2xl border border-slate-200 ${bg === 'bg-[#EEF3FF]' ? 'bg-white' : bg} p-6 text-center`}>
                 <div className={`text-3xl font-bold ${val}`}>{value}</div>
                 <div className="mt-1 text-xs font-medium uppercase tracking-widest text-slate-500">
                   {label}

@@ -82,8 +82,9 @@ export function HeroSection() {
             {/* Eyebrow */}
             <motion.p
               variants={item}
-              className="mb-6 text-xs font-bold uppercase tracking-[0.3em] text-[#0051FF]"
+              className="mb-6 flex items-center gap-3 text-xs font-bold uppercase tracking-[0.2em] text-[#0041CC]"
             >
+              <span aria-hidden="true" className="h-px w-8 bg-[#0051FF]" />
               Web &amp; App Development Company in India
             </motion.p>
 

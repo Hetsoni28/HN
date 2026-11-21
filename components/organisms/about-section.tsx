@@ -1,5 +1,6 @@
 import { FadeIn } from '@/components/atoms/fade-in';
 import Link from 'next/link';
+import { Eyebrow } from '@/components/atoms/eyebrow';
 
 const pillars = ['Product Design', 'Engineering', 'AI & Automation'];
 
@@ -12,11 +13,9 @@ export function AboutSection() {
 
           {/* ── Left — large typography ── */}
           <FadeIn>
-            <p className="mb-6 text-xs font-bold uppercase tracking-[0.25em] text-[#0051FF]">
-              About HN
-            </p>
+            <Eyebrow>About HN</Eyebrow>
 
-            <h2 className="text-5xl font-black uppercase leading-[1.0] tracking-tight text-[#0B111E] sm:text-6xl xl:text-7xl">
+            <h2 className="mt-4 text-3xl font-bold leading-[1.1] tracking-tight sm:text-4xl md:text-[2.75rem] text-[#0B111E]">
               Premium<br />
               <span className="text-[#0051FF]">Engineering.</span><br />
               Real Results.
@@ -27,7 +26,7 @@ export function AboutSection() {
               {pillars.map((p) => (
                 <span
                   key={p}
-                  className="rounded-full border border-[#0051FF]/20 bg-[#0051FF]/5 px-4 py-2 text-xs font-bold uppercase tracking-widest text-[#0051FF]"
+                  className="rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-700"
                 >
                   {p}
                 </span>

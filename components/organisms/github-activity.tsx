@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
+import { Eyebrow } from '@/components/atoms/eyebrow';
 
 interface Commit {
   repo: string;
@@ -157,13 +158,8 @@ export function GithubActivity() {
         {/* Header */}
         <div className="mb-10 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <p
-              className="mb-1 text-xs font-bold uppercase tracking-widest"
-              style={{ color: '#5B8CFF' }}
-            >
-              Open source
-            </p>
-            <h2 className="text-3xl font-bold text-white md:text-4xl">
+            <Eyebrow dark>Open source</Eyebrow>
+            <h2 className="mt-4 text-3xl font-bold leading-[1.1] tracking-tight sm:text-4xl md:text-[2.75rem] text-white">
               Built in public
             </h2>
           </div>

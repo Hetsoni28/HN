@@ -32,7 +32,7 @@ export function OrganizationJsonLd() {
           'https://twitter.com/hetsoni',
         ],
       },
-      { '@type': 'Person', name: 'Neel Patel', jobTitle: 'Founder & Web Developer' },
+      { '@type': 'Person', name: 'Neel Patel', jobTitle: 'Co-Founder & Technology Lead' },
     ],
     address: {
       '@type': 'PostalAddress',

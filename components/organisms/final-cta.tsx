@@ -14,7 +14,7 @@ export function FinalCta() {
 
 
           {/* Eyebrow */}
-          <p className="mb-6 text-xs font-bold uppercase tracking-[0.3em] text-white/70">
+          <p className="mb-6 text-xs font-bold uppercase tracking-[0.2em] text-white/90">
             Have an idea?
           </p>
 

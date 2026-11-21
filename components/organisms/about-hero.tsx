@@ -47,7 +47,7 @@ export function AboutHero() {
             {[
               { stat: '2026', label: 'Founded', sub: 'Est. in India' },
               { stat: '100%', label: 'On-Time', sub: 'Every single project' },
-              { stat: '2', label: 'Founders', sub: 'Het & Neel' },
+              { stat: 'Het Soni', label: 'Founder', sub: 'With co-founder Neel Patel' },
             ].map((item) => (
               <div key={item.label} className="rounded-2xl border border-[#E2E5F1] bg-white p-6 shadow-sm">
                 <div className="text-2xl font-black text-[#0051FF] md:text-3xl">{item.stat}</div>
@@ -84,7 +84,7 @@ export function AboutIntro({ team }: { team?: TeamMember[] } = {}) {
     },
     {
       name: 'Neel Patel',
-      role: 'Founder @ HNTech · Web Developer',
+      role: 'Co-Founder @ HNTech · Technology Lead',
       initials: 'NP',
       color: 'from-[#0070F3] to-[#00D2FF]',
       bio: 'Specialises in frontend engineering, UI/UX implementation, and performance optimisation. Turns designs into pixel-perfect, fast-loading interfaces.',

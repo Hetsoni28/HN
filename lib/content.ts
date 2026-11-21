@@ -482,7 +482,7 @@ export const FALLBACK_TEAM: TeamMember[] = [
   {
     _id: 'tm2',
     name: 'Neel Patel',
-    role: 'Founder @ HNTech · Web Developer',
+    role: 'Co-Founder @ HNTech · Technology Lead',
     tagline: 'Turning interfaces into experiences people remember.',
     bio: 'Frontend engineer and UI specialist who cares deeply about performance, accessibility, and design quality. Founded HN to bring the pixel-perfect execution that makes digital products stand out.',
     skills: ['React', 'Tailwind CSS', 'TypeScript', 'Figma', 'Laravel', 'Motion Design'],

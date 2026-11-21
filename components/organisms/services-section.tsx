@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FadeIn } from '@/components/atoms/fade-in';
 import Link from 'next/link';
+import { Eyebrow } from '@/components/atoms/eyebrow';
 
 const services = [
   {
@@ -82,10 +83,8 @@ export function ServicesSection() {
 
         <FadeIn>
           <div className="mb-14 max-w-2xl">
-            <p className="mb-4 text-xs font-bold uppercase tracking-[0.25em] text-[#5B8CFF]">
-              Comprehensive Digital Services
-            </p>
-            <h2 className="text-4xl font-black uppercase leading-tight tracking-tight text-white sm:text-5xl">
+            <Eyebrow dark>Comprehensive Digital Services</Eyebrow>
+            <h2 className="mt-4 text-3xl font-bold leading-[1.1] tracking-tight sm:text-4xl md:text-[2.75rem] text-white">
               Top Development &amp;<br />
               <span className="gradient-text">Digital Services.</span>
             </h2>

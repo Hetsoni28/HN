@@ -29,15 +29,15 @@ export function ProcessSection() {
           <div className="space-y-4 sm:space-y-5">
             {steps.map(({ n, title, desc }, i) => (
               <FadeIn key={n} delay={i * 0.1}>
-                <div className="flex flex-col sm:flex-row sm:items-start gap-4 sm:gap-6 md:gap-8">
+                <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-6 md:gap-8">
                   {/* Step circle */}
                   <div className="relative z-10 flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#0051FF] text-base font-bold text-white shadow-lg shadow-[#0051FF]/25 sm:h-14 sm:w-14 sm:text-lg">
                     {n}
                   </div>
                   {/* Card */}
-                  <div className="card flex-1 p-6">
-                    <h3 className="text-xl font-bold">{title}</h3>
-                    <p className="mt-2 leading-7 text-slate-600">{desc}</p>
+                  <div className="card flex-1 px-6 py-5 transition duration-300 hover:border-[#0051FF]/30 hover:shadow-[0_12px_32px_-16px_rgba(0,81,255,0.3)] md:flex md:items-center md:gap-8">
+                    <h3 className="text-xl font-bold text-[#0B111E] md:w-32 md:shrink-0">{title}</h3>
+                    <p className="mt-2 leading-7 text-slate-600 md:mt-0">{desc}</p>
                   </div>
                 </div>
               </FadeIn>
