@@ -39,6 +39,7 @@ const NAV = [
       { href: 'https://finance-advisor-wine.vercel.app/', label: 'Finance Advisor' },
       { href: 'https://www.revorahealthcare.com/', label: 'Revora Healthcare' },
       { href: 'https://8webcom-com.vercel.app/', label: '8webcom' },
+      { href: 'https://angel-touch.vercel.app/', label: 'Angel Touch' },
     ],
   },
   {
