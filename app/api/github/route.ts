@@ -1,7 +1,5 @@
 import { NextResponse } from 'next/server';
 
-export const revalidate = 60;
-
 interface CommitItem {
   repo: string;
   message: string;
@@ -30,78 +28,86 @@ const FALLBACK_COMMITS: CommitItem[] = [
   },
 ];
 
+/**
+ * One GitHub refresh = 4 API calls (repos + 3 commit lists). Unauthenticated GitHub allows 60 calls/hour,
+ * so refresh at most every 10 minutes (~24 calls/hour). A failed refresh is retried after 1 minute.
+ */
+const TTL_MS = 10 * 60 * 1000;
+const FAILURE_TTL_MS = 60 * 1000;
+const REQUEST_TIMEOUT_MS = 6000;
+
 const CACHE_HEADERS = {
-  'Cache-Control': 'public, s-maxage=60, stale-while-revalidate=86400',
+  'Cache-Control': 'public, s-maxage=600, stale-while-revalidate=86400',
   'Content-Type': 'application/json',
 };
 
-export async function GET() {
-  const token = process.env.GITHUB_TOKEN?.trim();
+// Module-level cache: shared by requests served by the same server instance.
+let cached: { commits: CommitItem[]; expires: number } | null = null;
 
+async function githubJson(url: string, headers: Record<string, string>) {
+  // cache: 'no-store' — this route does its own caching, and Next's fetch cache would retry failures
+  // in the background, outside the try/catch below, and log them.
+  const res = await fetch(url, { headers, cache: 'no-store', signal: AbortSignal.timeout(REQUEST_TIMEOUT_MS) });
+  if (!res.ok) throw new Error(`GitHub ${res.status} for ${url}`);
+  return res.json();
+}
+
+async function loadCommits(): Promise<CommitItem[]> {
   const headers: Record<string, string> = {
     'User-Agent': 'HN-Digital-Studio/1.0',
     Accept: 'application/vnd.github+json',
   };
+  const token = process.env.GITHUB_TOKEN?.trim();
+  if (token) headers.Authorization = 'Bearer ' + token;
 
-  if (token) {
-    headers.Authorization = 'Bearer ' + token;
-  }
+  // 1. The 3 repositories most recently pushed to
+  const reposData = await githubJson(
+    'https://api.github.com/users/Hetsoni28/repos?sort=pushed&direction=desc&per_page=3',
+    headers,
+  );
+  const activeRepos: string[] = Array.isArray(reposData) ? reposData.map((r: { name: string }) => r.name) : ['HN'];
 
-  const controller = new AbortController();
-  const timeoutId = setTimeout(() => controller.abort(), 8000);
+  // 2. Latest commits from each, fetched in parallel; one failing repo doesn't sink the rest
+  const results = await Promise.allSettled(
+    activeRepos.map((repo) => githubJson(`https://api.github.com/repos/Hetsoni28/${repo}/commits?per_page=5`, headers)),
+  );
 
-  try {
-    // 1. Dynamically fetch the 3 repositories you most recently pushed to
-    const reposRes = await fetch(
-      'https://api.github.com/users/Hetsoni28/repos?sort=pushed&direction=desc&per_page=3',
-      { headers, signal: controller.signal, next: { revalidate: 60 } }
-    );
-
-    if (!reposRes.ok) throw new Error('Failed to fetch repos');
-    
-    const reposData = await reposRes.json();
-    const activeRepos = Array.isArray(reposData) ? reposData.map((r: { name: string }) => r.name) : ['HN'];
-
-    // 2. Fetch the latest commits from those dynamic repositories
-    const allCommits: CommitItem[] = [];
-
-    for (const repo of activeRepos) {
-      const res = await fetch(
-        `https://api.github.com/repos/Hetsoni28/${repo}/commits?per_page=5`,
-        { headers, signal: controller.signal, next: { revalidate: 60 } }
-      );
-
-      if (res.ok) {
-        const data = await res.json();
-        if (Array.isArray(data)) {
-          for (const item of data) {
-            if (item?.commit?.message && item?.commit?.author?.date) {
-              allCommits.push({
-                repo: repo,
-                message: item.commit.message.split('\n')[0] || 'Update repository',
-                date: item.commit.author.date,
-                url: typeof item.html_url === 'string' ? item.html_url : `https://github.com/Hetsoni28/${repo}`,
-              });
-            }
-          }
-        }
+  const allCommits: CommitItem[] = [];
+  results.forEach((result, i) => {
+    if (result.status !== 'fulfilled' || !Array.isArray(result.value)) return;
+    const repo = activeRepos[i];
+    for (const item of result.value) {
+      if (item?.commit?.message && item?.commit?.author?.date) {
+        allCommits.push({
+          repo,
+          message: item.commit.message.split('\n')[0] || 'Update repository',
+          date: item.commit.author.date,
+          url: typeof item.html_url === 'string' ? item.html_url : `https://github.com/Hetsoni28/${repo}`,
+        });
       }
     }
+  });
 
-    clearTimeout(timeoutId);
+  // 3. One timeline, newest first
+  allCommits.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+  return allCommits.slice(0, 6);
+}
 
-    // 3. Sort all commits by date descending to get a unified timeline
-    allCommits.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+export async function GET() {
+  if (cached && cached.expires > Date.now()) {
+    return NextResponse.json(cached.commits, { status: 200, headers: CACHE_HEADERS });
+  }
 
-    const finalCommits = allCommits.slice(0, 6);
-
-    if (finalCommits.length === 0) {
-      return NextResponse.json(FALLBACK_COMMITS, { status: 200, headers: CACHE_HEADERS });
-    }
-
-    return NextResponse.json(finalCommits, { status: 200, headers: CACHE_HEADERS });
-  } catch {
-    clearTimeout(timeoutId);
-    return NextResponse.json(FALLBACK_COMMITS, { status: 200, headers: CACHE_HEADERS });
+  try {
+    const commits = await loadCommits();
+    if (commits.length === 0) throw new Error('No commits returned');
+    cached = { commits, expires: Date.now() + TTL_MS };
+    return NextResponse.json(commits, { status: 200, headers: CACHE_HEADERS });
+  } catch (err) {
+    // Keep serving the last good result if we have one; otherwise the curated fallback.
+    const commits = cached?.commits ?? FALLBACK_COMMITS;
+    cached = { commits, expires: Date.now() + FAILURE_TTL_MS };
+    console.warn('[api/github] using cached/fallback commits:', err instanceof Error ? err.message : err);
+    return NextResponse.json(commits, { status: 200, headers: CACHE_HEADERS });
   }
 }
