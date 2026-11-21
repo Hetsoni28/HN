@@ -7,6 +7,7 @@ import { Breadcrumb } from '@/components/molecules/breadcrumb';
 import { TransformationSection } from '@/components/organisms/transformation-section';
 import { WorkFilter } from './work-filter';
 import { LiveProjectsGrid } from '@/components/organisms/live-projects-grid';
+import { getLiveProjects } from '@/lib/live-projects';
 
 export const metadata: Metadata = pageMetadata({
   title: 'Portfolio — Web, SaaS & AI Case Studies',
@@ -16,7 +17,7 @@ export const metadata: Metadata = pageMetadata({
 });
 
 export default async function WorkPage() {
-  const projects = await getProjects();
+  const [projects, liveProjects] = await Promise.all([getProjects(), getLiveProjects()]);
 
   return (
     <>
@@ -50,7 +51,7 @@ export default async function WorkPage() {
 
       <section className="section">
         <div className="container">
-          <LiveProjectsGrid />
+          <LiveProjectsGrid projects={liveProjects} />
         </div>
       </section>
 

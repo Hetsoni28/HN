@@ -1,9 +1,10 @@
 import Image from 'next/image';
 import { FadeIn } from '@/components/atoms/fade-in';
-import { LIVE_PROJECTS } from '@/lib/live-projects';
+import type { LiveProject } from '@/lib/live-projects';
 
 /** Thumbnail grid of live client websites; each card opens the site in a new tab. */
-export function LiveProjectsGrid() {
+export function LiveProjectsGrid({ projects }: { projects: LiveProject[] }) {
+  if (!projects.length) return null;
   return (
     <div>
       <FadeIn>
@@ -17,7 +18,7 @@ export function LiveProjectsGrid() {
       </FadeIn>
 
       <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {LIVE_PROJECTS.map((p, i) => (
+        {projects.map((p, i) => (
           <li key={p.url} className="h-full">
             <FadeIn delay={(i % 3) * 0.08} className="h-full">
               <a
@@ -37,16 +38,18 @@ export function LiveProjectsGrid() {
                 <div className="relative aspect-[16/10] overflow-hidden bg-[#EEF0FF]">
                   <Image
                     src={p.image}
-                    alt={`${p.name} website homepage`}
+                    alt={p.alt || `${p.name} website homepage`}
                     fill
                     className="object-cover object-top transition duration-500 group-hover:scale-[1.03]"
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 380px"
                   />
                 </div>
                 <div className="flex flex-1 flex-col p-6">
-                  <span className="w-fit rounded-full bg-[#EEF0FF] px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-[#0041CC]">
-                    {p.category}
-                  </span>
+                  {p.category && (
+                    <span className="w-fit rounded-full bg-[#EEF0FF] px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-[#0041CC]">
+                      {p.category}
+                    </span>
+                  )}
                   <h3 className="mt-3 text-xl font-bold text-slate-900">{p.name}</h3>
                   <p className="mt-2 flex-1 text-sm leading-relaxed text-slate-500">{p.description}</p>
                   <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-bold text-[#0041CC] transition-all group-hover:gap-2.5">
