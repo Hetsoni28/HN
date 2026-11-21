@@ -20,7 +20,7 @@ export function OrganizationJsonLd() {
       height: 735,
     },
     description: 'HN Tech is a technology company building websites, web apps, SaaS platforms, mobile apps, and AI solutions.',
-    foundingDate: '2024',
+    foundingDate: '2026',
     founders: [
       {
         '@type': 'Person',
