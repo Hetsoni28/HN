@@ -65,7 +65,7 @@ export default function CookiePolicyPage() {
         {
           heading: '7. Contact Us',
           content: [
-            'If you have any questions about our use of cookies, please email us at contact.hnsolutions@gmail.com.',
+            'If you have any questions about our use of cookies, please email us at contact.hntech.in@gmail.com.',
           ],
         },
       ]}

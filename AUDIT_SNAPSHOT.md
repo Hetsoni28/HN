@@ -777,7 +777,7 @@ export async function submitInquiry(
   }
 
   const apiKey = process.env.RESEND_API_KEY;
-  const toEmail = process.env.CONTACT_EMAIL ?? "contact.hnsolutions@gmail.com";
+  const toEmail = process.env.CONTACT_EMAIL ?? "contact.hntech.in@gmail.com";
 
   if (!apiKey) {
     if (process.env.NODE_ENV === "development") {
@@ -1418,7 +1418,7 @@ X-Xss-Protection: 1; mode=block
    - `sanitizeText` strips HTML/scripts from all text inputs.
    - Zod schema validation checks format and length boundaries.
    - File attachment buffer converted to base64.
-5. **Email dispatch**: Sent via Resend API (`resend.emails.send`) to `CONTACT_EMAIL` (`contact.hnsolutions@gmail.com`).
+5. **Email dispatch**: Sent via Resend API (`resend.emails.send`) to `CONTACT_EMAIL` (`contact.hntech.in@gmail.com`).
 6. **Data storage**: **Email only**. No records are saved to Postgres, Sanity, or any database.
 
 ### 2. Referral Form Flow (`/referral`)

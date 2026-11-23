@@ -39,10 +39,10 @@ export function FinalCta() {
               Start a Project →
             </Link>
             <Link
-              href="mailto:contact.hnsolutions@gmail.com"
+              href="mailto:contact.hntech.in@gmail.com"
               className="inline-flex items-center gap-2 rounded-full border-2 border-white/50 px-8 py-4 text-sm font-semibold text-white transition-all hover:border-white hover:bg-white/10 hover:gap-3"
             >
-              contact.hnsolutions@gmail.com
+              contact.hntech.in@gmail.com
             </Link>
           </div>
 

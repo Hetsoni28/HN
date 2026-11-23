@@ -85,7 +85,7 @@ export async function submitReferral(
 
   /* 3. Send email via Resend */
   const apiKey = process.env.RESEND_API_KEY;
-  const toEmail = process.env.CONTACT_EMAIL ?? 'contact.hnsolutions@gmail.com';
+  const toEmail = process.env.CONTACT_EMAIL ?? 'contact.hntech.in@gmail.com';
 
   if (!apiKey) {
     if (process.env.NODE_ENV === 'development') {
@@ -95,7 +95,7 @@ export async function submitReferral(
     console.error('[Referral Form — PRODUCTION ERROR] RESEND_API_KEY is not configured.');
     return {
       status: 'error',
-      message: 'Referral submission service is temporarily unavailable. Please email us directly at contact.hnsolutions@gmail.com.',
+      message: 'Referral submission service is temporarily unavailable. Please email us directly at contact.hntech.in@gmail.com.',
     };
   }
 
@@ -181,7 +181,7 @@ export async function submitReferral(
           </div>
 
           <div style="padding:16px 32px;background:#F8F9FF;border-radius:0 0 12px 12px;border:1px solid #E2E5F1;border-top:none">
-            <p style="margin:0;font-size:11px;color:#94a3b8">Sent via HN Referral Program · contact.hnsolutions@gmail.com</p>
+            <p style="margin:0;font-size:11px;color:#94a3b8">Sent via HN Referral Program · contact.hntech.in@gmail.com</p>
           </div>
         </div>
       `,
@@ -191,7 +191,7 @@ export async function submitReferral(
       console.error('[Referral Form — Resend API Error]:', sendError.message);
       return {
         status: 'error',
-        message: 'Delivery error submitting referral. Please email us directly at contact.hnsolutions@gmail.com.',
+        message: 'Delivery error submitting referral. Please email us directly at contact.hntech.in@gmail.com.',
       };
     }
 
@@ -200,7 +200,7 @@ export async function submitReferral(
     console.error('[Referral Form] Unexpected delivery failure:', err);
     return {
       status: 'error',
-      message: 'Something went wrong submitting your referral. Please contact us directly at contact.hnsolutions@gmail.com.',
+      message: 'Something went wrong submitting your referral. Please contact us directly at contact.hntech.in@gmail.com.',
     };
   }
 }

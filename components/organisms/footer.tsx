@@ -42,7 +42,7 @@ const LEGAL = [
 
 /* Public contacts: Het Soni and Neel Patel only (see AGENTS.md). */
 const CONTACTS = [
-  { label: 'contact.hnsolutions@gmail.com', href: 'mailto:contact.hnsolutions@gmail.com', icon: Mail },
+  { label: 'contact.hntech.in@gmail.com', href: 'mailto:contact.hntech.in@gmail.com', icon: Mail },
   { label: 'Het Soni · +91 72020 31164',    href: 'tel:+917202031164',                    icon: Phone },
   { label: 'Neel Patel · +91 79907 43263',  href: 'tel:+917990743263',                    icon: Phone },
 ];

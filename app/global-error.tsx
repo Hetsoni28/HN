@@ -31,8 +31,8 @@ export default function GlobalError({
             </h1>
             <p className="mx-auto mt-5 max-w-md text-lg text-slate-500">
               The site couldn&apos;t load. Please try again in a moment. If it keeps happening, email us at{' '}
-              <a href="mailto:contact.hnsolutions@gmail.com" className="font-semibold text-[#0041CC] underline">
-                contact.hnsolutions@gmail.com
+              <a href="mailto:contact.hntech.in@gmail.com" className="font-semibold text-[#0041CC] underline">
+                contact.hntech.in@gmail.com
               </a>.
             </p>
             {error.digest && (

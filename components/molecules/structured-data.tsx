@@ -42,7 +42,7 @@ export function OrganizationJsonLd() {
     contactPoint: {
       '@type': 'ContactPoint',
       contactType: 'customer service',
-      email: 'contact.hnsolutions@gmail.com',
+      email: 'contact.hntech.in@gmail.com',
       telephone: '+917202031164',
     },
     sameAs: [
@@ -190,7 +190,7 @@ export function ProfessionalServiceJsonLd() {
     description: 'HN Tech is a web and app development company in India building custom websites, web apps, SaaS platforms, mobile apps and AI solutions for businesses.',
     priceRange: '₹₹ - ₹₹₹₹',
     telephone: '+917202031164',
-    email: 'contact.hnsolutions@gmail.com',
+    email: 'contact.hntech.in@gmail.com',
     address: {
       '@type': 'PostalAddress',
       addressRegion: 'Gujarat',

@@ -109,7 +109,7 @@ docs.push({
   _id: 'siteSettings',
   title: 'HN Tech',
   description: 'A premium technology company founded by Het Soni, Neel Patel, and Vraj Prajapati.',
-  contactEmail: 'contact.hnsolutions@gmail.com',
+  contactEmail: 'contact.hntech.in@gmail.com',
   githubUrl: 'https://github.com/Hetsoni28',
 });
 

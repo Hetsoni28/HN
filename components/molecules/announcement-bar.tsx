@@ -7,8 +7,8 @@ export function AnnouncementBar() {
     <div className="bg-[#0051FF] text-white">
       <div className="container flex items-center justify-center gap-6 py-2.5 text-xs font-medium sm:text-[13px] md:justify-between">
         <div className="hidden items-center gap-6 text-white md:flex">
-          <a href="mailto:contact.hnsolutions@gmail.com" className="inline-flex items-center gap-2 transition-colors hover:text-white">
-            <Mail aria-hidden="true" className="h-3.5 w-3.5" /> contact.hnsolutions@gmail.com
+          <a href="mailto:contact.hntech.in@gmail.com" className="inline-flex items-center gap-2 transition-colors hover:text-white">
+            <Mail aria-hidden="true" className="h-3.5 w-3.5" /> contact.hntech.in@gmail.com
           </a>
         </div>
         <Link

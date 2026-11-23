@@ -58,7 +58,7 @@ const TOP_LINKS = [
 
 // Main contact number: Het Soni
 const PHONE = { display: '+91 72020 31164', href: 'tel:+917202031164' };
-const EMAIL = 'contact.hnsolutions@gmail.com';
+const EMAIL = 'contact.hntech.in@gmail.com';
 
 type DropdownName = 'services' | 'company';
 

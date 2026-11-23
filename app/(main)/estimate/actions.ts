@@ -96,7 +96,7 @@ export async function emailEstimate(_prev: EstimateFormState, formData: FormData
   const firstName = esc(data.name.split(' ')[0]);
 
   const apiKey = process.env.RESEND_API_KEY;
-  const teamEmail = process.env.CONTACT_EMAIL ?? 'contact.hnsolutions@gmail.com';
+  const teamEmail = process.env.CONTACT_EMAIL ?? 'contact.hntech.in@gmail.com';
   // A sender on a domain verified in Resend (e.g. "HN Tech <estimates@hntech.in>").
   // Resend's test sender can only deliver to the account owner, so visitor emails need this.
   const visitorFrom = process.env.RESEND_FROM;
